@@ -1,0 +1,32 @@
+// **********************************
+// margin（余白）
+// **********************************
+// CSS(SCSS)の軽微な余白を調整するために使用
+.u-m0 {
+   margin: 0;
+}
+@for $value from 1 through 10 {
+   .u-m#{$value} {
+      margin: $value + px;
+   }
+   .u-mx#{$value} {
+      margin-right: $value + px;
+      margin-left: $value + px;
+   }
+   .u-my#{$value} {
+      margin-top: $value + px;
+      margin-bottom: $value + px;
+   }
+   .u-mt#{$value} {
+      margin-top: $value + px;
+   }
+   .u-mr#{$value} {
+      margin-right: $value + px;
+   }
+   .u-mb#{$value} {
+      margin-bottom: $value + px;
+   }
+   .u-ml#{$value} {
+      margin-left: $value + px;
+   }
+}

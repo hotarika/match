@@ -1,0 +1,52 @@
+// **********************************
+// サイドバー
+// **********************************
+// 詳細説明については「_l-sidebar.scss」を参照してください
+.p-side {
+   &__lists {
+      width: 90%;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      @include mq('md') {
+         &.-settings {
+            width: 100%;
+         }
+      }
+   }
+   &__link {
+      @include border-radius;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 14px 20px;
+      margin-bottom: 1px;
+      font-size: 13px;
+      text-align: left;
+      background-color: $white;
+      @include mq('md') {
+         padding-left: 11px;
+         font-size: 12px;
+         &.-settings {
+            padding: 20px;
+            padding-left: 30px;
+         }
+      }
+      & i {
+         margin-right: 7px;
+         @include mq('md') {
+            margin-right: 3px;
+         }
+      }
+      &.is-active {
+         background-color: $gray-400;
+      }
+   }
+   &__linkHead {
+      margin: 50px 0 5px 0;
+      font-size: 14px;
+      @include mq('xs') {
+         display: none;
+      }
+   }
+}

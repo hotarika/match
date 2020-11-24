@@ -1,0 +1,11 @@
+// **********************************
+//  画像コンポーネント
+// **********************************
+.c-img {
+   @include border-radius('all', 50%);
+   object-fit: cover;
+   /* IE11 対応 */
+   @media all and (-ms-high-contrast: none) {
+      font-family: 'object-fit: cover;', sans-serif;
+   }
+}

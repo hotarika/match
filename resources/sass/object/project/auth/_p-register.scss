@@ -1,0 +1,35 @@
+// **********************************
+// ユーザー登録画面
+// **********************************
+.p-register {
+   padding-top: 8vh;
+   &__body {
+      position: relative;
+      padding: 50px;
+      @include mq('xs') {
+         padding: 40px;
+      }
+      @include mq('2xs') {
+         padding: 30px;
+      }
+      @include mq('3xs') {
+         padding: 30px 20px;
+      }
+   }
+   &__inputWrap {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+   }
+   &__submitBtn {
+      display: block;
+      padding: 10px 20px;
+      margin: 20px auto 0;
+      font-size: 14px;
+      color: $white;
+      background-color: $primary;
+      @include mq('3xs') {
+         font-size: 13px;
+      }
+   }
+}

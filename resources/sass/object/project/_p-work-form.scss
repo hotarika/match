@@ -1,0 +1,121 @@
+// **********************************
+// 仕事登録・編集画面
+// **********************************
+.p-workForm {
+   &__body {
+      padding: 50px;
+      @include mq('xs') {
+         padding: 30px 20px;
+      }
+      @include mq('3xs') {
+         padding: 20px 10px;
+      }
+   }
+   &__imgWrap {
+      @include flex-center;
+      margin-bottom: 15px;
+   }
+   &__img {
+      width: 130px;
+      height: 130px;
+   }
+   &__wrap {
+      display: flex;
+      padding: 10px;
+      @include mq('md') {
+         flex-direction: column;
+         padding: 0;
+      }
+   }
+   &__label {
+      position: relative;
+      display: block;
+      width: 25%;
+      margin-top: 10px;
+      font-size: 14px;
+      @include mq('md') {
+         width: 100%;
+         margin-bottom: 3px;
+         font-size: 13px;
+      }
+      &.-money {
+         &::before {
+            position: absolute;
+            top: 22px;
+            left: 2px;
+            font-size: 12px;
+            color: $gray-600;
+            content: '※「千円」単位';
+            @include mq('md') {
+               top: 1px;
+               left: 78px;
+            }
+         }
+      }
+      & > span {
+         margin-left: 5px;
+         font-size: 12px;
+         color: $red;
+      }
+   }
+   &__inputWrap {
+      display: flex;
+      flex-direction: column;
+      width: 75%;
+      @include mq('md') {
+         width: 100%;
+         margin-bottom: 10px;
+      }
+   }
+   &__moneyWrap {
+      & > span {
+         margin: 0 5px;
+         font-size: 14px;
+         color: black;
+      }
+   }
+   &__input {
+      background-color: $white;
+      @include mq('md') {
+         font-size: 13px;
+      }
+      &.-name {
+         width: 100%;
+      }
+      &.-email {
+         width: 70%;
+         @include mq('md') {
+            width: 100%;
+         }
+      }
+      &.-endRecruitment,
+      &.-hopeDeadline,
+      &.-tieUp {
+         width: 70%;
+         @include mq('md') {
+            width: 100%;
+         }
+      }
+      &.-money {
+         width: 30%;
+         @include mq('md') {
+            & + span {
+               font-size: 13px;
+            }
+         }
+      }
+   }
+   &__textarea {
+      @include mq('md') {
+         font-size: 13px;
+      }
+   }
+   &__editBtn {
+      display: block;
+      padding: 10px 40px;
+      margin: 20px auto 0;
+      font-size: 14px;
+      color: #fff;
+      background-color: #0081ff;
+   }
+}

@@ -1,0 +1,18 @@
+// **********************************
+// footer
+// **********************************
+// footerのレイアウトを定義
+// 詳細のCSS定義については、「_p-footer.scss」で定義
+// レイアウト(l-*)とプロジェクト(p-*)で分割する理由
+// - ①構造（レイアウト）と詳細（プロジェクト）を分けることでコードの見通しを良くするため
+// - ②詳細をプロジェクト(p-*)で定義すれば、コンポーネント(c-*)を使用できるため
+
+.l-footer {
+   z-index: $z-footer;
+   height: $footer-height;
+   color: $white;
+   background-color: $primary;
+   @include mq(xs) {
+      height: $footer-height-sp;
+   }
+}

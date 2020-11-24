@@ -1,0 +1,18 @@
+// **********************************
+// header
+// **********************************
+// headerのレイアウトを定義
+// 詳細のCSS定義については、「_p-header.scss」で定義
+// レイアウト(l-*)とプロジェクト(p-*)で分割する理由
+// - ①構造（レイアウト）と詳細（プロジェクト）を分けることでコードの見通しを良くするため
+// - ②詳細をプロジェクト(p-*)で定義すれば、コンポーネント(c-*)を使用できるため
+
+.l-header {
+   z-index: $z-header;
+   height: $header-height;
+   background-color: $white;
+   box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
+   @include mq(xs) {
+      height: $header_height-sp;
+   }
+}

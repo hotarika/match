@@ -1,0 +1,41 @@
+// **********************************
+// Base
+// **********************************
+// ここでは、全体のベースとなるCSS（SCSS）を定義
+body {
+   display: flex;
+   flex-direction: column;
+   font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+   background-color: $base;
+}
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+   line-height: 1; // normalize.css(_f-reset.scss)の上書き
+}
+
+// =======================
+// containerの役割と注意点
+// =======================
+// ・最大画面幅の設定(max-width) - 指定幅以上の拡大はしない（サイト幅は、_variable.scssで設定）
+// ・左右余白(padding) - 縮小したときに左右幅の余白を確保する
+// ・containerの変更をする際は全てのページに影響が出るため注意する
+.container {
+   max-width: $site-width-lg;
+   height: 100%;
+   padding: 0 15px;
+   margin: 0 auto;
+   @include mq('md') {
+      max-width: $site-width-md;
+   }
+   @include mq('sm') {
+      max-width: $site-width-sm;
+   }
+   @include mq('xs') {
+      padding: 0 10px;
+   }
+   @include mq('3xs') {
+      padding: 0 5px;
+   }
+}

@@ -1,0 +1,104 @@
+// **********************************
+// セクション コンポーネント
+// **********************************
+// ここではh1,h2のセクション（区切り）単位のCSSを定義
+
+// =========================
+// h1
+// =========================
+.c-h1 {
+   &__head {
+      @include border-radius;
+      padding: 15px;
+      margin: 0 0 20px;
+      font-size: 20px;
+      color: $white;
+      text-align: center;
+      letter-spacing: 1.5px;
+      background: $gray-700;
+      @include mq('xs') {
+         @include border-radius('top', 2px);
+         margin: 0;
+         font-size: 16px;
+      }
+   }
+}
+
+// =========================
+// h2
+// =========================
+.c-h2 {
+   &__sec {
+      @include border-radius;
+      position: relative;
+      margin-bottom: 50px;
+      @include mq('xs') {
+         margin-bottom: 40px;
+      }
+   }
+   &__seeMore {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      width: 15px;
+      font-size: 20px;
+      font-weight: bold;
+      & > i {
+         font-size: 25px;
+         @include mq('xs') {
+            font-size: 20px;
+         }
+      }
+   }
+   &__head {
+      @include border-radius('top');
+      padding: 13px;
+      margin: 0;
+      font-size: 15px;
+      font-weight: normal;
+      color: $black;
+      text-align: center;
+      letter-spacing: 0.5px;
+      background: $gray-400;
+      @include mq('xs') {
+         font-size: 14px;
+      }
+   }
+   // デフォルトのセクション
+   &__oneRowBody {
+      background-color: $white;
+   }
+   // 仕事カードのセクション
+   &__workCardBody {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      padding: 20px 0 10px 0;
+      padding-left: calc(50% - 323px);
+      background-color: $white;
+      @include mq('md') {
+         padding-left: calc(50% - 224px);
+      }
+      @include mq('xs') {
+         padding-left: calc(50% - 174px);
+      }
+      @include mq('2xs') {
+         padding-left: calc(50% - 155px);
+      }
+      @include mq('3xs') {
+         padding: 5px 0 10px 0;
+         background-color: transparent;
+      }
+      /* IE11 対応 */
+      @media all and (-ms-high-contrast: none) {
+         padding-left: calc(50% - 355px);
+      }
+   }
+   // 「現在、xxxはありません」の表示
+   &__noItems {
+      margin: 16px 0;
+      font-size: 14px;
+      color: $gray-600;
+      text-align: center;
+   }
+}

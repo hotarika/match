@@ -1,0 +1,101 @@
+// **********************************
+// Mixin
+// **********************************
+// ここではSCSSの共通項目を定義
+
+// ================================
+// レスポンシブデザイン
+// ================================
+// サイト横幅の値を他の場所でも利用することを想定し、変数とブレークポイントを分けている
+$site-width-3xs: 320px !default; // iPhoneSE, iPhone5sのサイズ
+$site-width-2xs: 375px !default; // スマホ（シェアが一番多いサイズ）
+$site-width-xs: 414px !default; // スマホ（通常より一回り大きいサイズ）
+$site-width-sm: 576px !default; // スマホの横向きを想定
+$site-width-md: 768px !default; // タブレットを想定
+$site-width-lg: 992px !default; // PC（デフォルト）
+$site-width-xl: 1200px !default; // PC
+
+$breakpoints: (
+   '3xs': 'screen and (max-width: #{$site-width-3xs})',
+   '2xs': 'screen and (max-width: #{$site-width-2xs})',
+   'xs': 'screen and (max-width: #{$site-width-xs})',
+   'sm': 'screen and (max-width: #{$site-width-sm})',
+   'md': 'screen and (max-width: #{$site-width-md})',
+   'lg': 'screen and (max-width: #{$site-width-lg})',
+   'xl': 'screen and (max-width: #{$site-width-xl})'
+) !default;
+
+@mixin mq($breakpoint: lg) {
+   @media #{map-get($breakpoints, $breakpoint)} {
+      @content;
+   }
+}
+
+// レスポンシブで<br />を操作したい場合に使用
+@mixin responsive-br($site-size: 'xs') {
+   & > br {
+      display: none;
+      @include mq($site-size) {
+         display: block;
+      }
+   }
+}
+
+// ================================
+// 上下左右中央寄せ
+// ================================
+@mixin flex-center {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+// ================================
+// 文字
+// ================================
+// textareaなどに指定する共通項目
+@mixin letter-settings {
+   line-height: 1.3;
+   letter-spacing: 0.5px;
+}
+
+// ================================
+// メインエリアの高さ
+// ================================
+//「画面の高さ - headerの高さ - footerの高さ = メインエリアの高さ」
+// 使用用途：footerの固定など
+@mixin main-height {
+   min-height: calc(100vh - #{$header-height + $footer-height});
+   @include mq(xs) {
+      // スマートフォン用
+      min-height: calc(100vh - #{$header-height-sp + $footer-height-sp});
+   }
+}
+
+// ================================
+// border-radius(角丸)
+// ================================
+// $target - どこの角を丸めたいか（all,top,right,bottom,leftから第1匹数を指定）
+// $radius - どれくらい丸めたいのか
+@mixin border-radius($target: 'all', $radius: 2px) {
+   @if $target == 'all' {
+      border-radius: $radius;
+   } @else if $target == 'top' {
+      border-radius: $radius $radius 0 0;
+   } @else if $target == 'right' {
+      border-radius: 0 $radius $radius 0;
+   } @else if $target == 'bottom' {
+      border-radius: 0 0 $radius $radius;
+   } @else if $target == 'left' {
+      border-radius: $radius 0 0 $radius;
+   }
+}
+
+// ================================
+// 三点リーダー（文字が指定幅を超えた場合）
+// ================================
+@mixin ellipsis {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}

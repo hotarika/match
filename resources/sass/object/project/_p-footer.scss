@@ -1,0 +1,19 @@
+// **********************************
+// footer
+// **********************************
+// 詳細説明については「_l-footer.scss」を参照してください
+
+.p-footer {
+   &__logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      & img {
+         width: 100px;
+         @include mq(xs) {
+            width: 80px;
+         }
+      }
+   }
+}

@@ -1,0 +1,106 @@
+// **********************************
+// プロフィール編集画面
+// **********************************
+.p-profileEdit {
+   &__body {
+      padding: 50px;
+      @include mq('xs') {
+         padding: 30px 20px;
+      }
+      @include mq('3xs') {
+         padding: 20px 10px;
+      }
+   }
+   // 画像編集
+   &__imgWrap {
+      @include flex-center;
+      flex-direction: column;
+      margin-bottom: 15px;
+   }
+   &__imgDragArea {
+      @include border-radius('all', 50%);
+   }
+   &__imgLabel {
+      @include border-radius('all', 50%);
+   }
+   &__img {
+      width: 130px;
+      height: 130px;
+      padding: 0 3px;
+      margin-top: 2px;
+      @include mq('3xs') {
+         width: 100px;
+         height: 100px;
+      }
+   }
+   &__imgInput {
+      display: none;
+   }
+   &__imgEditCaption {
+      margin-top: 7px;
+      color: $gray-600;
+      text-align: center;
+      @include mq('3xs') {
+         margin-top: 5px;
+         font-size: 11px;
+      }
+   }
+   &__wrap {
+      display: flex;
+      padding: 10px;
+      @include mq('md') {
+         flex-direction: column;
+         padding: 0;
+         margin-bottom: 10px;
+      }
+   }
+   &__label {
+      display: block;
+      width: 25%;
+      margin-top: 10px;
+      font-size: 14px;
+      @include mq('md') {
+         width: 100%;
+         margin-bottom: 3px;
+         font-size: 13px;
+      }
+      & > span {
+         margin-left: 5px;
+         font-size: 12px;
+         color: $red;
+      }
+   }
+   &__inputWrap {
+      display: flex;
+      flex-direction: column;
+      width: 75%;
+      @include mq('md') {
+         width: 100%;
+      }
+   }
+   &__input {
+      &.-name {
+         width: 70%;
+         @include mq('md') {
+            width: 100%;
+         }
+      }
+      &.-email {
+         width: 70%;
+         @include mq('md') {
+            width: 100%;
+         }
+      }
+   }
+   &__textarea {
+      width: 100%;
+   }
+   &__editBtn {
+      display: block;
+      padding: 10px 40px;
+      margin: 20px auto 0;
+      font-size: 14px;
+      color: #fff;
+      background-color: #0081ff;
+   }
+}

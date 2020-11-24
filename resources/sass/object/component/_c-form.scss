@@ -1,0 +1,46 @@
+// **********************************
+// フォーム コンポーネント
+// **********************************
+.c-form {
+   &__input {
+      @include letter-settings;
+      @include border-radius;
+      padding: 10px;
+      margin-bottom: 5px;
+      font-size: 14px;
+      border: 1px solid $gray-400;
+      @include mq('xs') {
+         font-size: 13px;
+      }
+
+      &:focus {
+         outline-color: $primary;
+      }
+   }
+   &__invalid {
+      display: none;
+      font-size: 13px;
+      color: $red;
+      @include mq('md') {
+         font-size: 12px;
+      }
+      &.is-invalid {
+         display: block;
+      }
+   }
+   &__textarea {
+      @include letter-settings;
+      @include border-radius;
+      min-height: 60px;
+      padding: 15px;
+      font-size: 14px;
+      resize: vertical;
+      border: 1px solid $gray-400;
+      @include mq('xs') {
+         font-size: 13px;
+      }
+      &:focus {
+         outline-color: $primary;
+      }
+   }
+}

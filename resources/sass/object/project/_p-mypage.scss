@@ -1,0 +1,82 @@
+// **********************************
+// マイページ
+// **********************************
+.p-mypage {
+   // 新着通知
+   &__notificationBody {
+      min-height: 97px;
+      padding: 20px;
+      @include mq('xs') {
+         padding: 15px 10px;
+      }
+   }
+   &__notificationItem {
+      display: flex;
+      margin-bottom: 5px;
+   }
+   &__notificationMsgSecWrap {
+      @include border-radius('left', 5px);
+      flex-grow: 1;
+      padding: 11px 20px;
+      background: $primary-light;
+      @include mq('xs') {
+         padding: 9px 15px;
+      }
+      @include mq('3xs') {
+         padding: 8px 10px;
+      }
+   }
+   &__notificationItemUpper {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      @include mq('xs') {
+         margin-bottom: 2px;
+      }
+   }
+   &__notificationName {
+      font-size: 13px;
+      @include mq('xs') {
+         font-size: 12px;
+      }
+      @include mq('3xs') {
+         @include ellipsis;
+         width: 120px;
+      }
+   }
+   &__notificationTime {
+      font-size: 11px;
+      color: $gray-700;
+   }
+   &__notificationMsg {
+      margin: 0;
+      font-size: 12px;
+      @include mq('xs') {
+         @include letter-settings;
+         font-size: 11px;
+      }
+   }
+   &__notificationDelBtn {
+      @include border-radius('right', 5px);
+      min-width: 50px;
+      background-color: $primary;
+      & > i {
+         font-size: 14px;
+         color: $white;
+         @include mq('xs') {
+            font-size: 13px;
+         }
+      }
+   }
+   &__notificationSeeMore {
+      display: block;
+      padding-top: 15px;
+      padding-bottom: 5px;
+      margin: 0 auto;
+      font-size: 13px;
+      color: $gray-600;
+      @include mq('xs') {
+         font-size: 11px;
+      }
+   }
+}

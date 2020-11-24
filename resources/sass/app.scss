@@ -1,8 +1,29 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+// **********************************
+// 全体のSCSSファイルの取り込み
+// **********************************
+// 下記に定義されているファイルの順番を入れ替えるとCSSデザインが壊れますので、
+// 変更する場合などは、ご注意ください
 
-// Variables
-@import 'variables';
+// Foundation
+@import "foundation/_f-reset";
+@import "foundation/_f-variables";
+@import "foundation/_f-mixin";
+@import "foundation/_f-base";
+
+// Layout
+@import "layout/*.scss";
+
+// Object > Component
+@import "object/component/*.scss";
+// Object > Project
+@import "object/project/*.scss";
+@import "object/project/auth/*.scss";
+// Object > Utility
+@import "object/utility/*.scss";
+
+// Laravel初期設定
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";

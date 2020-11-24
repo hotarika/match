@@ -1,0 +1,52 @@
+// **********************************
+// ログイン画面
+// **********************************
+.p-login {
+   padding-top: 8vh;
+   &__body {
+      position: relative;
+      padding: 50px;
+      @include mq('xs') {
+         padding: 40px;
+      }
+      @include mq('2xs') {
+         padding: 30px;
+      }
+      @include mq('3xs') {
+         padding: 30px 20px;
+      }
+   }
+   &__inputWrap {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+   }
+   &__rememberWrap {
+      display: flex;
+      font-size: 13px;
+   }
+   &__remember {
+      margin-right: 3px;
+   }
+   &__submitBtn {
+      display: block;
+      padding: 10px 20px;
+      margin: 20px auto 0;
+      font-size: 14px;
+      color: $white;
+      background-color: $primary;
+      @include mq('3xs') {
+         font-size: 13px;
+      }
+   }
+   &__passReminder {
+      position: absolute;
+      right: 0;
+      bottom: -23px;
+      font-size: 12px;
+      color: $gray-700;
+      @include mq('xs') {
+         right: 10px;
+      }
+   }
+}

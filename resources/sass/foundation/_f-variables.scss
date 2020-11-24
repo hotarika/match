@@ -1,0 +1,59 @@
+// **********************************
+// 変数
+// **********************************
+// 全体で使用される変数を定義
+
+// ===============================
+// 基本設定
+// ===============================
+$header-height: 80px !default; // headerの高さ
+$footer-height: 80px !default; // footerの高さ
+$header-height-sp: 60px !default; // headerの高さ(スマホ用)
+$footer-height-sp: 60px !default; // footerの高さ(スマホ用)
+
+// ===============================
+// 色指定
+// ===============================
+// グレー色
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+// アクセント色
+$blue: #0081ff !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #dc3545 !default;
+$orange: #ffa500 !default;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
+
+// サイト色
+$primary: $blue !default;
+$primary-light: #bedcfd !default;
+$secondary: $gray-600 !default;
+$base: rgb(239, 239, 239) !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $gray-100 !default;
+$dark: $gray-800 !default;
+
+// ===============================
+// 優先順位(z-index)
+// ===============================
+$z-main: 1;
+$z-header: 2;
+$z-footer: 2;

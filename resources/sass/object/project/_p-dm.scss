@@ -1,0 +1,166 @@
+// **********************************
+// ダイレクトメッセージ画面
+// **********************************
+// 継承（親クラス）
+%dm__msg {
+   @include border-radius('all', 5px);
+   @include letter-settings;
+   position: relative;
+   width: 75%;
+   padding: 15px;
+   font-size: 13px;
+   @include mq('3xs') {
+      width: 80%;
+      padding: 10px;
+      font-size: 12px;
+      line-height: 1.2;
+      letter-spacing: 0.5px;
+   }
+   &::before {
+      position: absolute;
+      top: 34%;
+      display: block;
+      content: '';
+      border-style: solid;
+   }
+   & > time {
+      position: absolute;
+      bottom: -15px;
+      font-size: 12px;
+      color: #495057;
+   }
+}
+
+// ダイレクトメッセージ
+.p-dm {
+   @include mq('xs') {
+      padding: 0;
+   }
+   & > .container {
+      @include mq('xs') {
+         padding: 0;
+      }
+   }
+   &__h1 {
+      @include mq('xs') {
+         display: none;
+      }
+   }
+   &__msgSec {
+      display: flex;
+      flex-direction: column;
+      background-color: $white;
+      border: 1px solid $gray-100;
+   }
+   &__h2sec {
+      margin: 0;
+   }
+   &__h2 {
+      @include flex-center;
+      padding: 8px;
+      border-bottom: 1px solid $white;
+      @include mq('3xs') {
+         padding: 9px 0 7px;
+      }
+      & > img {
+         width: 45px;
+         height: 45px;
+         @include border-radius('all', 50%);
+         @include mq('3xs') {
+            width: 30px;
+            height: 30px;
+         }
+      }
+   }
+   &__h2InfoWrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: 10px;
+      font-size: 14px;
+   }
+   &__h2InfoName {
+      margin-bottom: 2px;
+      font-weight: bold;
+   }
+   &__h2InfoOrderName {
+      @include mq('3xs') {
+         font-size: 13px;
+      }
+   }
+   &__msgArea {
+      flex-basis: 85%;
+      max-height: 500px;
+      overflow: scroll;
+      overflow-x: hidden;
+      /* IE11 対応 */
+      @media all and (-ms-high-contrast: none) {
+         min-height: 500px;
+      }
+   }
+   &__msgYou {
+      @extend %dm__msg; // 継承
+      margin: 20px auto 40px 30px;
+      background: $gray-200;
+      @include mq('3xs') {
+         margin: 15px auto 30px 20px;
+      }
+      &::before {
+         left: -12px;
+         border-color: transparent $gray-200 transparent transparent;
+         border-width: 10px 15px 10px 0;
+      }
+      & > time {
+         right: 0;
+      }
+   }
+   &__msgMe {
+      @extend %dm__msg; // 継承
+      margin: 20px 30px 40px auto;
+      color: $white;
+      background: #2991d2;
+      @include mq('3xs') {
+         margin: 15px 20px 30px auto;
+      }
+      &::before {
+         right: -12px;
+         border-color: transparent transparent transparent #2991d2;
+         border-width: 10px 0 10px 15px;
+      }
+      & > time {
+         left: 0;
+      }
+   }
+   // フォーム
+   &__form {
+      @include flex-center;
+      @include border-radius('bottom');
+      position: relative;
+      flex-basis: 15%;
+      padding: 15px 15px 50px 15px;
+      background: $gray-400;
+      & > textarea {
+         border: none;
+         @include mq('3xs') {
+            padding: 10px;
+            font-size: 12px;
+         }
+         /* IE11 対応 */
+         @media all and (-ms-high-contrast: none) {
+            min-width: 85%;
+         }
+      }
+      /* IE11 対応 */
+      @media all and (-ms-high-contrast: none) {
+         min-height: 200px;
+      }
+   }
+   &__sendBtn {
+      right: 16px;
+      bottom: 18px;
+      /* IE11 対応 */
+      @media all and (-ms-high-contrast: none) {
+         right: 15px;
+      }
+   }
+}

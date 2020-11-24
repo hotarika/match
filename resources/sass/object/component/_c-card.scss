@@ -1,0 +1,383 @@
+// **********************************
+// カード コンポーネント
+// **********************************
+// ===========================
+// 基本設定
+// ===========================
+.c-card {
+   display: block;
+   color: $black;
+   text-decoration: none;
+   cursor: pointer;
+}
+
+// ===========================
+// 仕事カード
+// ===========================
+.c-workCard {
+   @include border-radius;
+   position: relative;
+   display: flex;
+   flex: 0 0 200px;
+   flex-direction: column;
+   height: 225px;
+   padding: 25px 10px 10px;
+   margin: 0 8px 15px 8px;
+   color: $black;
+   text-decoration: none;
+   background-color: $white;
+   box-shadow: rgba(0, 0, 0, 0.18) 2px 2px 6px;
+   @include mq('xs') {
+      flex-basis: 45%;
+      height: 190px;
+      margin: 0 10px 10px 0;
+      &:nth-child(2n) {
+         margin-right: 0;
+      }
+   }
+   @include mq('3xs') {
+      flex-basis: 49%;
+      padding: 25px 5px 15px;
+      margin: 0 5px 5px 0;
+   }
+   /* IE11 対応 */
+   @media all and (-ms-high-contrast: none) {
+      border: 1px solid $gray-200;
+   }
+   &::before {
+      @include border-radius('top');
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      content: '';
+      background: $primary;
+   }
+   &:hover {
+      cursor: pointer;
+      box-shadow: rgba(0, 0, 0, 0.18) 3px 3px 10px;
+      transition: all 0.5s 0s ease;
+      transform: scale(1.03, 1.03);
+   }
+   &__decisionTag {
+      @include border-radius('all', 50%);
+      position: absolute;
+      top: -11px;
+      right: -6px;
+      display: none;
+      width: 40px;
+      height: 40px;
+      padding-top: 13px;
+      font-size: 12px;
+      font-weight: bold;
+      color: $white;
+      text-align: center;
+      background-color: $red;
+      opacity: 0.9;
+      &.is-active {
+         display: block;
+      }
+   }
+   &__nameWrap {
+      position: absolute;
+      top: 11px;
+      left: 11px;
+      @include mq('3xs') {
+         left: 6px;
+      }
+   }
+   &__img {
+      width: 12px;
+      height: 12px;
+   }
+   &__name {
+      font-size: 10px;
+      color: $gray-700;
+      vertical-align: 2px;
+   }
+   &__head {
+      @include letter-settings;
+      flex: 0 0;
+      flex-basis: 70px;
+      width: 180px;
+      padding: 6px 10px;
+      margin: 5px auto;
+      overflow: scroll;
+      font-size: 14px;
+      font-weight: bold;
+      border: 1px solid $gray-400;
+      @include mq('xs') {
+         flex-basis: 60px;
+         width: 100%;
+         padding: 6px 7px;
+         font-size: 12px;
+      }
+      @include mq('3xs') {
+         padding: 3px 6px;
+      }
+      /* Chrome, Safari 対応 */
+      &::-webkit-scrollbar {
+         display: none;
+      }
+      scrollbar-width: none; /* Firefox 対応 */
+      -ms-overflow-style: none; /* IE11, Edge 対応 */
+      /* IE11 対応 */
+      @media all and (-ms-high-contrast: none) {
+         font-size: 14px;
+      }
+   }
+   &__contract {
+      display: flex;
+      flex-basis: 50px;
+      justify-content: space-between;
+      margin-top: 4px;
+      /* IE11 対応 */
+      @media all and (-ms-high-contrast: none) {
+         position: relative;
+      }
+   }
+   &__contractIconWrap {
+      @include flex-center;
+      width: 30%;
+   }
+   &__contractIcon {
+      &.-oneoff {
+         font-size: 43px;
+         @include mq('xs') {
+            font-size: 38px;
+         }
+         @include mq('2xs') {
+            font-size: 35px;
+         }
+      }
+      &.-share {
+         width: 45px;
+         margin-left: 5px;
+         font-size: 40px;
+      }
+   }
+   &__contractWayWrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 70%;
+      font-size: 14px;
+      @include mq('xs') {
+         font-size: 12px;
+      }
+      @include mq('2xs') {
+         font-size: 11px;
+      }
+   }
+   &__contractWay {
+      &.-share {
+         margin-left: 6px;
+      }
+   }
+   &__contractMoney {
+      margin-top: 4px;
+      font-size: 12px;
+      @include mq('xs') {
+         font-size: 11px;
+      }
+      @include mq('2xs') {
+         font-size: 10px;
+      }
+   }
+   &__info {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 8px;
+      white-space: nowrap;
+      vertical-align: middle;
+   }
+   &__infoItem {
+      @include flex-center;
+      @include border-radius('all', 5px);
+      padding: 14px;
+      font-size: 12px;
+      background-color: $primary-light;
+      @include mq('xs') {
+         padding: 10px 12px;
+         font-size: 11px;
+      }
+      @include mq('2xs') {
+         padding: 10px 9px;
+         font-size: 10px;
+      }
+      @include mq('3xs') {
+         padding: 9px 9px;
+      }
+   }
+}
+
+// ===========================
+// メッセージ
+// ===========================
+// 継承（親クラス）
+%c-msgCard__basicInfo {
+   @include border-radius('all', 50px);
+   @include ellipsis;
+   padding: 5px 15px;
+   overflow: hidden;
+   font-size: 11px;
+   color: $white;
+   background-color: $primary;
+   @include mq('xs') {
+      padding: 5px 10px;
+   }
+}
+
+// メッセージリンク基本設定
+.c-msgCard {
+   position: relative;
+   padding: 10px 20px;
+   margin-bottom: 2px;
+   background-color: $white;
+   @include mq('xs') {
+      padding: 7px 10px 7px 15px;
+   }
+   &:hover {
+      box-shadow: rgba(0, 0, 0, 0.18) 3px 3px 10px;
+      transition: all 0.5s 0s ease;
+      transform: scale(1.03, 1.03);
+   }
+   &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 7px;
+      height: 100%;
+      content: '';
+      background-color: $primary;
+   }
+}
+
+// ===========================
+// パブリックメッセージ
+// ===========================
+.c-pubMsgCard {
+   &__infoWrap {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      @include mq('xs') {
+         // flex-direction: column;
+      }
+   }
+   &__basicInfo {
+      @extend %c-msgCard__basicInfo; // 継承
+      max-width: 80%;
+      @include mq('xs') {
+         max-width: 70%;
+         font-size: 10px;
+      }
+      @include mq('3xs') {
+         max-width: 65%;
+      }
+   }
+   &__msgTime {
+      font-size: 12px;
+      color: $gray-700;
+      @include mq('xs') {
+         font-size: 10px;
+      }
+   }
+   &__msgTitle {
+      @include ellipsis;
+      padding-left: 5px;
+      margin: 5px 0 4px;
+      font-size: 14px;
+      font-weight: bold;
+
+      @include mq('xs') {
+         font-size: 12px;
+      }
+   }
+   &__pubMsg {
+      @include ellipsis;
+      padding: 1px 0 0 5px;
+      font-size: 12px;
+      @include mq('xs') {
+         font-size: 11px;
+      }
+   }
+}
+
+// ===========================
+// ダイレクトメッセージ
+// ===========================
+.c-dmMsgCard {
+   &__msgItem {
+      display: flex;
+      @include mq('3xs') {
+         padding: 11px 10px 11px 15px;
+      }
+   }
+   &__userImg {
+      // 通常のwidth, heightで指定すると、画像読み込み時に形が変形してしまう不具合が出るため(safari)、minとmaxで指定することで読み込み時にも綺麗に表示されるようにしている
+      min-width: 50px;
+      max-width: 50px;
+      min-height: 50px;
+      max-height: 50px;
+      @include mq('3xs') {
+         display: none;
+      }
+      /* IE11 対応 */
+      @media all and (-ms-high-contrast: none) {
+         // 形が潰れて表示されるので修正
+         width: 50px;
+         height: 50px;
+      }
+   }
+   &__mainAreaWrap {
+      padding-left: 15px;
+      overflow: hidden;
+      @include mq('xs') {
+         padding-left: 10px;
+      }
+      @include mq('3xs') {
+         padding: 0;
+      }
+   }
+   &__infoWrap {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      font-size: 13px;
+      @include mq('xs') {
+         margin-top: 5px;
+      }
+      @include mq('3xs') {
+         margin-top: 0;
+      }
+   }
+   &__basicInfo {
+      @extend %c-msgCard__basicInfo; // 継承
+      margin-top: 8px;
+      @include mq('xs') {
+         max-width: 70%;
+         margin-top: 0;
+         font-size: 10px;
+      }
+      @include mq('2xs') {
+         max-width: 65%;
+      }
+   }
+   &__time {
+      font-size: 12px;
+      color: $gray-700;
+      @include mq('xs') {
+         font-size: 10px;
+      }
+   }
+   &__dm {
+      @include ellipsis;
+      padding-top: 2px;
+      font-size: 12px;
+      @include mq('xs') {
+         font-size: 11px;
+      }
+   }
+}

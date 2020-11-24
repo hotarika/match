@@ -1,0 +1,48 @@
+// **********************************
+// メインエリア
+// **********************************
+// メイン（<main></main>）のレイアウトを定義
+
+.l-main {
+   @include main-height; // footerの固定
+   z-index: $z-main;
+   padding: 60px 0;
+   @include mq('xs') {
+      padding: 30px 0;
+   }
+   &__mainAreaWrap {
+      display: flex;
+   }
+   &__mainArea {
+      // サイドバーなしのレイアウト
+      &.-oneColumn {
+         width: 75%;
+         margin: 0 auto;
+      }
+      // ログイン画面・ユーザー登録画面
+      &.-oneColumn_auth {
+         width: 50%;
+         margin: 0 auto;
+         @include mq('md') {
+            width: 60%;
+         }
+         @include mq('xs') {
+            width: 100%;
+         }
+      }
+      // サイドバーありのレイアウト
+      &.-twoColumns {
+         width: 75%;
+         @include mq('xs') {
+            // スマホの場合はサイドバーを消して、メインを100%にする
+            width: 100%;
+         }
+      }
+      // スマホ用アカウント設定画面メニュー選択のレイアウト
+      @include mq('xs') {
+         &.-settings {
+            width: 100%;
+         }
+      }
+   }
+}
