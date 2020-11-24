@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 /*
  |--------------------------------------------------------------------------
@@ -25,12 +26,20 @@ mix.webpackConfig({
             }
          },
          {
-            test: /\.scss/,
+            test: /\.scss$/,
             enforce: 'pre',
             loader: 'import-glob-loader'
          }
       ]
-   }
+   },
+   plugins: [
+      // stylelintの適用
+      new StylelintPlugin({
+         configFile: path.resolve(__dirname, '.stylelintrc.js'),
+         syntax: 'scss',
+         fix: true
+      })
+   ]
 })
    .js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
