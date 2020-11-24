@@ -5,25 +5,25 @@
 // 変更する場合などは、ご注意ください
 
 // Foundation
-@import "foundation/_f-reset";
-@import "foundation/_f-variables";
-@import "foundation/_f-mixin";
-@import "foundation/_f-base";
+@import 'foundation/_f-reset';
+@import 'foundation/_f-variables';
+@import 'foundation/_f-mixin';
+@import 'foundation/_f-base';
 
 // Layout
-@import "layout/*.scss";
+@import 'layout/*.scss';
 
 // Object > Component
-@import "object/component/*.scss";
+@import 'object/component/*.scss';
 // Object > Project
-@import "object/project/*.scss";
-@import "object/project/auth/*.scss";
+@import 'object/project/*.scss';
+@import 'object/project/auth/*.scss';
 // Object > Utility
-@import "object/utility/*.scss";
+@import 'object/utility/*.scss';
 
 // Laravel初期設定
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Nunito");
+// @import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Bootstrap
-@import "~bootstrap/scss/bootstrap";
+// @import "~bootstrap/scss/bootstrap";

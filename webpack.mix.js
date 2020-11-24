@@ -12,14 +12,23 @@ const mix = require('laravel-mix');
  */
 
 mix.webpackConfig({
-        module: {
-            rules: [{
-                test: /\.scss/,
-                enforce: "pre",
-                loader: 'import-glob-loader'
-            }]
-        }
-    })
-   .js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css')
+   devtool: 'source-map',
+   module: {
+      rules: [
+         {
+            test: /\.scss/,
+            enforce: 'pre',
+            loader: 'import-glob-loader'
+         }
+      ]
+   }
+})
+   .js('resources/js/app.js', 'public/js')
+   .sass('resources/sass/app.scss', 'public/css')
    .sourceMaps();
+
+mix.browserSync({
+   proxy: {
+      target: 'dev.match'
+   }
+});
