@@ -53,6 +53,9 @@ Route::get('/work-history', function () {
 Route::get('/work-list', function () {
    return view('work-list');
 });
+Route::get('/login-temp', function () {
+   return view('auth/login-temp');
+});
 
 
 Auth::routes();
