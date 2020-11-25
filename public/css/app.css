@@ -992,12 +992,16 @@ body {
   }
 }
 
+.c-form__input.is-invalid {
+  display: block;
+  border: 1px solid #dc3545;
+}
+
 .c-form__input:focus {
   outline-color: #0081ff;
 }
 
 .c-form__invalid {
-  display: none;
   font-size: 13px;
   color: #dc3545;
 }
@@ -1006,10 +1010,6 @@ body {
   .c-form__invalid {
     font-size: 12px;
   }
-}
-
-.c-form__invalid.is-invalid {
-  display: block;
 }
 
 .c-form__textarea {

@@ -1,77 +1,89 @@
 @extends('layouts.app')
+@section('title', 'ユーザ登録')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<main class="l-main p-register">
+   <div class="container">
+      <div class="l-main__mainArea -oneColumn_auth">
+         <section class="c-h2__sec">
+            <h2 class="c-h2__head">ユーザー登録</h2>
+            <div class="c-h2__oneRowBody p-register__body">
+               <form class="p-register__form" method="POST" action="{{ route('register') }}">
+                  @csrf
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+                  <!-- 名前 -->
+                  <div class="p-register__inputWrap -name ">
+                     <input
+                        id="name"
+                        type="text"
+                        class="c-form__input @error('name') is-invalid @enderror"
+                        name="name"
+                        value="{{ old('name') }}"
+                        required
+                        autocomplete="name"
+                        autofocus
+                        placeholder="名前" />
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                     @error('name')
+                     <span class="c-form__invalid" role="alert">
+                        <strong>{{ $message }}</strong>
+                     </span>
+                     @enderror
+                  </div>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                  <!-- メール -->
+                  <div class="p-register__inputWrap -email">
+                     <input
+                        id="email"
+                        type="email"
+                        class="c-form__input @error('email') is-invalid @enderror"
+                        name="email"
+                        value="{{ old('email') }}"
+                        required
+                        autocomplete="email"
+                        placeholder="メールアドレス" />
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                     @error('email')
+                     <span class="c-form__invalid" role="alert">
+                        <strong>{{ $message }}</strong>
+                     </span>
+                     @enderror
+                  </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                  <!-- パスワード -->
+                  <div class="p-register__inputWrap -pass ">
+                     <input
+                        id="password"
+                        type="password"
+                        class="c-form__input @error('password') is-invalid @enderror"
+                        name="password"
+                        required
+                        placeholder="パスワード" />
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                     @error('password')
+                     <span class="c-form__invalid" role="alert">
+                        <strong>{{ $message }}</strong>
+                     </span>
+                     @enderror
+                  </div>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                  <!-- パスワード再入力 -->
+                  <div class="p-register__inputWrap -passConfirm">
+                     <input
+                        id="password-confirm"
+                        type="password"
+                        class="c-form__input"
+                        name="password_confirmation"
+                        required
+                        placeholder="パスワード再入力" />
+                  </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                  <!-- 登録ボタン -->
+                  <button type="submit" class="c-btn p-register__submitBtn">ユーザー登録</button>
+               </form>
             </div>
-        </div>
-    </div>
-</div>
+         </section>
+      </div>
+   </div>
+</main>
 @endsection

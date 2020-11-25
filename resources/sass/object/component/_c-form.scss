@@ -12,20 +12,19 @@
       @include mq('xs') {
          font-size: 13px;
       }
-
+      &.is-invalid {
+         display: block;
+         border: 1px solid $red;
+      }
       &:focus {
          outline-color: $primary;
       }
    }
    &__invalid {
-      display: none;
       font-size: 13px;
       color: $red;
       @include mq('md') {
          font-size: 12px;
-      }
-      &.is-invalid {
-         display: block;
       }
    }
    &__textarea {
