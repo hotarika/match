@@ -25,6 +25,7 @@ Vue.component('header-component', require('./common/header.vue').default);
 Vue.component('footer-component', require('./common/footer.vue').default);
 Vue.component('sidebar-component', require('./common/sidebar.vue').default);
 Vue.component('sidebar-settings-component', require('./common/sidebar-settings.vue').default);
+Vue.component('pagination-component', require('./common/pagination.vue').default);
 
 // components
 Vue.component('newly-wrokcard-component', require('./components/NewlyWorkCard.vue').default);

@@ -26,6 +26,9 @@ Route::get('/applicant', function () {
 Route::get('/change-pass', function () {
    return view('change-pass');
 });
+Route::get('/dm-list', function () {
+   return view('dm-list');
+});
 
 
 Auth::routes();
