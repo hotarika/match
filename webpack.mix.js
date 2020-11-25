@@ -63,5 +63,11 @@ mix.browserSync({
    proxy: {
       target: 'dev.match'
    },
-   open: false
+   open: false,
+   notify: {
+      styles: {
+         top: 'auto',
+         bottom: '0'
+      }
+   }
 });
