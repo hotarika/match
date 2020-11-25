@@ -47,6 +47,9 @@ Route::get('/work-detail', function () {
 Route::get('/work-form', function () {
    return view('work-form');
 });
+Route::get('/work-history', function () {
+   return view('work-history');
+});
 
 
 Auth::routes();
