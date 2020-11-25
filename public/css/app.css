@@ -136,7 +136,7 @@ img {
  * 2. Remove the margin in Firefox and Safari.
  */
 
-button,input,textarea {
+button,input,select,textarea {
   margin: 0;
   /* 2 */
   font-family: inherit;
@@ -162,7 +162,7 @@ button,input {
  * 1. Remove the inheritance of text transform in Firefox.
  */
 
-button {
+button,select {
   /* 1 */
   text-transform: none;
 }
@@ -3644,6 +3644,155 @@ body {
 .p-workDetail__childBtn {
   right: 0;
   bottom: -27px;
+}
+
+.p-workForm__body {
+  padding: 50px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-workForm__body {
+    padding: 30px 20px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .p-workForm__body {
+    padding: 20px 10px;
+  }
+}
+
+.p-workForm__img {
+  width: 130px;
+  height: 130px;
+}
+
+.p-workForm__wrap {
+  display: flex;
+  padding: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .p-workForm__wrap {
+    flex-direction: column;
+    padding: 0;
+  }
+}
+
+.p-workForm__label {
+  position: relative;
+  display: block;
+  width: 25%;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+  .p-workForm__label {
+    width: 100%;
+    margin-bottom: 3px;
+    font-size: 13px;
+  }
+}
+
+.p-workForm__label.-money::before {
+  position: absolute;
+  top: 22px;
+  left: 2px;
+  font-size: 12px;
+  color: #6c757d;
+  content: "\203B\300C\5343\5186\300D\5358\4F4D";
+}
+
+@media screen and (max-width: 768px) {
+  .p-workForm__label.-money::before {
+    top: 1px;
+    left: 78px;
+  }
+}
+
+.p-workForm__label > span {
+  margin-left: 5px;
+  font-size: 12px;
+  color: #dc3545;
+}
+
+.p-workForm__inputWrap {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+@media screen and (max-width: 768px) {
+  .p-workForm__inputWrap {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+.p-workForm__moneyWrap > span {
+  margin: 0 5px;
+  font-size: 14px;
+  color: black;
+}
+
+.p-workForm__input {
+  background-color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .p-workForm__input {
+    font-size: 13px;
+  }
+}
+
+.p-workForm__input.-name {
+  width: 100%;
+}
+
+.p-workForm__input.-email {
+  width: 70%;
+}
+
+@media screen and (max-width: 768px) {
+  .p-workForm__input.-email {
+    width: 100%;
+  }
+}
+
+.p-workForm__input.-endRecruitment,.p-workForm__input.-hopeDeadline,.p-workForm__input.-tieUp {
+  width: 70%;
+}
+
+@media screen and (max-width: 768px) {
+  .p-workForm__input.-endRecruitment,  .p-workForm__input.-hopeDeadline,  .p-workForm__input.-tieUp {
+    width: 100%;
+  }
+}
+
+.p-workForm__input.-money {
+  width: 30%;
+}
+
+@media screen and (max-width: 768px) {
+  .p-workForm__input.-money + span {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .p-workForm__textarea {
+    font-size: 13px;
+  }
+}
+
+.p-workForm__editBtn {
+  display: block;
+  padding: 10px 40px;
+  margin: 20px auto 0;
+  font-size: 14px;
+  color: #fff;
+  background-color: #0081ff;
 }
 
 .p-workList__checkbox {

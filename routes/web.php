@@ -44,6 +44,9 @@ Route::get('/pubmsg-list', function () {
 Route::get('/work-detail', function () {
    return view('work-detail');
 });
+Route::get('/work-form', function () {
+   return view('work-form');
+});
 
 
 Auth::routes();
