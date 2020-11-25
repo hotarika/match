@@ -24,11 +24,11 @@
                                  class="c-img p-applicant__userImg"
                                  src="{{ asset('images/home_img.jpg') }}"
                                  alt="ユーザーの画像" />
-                              <a class="c-link p-applicant__userName" href="profile.html">
+                              <a class="c-link p-applicant__userName" href="profile">
                                  山田太郎ああああああああ
                               </a>
                            </div>
-                           <a class="p-applicant__msgBtn" href="dm.html">
+                           <a class="p-applicant__msgBtn" href="dm">
                               <i class="fas fa-envelope"></i>
                            </a>
                         </div>

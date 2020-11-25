@@ -5,7 +5,7 @@
          <div class="p-home__workCardSecHead">新着の案件</div>
          <div class="p-home__workCards">
             <!-- 仕事カード -->
-            <a class="c-workCard" href="work-detail.html" v-for="work in displayWorkList" :key="work.id">
+            <a class="c-workCard" href="work-detail" v-for="work in displayWorkList" :key="work.id">
                <div class="c-workCard__nameWrap">
                   <img class="c-img c-workCard__img" :src="'/images/img2.png'" alt="ユーザーのアイコン" />
                   <span class="c-workCard__name">{{ work.name }}</span>

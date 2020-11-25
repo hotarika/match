@@ -2606,8 +2606,6 @@ var _data_pubMsg_child_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -39248,7 +39246,7 @@ var staticRenderFns = [
               "a",
               {
                 staticClass: "c-link p-header__navLink",
-                attrs: { href: "applicant.html" }
+                attrs: { href: "applicant" }
               },
               [
                 _c("i", { staticClass: "fas fa-list-alt p-header__navIcon" }),
@@ -39265,7 +39263,7 @@ var staticRenderFns = [
               "a",
               {
                 staticClass: "c-link p-header__navLink",
-                attrs: { href: "work-form.html" }
+                attrs: { href: "work-form" }
               },
               [
                 _c("i", { staticClass: "fas fa-edit p-header__navIcon" }),
@@ -39282,7 +39280,7 @@ var staticRenderFns = [
               "a",
               {
                 staticClass: "c-link p-header__navLink",
-                attrs: { href: "mypage.html" }
+                attrs: { href: "mypage" }
               },
               [
                 _c("i", { staticClass: "fas fa-trash-alt p-header__navIcon" }),
@@ -39302,7 +39300,7 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "c-link p-header__navLink",
-              attrs: { href: "work-list.html" }
+              attrs: { href: "work-list" }
             },
             [
               _c("i", { staticClass: "fas fa-list p-header__navIcon" }),
@@ -39319,7 +39317,7 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "c-link p-header__navLink",
-              attrs: { href: "mypage.html" }
+              attrs: { href: "mypage" }
             },
             [
               _c("i", { staticClass: "fas fa-user p-header__navIcon" }),
@@ -39336,7 +39334,7 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "c-link p-header__navLink",
-              attrs: { href: "mypage.html" }
+              attrs: { href: "mypage" }
             },
             [
               _c("span", { staticClass: "p-header__notificationNum" }, [
@@ -39357,7 +39355,7 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "c-link p-header__navLink",
-              attrs: { href: "work-list.html" }
+              attrs: { href: "work-list" }
             },
             [
               _c("i", { staticClass: "fas fa-star p-header__navIcon" }),
@@ -39374,7 +39372,7 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "c-link p-header__navLink",
-              attrs: { href: "pubmsg-list.html" }
+              attrs: { href: "pubmsg-list" }
             },
             [
               _c("i", { staticClass: "fas fa-users p-header__navIcon" }),
@@ -39391,7 +39389,7 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "c-link p-header__navLink",
-              attrs: { href: "dm-list.html" }
+              attrs: { href: "dm-list" }
             },
             [
               _c("i", { staticClass: "fas fa-comments p-header__navIcon" }),
@@ -39408,7 +39406,7 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "c-link p-header__navLink",
-              attrs: { href: "settings-menu.html" }
+              attrs: { href: "settings-menu" }
             },
             [
               _c("i", { staticClass: "fas fa-cog p-header__navIcon" }),
@@ -39425,7 +39423,7 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "c-link p-header__navLink",
-              attrs: { href: "login.html" }
+              attrs: { href: "login" }
             },
             [
               _c("i", { staticClass: "fas fa-sign-out-alt p-header__navIcon" }),
@@ -39440,10 +39438,7 @@ var staticRenderFns = [
         _c("li", { staticClass: "p-header__item -orderBtn" }, [
           _c(
             "a",
-            {
-              staticClass: "p-header__orderBtn",
-              attrs: { href: "work-form.html" }
-            },
+            { staticClass: "p-header__orderBtn", attrs: { href: "work-form" } },
             [_vm._v("仕事を依頼")]
           )
         ])
@@ -39553,7 +39548,7 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "c-btn p-side__link",
-              attrs: { href: "profile-edit.html" }
+              attrs: { href: "profile-edit" }
             },
             [
               _c("i", { staticClass: "fas fa-address-card" }),
@@ -39567,7 +39562,7 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "c-btn p-side__link",
-              attrs: { href: "change-pass.html" }
+              attrs: { href: "change-pass" }
             },
             [
               _c("i", { staticClass: "fas fa-id-badge u-ml2" }),
@@ -39613,7 +39608,7 @@ var staticRenderFns = [
           "a",
           {
             staticClass: "c-btn p-side__link is-active",
-            attrs: { href: "mypage.html" }
+            attrs: { href: "mypage" }
           },
           [
             _c("li", [
@@ -39625,10 +39620,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c(
           "a",
-          {
-            staticClass: "c-btn p-side__link",
-            attrs: { href: "work-list.html" }
-          },
+          { staticClass: "c-btn p-side__link", attrs: { href: "work-list" } },
           [
             _c("li", [
               _c("i", { staticClass: "fas fa-star" }),
@@ -39639,10 +39631,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c(
           "a",
-          {
-            staticClass: "c-btn p-side__link",
-            attrs: { href: "pubmsg-list.html" }
-          },
+          { staticClass: "c-btn p-side__link", attrs: { href: "pubmsg-list" } },
           [
             _c("li", [
               _c("i", { staticClass: "fas fa-users" }),
@@ -39653,10 +39642,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c(
           "a",
-          {
-            staticClass: "c-btn p-side__link",
-            attrs: { href: "dm-list.html" }
-          },
+          { staticClass: "c-btn p-side__link", attrs: { href: "dm-list" } },
           [
             _c("li", [
               _c("i", { staticClass: "fas fa-comments" }),
@@ -39669,7 +39655,7 @@ var staticRenderFns = [
           "a",
           {
             staticClass: "c-btn p-side__link",
-            attrs: { href: "profile-edit.html" }
+            attrs: { href: "profile-edit" }
           },
           [
             _c("li", [
@@ -39687,10 +39673,7 @@ var staticRenderFns = [
       _c("ul", { staticClass: "p-side__lists" }, [
         _c(
           "a",
-          {
-            staticClass: "c-btn p-side__link",
-            attrs: { href: "applicant.html" }
-          },
+          { staticClass: "c-btn p-side__link", attrs: { href: "applicant" } },
           [
             _c("li", [
               _c("i", { staticClass: "fas fa-list-alt" }),
@@ -39701,10 +39684,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c(
           "a",
-          {
-            staticClass: "c-btn p-side__link",
-            attrs: { href: "work-form.html" }
-          },
+          { staticClass: "c-btn p-side__link", attrs: { href: "work-form" } },
           [
             _c("li", [
               _c("i", { staticClass: "fas fa-edit" }),
@@ -39946,7 +39926,7 @@ var render = function() {
     "a",
     {
       staticClass: "c-card c-msgCard c-dmMsgCard__msgItem",
-      attrs: { href: "dm.html" }
+      attrs: { href: "dm" }
     },
     [
       _c("img", {
@@ -40113,7 +40093,7 @@ var render = function() {
             {
               key: work.id,
               staticClass: "c-workCard",
-              attrs: { href: "work-detail.html" }
+              attrs: { href: "work-detail" }
             },
             [
               _c("div", { staticClass: "c-workCard__nameWrap" }, [
@@ -40264,7 +40244,7 @@ var render = function() {
                         "a",
                         {
                           staticClass: "c-link p-mypage__notificationName",
-                          attrs: { href: "profile.html" }
+                          attrs: { href: "profile" }
                         },
                         [_vm._v(_vm._s(notification.name))]
                       ),
@@ -40479,7 +40459,7 @@ var render = function() {
                         {
                           staticClass:
                             "c-link p-workDetail__parentName -workOwner",
-                          attrs: { href: "profile.html" }
+                          attrs: { href: "profile" }
                         },
                         [_vm._v(_vm._s(p.name))]
                       ),
@@ -40535,7 +40515,7 @@ var render = function() {
                                           {
                                             staticClass:
                                               "c-link p-workDetail__childName -workOwner",
-                                            attrs: { src: "profile.html" }
+                                            attrs: { src: "profile" }
                                           },
                                           [_vm._v(_vm._s(c.name))]
                                         ),
@@ -40613,7 +40593,7 @@ var staticRenderFns = [
       "a",
       {
         staticClass: "c-card c-msgCard",
-        attrs: { href: "work-detail.html#pub-msg" }
+        attrs: { href: "work-detail#pub-msg" }
       },
       [
         _c("div", { staticClass: "c-pubMsgCard__infoWrap" }, [
@@ -40664,7 +40644,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "a",
-    { staticClass: "c-workCard", attrs: { href: "work-detail.html" } },
+    { staticClass: "c-workCard", attrs: { href: "work-detail" } },
     [
       _c("div", { staticClass: "c-workCard__decisionTag" }, [_vm._v("決定")]),
       _vm._v(" "),
@@ -40877,7 +40857,7 @@ var render = function() {
             {
               key: work.id,
               staticClass: "c-workCard",
-              attrs: { href: "work-detail.html" }
+              attrs: { href: "work-detail" }
             },
             [
               _c("div", { staticClass: "c-workCard__decisionTag" }, [

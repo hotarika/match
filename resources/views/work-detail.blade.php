@@ -42,7 +42,7 @@
                         data-show-count="false"
                         data-lang="ja"
                         data-text="【match】カーナビシステムを作成した後に、業務システムを作成して欲しい"
-                        data-url="http://localhost:8000/work-detail.html"
+                        data-url="http://localhost:8000/work-detail"
                         data-hashtags="match">Tweet</a>
 
                      <!-- お気に入りボタン -->
@@ -64,7 +64,7 @@
                                  class="c-img p-workDetail__infoImg"
                                  src="{{ asset('../images/home_img.jpg') }}"
                                  alt="ユーザーの画像" />
-                              <a href="profile.html" class="c-link p-workDetail__infoName">山田たろう</a>
+                              <a href="profile" class="c-link p-workDetail__infoName">山田たろう</a>
                            </div>
                         </div>
                         <div class="p-workDetail__infoUpperItem -right">

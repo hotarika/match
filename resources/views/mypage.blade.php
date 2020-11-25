@@ -15,7 +15,7 @@
 
             <!-- 発注した仕事 -->
             <section class="c-h2__sec">
-               <a class="c-btn c-h2__seeMore" href="work-history.html">
+               <a class="c-btn c-h2__seeMore" href="work-history">
                   <i class="fas fa-chevron-right"></i>
                </a>
                <h2 class="c-h2__head">発注中の仕事</h2>
@@ -30,7 +30,7 @@
 
             <!-- 受注し仕事 -->
             <section class="c-h2__sec">
-               <a class="c-btn c-h2__seeMore" href="work-history.html">
+               <a class="c-btn c-h2__seeMore" href="work-history">
                   <i class="fas fa-chevron-right"></i>
                </a>
                <h2 class="c-h2__head">応募中の仕事</h2>
@@ -45,7 +45,7 @@
 
             <!-- パブリックメッセージ -->
             <section class="c-h2__sec">
-               <a class="c-btn c-h2__seeMore" href="work-detail.html#pub-msg">
+               <a class="c-btn c-h2__seeMore" href="work-detail#pub-msg">
                   <i class="fas fa-chevron-right"></i>
                </a>
                <h2 class="c-h2__head">パブリックメッセージ</h2>
@@ -60,7 +60,7 @@
 
             <!-- ダイレクトメッセージ -->
             <section class="c-h2__sec">
-               <a class="c-btn c-h2__seeMore" href="dm-list.html">
+               <a class="c-btn c-h2__seeMore" href="dm-list">
                   <i class="fas fa-chevron-right"></i>
                </a>
                <h2 class="c-h2__head">ダイレクトメッセージ</h2>

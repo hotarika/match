@@ -15,21 +15,21 @@
                      <div class="p-header__orderMenuWrap">
                         <!-- スマホのみ表示 -->
                         <li class="p-header__item -sp">
-                           <a class="c-link p-header__navLink" href="applicant.html">
+                           <a class="c-link p-header__navLink" href="applicant">
                               <i class="fas fa-list-alt p-header__navIcon"></i>
                               <div class="p-header__navName u-ml2">応募者一覧</div>
                            </a>
                         </li>
                         <!-- スマホのみ表示 -->
                         <li class="p-header__item -sp">
-                           <a class="c-link p-header__navLink" href="work-form.html">
+                           <a class="c-link p-header__navLink" href="work-form">
                               <i class="fas fa-edit p-header__navIcon"></i>
                               <div class="p-header__navName">編集</div>
                            </a>
                         </li>
                         <!-- スマホのみ表示 -->
                         <li class="p-header__item -sp">
-                           <a class="c-link p-header__navLink" href="mypage.html">
+                           <a class="c-link p-header__navLink" href="mypage">
                               <i class="fas fa-trash-alt p-header__navIcon"></i>
                               <div class="p-header__navName u-ml5">削除</div>
                            </a>
@@ -39,21 +39,21 @@
 
                      <!-- 全ての端末で表示 -->
                      <li class="p-header__item">
-                        <a class="c-link p-header__navLink" href="work-list.html">
+                        <a class="c-link p-header__navLink" href="work-list">
                            <i class="fas fa-list p-header__navIcon"></i>
                            <div class="p-header__navName u-ml4">案件一覧</div>
                         </a>
                      </li>
                      <!-- 全ての端末で表示 -->
                      <li class="p-header__item">
-                        <a class="c-link p-header__navLink" href="mypage.html">
+                        <a class="c-link p-header__navLink" href="mypage">
                            <i class="fas fa-user p-header__navIcon"></i>
                            <div class="p-header__navName u-ml5">マイページ</div>
                         </a>
                      </li>
                      <!-- 全ての端末で表示 -->
                      <li class="p-header__item">
-                        <a class="c-link p-header__navLink" href="mypage.html">
+                        <a class="c-link p-header__navLink" href="mypage">
                            <span class="p-header__notificationNum">1</span>
                            <i class="fas fa-bell p-header__navIcon"></i>
                            <div class="p-header__navName u-ml6">新着通知</div>
@@ -61,42 +61,42 @@
                      </li>
                      <!-- スマホのみ表示 -->
                      <li class="p-header__item -sp">
-                        <a class="c-link p-header__navLink" href="work-list.html">
+                        <a class="c-link p-header__navLink" href="work-list">
                            <i class="fas fa-star p-header__navIcon"></i>
                            <div class="p-header__navName u-ml2">気になる案件</div>
                         </a>
                      </li>
                      <!-- スマホのみ表示 -->
                      <li class="p-header__item -sp">
-                        <a class="c-link p-header__navLink" href="pubmsg-list.html">
+                        <a class="c-link p-header__navLink" href="pubmsg-list">
                            <i class="fas fa-users p-header__navIcon"></i>
                            <div class="p-header__navName">パブリックメッセージ</div>
                         </a>
                      </li>
                      <!-- スマホのみ表示 -->
                      <li class="p-header__item -sp">
-                        <a class="c-link p-header__navLink" href="dm-list.html">
+                        <a class="c-link p-header__navLink" href="dm-list">
                            <i class="fas fa-comments p-header__navIcon"></i>
                            <div class="p-header__navName u-ml2">ダイレクトメッセージ</div>
                         </a>
                      </li>
                      <!-- スマホのみ表示 -->
                      <li class="p-header__item -sp">
-                        <a class="c-link p-header__navLink" href="settings-menu.html">
+                        <a class="c-link p-header__navLink" href="settings-menu">
                            <i class="fas fa-cog p-header__navIcon"></i>
                            <div class="p-header__navName u-ml4">アカウント設定</div>
                         </a>
                      </li>
                      <!-- 全ての端末で表示 -->
                      <li class="p-header__item">
-                        <a class="c-link p-header__navLink" href="login.html">
+                        <a class="c-link p-header__navLink" href="login">
                            <i class="fas fa-sign-out-alt p-header__navIcon"></i>
                            <div class="p-header__navName u-ml4">ログアウト</div>
                         </a>
                      </li>
                      <!-- 全ての端末で表示 -->
                      <li class="p-header__item -orderBtn">
-                        <a href="work-form.html" class="p-header__orderBtn">仕事を依頼</a>
+                        <a href="work-form" class="p-header__orderBtn">仕事を依頼</a>
                      </li>
                   </ul>
                </nav>
@@ -110,12 +110,12 @@
                <!-- ログイン前 -->
                <!-- <ul class="p-header__items -beforeLogin">
                   <li class="p-header__item -beforeLogin">
-                     <a class="c-link p-header__navLink -beforeLogin" href="login.html">
+                     <a class="c-link p-header__navLink -beforeLogin" href="login">
                         ログイン
                      </a>
                   </li>
                   <li class="p-header__item -beforeLogin">
-                     <a class="c-link p-header__navLink -beforeLogin" href="register.html">
+                     <a class="c-link p-header__navLink -beforeLogin" href="register">
                         会員登録
                      </a>
                   </li>

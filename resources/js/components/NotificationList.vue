@@ -12,7 +12,7 @@
             >
                <div class="p-mypage__notificationMsgSecWrap">
                   <div class="p-mypage__notificationItemUpper">
-                     <a class="c-link p-mypage__notificationName" href="profile.html">{{ notification.name }}</a>
+                     <a class="c-link p-mypage__notificationName" href="profile">{{ notification.name }}</a>
                      <time class="p-mypage__notificationTime">{{ notification.time }}</time>
                   </div>
                   <div class="p-mypage__notificationItemLower">

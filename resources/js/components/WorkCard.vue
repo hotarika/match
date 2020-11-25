@@ -1,5 +1,5 @@
 <template>
-   <a class="c-workCard" href="work-detail.html">
+   <a class="c-workCard" href="work-detail">
       <div class="c-workCard__decisionTag">決定</div>
       <div class="c-workCard__nameWrap">
          <img class="c-img c-workCard__img" :src="'../../images/img2.png'" alt="ユーザーのアイコン" />

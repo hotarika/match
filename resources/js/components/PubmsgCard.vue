@@ -1,5 +1,5 @@
 <template>
-   <a class="c-card c-msgCard" href="work-detail.html#pub-msg">
+   <a class="c-card c-msgCard" href="work-detail#pub-msg">
       <div class="c-pubMsgCard__infoWrap">
          <div class="c-pubMsgCard__basicInfo">
             山田たろう / カーナビシステムを作成して欲しい

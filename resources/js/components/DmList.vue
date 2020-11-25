@@ -1,5 +1,5 @@
 <template>
-   <a class="c-card c-msgCard c-dmMsgCard__msgItem" href="dm.html">
+   <a class="c-card c-msgCard c-dmMsgCard__msgItem" href="dm">
       <img class="c-img c-dmMsgCard__userImg" :src="'../../images/img1.png'" alt="ユーザーの画像" />
       <div class="c-dmMsgCard__mainAreaWrap">
          <div class="c-dmMsgCard__infoWrap">

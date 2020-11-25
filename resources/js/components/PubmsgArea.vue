@@ -32,7 +32,7 @@
                   <img class="c-img p-workDetail__parentImg" :src="'../../images/img1.png'" alt="ユーザーのアイコン" />
                   <!-- 親掲示板 -->
                   <div class="p-workDetail__parentRight">
-                     <a class="c-link p-workDetail__parentName -workOwner" href="profile.html">{{ p.name }}</a>
+                     <a class="c-link p-workDetail__parentName -workOwner" href="profile">{{ p.name }}</a>
                      <div class="p-workDetail__parentTitle">{{ p.title }}</div>
                      <p class="p-workDetail__parentContent">
                         {{ p.content }}
@@ -49,9 +49,7 @@
                                  alt="ユーザーのアイコン"
                               />
                               <div class="p-workDetail__childRight">
-                                 <a class="c-link p-workDetail__childName -workOwner" src="profile.html">{{
-                                    c.name
-                                 }}</a>
+                                 <a class="c-link p-workDetail__childName -workOwner" src="profile">{{ c.name }}</a>
                                  <p class="p-workDetail__childContent">
                                     {{ c.content }}
                                  </p>

@@ -13,7 +13,7 @@
          <p class="p-home__subMsg">あなたが困ったときに、<br />気軽にお仕事をお願いすることができます</p>
       </div>
       <div class="p-home__freeBtnWrap -top">
-         <a class="c-btn p-home__freeBtn -top" href="register.html">まずは無料で会員登録</a>
+         <a class="c-btn p-home__freeBtn -top" href="register">まずは無料で会員登録</a>
       </div>
    </section>
 
@@ -157,7 +157,7 @@
    <!-- 会員登録ボタン -->
    <section class="p-home__btnSec">
       <div class="p-home__freeBtnWrap">
-         <a class="c-btn p-home__freeBtn -bottom" href="register.html">まずは無料で会員登録</a>
+         <a class="c-btn p-home__freeBtn -bottom" href="register">まずは無料で会員登録</a>
       </div>
    </section>
 </main>

@@ -15,7 +15,7 @@
 
       <!-- 仕事カード -->
       <transition-group tag="div" class="c-h2__workCardBody p-workList__workCardBody">
-         <a class="c-workCard" href="work-detail.html" v-for="work in newList" :key="work.id">
+         <a class="c-workCard" href="work-detail" v-for="work in newList" :key="work.id">
             <div class="c-workCard__decisionTag">決定</div>
             <div class="c-workCard__nameWrap">
                <img class="c-img c-workCard__img" :src="'../../images/img2.png'" alt="ユーザーのアイコン" />
