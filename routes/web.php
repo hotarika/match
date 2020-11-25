@@ -23,6 +23,9 @@ Route::get('/mypage', function () {
 Route::get('/applicant', function () {
    return view('applicant');
 });
+Route::get('/change-pass', function () {
+   return view('change-pass');
+});
 
 
 Auth::routes();

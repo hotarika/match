@@ -1319,6 +1319,51 @@ body {
   background-color: #28a745;
 }
 
+.p-changePass__body {
+  padding: 50px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-changePass__body {
+    padding: 30px 20px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .p-changePass__body {
+    padding: 20px 10px;
+  }
+}
+
+.p-changePass__form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.p-changePass__inputWrap {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  padding: 10px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-changePass__inputWrap {
+    width: 100%;
+  }
+}
+
+.p-changePass__submitBtn {
+  display: block;
+  padding: 10px 40px;
+  margin: 20px auto 0;
+  font-size: 14px;
+  color: #fff;
+  background-color: #0081ff;
+}
+
 @media screen and (max-width: 414px) {
   .p-dm {
     padding: 0;
@@ -2828,8 +2873,29 @@ body {
   }
 }
 
+.p-login__inputWrap {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
 .p-login__remember {
   margin-right: 3px;
+}
+
+.p-login__submitBtn {
+  display: block;
+  padding: 10px 20px;
+  margin: 20px auto 0;
+  font-size: 14px;
+  color: #fff;
+  background-color: #0081ff;
+}
+
+@media screen and (max-width: 320px) {
+  .p-login__submitBtn {
+    font-size: 13px;
+  }
 }
 
 .p-register {
@@ -2856,6 +2922,27 @@ body {
 @media screen and (max-width: 320px) {
   .p-register__body {
     padding: 30px 20px;
+  }
+}
+
+.p-register__inputWrap {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.p-register__submitBtn {
+  display: block;
+  padding: 10px 20px;
+  margin: 20px auto 0;
+  font-size: 14px;
+  color: #fff;
+  background-color: #0081ff;
+}
+
+@media screen and (max-width: 320px) {
+  .p-register__submitBtn {
+    font-size: 13px;
   }
 }
 
