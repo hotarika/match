@@ -12,6 +12,10 @@ const StylelintPlugin = require('stylelint-webpack-plugin');
  |
  */
 
+mix.js('resources/js/app.js', 'public/js')
+   .sass('resources/sass/app.scss', 'public/css')
+   .sourceMaps();
+
 mix.webpackConfig({
    devtool: 'source-map',
    module: {
@@ -40,10 +44,7 @@ mix.webpackConfig({
          fix: true
       })
    ]
-})
-   .js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css')
-   .sourceMaps();
+});
 
 mix.options({
    postCss: [require('autoprefixer')],

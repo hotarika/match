@@ -23,9 +23,15 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 // common
 Vue.component('header-component', require('./common/header.vue').default);
 Vue.component('footer-component', require('./common/footer.vue').default);
+Vue.component('sidebar-component', require('./common/sidebar.vue').default);
 
 // components
 Vue.component('newly-wrokcard-component', require('./components/NewlyWorkCard.vue').default);
+Vue.component('notification-component', require('./components/NotificationList.vue').default);
+Vue.component('work-card-component', require('./components/WorkCard.vue').default);
+Vue.component('dm-list-component', require('./components/DmList.vue').default);
+Vue.component('pubmsg-component', require('./components/PubmsgArea.vue').default);
+Vue.component('pubmsg-card-component', require('./components/PubmsgCard.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

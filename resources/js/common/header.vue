@@ -135,7 +135,6 @@ window.addEventListener('DOMContentLoaded', () => {
    const open = document.querySelector('.js-openIcon');
    const close = document.querySelector('.js-closeIcon');
    const target = document.querySelector('.js-nav');
-   console.log('yaa!');
 
    // ①アイコンクリックでメニューバーを開く
    open.addEventListener('click', e => {

@@ -41,6 +41,11 @@ main {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 
+h1 {
+  margin: 0.67em 0;
+  font-size: 2em;
+}
+
 /* Grouping content
    ========================================================================== */
 
@@ -131,7 +136,7 @@ img {
  * 2. Remove the margin in Firefox and Safari.
  */
 
-button,input {
+button,input,textarea {
   margin: 0;
   /* 2 */
   font-family: inherit;
@@ -205,6 +210,10 @@ button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[
 /**
  * Remove the default vertical scrollbar in IE 10+.
  */
+
+textarea {
+  overflow: auto;
+}
 
 /**
  * 1. Add the correct box sizing in IE 10.
@@ -375,6 +384,26 @@ body {
   }
 }
 
+.l-main__mainAreaWrap {
+  display: flex;
+}
+
+.l-main__mainArea.-twoColumns {
+  width: 75%;
+}
+
+@media screen and (max-width: 414px) {
+  .l-main__mainArea.-twoColumns {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .l-main__mainArea.-settings {
+    width: 100%;
+  }
+}
+
 .l-side {
   width: 25%;
 }
@@ -410,6 +439,20 @@ body {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.c-msgSendBtn {
+  position: absolute;
+  padding: 5px 10px;
+  font-size: 13px;
+  color: #fff;
+  background-color: #0081ff;
+}
+
+.c-msgSendBtn > i {
+  margin-right: 2px;
+  font-size: 13px;
+  color: #fff;
 }
 
 .c-card {
@@ -477,6 +520,27 @@ body {
   box-shadow: rgba(0, 0, 0, 0.18) 3px 3px 10px;
   transition: all 0.5s 0s ease;
   transform: scale(1.03, 1.03);
+}
+
+.c-workCard__decisionTag {
+  border-radius: 50%;
+  position: absolute;
+  top: -11px;
+  right: -6px;
+  display: none;
+  width: 40px;
+  height: 40px;
+  padding-top: 13px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  background-color: #dc3545;
+  opacity: 0.9;
+}
+
+.c-workCard__decisionTag.is-active {
+  display: block;
 }
 
 .c-workCard__nameWrap {
@@ -669,6 +733,227 @@ body {
   }
 }
 
+.c-dmMsgCard__basicInfo,.c-pubMsgCard__basicInfo {
+  border-radius: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 5px 15px;
+  overflow: hidden;
+  font-size: 11px;
+  color: #fff;
+  background-color: #0081ff;
+}
+
+@media screen and (max-width: 414px) {
+  .c-dmMsgCard__basicInfo,  .c-pubMsgCard__basicInfo {
+    padding: 5px 10px;
+  }
+}
+
+.c-msgCard {
+  position: relative;
+  padding: 10px 20px;
+  margin-bottom: 2px;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 414px) {
+  .c-msgCard {
+    padding: 7px 10px 7px 15px;
+  }
+}
+
+.c-msgCard:hover {
+  box-shadow: rgba(0, 0, 0, 0.18) 3px 3px 10px;
+  transition: all 0.5s 0s ease;
+  transform: scale(1.03, 1.03);
+}
+
+.c-msgCard::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 7px;
+  height: 100%;
+  content: "";
+  background-color: #0081ff;
+}
+
+.c-pubMsgCard__infoWrap {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.c-pubMsgCard__basicInfo {
+  max-width: 80%;
+}
+
+@media screen and (max-width: 414px) {
+  .c-pubMsgCard__basicInfo {
+    max-width: 70%;
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .c-pubMsgCard__basicInfo {
+    max-width: 65%;
+  }
+}
+
+.c-pubMsgCard__msgTime {
+  font-size: 12px;
+  color: #495057;
+}
+
+@media screen and (max-width: 414px) {
+  .c-pubMsgCard__msgTime {
+    font-size: 10px;
+  }
+}
+
+.c-pubMsgCard__msgTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 5px;
+  margin: 5px 0 4px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 414px) {
+  .c-pubMsgCard__msgTitle {
+    font-size: 12px;
+  }
+}
+
+.c-pubMsgCard__pubMsg {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 1px 0 0 5px;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 414px) {
+  .c-pubMsgCard__pubMsg {
+    font-size: 11px;
+  }
+}
+
+.c-dmMsgCard__msgItem {
+  display: flex;
+}
+
+@media screen and (max-width: 320px) {
+  .c-dmMsgCard__msgItem {
+    padding: 11px 10px 11px 15px;
+  }
+}
+
+.c-dmMsgCard__userImg {
+  min-width: 50px;
+  max-width: 50px;
+  min-height: 50px;
+  max-height: 50px;
+  /* IE11 対応 */
+}
+
+@media screen and (max-width: 320px) {
+  .c-dmMsgCard__userImg {
+    display: none;
+  }
+}
+
+@media all and (-ms-high-contrast: none) {
+  .c-dmMsgCard__userImg {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.c-dmMsgCard__mainAreaWrap {
+  padding-left: 15px;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 414px) {
+  .c-dmMsgCard__mainAreaWrap {
+    padding-left: 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .c-dmMsgCard__mainAreaWrap {
+    padding: 0;
+  }
+}
+
+.c-dmMsgCard__infoWrap {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+@media screen and (max-width: 414px) {
+  .c-dmMsgCard__infoWrap {
+    margin-top: 5px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .c-dmMsgCard__infoWrap {
+    margin-top: 0;
+  }
+}
+
+.c-dmMsgCard__basicInfo {
+  margin-top: 8px;
+}
+
+@media screen and (max-width: 414px) {
+  .c-dmMsgCard__basicInfo {
+    max-width: 70%;
+    margin-top: 0;
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .c-dmMsgCard__basicInfo {
+    max-width: 65%;
+  }
+}
+
+.c-dmMsgCard__time {
+  font-size: 12px;
+  color: #495057;
+}
+
+@media screen and (max-width: 414px) {
+  .c-dmMsgCard__time {
+    font-size: 10px;
+  }
+}
+
+.c-dmMsgCard__dm {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 2px;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 414px) {
+  .c-dmMsgCard__dm {
+    font-size: 11px;
+  }
+}
+
 .c-form__input {
   line-height: 1.3;
   letter-spacing: 0.5px;
@@ -705,6 +990,27 @@ body {
   display: block;
 }
 
+.c-form__textarea {
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+  border-radius: 2px;
+  min-height: 60px;
+  padding: 15px;
+  font-size: 14px;
+  resize: vertical;
+  border: 1px solid #ced4da;
+}
+
+@media screen and (max-width: 414px) {
+  .c-form__textarea {
+    font-size: 13px;
+  }
+}
+
+.c-form__textarea:focus {
+  outline-color: #0081ff;
+}
+
 .c-img {
   border-radius: 50%;
   object-fit: cover;
@@ -715,6 +1021,126 @@ body {
   .c-img {
     font-family: "object-fit: cover;", sans-serif;
   }
+}
+
+.c-h1__head {
+  border-radius: 2px;
+  padding: 15px;
+  margin: 0 0 20px;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 1.5px;
+  background: #495057;
+}
+
+@media screen and (max-width: 414px) {
+  .c-h1__head {
+    border-radius: 2px 2px 0 0;
+    margin: 0;
+    font-size: 16px;
+  }
+}
+
+.c-h2__sec {
+  border-radius: 2px;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 414px) {
+  .c-h2__sec {
+    margin-bottom: 40px;
+  }
+}
+
+.c-h2__seeMore {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  width: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.c-h2__seeMore > i {
+  font-size: 25px;
+}
+
+@media screen and (max-width: 414px) {
+  .c-h2__seeMore > i {
+    font-size: 20px;
+  }
+}
+
+.c-h2__head {
+  border-radius: 2px 2px 0 0;
+  padding: 13px;
+  margin: 0;
+  font-size: 15px;
+  font-weight: normal;
+  color: #000;
+  text-align: center;
+  letter-spacing: 0.5px;
+  background: #ced4da;
+}
+
+@media screen and (max-width: 414px) {
+  .c-h2__head {
+    font-size: 14px;
+  }
+}
+
+.c-h2__oneRowBody {
+  background-color: #fff;
+}
+
+.c-h2__workCardBody {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 20px 0 10px 0;
+  padding-left: calc(50% - 323px);
+  background-color: #fff;
+  /* IE11 対応 */
+}
+
+@media screen and (max-width: 768px) {
+  .c-h2__workCardBody {
+    padding-left: calc(50% - 224px);
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .c-h2__workCardBody {
+    padding-left: calc(50% - 174px);
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .c-h2__workCardBody {
+    padding-left: calc(50% - 155px);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .c-h2__workCardBody {
+    padding: 5px 0 10px 0;
+    background-color: transparent;
+  }
+}
+
+@media all and (-ms-high-contrast: none) {
+  .c-h2__workCardBody {
+    padding-left: calc(50% - 355px);
+  }
+}
+
+.c-h2__noItems {
+  margin: 16px 0;
+  font-size: 14px;
+  color: #6c757d;
+  text-align: center;
 }
 
 .p-applicant__body {
@@ -780,6 +1206,19 @@ body {
   }
 }
 
+.p-applicant__userImg {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-applicant__userImg {
+    width: 35px;
+    height: 35px;
+  }
+}
+
 @media screen and (max-width: 414px) {
   .p-dm {
     padding: 0;
@@ -792,6 +1231,51 @@ body {
   }
 }
 
+@media screen and (max-width: 414px) {
+  .p-dm__h1 {
+    display: none;
+  }
+}
+
+.p-dm__h2sec {
+  margin: 0;
+}
+
+.p-dm__h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-bottom: 1px solid #fff;
+}
+
+@media screen and (max-width: 320px) {
+  .p-dm__h2 {
+    padding: 9px 0 7px;
+  }
+}
+
+.p-dm__h2 > img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 320px) {
+  .p-dm__h2 > img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.p-dm__h2InfoWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
 .p-dm__form {
   display: flex;
   align-items: center;
@@ -802,6 +1286,24 @@ body {
   padding: 15px 15px 50px 15px;
   background: #ced4da;
   /* IE11 対応 */
+}
+
+.p-dm__form > textarea {
+  border: none;
+  /* IE11 対応 */
+}
+
+@media screen and (max-width: 320px) {
+  .p-dm__form > textarea {
+    padding: 10px;
+    font-size: 12px;
+  }
+}
+
+@media all and (-ms-high-contrast: none) {
+  .p-dm__form > textarea {
+    min-width: 85%;
+  }
 }
 
 @media all and (-ms-high-contrast: none) {
@@ -1666,6 +2168,135 @@ body {
   }
 }
 
+.p-mypage__notificationBody {
+  min-height: 97px;
+  padding: 20px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-mypage__notificationBody {
+    padding: 15px 10px;
+  }
+}
+
+.p-mypage__notificationItem {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.p-mypage__notificationMsgSecWrap {
+  border-radius: 5px 0 0 5px;
+  flex-grow: 1;
+  padding: 11px 20px;
+  background: #bedcfd;
+}
+
+@media screen and (max-width: 414px) {
+  .p-mypage__notificationMsgSecWrap {
+    padding: 9px 15px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .p-mypage__notificationMsgSecWrap {
+    padding: 8px 10px;
+  }
+}
+
+.p-mypage__notificationItemUpper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-mypage__notificationItemUpper {
+    margin-bottom: 2px;
+  }
+}
+
+.p-mypage__notificationName {
+  font-size: 13px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-mypage__notificationName {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .p-mypage__notificationName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 120px;
+  }
+}
+
+.p-mypage__notificationTime {
+  font-size: 11px;
+  color: #495057;
+}
+
+.p-mypage__notificationMsg {
+  margin: 0;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-mypage__notificationMsg {
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+    font-size: 11px;
+  }
+}
+
+.p-mypage__notificationDelBtn {
+  border-radius: 0 5px 5px 0;
+  min-width: 50px;
+  background-color: #0081ff;
+}
+
+.p-mypage__notificationDelBtn > i {
+  font-size: 14px;
+  color: #fff;
+}
+
+@media screen and (max-width: 414px) {
+  .p-mypage__notificationDelBtn > i {
+    font-size: 13px;
+  }
+}
+
+.p-mypage__notificationSeeMore {
+  display: block;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  margin: 0 auto;
+  font-size: 13px;
+  color: #6c757d;
+}
+
+@media screen and (max-width: 414px) {
+  .p-mypage__notificationSeeMore {
+    font-size: 11px;
+  }
+}
+
+.p-side__lists {
+  width: 90%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@media screen and (max-width: 768px) {
+  .p-side__lists.-settings {
+    width: 100%;
+  }
+}
+
 .p-side__link {
   border-radius: 2px;
   display: flex;
@@ -1704,6 +2335,342 @@ body {
   background-color: #ced4da;
 }
 
+.p-side__linkHead {
+  margin: 50px 0 5px 0;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-side__linkHead {
+    display: none;
+  }
+}
+
+.p-workDetail__head {
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+  padding: 10px;
+  margin-bottom: 60px;
+  font-size: 18px;
+  text-align: left;
+  background-color: #bedcfd;
+  border-left: 7px solid #0081ff;
+}
+
+@media screen and (max-width: 320px) {
+  .p-workDetail__head {
+    margin-bottom: 40px;
+    font-size: 15px;
+  }
+}
+
+.p-workDetail__infoWrap {
+  border-radius: 2px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 45px;
+}
+
+.p-workDetail__pubMsgBody {
+  padding: 20px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-workDetail__pubMsgBody {
+    padding: 20px 15px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .p-workDetail__pubMsgBody {
+    padding: 15px 10px;
+  }
+}
+
+.p-workDetail__createMsgForm {
+  position: relative;
+}
+
+.p-workDetail__createMsgForm > input {
+  width: 100%;
+  padding: 10px 15px;
+}
+
+.p-workDetail__createMsgForm > textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 15px;
+  margin-bottom: 50px;
+  font-size: 13px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-workDetail__createMsgForm > textarea {
+    font-size: 12px;
+  }
+}
+
+.p-workDetail__parentWrap {
+  border-radius: 2px;
+  position: relative;
+  margin-bottom: 15px;
+  background-color: #e9ecef;
+}
+
+.p-workDetail__parentDate {
+  position: absolute;
+  top: 21px;
+  right: 24px;
+  font-size: 14px;
+  color: #495057;
+}
+
+@media screen and (max-width: 414px) {
+  .p-workDetail__parentDate {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .p-workDetail__parentDate {
+    right: 20px;
+    font-size: 12px;
+  }
+}
+
+.p-workDetail__parentMsgWrap {
+  border-radius: 2px;
+  display: flex;
+  padding: 20px 20px 50px;
+  /* IE11 対応 */
+}
+
+@media screen and (max-width: 768px) {
+  .p-workDetail__parentMsgWrap {
+    padding: 20px 20px 50px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .p-workDetail__parentMsgWrap {
+    padding: 15px 15px 50px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .p-workDetail__parentMsgWrap {
+    padding: 15px 12px 50px;
+  }
+}
+
+@media all and (-ms-high-contrast: none) {
+  .p-workDetail__parentMsgWrap {
+    overflow: hidden;
+  }
+}
+
+.p-workDetail__parentImg {
+  width: 60px;
+  height: 60px;
+  margin-right: 8px;
+  /* IE11 対応 */
+}
+
+@media screen and (max-width: 768px) {
+  .p-workDetail__parentImg {
+    display: none;
+  }
+}
+
+@media all and (-ms-high-contrast: none) {
+  .p-workDetail__parentImg {
+    float: left;
+    margin-right: 15px;
+  }
+}
+
+.p-workDetail__parentRight {
+  width: 100%;
+  /* IE11 対応 */
+}
+
+@media all and (-ms-high-contrast: none) {
+  .p-workDetail__parentRight {
+    float: left;
+    width: 85%;
+  }
+}
+
+.p-workDetail__parentName {
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-workDetail__parentName {
+    font-size: 11px;
+  }
+}
+
+.p-workDetail__parentName.-workOwner {
+  border-radius: 10px;
+  display: inline-block;
+  padding: 5px 10px;
+  color: #fff;
+  background-color: #0081ff;
+}
+
+@media screen and (max-width: 414px) {
+  .p-workDetail__parentName.-workOwner {
+    padding: 4px 8px;
+  }
+}
+
+.p-workDetail__parentTitle {
+  margin-bottom: 7px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 414px) {
+  .p-workDetail__parentTitle {
+    font-size: 15px;
+  }
+}
+
+.p-workDetail__parentContent {
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+  margin: 0;
+  margin-bottom: 13px;
+  font-size: 13px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-workDetail__parentContent {
+    font-size: 12px;
+  }
+}
+
+.p-workDetail__parentBtn {
+  right: 0;
+  bottom: 23px;
+}
+
+.p-workDetail__childWrap {
+  border-radius: 2px;
+  position: relative;
+  display: flex;
+  padding: 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  /* IE11 対応 */
+}
+
+@media screen and (max-width: 320px) {
+  .p-workDetail__childWrap {
+    padding: 15px 12px;
+  }
+}
+
+@media all and (-ms-high-contrast: none) {
+  .p-workDetail__childWrap {
+    overflow: hidden;
+  }
+}
+
+.p-workDetail__childDate {
+  position: absolute;
+  top: 13px;
+  right: 18px;
+  padding: 5px 10px;
+  font-size: 12px;
+  color: #6c757d;
+}
+
+@media screen and (max-width: 320px) {
+  .p-workDetail__childDate {
+    right: 5px;
+    font-size: 11px;
+  }
+}
+
+.p-workDetail__childImg {
+  width: 45px;
+  height: 45px;
+  margin-right: 8px;
+  /* IE11 対応 */
+}
+
+@media screen and (max-width: 768px) {
+  .p-workDetail__childImg {
+    display: none;
+  }
+}
+
+@media all and (-ms-high-contrast: none) {
+  .p-workDetail__childImg {
+    float: left;
+    margin-right: 10px;
+  }
+}
+
+.p-workDetail__childRight {
+  /* IE11 対応 */
+}
+
+@media all and (-ms-high-contrast: none) {
+  .p-workDetail__childRight {
+    float: left;
+    width: 85%;
+  }
+}
+
+.p-workDetail__childName {
+  margin-bottom: 5px;
+  font-size: 11px;
+}
+
+.p-workDetail__childName.-workOwner {
+  border-radius: 10px;
+  display: inline-block;
+  padding: 5px 10px;
+  color: #fff;
+  background-color: #0081ff;
+}
+
+.p-workDetail__childContent {
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+  margin: 0;
+  font-size: 13px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-workDetail__childContent {
+    font-size: 12px;
+  }
+}
+
+.p-workDetail__childForm {
+  position: relative;
+}
+
+.p-workDetail__childTextarea {
+  width: 100%;
+  min-height: 90px;
+  padding: 15px;
+  font-size: 13px;
+  border: 1px solid #dee2e6;
+}
+
+@media screen and (max-width: 414px) {
+  .p-workDetail__childTextarea {
+    font-size: 12px;
+  }
+}
+
 .p-workList__checkbox {
   margin-right: 15px;
   font-size: 14px;
@@ -1712,6 +2679,25 @@ body {
 @media screen and (max-width: 320px) {
   .p-workList__checkbox > label {
     font-size: 13px;
+  }
+}
+
+.p-workList__workCardBody {
+  min-height: 310px;
+  padding-top: 60px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-workList__workCardBody {
+    min-height: 270px;
+    padding-left: calc(50% - 44%);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .p-workList__workCardBody {
+    padding-top: 50px;
+    padding-left: 0;
   }
 }
 
