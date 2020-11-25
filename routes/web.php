@@ -32,6 +32,9 @@ Route::get('/dm-list', function () {
 Route::get('/dm', function () {
    return view('dm');
 });
+Route::get('/profile-edit', function () {
+   return view('profile-edit');
+});
 
 
 Auth::routes();
