@@ -35,6 +35,9 @@ Route::get('/dm', function () {
 Route::get('/profile-edit', function () {
    return view('profile-edit');
 });
+Route::get('/profile', function () {
+   return view('profile');
+});
 
 
 Auth::routes();
