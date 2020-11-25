@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'マイページ')
+@section('title', 'ユーザ登録')
 
 @section('content')
 <main class="l-main p-register">

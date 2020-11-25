@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'マイページ')
+@section('title', '仕事フォーム')
 
 @section('content')
 <main class="l-main p-workForm">

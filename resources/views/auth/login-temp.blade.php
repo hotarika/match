@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'マイページ')
+@section('title', 'ログイン')
 
 @section('content')
 <main class="l-main p-login">

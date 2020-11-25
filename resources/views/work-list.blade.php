@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'マイページ')
+@section('title', '仕事一覧')
 
 @section('content')
 

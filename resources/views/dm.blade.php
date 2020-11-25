@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'ホーム')
+@section('title', 'DM')
 
 @section('content')
 <main class="l-main p-dm">

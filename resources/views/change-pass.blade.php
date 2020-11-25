@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'ホーム')
+@section('title', 'パスワード変更')
 
 @section('content')
 <main class="l-main p-changePass">
