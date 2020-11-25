@@ -62,7 +62,8 @@ mix.options({
 // 自動リロード
 mix.browserSync({
    proxy: {
-      target: 'dev.match'
+      target: 'http://dev.match',
+      ws: true // web socket
    },
    open: false,
    notify: {
@@ -70,5 +71,6 @@ mix.browserSync({
          top: 'auto',
          bottom: '0'
       }
-   }
+   },
+   reloadOnRestart: true // BrowserSync起動時にブラウザにリロード命令おくる
 });
