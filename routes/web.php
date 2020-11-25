@@ -56,6 +56,9 @@ Route::get('/work-list', function () {
 Route::get('/login-temp', function () {
    return view('auth/login-temp');
 });
+Route::get('/register-temp', function () {
+   return view('auth/register-temp');
+});
 
 
 Auth::routes();
