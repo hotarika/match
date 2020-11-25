@@ -38,6 +38,9 @@ Route::get('/profile-edit', function () {
 Route::get('/profile', function () {
    return view('profile');
 });
+Route::get('/pubmsg-list', function () {
+   return view('pubmsg-list');
+});
 
 
 Auth::routes();
