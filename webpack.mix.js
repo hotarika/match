@@ -28,7 +28,7 @@ mix.webpackConfig({
          {
             test: /\.scss$/,
             enforce: 'pre',
-            loader: 'import-glob-loader'
+            loader: 'import-glob-loader' // scssでglob使用
          }
       ]
    },
@@ -45,6 +45,20 @@ mix.webpackConfig({
    .sass('resources/sass/app.scss', 'public/css')
    .sourceMaps();
 
+mix.options({
+   postCss: [require('autoprefixer')],
+   purifyCss: true, // 未使用のCSSセレクタを取り除く
+   terser: {
+      extractComments: false, // .LICENSE.txtのようなファイル出力なし
+      terserOptions: {
+         compress: {
+            drop_console: true // console.logを削除
+         }
+      }
+   }
+});
+
+// 自動リロード
 mix.browserSync({
    proxy: {
       target: 'dev.match'
