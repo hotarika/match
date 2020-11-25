@@ -41,6 +41,9 @@ Route::get('/profile', function () {
 Route::get('/pubmsg-list', function () {
    return view('pubmsg-list');
 });
+Route::get('/work-detail', function () {
+   return view('work-detail');
+});
 
 
 Auth::routes();
