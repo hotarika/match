@@ -20,6 +20,9 @@ Route::get('/', function () {
 Route::get('/mypage', function () {
    return view('mypage');
 });
+Route::get('/applicant', function () {
+   return view('applicant');
+});
 
 
 Auth::routes();

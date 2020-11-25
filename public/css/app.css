@@ -1194,6 +1194,26 @@ body {
   border: 1px solid #dee2e6;
 }
 
+.p-applicant__userWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px 20px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-applicant__userWrap {
+    padding: 5px 15px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .p-applicant__userWrap {
+    padding: 5px 7px;
+  }
+}
+
 .p-applicant__user {
   display: flex;
   flex-basis: 80%;
@@ -1217,6 +1237,86 @@ body {
     width: 35px;
     height: 35px;
   }
+}
+
+.p-applicant__userName {
+  font-size: 14px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-applicant__userName {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .p-applicant__userName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 120px;
+  }
+}
+
+.p-applicant__msgBtn {
+  display: block;
+  width: 25px;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-applicant__msgBtn {
+    margin-right: 5px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .p-applicant__msgBtn {
+    margin-right: 0;
+  }
+}
+
+.p-applicant__msgBtn > i {
+  font-size: 26px;
+  color: #000;
+}
+
+@media screen and (max-width: 414px) {
+  .p-applicant__msgBtn > i {
+    font-size: 20px;
+  }
+}
+
+.p-applicant__decideBtn {
+  border-radius: 0 5px 5px 0;
+  flex-basis: 20%;
+  font-size: 14px;
+  color: #fff;
+}
+
+@media screen and (max-width: 414px) {
+  .p-applicant__decideBtn {
+    flex-basis: 30%;
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .p-applicant__decideBtn {
+    font-size: 12px;
+  }
+}
+
+.p-applicant__decideBtn.-decide {
+  background-color: #0081ff;
+}
+
+.p-applicant__decideBtn.-decided {
+  background-color: #e83e8c;
+}
+
+.p-applicant__decideBtn.-wait {
+  background-color: #28a745;
 }
 
 @media screen and (max-width: 414px) {
