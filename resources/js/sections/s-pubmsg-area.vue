@@ -59,7 +59,7 @@
                      </template>
 
                      <!-- 子フォーム -->
-                     <childform-component @child-text="addChildMsg"></childform-component>
+                     <child-form-component @child-text="addChildMsg"></child-form-component>
                   </div>
                </div>
             </div>

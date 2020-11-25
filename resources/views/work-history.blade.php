@@ -10,19 +10,11 @@
          <sidebar-component></sidebar-component>
 
          <div class="l-main__mainArea -twoColumns">
-            <!-- 発注した仕事 -->
-            <section class="c-h2__sec">
-               <h2 class="c-h2__head">履歴 - 発注した仕事</h2>
-               <div class="c-h2__workCardBody">
-                  <work-card-component></work-card-component>
-                  <work-card-component></work-card-component>
-                  <work-card-component></work-card-component>
-                  <work-card-component></work-card-component>
-                  <work-card-component></work-card-component>
-               </div>
-               <!-- ページネーション -->
-               <pagination-component></pagination-component>
-            </section>
+            {{-- 仕事カードセクション --}}
+            <workcard-area-section head="履歴 - 発注した仕事"></workcard-area-section>
+
+            <!-- ページネーション -->
+            <pagination-component></pagination-component>
          </div>
       </div>
    </div>

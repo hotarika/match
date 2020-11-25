@@ -9,7 +9,7 @@
          <!-- サイドバー -->
          <sidebar-component></sidebar-component>
 
-         <!-- main -->
+         {{-- メインエリア --}}
          <div class="l-main__mainArea -twoColumns">
             <section class="c-h2__sec">
                <div class="c-h2__oneRowBody p-applicant__body">
@@ -20,10 +20,7 @@
                      <div class="p-applicant__list">
                         <div class="p-applicant__userWrap">
                            <div class="p-applicant__user">
-                              <img
-                                 class="c-img p-applicant__userImg"
-                                 src="{{ asset('images/home_img.jpg') }}"
-                                 alt="ユーザーの画像" />
+                              <img class="c-img p-applicant__userImg" :src="'images/home_img.jpg'" alt="ユーザーの画像" />
                               <a class="c-link p-applicant__userName" href="profile">
                                  山田太郎ああああああああ
                               </a>

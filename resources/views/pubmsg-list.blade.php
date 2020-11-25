@@ -22,10 +22,9 @@
                <pubmsg-card-component></pubmsg-card-component>
                <pubmsg-card-component></pubmsg-card-component>
                <pubmsg-card-component></pubmsg-card-component>
-
-               <!-- ページネーション -->
-               <pagination-component></pagination-component>
             </section>
+            <!-- ページネーション -->
+            <pagination-component></pagination-component>
          </div>
       </div>
    </div>

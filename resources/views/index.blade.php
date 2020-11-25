@@ -152,7 +152,7 @@
    </section>
 
    <!-- 新着の案件一覧 -->
-   <newly-wrokcard-component></newly-wrokcard-component>
+   <newly-workcard-section></newly-workcard-section>
 
    <!-- 会員登録ボタン -->
    <section class="p-home__btnSec">

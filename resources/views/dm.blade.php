@@ -8,6 +8,8 @@
       <div class="l-main__mainAreaWrap">
          <!-- サイドバー -->
          <sidebar-component></sidebar-component>
+
+         {{-- メインエリア --}}
          <div class="l-main__mainArea -twoColumns">
             <!-- ダイレクトメッセージ -->
             <dm-component></dm-component>

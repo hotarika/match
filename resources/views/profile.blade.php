@@ -45,16 +45,7 @@
             </section>
 
             <!-- 発注した案件 -->
-            <section class="c-h2__sec">
-               <h2 class="c-h2__head">応募中の仕事</h2>
-               <div class="c-h2__workCardBody">
-                  <work-card-component></work-card-component>
-                  <work-card-component></work-card-component>
-                  <work-card-component></work-card-component>
-                  <work-card-component></work-card-component>
-                  <work-card-component></work-card-component>
-               </div>
-            </section>
+            <workcard-area-section head="応募中の仕事"></workcard-area-section>
          </div>
       </div>
    </div>

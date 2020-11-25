@@ -59,9 +59,6 @@
             </div>
          </a>
       </transition-group>
-
-      <!-- ページネーション -->
-      <pagination-component></pagination-component>
    </section>
 </template>
 

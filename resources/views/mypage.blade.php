@@ -9,39 +9,16 @@
          <!-- サイドバー -->
          <sidebar-component></sidebar-component>
 
+         {{-- メインエリア --}}
          <div class="l-main__mainArea -twoColumns">
             <!-- 新着通知 -->
             <notification-component></notification-component>
 
             <!-- 発注した仕事 -->
-            <section class="c-h2__sec">
-               <a class="c-btn c-h2__seeMore" href="work-history">
-                  <i class="fas fa-chevron-right"></i>
-               </a>
-               <h2 class="c-h2__head">発注中の仕事</h2>
-               <div class="c-h2__workCardBody">
-                  <work-card-component></work-card-component>
-                  <work-card-component></work-card-component>
-                  <work-card-component></work-card-component>
-                  <work-card-component></work-card-component>
-                  <work-card-component></work-card-component>
-               </div>
-            </section>
+            <workcard-area-section head="発注中の仕事"></workcard-area-section>
 
-            <!-- 受注し仕事 -->
-            <section class="c-h2__sec">
-               <a class="c-btn c-h2__seeMore" href="work-history">
-                  <i class="fas fa-chevron-right"></i>
-               </a>
-               <h2 class="c-h2__head">応募中の仕事</h2>
-               <div class="c-h2__workCardBody">
-                  <work-card-component></work-card-component>
-                  <work-card-component></work-card-component>
-                  <work-card-component></work-card-component>
-                  <work-card-component></work-card-component>
-                  <work-card-component></work-card-component>
-               </div>
-            </section>
+            <!-- 受注した仕事 -->
+            <workcard-area-section head="応募中の仕事"></workcard-area-section>
 
             <!-- パブリックメッセージ -->
             <section class="c-h2__sec">

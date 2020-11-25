@@ -22,10 +22,10 @@
                <dm-list-component></dm-list-component>
                <dm-list-component></dm-list-component>
                <dm-list-component></dm-list-component>
-
-               <!-- ページネーション -->
-               <pagination-component></pagination-component>
             </section>
+
+            <!-- ページネーション -->
+            <pagination-component></pagination-component>
          </div>
       </div>
    </div>

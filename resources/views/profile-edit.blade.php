@@ -6,8 +6,10 @@
    <div class="container">
       <h1 class="c-h1__head">プロフィール編集</h1>
       <div class="l-main__mainAreaWrap">
+         {{-- サイドバー --}}
          <sidebar-settings-component></sidebar-settings-component>
 
+         {{-- メインエリア --}}
          <div class="l-main__mainArea -twoColumns">
             <section class="c-h2__sec">
                <div class="c-h2__oneRowBody p-profileEdit__body">

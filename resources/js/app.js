@@ -20,23 +20,35 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// =====================
 // common
+// =====================
+// 全体で使用
 Vue.component('header-component', require('./common/header.vue').default);
 Vue.component('footer-component', require('./common/footer.vue').default);
 Vue.component('sidebar-component', require('./common/sidebar.vue').default);
 Vue.component('sidebar-settings-component', require('./common/sidebar-settings.vue').default);
 Vue.component('pagination-component', require('./common/pagination.vue').default);
 
+// =====================
+// sections
+// =====================
+// 仕事詳細画面 / work-detail
+Vue.component('work-detail-section', require('./sections/s-work-detail.vue').default);
+Vue.component('pubmsg-area-section', require('./sections/s-pubmsg-area.vue').default);
+Vue.component('workcard-area-section', require('./sections/s-workcard-area.vue').default);
+Vue.component('newly-workcard-section', require('./sections/s-newly-workcard.vue').default);
+
+// =====================
 // components
-Vue.component('favorite-component', require('./components/FavoriteToggle.vue').default);
-Vue.component('newly-wrokcard-component', require('./components/NewlyWorkCard.vue').default);
+// =====================
+// 仕事詳細画面 / work-detail
+Vue.component('child-form-component', require('./components/c-child-form.vue').default);
 Vue.component('notification-component', require('./components/NotificationList.vue').default);
 Vue.component('work-card-component', require('./components/WorkCard.vue').default);
 Vue.component('dm-list-component', require('./components/DmList.vue').default);
-Vue.component('pubmsg-component', require('./components/PubmsgArea.vue').default);
 Vue.component('pubmsg-card-component', require('./components/PubmsgCard.vue').default);
 Vue.component('dm-component', require('./components/DmArea.vue').default);
-Vue.component('childform-component', require('./components/ChildForm.vue').default);
 Vue.component('work-component', require('./components/WorkList.vue').default);
 
 /**
