@@ -3795,6 +3795,24 @@ body {
   background-color: #0081ff;
 }
 
+.p-workList__orderForm {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 10px 36px;
+  background-color: #ced4da;
+}
+
+@media screen and (max-width: 320px) {
+  .p-workList__orderForm {
+    padding: 10px 15px;
+  }
+}
+
 .p-workList__checkbox {
   margin-right: 15px;
   font-size: 14px;
@@ -3804,6 +3822,14 @@ body {
   .p-workList__checkbox > label {
     font-size: 13px;
   }
+}
+
+.p-workList__formBtn {
+  padding: 5px 10px 4px;
+  font-size: 13px;
+  color: #fff;
+  letter-spacing: 1.5px;
+  background-color: #0081ff;
 }
 
 .p-workList__workCardBody {

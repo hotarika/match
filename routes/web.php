@@ -50,6 +50,9 @@ Route::get('/work-form', function () {
 Route::get('/work-history', function () {
    return view('work-history');
 });
+Route::get('/work-list', function () {
+   return view('work-list');
+});
 
 
 Auth::routes();

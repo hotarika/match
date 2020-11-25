@@ -37,6 +37,7 @@ Vue.component('pubmsg-component', require('./components/PubmsgArea.vue').default
 Vue.component('pubmsg-card-component', require('./components/PubmsgCard.vue').default);
 Vue.component('dm-component', require('./components/DmArea.vue').default);
 Vue.component('childform-component', require('./components/ChildForm.vue').default);
+Vue.component('work-component', require('./components/WorkList.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
