@@ -6,7 +6,7 @@
 <body>
    <div id="app">
       {{-- header --}}
-      <header-component></header-component>
+      @include('components/header')
 
       {{-- ログアウト処理 --}}
       {{-- headerの中の「ログアウト」ボタンをクリックすると、下記のフォームが送信される --}}
