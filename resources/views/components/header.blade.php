@@ -24,6 +24,7 @@
             </ul>
          </div>
          @else
+         id-{{Auth::user()->id}} / 名前-{{Auth::user()->name}}
          {{-- ナビゲーション --}}
          <navigation-component></navigation-component>
          @endguest
