@@ -89,7 +89,11 @@
                      </li>
                      <!-- 全ての端末で表示 -->
                      <li class="p-header__item">
-                        <a class="c-link p-header__navLink" href="login">
+                        <a
+                           class="c-link p-header__navLink"
+                           href=""
+                           onclick="event.preventDefault(); document.querySelector('.js-click-logout').submit();"
+                        >
                            <i class="fas fa-sign-out-alt p-header__navIcon"></i>
                            <div class="p-header__navName u-ml4">ログアウト</div>
                         </a>

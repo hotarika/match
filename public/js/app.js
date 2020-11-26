@@ -2034,6 +2034,10 @@ module.exports = {
 //
 //
 //
+//
+//
+//
+//
 // *************************************************
 // スマホ用ナビメニューの開閉
 //（Vueでは、「メニュー以外を押すと閉じる」機能が実装できないため、通常のjsで対応）
@@ -39531,7 +39535,11 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "c-link p-header__navLink",
-              attrs: { href: "login" }
+              attrs: {
+                href: "",
+                onclick:
+                  "event.preventDefault(); document.querySelector('.js-click-logout').submit();"
+              }
             },
             [
               _c("i", { staticClass: "fas fa-sign-out-alt p-header__navIcon" }),
