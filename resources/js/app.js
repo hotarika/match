@@ -1,3 +1,5 @@
+import '../js/modules/navigation'; // スマホ用ナビゲーションの読み込み
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -24,7 +26,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 // common
 // =====================
 // 全体で使用
-Vue.component('navigation-component', require('./common/navigation.vue').default);
 
 // =====================
 // sections

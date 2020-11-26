@@ -1899,154 +1899,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/common/navigation.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/common/navigation.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// *************************************************
-// スマホ用ナビメニューの開閉
-//（Vueでは、「メニュー以外を押すと閉じる」機能が実装できないため、通常のjsで対応）
-// *************************************************
-window.addEventListener('DOMContentLoaded', function () {
-  var open = document.querySelector('.js-openIcon');
-  var close = document.querySelector('.js-closeIcon');
-  var target = document.querySelector('.js-nav'); // ①アイコンクリックでメニューバーを開く
-
-  open.addEventListener('click', function (e) {
-    // ③番目のコードでdocument.addEventListenerを指定しているため、イベントが伝播してしまう
-    // そのため、stopPropagation()で伝播を停止させている
-    e.stopPropagation(); // .js-navにcalssのis-activeがなければ追加する
-
-    if (!target.classList.contains('is-active')) {
-      target.classList.add('is-active');
-    }
-  }); // ②アイコンクリックでメニューバーを閉じる
-
-  close.addEventListener('click', function (e) {
-    // ①と同じ
-    e.stopPropagation(); // .js-navにcalssのis-activeがあれば削除する
-
-    if (target.classList.contains('is-active')) {
-      target.classList.remove('is-active');
-    }
-  }); // ③ メニューバーの外側をクリックした場合に閉じる（Vueでの実装ができない）
-
-  document.addEventListener('click', function (e) {
-    // 外側をクリックした場合 && classにis-activeの文字列がない場合
-    if (!e.target.closest('.js-nav') && target.classList.contains('is-active')) {
-      target.classList.remove('is-active');
-    }
-  });
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DmArea.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DmArea.vue?vue&type=script&lang=js& ***!
@@ -39406,257 +39258,6 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/common/navigation.vue?vue&type=template&id=3f261bac&":
-/*!*********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/common/navigation.vue?vue&type=template&id=3f261bac& ***!
-  \*********************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "p-header__rightWrap" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("img", {
-      staticClass: "p-header__menuOpen js-openIcon",
-      attrs: { src: "/images/icon/bars-solid.svg", alt: "ハンバーガーメニュー" }
-    })
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("nav", { staticClass: "p-header__nav js-nav" }, [
-      _c("i", {
-        staticClass: "far fa-times-circle p-header__menuClose js-closeIcon"
-      }),
-      _vm._v(" "),
-      _c("ul", { staticClass: "p-header__items" }, [
-        _c("div", { staticClass: "p-header__orderMenuWrap" }, [
-          _c("li", { staticClass: "p-header__item -sp" }, [
-            _c(
-              "a",
-              {
-                staticClass: "c-link p-header__navLink",
-                attrs: { href: "applicant" }
-              },
-              [
-                _c("i", { staticClass: "fas fa-list-alt p-header__navIcon" }),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-header__navName u-ml2" }, [
-                  _vm._v("応募者一覧")
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "p-header__item -sp" }, [
-            _c(
-              "a",
-              {
-                staticClass: "c-link p-header__navLink",
-                attrs: { href: "work-form" }
-              },
-              [
-                _c("i", { staticClass: "fas fa-edit p-header__navIcon" }),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-header__navName" }, [
-                  _vm._v("編集")
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "p-header__item -sp" }, [
-            _c(
-              "a",
-              {
-                staticClass: "c-link p-header__navLink",
-                attrs: { href: "mypage" }
-              },
-              [
-                _c("i", { staticClass: "fas fa-trash-alt p-header__navIcon" }),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-header__navName u-ml5" }, [
-                  _vm._v("削除")
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("hr", { staticClass: "p-header__navHr" })
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "p-header__item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "c-link p-header__navLink",
-              attrs: { href: "work-list" }
-            },
-            [
-              _c("i", { staticClass: "fas fa-list p-header__navIcon" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "p-header__navName u-ml4" }, [
-                _vm._v("案件一覧")
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "p-header__item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "c-link p-header__navLink",
-              attrs: { href: "mypage" }
-            },
-            [
-              _c("i", { staticClass: "fas fa-user p-header__navIcon" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "p-header__navName u-ml5" }, [
-                _vm._v("マイページ")
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "p-header__item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "c-link p-header__navLink",
-              attrs: { href: "mypage" }
-            },
-            [
-              _c("span", { staticClass: "p-header__notificationNum" }, [
-                _vm._v("1")
-              ]),
-              _vm._v(" "),
-              _c("i", { staticClass: "fas fa-bell p-header__navIcon" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "p-header__navName u-ml6" }, [
-                _vm._v("新着通知")
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "p-header__item -sp" }, [
-          _c(
-            "a",
-            {
-              staticClass: "c-link p-header__navLink",
-              attrs: { href: "work-list" }
-            },
-            [
-              _c("i", { staticClass: "fas fa-star p-header__navIcon" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "p-header__navName u-ml2" }, [
-                _vm._v("気になる案件")
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "p-header__item -sp" }, [
-          _c(
-            "a",
-            {
-              staticClass: "c-link p-header__navLink",
-              attrs: { href: "pubmsg-list" }
-            },
-            [
-              _c("i", { staticClass: "fas fa-users p-header__navIcon" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "p-header__navName" }, [
-                _vm._v("パブリックメッセージ")
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "p-header__item -sp" }, [
-          _c(
-            "a",
-            {
-              staticClass: "c-link p-header__navLink",
-              attrs: { href: "dm-list" }
-            },
-            [
-              _c("i", { staticClass: "fas fa-comments p-header__navIcon" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "p-header__navName u-ml2" }, [
-                _vm._v("ダイレクトメッセージ")
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "p-header__item -sp" }, [
-          _c(
-            "a",
-            {
-              staticClass: "c-link p-header__navLink",
-              attrs: { href: "settings-menu" }
-            },
-            [
-              _c("i", { staticClass: "fas fa-cog p-header__navIcon" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "p-header__navName u-ml4" }, [
-                _vm._v("アカウント設定")
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "p-header__item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "c-link p-header__navLink",
-              attrs: {
-                href: "",
-                onclick:
-                  "event.preventDefault(); document.querySelector('.js-click-logout').submit();"
-              }
-            },
-            [
-              _c("i", { staticClass: "fas fa-sign-out-alt p-header__navIcon" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "p-header__navName u-ml4" }, [
-                _vm._v("ログアウト")
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "p-header__item -orderBtn" }, [
-          _c(
-            "a",
-            { staticClass: "p-header__orderBtn", attrs: { href: "work-form" } },
-            [_vm._v("仕事を依頼")]
-          )
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DmArea.vue?vue&type=template&id=ae43703e&scoped=true&":
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DmArea.vue?vue&type=template&id=ae43703e&scoped=true& ***!
@@ -53409,14 +53010,21 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _js_modules_navigation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../js/modules/navigation */ "./resources/js/modules/navigation.js");
+/* harmony import */ var _js_modules_navigation__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_modules_navigation__WEBPACK_IMPORTED_MODULE_0__);
+ // スマホ用ナビゲーションの読み込み
 
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -53434,8 +53042,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 // common
 // =====================
 // 全体で使用
-
-Vue.component('navigation-component', __webpack_require__(/*! ./common/navigation.vue */ "./resources/js/common/navigation.vue")["default"]); // =====================
+// =====================
 // sections
 // =====================
 // 仕事詳細画面 / work-detail
@@ -53510,78 +53117,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
-
-/***/ }),
-
-/***/ "./resources/js/common/navigation.vue":
-/*!********************************************!*\
-  !*** ./resources/js/common/navigation.vue ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _navigation_vue_vue_type_template_id_3f261bac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./navigation.vue?vue&type=template&id=3f261bac& */ "./resources/js/common/navigation.vue?vue&type=template&id=3f261bac&");
-/* harmony import */ var _navigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./navigation.vue?vue&type=script&lang=js& */ "./resources/js/common/navigation.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _navigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _navigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _navigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _navigation_vue_vue_type_template_id_3f261bac___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _navigation_vue_vue_type_template_id_3f261bac___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/common/navigation.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/common/navigation.vue?vue&type=script&lang=js&":
-/*!*********************************************************************!*\
-  !*** ./resources/js/common/navigation.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_navigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./navigation.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/common/navigation.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_navigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_navigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_navigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_navigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_navigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "./resources/js/common/navigation.vue?vue&type=template&id=3f261bac&":
-/*!***************************************************************************!*\
-  !*** ./resources/js/common/navigation.vue?vue&type=template&id=3f261bac& ***!
-  \***************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_navigation_vue_vue_type_template_id_3f261bac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./navigation.vue?vue&type=template&id=3f261bac& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/common/navigation.vue?vue&type=template&id=3f261bac&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_navigation_vue_vue_type_template_id_3f261bac___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_navigation_vue_vue_type_template_id_3f261bac___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
 
 /***/ }),
 
@@ -54282,6 +53817,51 @@ module.exports = JSON.parse("[{\"id\":1,\"name\":\"Name-1\",\"title\":\"納期�
 /***/ (function(module) {
 
 module.exports = JSON.parse("[{\"id\":1,\"user_id\":1,\"name\":\"Test1\",\"work_name\":\"iPhoneアプリ開発をお願いしたいああああああああああああああああああああああああああああああああああああああああああ\",\"contract\":1,\"money_high\":1000,\"money_low\":2000,\"remain_date\":12,\"app_num\":5,\"date\":\"2020/11/19\"},{\"id\":2,\"user_id\":1,\"name\":\"Test2\",\"work_name\":\"iPhoneアプリ開発をお願いしたい\",\"contract\":1,\"money_high\":1000,\"money_low\":2000,\"remain_date\":12,\"app_num\":5,\"date\":\"2020/11/20\"},{\"id\":3,\"user_id\":1,\"name\":\"Test3\",\"work_name\":\"iPhoneアプリ開発をお願いしたい\",\"contract\":1,\"money_high\":1000,\"money_low\":2000,\"remain_date\":12,\"app_num\":5,\"date\":\"2020/11/5\"},{\"id\":4,\"user_id\":1,\"name\":\"Test4\",\"work_name\":\"iPhoneアプリ開発をお願いしたい\",\"contract\":1,\"money_high\":1000,\"money_low\":2000,\"remain_date\":12,\"app_num\":5,\"date\":\"2020/11/19\"},{\"id\":5,\"user_id\":1,\"name\":\"Test5\",\"work_name\":\"iPhoneアプリ開発をお願いしたい\",\"contract\":1,\"money_high\":1000,\"money_low\":2000,\"remain_date\":12,\"app_num\":5,\"date\":\"2020/10/19\"},{\"id\":6,\"user_id\":1,\"name\":\"Test6\",\"work_name\":\"iPhoneアプリ開発をお願いしたい\",\"contract\":1,\"money_high\":1000,\"money_low\":2000,\"remain_date\":12,\"app_num\":5,\"date\":\"2020/8/19\"},{\"id\":7,\"user_id\":1,\"name\":\"Test7\",\"work_name\":\"iPhoneアプリ開発をお願いしたい\",\"contract\":2,\"money_high\":null,\"money_low\":null,\"remain_date\":12,\"app_num\":5,\"date\":\"2020/1/19\"},{\"id\":8,\"user_id\":1,\"name\":\"Test8\",\"work_name\":\"iPhoneアプリ開発をお願いしたい\",\"contract\":1,\"money_high\":1000,\"money_low\":2000,\"remain_date\":12,\"app_num\":5,\"date\":\"2019/11/19\"},{\"id\":9,\"user_id\":1,\"name\":\"Test9\",\"work_name\":\"iPhoneアプリ開発をお願いしたい\",\"contract\":1,\"money_high\":1000,\"money_low\":2000,\"remain_date\":12,\"app_num\":5,\"date\":\"2019/1/19\"},{\"id\":10,\"user_id\":1,\"name\":\"Test10\",\"work_name\":\"iPhoneアプリ開発をお願いしたい\",\"contract\":2,\"money_high\":null,\"money_low\":null,\"remain_date\":12,\"app_num\":5,\"date\":\"2021/11/19\"}]");
+
+/***/ }),
+
+/***/ "./resources/js/modules/navigation.js":
+/*!********************************************!*\
+  !*** ./resources/js/modules/navigation.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// *************************************************
+// スマホ用ナビメニューの開閉
+//（Vueでは、「メニュー以外を押すと閉じる」機能が実装できないため、通常のjsで対応）
+// *************************************************
+window.addEventListener('DOMContentLoaded', function () {
+  var open = document.querySelector('.js-openIcon');
+  var close = document.querySelector('.js-closeIcon');
+  var target = document.querySelector('.js-nav'); // ①アイコンクリックでメニューバーを開く
+
+  open.addEventListener('click', function (e) {
+    // ③番目のコードでdocument.addEventListenerを指定しているため、イベントが伝播してしまう
+    // そのため、stopPropagation()で伝播を停止させている
+    e.stopPropagation(); // .js-navにcalssのis-activeがなければ追加する
+
+    if (!target.classList.contains('is-active')) {
+      target.classList.add('is-active');
+    }
+  }); // ②アイコンクリックでメニューバーを閉じる
+
+  close.addEventListener('click', function (e) {
+    // ①と同じ
+    e.stopPropagation(); // .js-navにcalssのis-activeがあれば削除する
+
+    if (target.classList.contains('is-active')) {
+      target.classList.remove('is-active');
+    }
+  }); // ③ メニューバーの外側をクリックした場合に閉じる（Vueでの実装ができない）
+
+  document.addEventListener('click', function (e) {
+    // 外側をクリックした場合 && classにis-activeの文字列がない場合
+    if (!e.target.closest('.js-nav') && target.classList.contains('is-active')) {
+      target.classList.remove('is-active');
+    }
+  });
+});
 
 /***/ }),
 

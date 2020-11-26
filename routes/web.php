@@ -76,7 +76,11 @@ Route::resource('/dm', 'DmController');
 
 // Invoke Controller（1つのコントローラーに1つの定義しか記述しないという意味）
 Route::get('/', 'HomeController');
-Route::get('/mypage', 'MypageController');
-Route::get('/history', 'WorksHistoryController');
-Route::get('/applicant', 'ApplicantController');
-Route::get('/change-pass', 'ChangePassController');
+Route::get('/mypage', 'MypageController')->name('mypage');
+Route::get('/history', 'WorksHistoryController')->name('history');
+Route::get('/applicant', 'ApplicantController')->name('applicant');
+Route::get('/change-pass', 'ChangePassController')->name('change-pass');
+
+Route::get('/settings-menu', function () {
+    return view('settings-menu');
+});
