@@ -101,7 +101,7 @@
                   </li>
                   <!-- スマホのみ表示 -->
                   <li class="p-header__item -sp">
-                     <a class="c-link p-header__navLink" href="settings-menu">
+                     <a class="c-link p-header__navLink" href="{{route('settings-menu')}}">
                         <i class="fas fa-cog p-header__navIcon"></i>
                         <div class="p-header__navName u-ml4">アカウント設定</div>
                      </a>

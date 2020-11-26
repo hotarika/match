@@ -30,7 +30,6 @@
                               required
                               autofocus
                               autocomplete="name"
-
                               placeholder="名前を記入" />
                            <span class="c-form__invalid is-invalid" role="alert">
                               <strong>入力してください</strong>

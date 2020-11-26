@@ -1,3 +1,6 @@
+{{-- スマホ用アカウント設定 --}}
+{{-- PC用とスマホ用のアカウント設定はレスポンシブ対応のため、別々に設定してあります。もし追加が必要な場合は、「components/sidebar-settings.blade.php」にも同様の記述をする必要があります。 --}}
+
 @extends('layouts.app')
 @section('title', '設定メニュー')
 

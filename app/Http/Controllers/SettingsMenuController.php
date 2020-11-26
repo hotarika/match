@@ -14,6 +14,6 @@ class SettingsMenuController extends Controller
      */
     public function __invoke(Request $request)
     {
-        // return view('components/sidebar-settings');
+        return view('settings-menu');
     }
 }
