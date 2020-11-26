@@ -7,7 +7,7 @@
       <h1 class="c-h1__head p-dm__h1">ダイレクトメッセージ</h1>
       <div class="l-main__mainAreaWrap">
          <!-- サイドバー -->
-         <sidebar-component></sidebar-component>
+         @include('components/sidebar')
 
          {{-- メインエリア --}}
          <div class="l-main__mainArea -twoColumns">

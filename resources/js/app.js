@@ -25,10 +25,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 // =====================
 // 全体で使用
 Vue.component('navigation-component', require('./common/navigation.vue').default);
-Vue.component('footer-component', require('./common/footer.vue').default);
-Vue.component('sidebar-component', require('./common/sidebar.vue').default);
-Vue.component('sidebar-settings-component', require('./common/sidebar-settings.vue').default);
-Vue.component('pagination-component', require('./common/pagination.vue').default);
 
 // =====================
 // sections

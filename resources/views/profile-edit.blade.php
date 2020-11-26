@@ -7,7 +7,7 @@
       <h1 class="c-h1__head">プロフィール編集</h1>
       <div class="l-main__mainAreaWrap">
          {{-- サイドバー --}}
-         <sidebar-settings-component></sidebar-settings-component>
+         @include('components/sidebar-settings')
 
          {{-- メインエリア --}}
          <div class="l-main__mainArea -twoColumns">

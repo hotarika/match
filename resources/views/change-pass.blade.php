@@ -6,7 +6,7 @@
    <div class="container">
       <h1 class="c-h1__head">パスワード変更</h1>
       <div class="l-main__mainAreaWrap">
-         <sidebar-settings-component></sidebar-settings-component>
+         @include('components/sidebar-settings')
 
          <div class="l-main__mainArea -twoColumns">
             <section class="c-h2__sec">
