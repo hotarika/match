@@ -26,9 +26,11 @@
                               class="c-form__input p-profileEdit__input -name"
                               type="text"
                               name="name"
+                              value=""
                               required
                               autofocus
                               autocomplete="name"
+
                               placeholder="名前を記入" />
                            <span class="c-form__invalid is-invalid" role="alert">
                               <strong>入力してください</strong>
