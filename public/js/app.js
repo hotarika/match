@@ -2078,6 +2078,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['public_path', 'image_path'],
   data: function data() {
     return {
       preview: '',
@@ -7301,7 +7302,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* スマホ対応時に下記のスタイルを消したいため、<sytle scoped>で指定せず、グローバルスコープにしている */\n.js-img-over {\n   border: 3px dotted rgba(0, 200, 0, 0.7);\n}\n.js-img-leave {\n   border: 3px dotted gray;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* スマホ対応時に下記のスタイルを消したいため、<sytle scoped>で指定せず、グローバルスコープにしている */\n.js-img-over {\n   border: 3px dotted rgba(0, 200, 0, 0.7);\n}\n.js-img-leave {\n   border: 3px dotted gray;\n}\n", ""]);
 
 // exports
 
@@ -39557,7 +39558,7 @@ var render = function() {
               attrs: {
                 id: "upload_image",
                 type: "file",
-                name: "img",
+                name: "image",
                 accept: "image/*"
               },
               on: {
@@ -39570,7 +39571,7 @@ var render = function() {
             _vm.preview === ""
               ? _c("img", {
                   staticClass: "c-img p-profileEdit__img",
-                  attrs: { src: "../../images/no-image.png" }
+                  attrs: { src: _vm.image_path }
                 })
               : _c("img", {
                   staticClass: "c-img p-profileEdit__img",

@@ -16,7 +16,7 @@
                   <div class="p-profile__proFirst">
                      <img
                         class="c-img p-profile__proImg"
-                        src="{{ asset('../images/home_img.jpg') }}"
+                        src="{{ asset('storage/user_img/'.$user->image) }}"
                         alt="ユーザーの画像" />
                      <div class="p-profile__proName">{{$user->name}}</div>
                   </div>

@@ -12,13 +12,13 @@
                id="upload_image"
                class="p-profileEdit__imgInput"
                type="file"
-               name="img"
+               name="image"
                @change="uploadFile($event)"
                accept="image/*"
             />
 
             <!-- 画像の切り替え -->
-            <img class="c-img p-profileEdit__img" :src="'../../images/no-image.png'" v-if="preview === ''" />
+            <img class="c-img p-profileEdit__img" :src="image_path" v-if="preview === ''" />
             <img class="c-img p-profileEdit__img" :src="preview" v-else />
          </label>
       </div>
@@ -31,6 +31,7 @@
 
 <script>
 export default {
+   props: ['public_path', 'image_path'],
    data() {
       return {
          preview: '', // 画像を表示
