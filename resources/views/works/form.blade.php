@@ -12,7 +12,9 @@
          <div class="l-main__mainArea -twoColumns">
             <section class="c-h2__sec">
                <div class="c-h2__oneRowBody p-workForm__body">
-                  <form class="p-workForm__form" action="">
+                  <form method="POST" class="p-workForm__form" action="{{route('works.store')}}">
+                     @csrf
+
                      <!-- 案件名 -->
                      <div class="p-workForm__wrap -name">
                         <label class="p-workForm__label -name" for="name">仕事名<span>[必須]</span></label>
@@ -22,12 +24,15 @@
                               class="c-form__input p-workForm__input -name"
                               type="text"
                               name="name"
-                              required
+                              value="{{ old('name') }}"
                               autofocus
                               placeholder="仕事名を記入" />
-                           <span class="c-form__invalid is-invalid" role="alert">
+
+                           @error('name')
+                           <span class="c-form__invalid" role="alert">
                               <strong>入力してください</strong>
                            </span>
+                           @enderror
                         </div>
                      </div>
 
@@ -40,12 +45,15 @@
                               id="end-recruitment"
                               class="c-form__input p-workForm__input -endRecruitment"
                               type="date"
-                              name="end-recruitment"
-                              required
+                              name="endRecruitment"
+                              value="{{ old('endRecruitment') }}"
                               placeholder="例：2021/01/01" />
-                           <span class="c-form__invalid is-invalid" role="alert">
+
+                           @error('endRecruitment')
+                           <span class="c-form__invalid" role="alert">
                               <strong>入力してください</strong>
                            </span>
+                           @enderror
                         </div>
                      </div>
 
@@ -58,12 +66,15 @@
                               id="hope-deadline"
                               class="c-form__input p-workForm__input -hopeDeadline"
                               type="date"
-                              name="hope-deadline"
-                              required
+                              name="hopeDeadline"
+                              value="{{ old('hopeDeadline') }}"
                               placeholder="例：2021/02/01" />
-                           <span class="c-form__invalid is-invalid" role="alert">
+
+                           @error('hopeDeadline')
+                           <span class="c-form__invalid" role="alert">
                               <strong>入力してください</strong>
                            </span>
+                           @enderror
                         </div>
                      </div>
 
@@ -72,17 +83,19 @@
                         <label class="p-workForm__label -tieUp" for="tie-up">提携方法<span>[必須]</span></label>
                         <div class="p-workForm__inputWrap">
                            <select
-                              class="c-form__input p-workForm__input -tieUp"
-                              name="tie-up"
                               id="tie-up"
-                              required>
-                              <option value="">選択してください</option>
-                              <option value="one-off">単発案件</option>
-                              <option value="share">レベニューシェア</option>
+                              class="c-form__input p-workForm__input -tieUp"
+                              name="tieUp">
+                              <option value="" selected>選択してください</option>
+                              <option value="1" @if(old('tieUp')=='one-off' ) selected @endif>単発案件</option>
+                              <option value="2" @if(old('tieUp')=='share' ) selected @endif>レベニューシェア</option>
                            </select>
-                           <span class="c-form__invalid is-invalid" role="alert">
+
+                           @error('tieUp')
+                           <span class="c-form__invalid" role="alert">
                               <strong>入力してください</strong>
                            </span>
+                           @enderror
                         </div>
                      </div>
 
@@ -95,37 +108,44 @@
                                  id="money"
                                  class="c-form__input p-workForm__input -money"
                                  type="number"
-                                 name="money"
-                                 required
+                                 name="moneyLower"
+                                 value="{{ old('moneyLower') }}"
                                  placeholder="例：1000" /><span>千円〜</span>
                               <input
                                  id="money"
                                  class="c-form__input p-workForm__input -money"
                                  type="number"
-                                 name="money"
-                                 required
+                                 name="moneyUpper"
+                                 value="{{ old('moneyUpper') }}"
                                  placeholder="例：2000" /><span>千円</span>
                            </div>
-                           <span class="c-form__invalid is-invalid" role="alert">
+
+                           @if($errors->has('moneyLower') || $errors->has('moneyUpper'))
+                           <span class="c-form__invalid" role="alert">
                               <strong>入力してください</strong>
                            </span>
+                           {{-- @enderror --}}
+                           @endif
                         </div>
                      </div>
 
                      <!-- 依頼内容 -->
-                     <div class="p-workForm__wrap -introduce">
-                        <label class="p-workForm__label -introduce" for="introduce">依頼内容<span>[必須]</span></label>
+                     <div class="p-workForm__wrap -content">
+                        <label class="p-workForm__label -content" for="content">依頼内容<span>[必須]</span></label>
                         <div class="p-workForm__inputWrap">
                            <textarea
-                              id="introduce"
+                              id="content"
                               class="c-form__textarea p-workForm__textarea u-mb5"
-                              name="introduce"
+                              name="content"
                               cols="30"
                               rows="10"
-                              placeholder="具体的に依頼内容を記入&#10;（例：どのような仕事を依頼したいのか・期待する効果は何か・仕事の規模はどれくらいか などご自由にご記入ください）"></textarea>
-                           <span class="c-form__invalid is-invalid" role="alert">
+                              placeholder="具体的に依頼内容を記入&#10;（例：どのような仕事を依頼したいのか・期待する効果は何か・仕事の規模はどれくらいか などご自由にご記入ください）">{{ old('content') }}</textarea>
+
+                           @error('content')
+                           <span class="c-form__invalid" role="alert">
                               <strong>入力してください</strong>
                            </span>
+                           @enderror
                         </div>
                      </div>
                      <button class="c-btn p-workForm__editBtn" type="submit">編集する</button>

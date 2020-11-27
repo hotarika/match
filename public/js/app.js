@@ -2395,7 +2395,7 @@ var _data_workData_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__
       var _this = this;
 
       // チェックボックスに応じて、表示カード変更（絞り込み機能）
-      this.newList = this.workList.filter(function (val) {
+      this.newList = this.works.filter(function (val) {
         if (_this.oneoff_checkbox === false && val.contract === 1) {
           return;
         }
@@ -40060,12 +40060,12 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c("span", { staticClass: "c-workCard__name" }, [
-                  _vm._v(_vm._s(work.name))
+                  _vm._v(_vm._s(work.u_name))
                 ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "c-workCard__head" }, [
-                _vm._v("\n            " + _vm._s(work.title) + "\n         ")
+                _vm._v("\n            " + _vm._s(work.w_name) + "\n         ")
               ]),
               _vm._v(" "),
               work.contract_id === 1

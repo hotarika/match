@@ -24,11 +24,11 @@
                   :src="public_path + 'storage/user_img/' + work.image"
                   alt="ユーザーのアイコン"
                />
-               <span class="c-workCard__name">{{ work.name }}</span>
+               <span class="c-workCard__name">{{ work.u_name }}</span>
             </div>
 
             <div class="c-workCard__head">
-               {{ work.title }}
+               {{ work.w_name }}
             </div>
 
             <template v-if="work.contract_id === 1">
@@ -85,7 +85,7 @@ export default {
    methods: {
       orderList() {
          // チェックボックスに応じて、表示カード変更（絞り込み機能）
-         this.newList = this.workList.filter(val => {
+         this.newList = this.works.filter(val => {
             if (this.oneoff_checkbox === false && val.contract === 1) {
                return;
             }

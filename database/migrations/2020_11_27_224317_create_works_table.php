@@ -16,10 +16,13 @@ class CreateWorksTable extends Migration
         Schema::create('works', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
-            $table->string('title');
+            $table->string('name');
             $table->integer('contract_id');
-            $table->integer('money_upper')->nullable();
-            $table->integer('money_lower')->nullable();
+            $table->date('end_date');
+            $table->date('hope_date');
+            $table->integer('money_upper');
+            $table->integer('money_lower');
+            $table->string('content');
             $table->boolean('delete_flg')->default(false);
             $table->timestamps();
         });

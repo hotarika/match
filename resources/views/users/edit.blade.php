@@ -15,8 +15,8 @@
                <div class="c-h2__oneRowBody p-profileEdit__body">
                   <form method="POST" class="p-profileEdit__form" action="{{route('users.update',Auth::id())}}"
                      enctype="multipart/form-data">
-                     @csrf
                      @method('PUT')
+                     @csrf
 
                      <!-- 画像 -->
                      <image-edit-component :public_path="{{ json_encode(asset('')) }}"
