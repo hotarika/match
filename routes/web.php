@@ -37,3 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/change-pass', 'ChangePassController')->name('change-pass');
     Route::get('/settings-menu', 'SettingsMenuController')->name('settings-menu');
 });
+
+
+// 非同期処理
+Route::get('/async/works', 'AsyncController@works');

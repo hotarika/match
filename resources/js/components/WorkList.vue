@@ -18,15 +18,20 @@
          <a class="c-workCard" href="work-detail" v-for="work in newList" :key="work.id">
             <div class="c-workCard__decisionTag">決定</div>
             <div class="c-workCard__nameWrap">
-               <img class="c-img c-workCard__img" :src="'../../images/img2.png'" alt="ユーザーのアイコン" />
+               <!-- <img class="c-img c-workCard__img" :src="'../../images/img2.png'" alt="ユーザーのアイコン" /> -->
+               <img
+                  class="c-img c-workCard__img"
+                  :src="public_path + 'storage/user_img/' + work.image"
+                  alt="ユーザーのアイコン"
+               />
                <span class="c-workCard__name">{{ work.name }}</span>
             </div>
 
             <div class="c-workCard__head">
-               {{ work.work_name }}
+               {{ work.title }}
             </div>
 
-            <template v-if="work.contract === 1">
+            <template v-if="work.contract_id === 1">
                <!-- 単発案件 -->
                <div class="c-workCard__contract">
                   <div class="c-workCard__contractIconWrap">
@@ -35,12 +40,12 @@
                   <div class="c-workCard__contractWayWrap">
                      <div class="c-workCard__contractWay">単発案件</div>
                      <div class="c-workCard__contractMoney">
-                        {{ work.money_low | addComma }}~{{ work.money_high | addComma }}千円
+                        {{ work.money_lower | addComma }} ~ {{ work.money_upper | addComma }}千円
                      </div>
                   </div>
                </div>
             </template>
-            <template v-if="work.contract === 2">
+            <template v-if="work.contract_id === 2">
                <!-- レベニューシェア -->
                <div class="c-workCard__contract">
                   <div class="c-workCard__contractIconWrap">
@@ -64,14 +69,17 @@
 
 <script>
 import workList from '../data/workData.json';
+import axios from 'axios';
 
 export default {
+   props: ['public_path', 'image_path'],
    data() {
       return {
          workList, // 仕事カードのデータ
          newList: [], // 並び替えするための空の配列
          oneoff_checkbox: true, // 単発案件チェックボックス
-         share_checkbox: true // レベニューシェアチェックボックス
+         share_checkbox: true, // レベニューシェアチェックボックス
+         works: []
       };
    },
    methods: {
@@ -95,10 +103,24 @@ export default {
       }
    },
    mounted() {
+      // 非同期取得
+      axios
+         .get(this.public_path + 'async/works')
+         .then(res => {
+            console.log(res);
+            this.works = res.data;
+            this.newList = this.works.filter(val => {
+               return val;
+            });
+         })
+         .catch(err => {
+            console.log('err:', err);
+         });
+
       // マウント時に仕事カードを全て表示
-      this.newList = this.workList.filter(val => {
-         return val;
-      });
+      // this.newList = this.workList.filter(val => {
+      //    return val;
+      // });
    }
 };
 </script>

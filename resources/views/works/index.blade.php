@@ -11,7 +11,8 @@
 
          {{-- メインエリア --}}
          <div class="l-main__mainArea -twoColumns">
-            <work-component></work-component>
+            <work-component
+               :public_path="{{ json_encode(asset('')) }}"></work-component>
             <!-- ページネーション -->
             @include('components/pagination')
          </div>

@@ -2302,6 +2302,13 @@ var _data_notificationData_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PU
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _data_workData_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../data/workData.json */ "./resources/js/data/workData.json");
 var _data_workData_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../data/workData.json */ "./resources/js/data/workData.json", 1);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2367,7 +2374,9 @@ var _data_workData_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['public_path', 'image_path'],
   data: function data() {
     return {
       workList: _data_workData_json__WEBPACK_IMPORTED_MODULE_0__,
@@ -2376,8 +2385,9 @@ var _data_workData_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__
       // 並び替えするための空の配列
       oneoff_checkbox: true,
       // 単発案件チェックボックス
-      share_checkbox: true // レベニューシェアチェックボックス
-
+      share_checkbox: true,
+      // レベニューシェアチェックボックス
+      works: []
     };
   },
   methods: {
@@ -2405,10 +2415,21 @@ var _data_workData_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__
     }
   },
   mounted: function mounted() {
-    // マウント時に仕事カードを全て表示
-    this.newList = this.workList.filter(function (val) {
-      return val;
-    });
+    var _this2 = this;
+
+    // 非同期取得
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.public_path + 'async/works').then(function (res) {
+      console.log(res);
+      _this2.works = res.data;
+      _this2.newList = _this2.works.filter(function (val) {
+        return val;
+      });
+    })["catch"](function (err) {
+      console.log('err:', err);
+    }); // マウント時に仕事カードを全て表示
+    // this.newList = this.workList.filter(val => {
+    //    return val;
+    // });
   }
 });
 
@@ -40033,7 +40054,7 @@ var render = function() {
                 _c("img", {
                   staticClass: "c-img c-workCard__img",
                   attrs: {
-                    src: "../../images/img2.png",
+                    src: _vm.public_path + "storage/user_img/" + work.image,
                     alt: "ユーザーのアイコン"
                   }
                 }),
@@ -40044,12 +40065,10 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "c-workCard__head" }, [
-                _vm._v(
-                  "\n            " + _vm._s(work.work_name) + "\n         "
-                )
+                _vm._v("\n            " + _vm._s(work.title) + "\n         ")
               ]),
               _vm._v(" "),
-              work.contract === 1
+              work.contract_id === 1
                 ? [
                     _c("div", { staticClass: "c-workCard__contract" }, [
                       _c(
@@ -40079,9 +40098,9 @@ var render = function() {
                             [
                               _vm._v(
                                 "\n                     " +
-                                  _vm._s(_vm._f("addComma")(work.money_low)) +
-                                  "~" +
-                                  _vm._s(_vm._f("addComma")(work.money_high)) +
+                                  _vm._s(_vm._f("addComma")(work.money_lower)) +
+                                  " ~ " +
+                                  _vm._s(_vm._f("addComma")(work.money_upper)) +
                                   "千円\n                  "
                               )
                             ]
@@ -40092,7 +40111,7 @@ var render = function() {
                   ]
                 : _vm._e(),
               _vm._v(" "),
-              work.contract === 2
+              work.contract_id === 2
                 ? [
                     _c("div", { staticClass: "c-workCard__contract" }, [
                       _c(

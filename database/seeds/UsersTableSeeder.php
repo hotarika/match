@@ -20,6 +20,38 @@ class UsersTableSeeder extends Seeder
             'name' => 'test1',
             'email' => 'test1@example.com',
             'password' => Hash::make('root'),
+            'introduce' => 'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト',
+            'image' => 'no-image.png',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('users')->insert([
+            'id' => 2,
+            'name' => 'test2',
+            'email' => 'test2@example.com',
+            'password' => Hash::make('root'),
+            'introduce' => 'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト',
+            'image' => 'no-image.png',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('users')->insert([
+            'id' => 3,
+            'name' => 'test3',
+            'email' => 'test3@example.com',
+            'password' => Hash::make('root'),
+            'introduce' => 'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト',
+            'image' => 'no-image.png',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('users')->insert([
+            'id' => 4,
+            'name' => 'test4',
+            'email' => 'test4@example.com',
+            'password' => Hash::make('root'),
+            'introduce' => 'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト',
+            'image' => 'no-image.png',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
