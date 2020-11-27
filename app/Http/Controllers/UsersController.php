@@ -47,7 +47,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        return view("users.show");
+        $user = User::find($id);
+        return view("users.show", compact('user'));
     }
 
     /**
@@ -58,7 +59,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        return view('users.edit');
+        $user = Auth::user()->find($id);
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -70,7 +72,20 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->introduce = $request->introduce;
+        $user->save();
+
+        // この方法もある
+        // $user->fill([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'introduce' => $request->introduce
+        // ])->save();
+
+        return redirect()->route('users.show', $id);
     }
 
     /**

@@ -13,7 +13,11 @@
          <div class="l-main__mainArea -twoColumns">
             <section class="c-h2__sec">
                <div class="c-h2__oneRowBody p-profileEdit__body">
-                  <form class="p-profileEdit__form" action="" enctype="multipart/form-data">
+                  <form method="POST" class="p-profileEdit__form" action="{{route('users.update',Auth::id())}}"
+                     enctype="multipart/form-data">
+                     @csrf
+                     @method('PUT')
+
                      <!-- 画像 -->
                      <image-edit-component></image-edit-component>
 
@@ -26,14 +30,16 @@
                               class="c-form__input p-profileEdit__input -name"
                               type="text"
                               name="name"
-                              value=""
+                              value="{{$user->name}}"
                               required
                               autofocus
                               autocomplete="name"
                               placeholder="名前を記入" />
-                           <span class="c-form__invalid is-invalid" role="alert">
+                           @error('name')
+                           <span class="c-form__invalid" role="alert">
                               <strong>入力してください</strong>
                            </span>
+                           @enderror
                         </div>
                      </div>
 
@@ -46,12 +52,15 @@
                               class="c-form__input p-profileEdit__input -email"
                               type="email"
                               name="email"
+                              value="{{$user->email}}"
                               required
                               autocomplete="email"
                               placeholder="メールアドレスを記入" />
+                           @error('email')
                            <span class="c-form__invalid is-invalid" role="alert">
                               <strong>入力してください</strong>
                            </span>
+                           @enderror
                         </div>
                      </div>
 
@@ -65,7 +74,7 @@
                               name="introduce"
                               cols="30"
                               rows="10"
-                              placeholder="自己紹介文を記入"></textarea>
+                              placeholder="自己紹介文を記入">{{$user->introduce}}</textarea>
                         </div>
                      </div>
                      <button class="c-btn p-profileEdit__editBtn" type="submit">編集する</button>

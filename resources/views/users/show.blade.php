@@ -18,7 +18,7 @@
                         class="c-img p-profile__proImg"
                         src="{{ asset('../images/home_img.jpg') }}"
                         alt="ユーザーの画像" />
-                     <div class="p-profile__proName">山田 太郎</div>
+                     <div class="p-profile__proName">{{$user->name}}</div>
                   </div>
                   <div class="p-profile__proSecond">
                      <div class="p-profile__proResult">
@@ -36,9 +36,7 @@
                      </div>
                      <div class="p-profile__proIntroduce">
                         <div class="p-profile__proIntroduceHead">自己紹介</div>
-                        <div class="p-profile__proIntroduceBody">
-                           テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-                        </div>
+                        <div class="p-profile__proIntroduceBody">{{$user->introduce}}</div>
                      </div>
                   </div>
                </div>
