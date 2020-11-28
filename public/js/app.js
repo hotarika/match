@@ -40043,7 +40043,7 @@ var render = function() {
             {
               key: work.id,
               staticClass: "c-workCard",
-              attrs: { href: "work-detail" }
+              attrs: { href: _vm.public_path + "works/" + work.id }
             },
             [
               _c("div", { staticClass: "c-workCard__decisionTag" }, [
