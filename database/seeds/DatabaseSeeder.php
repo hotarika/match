@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ContractsTableSeeder::class);
         $this->call(ParentPubmsgSeeder::class);
         $this->call(ChildPubmsgSeeder::class);
+        $this->call(FavoritesSeeder::class);
     }
 }

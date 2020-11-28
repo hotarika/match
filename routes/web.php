@@ -41,3 +41,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 // 非同期処理
 Route::get('/async/works', 'AsyncController@works');
+Route::get('/async/favorites', 'AsyncController@getFavorites');
+Route::post('/async/favorites', 'AsyncController@postFavorites');
+Route::delete('/async/favorites/{user_id}/{work_id}', 'AsyncController@deleteFavorites');

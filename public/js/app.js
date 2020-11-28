@@ -2489,16 +2489,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['public_path', 'work', 'user_id'],
   data: function data() {
     return {
-      isActive: false
+      isActive: false,
+      favorites: []
     };
   },
   methods: {
     favToggle: function favToggle() {
       this.isActive = !this.isActive;
+      console.log(this.user_id);
+      console.log(this.work.work_id);
+
+      if (this.isActive) {
+        axios //store
+        .post(this.public_path + 'async/favorites', {
+          user_id: this.user_id,
+          work_id: this.work.work_id
+        });
+      } else {
+        axios //delete
+        ["delete"](this.public_path + 'async/favorites/' + this.user_id + '/' + this.work.work_id);
+        this.likeCount--;
+      }
     }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get(this.public_path + 'async/favorites').then(function (res) {
+      _this.favorites = res.data;
+
+      _this.favorites.filter(function (val) {
+        if (_this.work.work_id === val.work_id) {
+          console.log('yes');
+          return _this.isActive = true;
+        }
+      });
+    })["catch"](function (err) {
+      console.log('err:', err);
+    });
   }
 });
 
@@ -40166,28 +40203,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "p-workDetail__favBtn" }, [
     _c("i", {
-      directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: this.isActive,
-          expression: "this.isActive"
-        }
-      ],
-      staticClass: "fas fa-star p-workDetail__favBtnIcon -true",
-      on: { click: _vm.favToggle }
-    }),
-    _vm._v(" "),
-    _c("i", {
-      directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: !this.isActive,
-          expression: "!this.isActive"
-        }
-      ],
-      staticClass: "fas fa-star p-workDetail__favBtnIcon -false",
+      staticClass: "fas fa-star p-workDetail__favBtnIcon",
+      class: [_vm.isActive === true ? "-true" : "-false"],
       on: { click: _vm.favToggle }
     })
   ])

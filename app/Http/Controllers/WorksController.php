@@ -72,7 +72,7 @@ class WorksController extends Controller
     public function show($id)
     {
         $work = DB::table('works as w')
-            ->select('w.name as work_name', 'u.name as user_name', 'w.contract_id', 'c.type', 'w.end_date', 'w.hope_date', 'w.money_lower', 'w.money_upper', 'w.content', 'w.created_at')
+            ->select('w.id as work_id', 'w.name as work_name', 'u.id as owner_id', 'u.name as owner_name', 'w.contract_id', 'c.type', 'w.end_date', 'w.hope_date', 'w.money_lower', 'w.money_upper', 'w.content', 'w.created_at')
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
             ->leftJoin('contracts as c', 'w.contract_id', '=', 'c.id')
             ->where('w.id', $id)->first();
