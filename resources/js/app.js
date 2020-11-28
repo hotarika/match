@@ -32,7 +32,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 // sections
 // =====================
 // 仕事詳細画面 / work-detail
-Vue.component('work-detail-section', require('./sections/s-work-detail.vue').default);
+Vue.component('favorite-component', require('./sections/FavoriteComponent.vue').default);
 Vue.component('pubmsg-area-section', require('./sections/s-pubmsg-area.vue').default);
 Vue.component('workcard-area-section', require('./sections/s-workcard-area.vue').default);
 Vue.component('newly-workcard-section', require('./sections/s-newly-workcard.vue').default);

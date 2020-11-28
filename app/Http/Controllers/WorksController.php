@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Work;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class WorksController extends Controller
 {
@@ -70,9 +71,30 @@ class WorksController extends Controller
      */
     public function show($id)
     {
-        $user = User::where('id', $id)->first();
+        $work = DB::table('works as w')
+            ->select('w.name as work_name', 'u.name as user_name', 'w.contract_id', 'c.type', 'w.end_date', 'w.hope_date', 'w.money_lower', 'w.money_upper', 'w.content', 'w.created_at')
+            ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
+            ->leftJoin('contracts as c', 'w.contract_id', '=', 'c.id')
+            ->where('w.id', $id)->first();
 
-        return view('works.show');
+        $work->end_date =  date("Y/m/d", strtotime($work->end_date));
+        $work->hope_date =  date("Y/m/d", strtotime($work->hope_date));
+        $work->created_at =  date("Y/m/d", strtotime($work->created_at));
+        $work->money_lower =  number_format($work->money_lower);
+        $work->money_upper =  number_format($work->money_upper);
+
+        // 残り日数
+        $from = strtotime($work->end_date);
+        $to = strtotime('now');
+        $diff = $from - $to;
+        $diff_date = floor($diff / 60 / 60 / 24); /* [差分/60秒/60分/24時間 = 残り日数] */
+        if ($diff_date >= 1) {
+            $work->remaining_date = 'あと' . $diff_date . '日';
+        } else {
+            $work->remaining_date = "本日終了";
+        }
+
+        return view('works.show', compact('work'));
     }
 
     /**
