@@ -80,19 +80,19 @@
 
                      <!-- 提携方法 -->
                      <div
-                        class="p-workForm__wrap -tieUp">
-                        <label class=" p-workForm__label -tieUp" for="tie-up">提携方法<span>[必須]</span></label>
+                        class="p-workForm__wrap -contract">
+                        <label class=" p-workForm__label -contract" for="contract">提携方法<span>[必須]</span></label>
                         <div class="p-workForm__inputWrap">
                            <select
-                              id="tie-up"
-                              class="c-form__input p-workForm__input -tieUp js-tieUp"
-                              name="tieUp">
+                              id="contract"
+                              class="c-form__input p-workForm__input -contract js-contract"
+                              name="contract">
                               <option value="" selected>選択してください</option>
-                              <option value="1" @if(old('tieUp')=='1' ) selected @endif>単発案件</option>
-                              <option value="2" @if(old('tieUp')=='2' ) selected @endif>レベニューシェア</option>
+                              <option value="1" @if(old('contract')=='1' ) selected @endif>単発案件</option>
+                              <option value="2" @if(old('contract')=='2' ) selected @endif>レベニューシェア</option>
                            </select>
 
-                           @error('tieUp')
+                           @error('contract')
                            <span class="c-form__invalid" role="alert">
                               <strong>入力してください</strong>
                            </span>

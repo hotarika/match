@@ -268,7 +268,7 @@
             border-right: none;
          }
       }
-      &.-tieUp {
+      &.-contract {
          flex-grow: 1.8;
          @include mq('xs') {
             flex-basis: 50%;
@@ -303,7 +303,7 @@
       @include mq('xs') {
          font-size: 14px;
       }
-      &.-tieUp {
+      &.-contract {
          text-align: center;
       }
    }

@@ -102,7 +102,7 @@
       }
       &.-endRecruitment,
       &.-hopeDeadline,
-      &.-tieUp {
+      &.-contract {
          width: 70%;
          @include mq('md') {
             width: 100%;

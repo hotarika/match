@@ -53,10 +53,10 @@
                   <div class="p-workDetail__infoLowerHead">残り日数</div>
                   <div class="p-workDetail__infoLowerBody">あと6日</div>
                </div>
-               <div class="p-workDetail__infoLowerItem -tieUp">
+               <div class="p-workDetail__infoLowerItem -contract">
                   <div class="p-workDetail__infoLowerHead">提携方法</div>
                   <!-- <div class="p-workDetail__infoLowerBody">レベニューシェア</div> -->
-                  <div class="p-workDetail__infoLowerBody -tieUp">
+                  <div class="p-workDetail__infoLowerBody -contract">
                      <div class="p-workDetail__infoLowerBodyOneoff">単発案件</div>
                      <div class="p-workDetail__infoLowerBodyMoney">（1,000 ~ 2,000千円）</div>
                   </div>

@@ -91,11 +91,21 @@ a {
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
 
+abbr[title] {
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+  border-bottom: none;
+  /* 1 */
+}
+
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
 
-b,strong {
+b,
+strong {
   font-weight: bolder;
 }
 
@@ -103,6 +113,15 @@ b,strong {
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
 
 /**
  * Add the correct font size in all browsers.
@@ -116,6 +135,22 @@ small {
  * Prevent `sub` and `sup` elements from affecting the line height in
  * all browsers.
  */
+
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
 
 /* Embedded content
    ========================================================================== */
@@ -136,7 +171,11 @@ img {
  * 2. Remove the margin in Firefox and Safari.
  */
 
-button,input,select,textarea {
+button,
+input,
+optgroup,
+select,
+textarea {
   margin: 0;
   /* 2 */
   font-family: inherit;
@@ -152,7 +191,8 @@ button,input,select,textarea {
  * 1. Show the overflow in Edge.
  */
 
-button,input {
+button,
+input {
   /* 1 */
   overflow: visible;
 }
@@ -162,7 +202,8 @@ button,input {
  * 1. Remove the inheritance of text transform in Firefox.
  */
 
-button,select {
+button,
+select {
   /* 1 */
   text-transform: none;
 }
@@ -171,7 +212,10 @@ button,select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 
-button,[type=button],[type=reset],[type=submit] {
+button,
+[type=button],
+[type=reset],
+[type=submit] {
   -webkit-appearance: button;
 }
 
@@ -179,7 +223,10 @@ button,[type=button],[type=reset],[type=submit] {
  * Remove the inner border and padding in Firefox.
  */
 
-button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner {
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
   padding: 0;
   border-style: none;
 }
@@ -188,13 +235,20 @@ button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focu
  * Restore the focus styles unset by the previous rule.
  */
 
-button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring {
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
 /**
  * Correct the padding in Firefox.
  */
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
 
 /**
  * 1. Correct the text wrapping in Edge and IE.
@@ -203,9 +257,28 @@ button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[
  *    `fieldset` elements in all browsers.
  */
 
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  color: inherit;
+  /* 2 */
+  white-space: normal;
+  /* 1 */
+}
+
 /**
  * Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
+
+progress {
+  vertical-align: baseline;
+}
 
 /**
  * Remove the default vertical scrollbar in IE 10+.
@@ -220,7 +293,8 @@ textarea {
  * 2. Remove the padding in IE 10.
  */
 
-[type=checkbox],[type=radio] {
+[type=checkbox],
+[type=radio] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -231,7 +305,8 @@ textarea {
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
 
-[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button {
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -274,9 +349,17 @@ textarea {
  * Add the correct display in Edge, IE 10+, and Firefox.
  */
 
+details {
+  display: block;
+}
+
 /*
  * Add the correct display in all browsers.
  */
+
+summary {
+  display: list-item;
+}
 
 /* Misc
    ========================================================================== */
@@ -304,7 +387,9 @@ body {
   background-color: #efefef;
 }
 
-*,*::before,*::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   line-height: 1;
 }
@@ -755,7 +840,8 @@ body {
   }
 }
 
-.c-dmMsgCard__basicInfo,.c-pubMsgCard__basicInfo {
+.c-dmMsgCard__basicInfo,
+.c-pubMsgCard__basicInfo {
   border-radius: 50px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -768,7 +854,8 @@ body {
 }
 
 @media screen and (max-width: 414px) {
-  .c-dmMsgCard__basicInfo,  .c-pubMsgCard__basicInfo {
+  .c-dmMsgCard__basicInfo,
+  .c-pubMsgCard__basicInfo {
     padding: 5px 10px;
   }
 }
@@ -1431,7 +1518,8 @@ body {
   background-color: #0081ff;
 }
 
-.p-dm__msgMe,.p-dm__msgYou {
+.p-dm__msgMe,
+.p-dm__msgYou {
   border-radius: 5px;
   line-height: 1.3;
   letter-spacing: 0.5px;
@@ -1442,7 +1530,8 @@ body {
 }
 
 @media screen and (max-width: 320px) {
-  .p-dm__msgMe,  .p-dm__msgYou {
+  .p-dm__msgMe,
+  .p-dm__msgYou {
     width: 80%;
     padding: 10px;
     font-size: 12px;
@@ -1451,7 +1540,8 @@ body {
   }
 }
 
-.p-dm__msgMe::before,.p-dm__msgYou::before {
+.p-dm__msgMe::before,
+.p-dm__msgYou::before {
   position: absolute;
   top: 34%;
   display: block;
@@ -1459,7 +1549,8 @@ body {
   border-style: solid;
 }
 
-.p-dm__msgMe > time,.p-dm__msgYou > time {
+.p-dm__msgMe > time,
+.p-dm__msgYou > time {
   position: absolute;
   bottom: -15px;
   font-size: 12px;
@@ -1980,7 +2071,9 @@ body {
   }
 }
 
-.p-home__workCardSecHead,.p-home__canSecHead,.p-home__skillSecHead {
+.p-home__workCardSecHead,
+.p-home__canSecHead,
+.p-home__skillSecHead {
   margin: 0 0 50px;
   font-size: 20px;
   font-weight: bold;
@@ -1989,12 +2082,16 @@ body {
 }
 
 @media screen and (max-width: 414px) {
-  .p-home__workCardSecHead,  .p-home__canSecHead,  .p-home__skillSecHead {
+  .p-home__workCardSecHead,
+  .p-home__canSecHead,
+  .p-home__skillSecHead {
     margin: 0 0 30px;
   }
 }
 
-.p-home__canCardWrap.-right::before,.p-home__canCardWrap.-center::before,.p-home__canCardWrap.-left::before {
+.p-home__canCardWrap.-right::before,
+.p-home__canCardWrap.-center::before,
+.p-home__canCardWrap.-left::before {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2856,25 +2953,31 @@ body {
   margin-bottom: 40px;
 }
 
-.p-profile__proResultHead,.p-profile__proIntroduceHead {
+.p-profile__proResultHead,
+.p-profile__proIntroduceHead {
   margin-bottom: 5px;
   font-weight: bold;
 }
 
 @media screen and (max-width: 414px) {
-  .p-profile__proResultHead,  .p-profile__proIntroduceHead {
+  .p-profile__proResultHead,
+  .p-profile__proIntroduceHead {
     font-size: 15px;
   }
 }
 
-.p-profile__proResultBody,.p-profile__proResultBody th,.p-profile__proResultBody td {
+.p-profile__proResultBody,
+.p-profile__proResultBody th,
+.p-profile__proResultBody td {
   padding: 10px;
   border-collapse: collapse;
   border: 1px solid #adb5bd;
 }
 
 @media screen and (max-width: 414px) {
-  .p-profile__proResultBody,  .p-profile__proResultBody th,  .p-profile__proResultBody td {
+  .p-profile__proResultBody,
+  .p-profile__proResultBody th,
+  .p-profile__proResultBody td {
     font-size: 14px;
   }
 }
@@ -3058,6 +3161,21 @@ body {
   align-items: center;
   justify-content: flex-end;
   margin-bottom: 20px;
+}
+
+.p-workDetail__tweetBtn {
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  padding: 5px 7px;
+  font-size: 13px;
+  color: white;
+  background-color: #00a7e8;
+}
+
+.p-workDetail__tweetBtn > img {
+  width: 15px;
+  margin-right: 4px;
 }
 
 .p-workDetail__favBtn {
@@ -3306,12 +3424,12 @@ body {
   }
 }
 
-.p-workDetail__infoLowerItem.-tieUp {
+.p-workDetail__infoLowerItem.-contract {
   flex-grow: 1.8;
 }
 
 @media screen and (max-width: 414px) {
-  .p-workDetail__infoLowerItem.-tieUp {
+  .p-workDetail__infoLowerItem.-contract {
     flex-basis: 50%;
     flex-grow: 0;
     border-right: 1px solid #ced4da;
@@ -3352,7 +3470,7 @@ body {
   }
 }
 
-.p-workDetail__infoLowerBody.-tieUp {
+.p-workDetail__infoLowerBody.-contract {
   text-align: center;
 }
 
@@ -3849,12 +3967,16 @@ body {
   }
 }
 
-.p-workForm__input.-endRecruitment,.p-workForm__input.-hopeDeadline,.p-workForm__input.-tieUp {
+.p-workForm__input.-endRecruitment,
+.p-workForm__input.-hopeDeadline,
+.p-workForm__input.-contract {
   width: 70%;
 }
 
 @media screen and (max-width: 768px) {
-  .p-workForm__input.-endRecruitment,  .p-workForm__input.-hopeDeadline,  .p-workForm__input.-tieUp {
+  .p-workForm__input.-endRecruitment,
+  .p-workForm__input.-hopeDeadline,
+  .p-workForm__input.-contract {
     width: 100%;
   }
 }
@@ -4067,6 +4189,20 @@ body {
   margin: 1px;
 }
 
+.u-mx1 {
+  margin-right: 1px;
+  margin-left: 1px;
+}
+
+.u-my1 {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.u-mt1 {
+  margin-top: 1px;
+}
+
 .u-mr1 {
   margin-right: 1px;
 }
@@ -4081,6 +4217,20 @@ body {
 
 .u-m2 {
   margin: 2px;
+}
+
+.u-mx2 {
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+.u-my2 {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.u-mt2 {
+  margin-top: 2px;
 }
 
 .u-mr2 {
@@ -4099,6 +4249,20 @@ body {
   margin: 3px;
 }
 
+.u-mx3 {
+  margin-right: 3px;
+  margin-left: 3px;
+}
+
+.u-my3 {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.u-mt3 {
+  margin-top: 3px;
+}
+
 .u-mr3 {
   margin-right: 3px;
 }
@@ -4113,6 +4277,20 @@ body {
 
 .u-m4 {
   margin: 4px;
+}
+
+.u-mx4 {
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.u-my4 {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.u-mt4 {
+  margin-top: 4px;
 }
 
 .u-mr4 {
@@ -4131,6 +4309,20 @@ body {
   margin: 5px;
 }
 
+.u-mx5 {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.u-my5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.u-mt5 {
+  margin-top: 5px;
+}
+
 .u-mr5 {
   margin-right: 5px;
 }
@@ -4145,6 +4337,20 @@ body {
 
 .u-m6 {
   margin: 6px;
+}
+
+.u-mx6 {
+  margin-right: 6px;
+  margin-left: 6px;
+}
+
+.u-my6 {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.u-mt6 {
+  margin-top: 6px;
 }
 
 .u-mr6 {
@@ -4163,6 +4369,20 @@ body {
   margin: 7px;
 }
 
+.u-mx7 {
+  margin-right: 7px;
+  margin-left: 7px;
+}
+
+.u-my7 {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.u-mt7 {
+  margin-top: 7px;
+}
+
 .u-mr7 {
   margin-right: 7px;
 }
@@ -4177,6 +4397,20 @@ body {
 
 .u-m8 {
   margin: 8px;
+}
+
+.u-mx8 {
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.u-my8 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.u-mt8 {
+  margin-top: 8px;
 }
 
 .u-mr8 {
@@ -4195,6 +4429,20 @@ body {
   margin: 9px;
 }
 
+.u-mx9 {
+  margin-right: 9px;
+  margin-left: 9px;
+}
+
+.u-my9 {
+  margin-top: 9px;
+  margin-bottom: 9px;
+}
+
+.u-mt9 {
+  margin-top: 9px;
+}
+
 .u-mr9 {
   margin-right: 9px;
 }
@@ -4211,6 +4459,20 @@ body {
   margin: 10px;
 }
 
+.u-mx10 {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.u-my10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.u-mt10 {
+  margin-top: 10px;
+}
+
 .u-mr10 {
   margin-right: 10px;
 }
@@ -4222,4 +4484,6 @@ body {
 .u-ml10 {
   margin-left: 10px;
 }
+
+
 /*# sourceMappingURL=app.css.map*/

@@ -1,10 +1,10 @@
 window.addEventListener('DOMContentLoaded', () => {
-   const tieUp = document.querySelector('.js-tieUp'); // 値を取得
+   const contract = document.querySelector('.js-contract'); // 値を取得
    const active = document.querySelector('.js-showInput'); // is-active挿入
 
    // 金額の表示は「単発案件」のみで必要になるため、それを選択した場合に表示させるよう制御する
-   if (tieUp) {
-      tieUp.addEventListener('change', e => {
+   if (contract) {
+      contract.addEventListener('change', e => {
          if (e.target.value === '1') {
             active.classList.add('is-active');
             active.style.transition = '0.2s';
@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
       // 単発案件を指定後のsubmit時に、表示が少し遅れて表示されるのは、スタイルをjsで制御しているため
       // jsは一番最後に読み込んでいるので、表示が反映されるまで少し時間がかかる
       window.onload = function() {
-         if (document.querySelector('.js-tieUp').value === '1') {
+         if (document.querySelector('.js-contract').value === '1') {
             active.style.transition = '0s';
             active.classList.add('is-active');
          }

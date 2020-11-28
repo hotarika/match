@@ -41,9 +41,9 @@ class WorksController extends Controller
             'name' => 'required',
             'endRecruitment' => 'required | date',
             'hopeDeadline' => 'required | date',
-            'tieUp' => 'required',
-            'moneyLower' => 'required_if:tieUp,1',
-            'moneyUpper' => 'required_if:tieUp,1',
+            'contract' => 'required',
+            'moneyLower' => 'required_if:contract,1',
+            'moneyUpper' => 'required_if:contract,1',
             'content' => 'required',
         ];
         $this->validate($request, $validate_rule);
@@ -51,7 +51,7 @@ class WorksController extends Controller
         $work = new Work;
         $work->user_id = Auth::id();
         $work->name = $request->name;
-        $work->contract_id = $request->tieUp;
+        $work->contract_id = $request->contract;
         $work->end_date = $request->endRecruitment;
         $work->hope_date = $request->hopeDeadline;
         $work->money_lower = $request->moneyLower;

@@ -40761,12 +40761,12 @@ var staticRenderFns = [
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "p-workDetail__infoLowerItem -tieUp" }, [
+      _c("div", { staticClass: "p-workDetail__infoLowerItem -contract" }, [
         _c("div", { staticClass: "p-workDetail__infoLowerHead" }, [
           _vm._v("提携方法")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "p-workDetail__infoLowerBody -tieUp" }, [
+        _c("div", { staticClass: "p-workDetail__infoLowerBody -contract" }, [
           _c("div", { staticClass: "p-workDetail__infoLowerBodyOneoff" }, [
             _vm._v("単発案件")
           ]),
@@ -53897,13 +53897,13 @@ window.addEventListener('DOMContentLoaded', function () {
 /***/ (function(module, exports) {
 
 window.addEventListener('DOMContentLoaded', function () {
-  var tieUp = document.querySelector('.js-tieUp'); // 値を取得
+  var contract = document.querySelector('.js-contract'); // 値を取得
 
   var active = document.querySelector('.js-showInput'); // is-active挿入
   // 金額の表示は「単発案件」のみで必要になるため、それを選択した場合に表示させるよう制御する
 
-  if (tieUp) {
-    tieUp.addEventListener('change', function (e) {
+  if (contract) {
+    contract.addEventListener('change', function (e) {
       if (e.target.value === '1') {
         active.classList.add('is-active');
         active.style.transition = '0.2s';
@@ -53916,7 +53916,7 @@ window.addEventListener('DOMContentLoaded', function () {
     // jsは一番最後に読み込んでいるので、表示が反映されるまで少し時間がかかる
 
     window.onload = function () {
-      if (document.querySelector('.js-tieUp').value === '1') {
+      if (document.querySelector('.js-contract').value === '1') {
         active.style.transition = '0s';
         active.classList.add('is-active');
       }
