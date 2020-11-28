@@ -20,8 +20,8 @@ class CreateWorksTable extends Migration
             $table->integer('contract_id');
             $table->date('end_date');
             $table->date('hope_date');
-            $table->integer('money_upper');
-            $table->integer('money_lower');
+            $table->integer('money_upper')->nullable();
+            $table->integer('money_lower')->nullable();
             $table->string('content');
             $table->boolean('delete_flg')->default(false);
             $table->timestamps();

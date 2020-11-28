@@ -53037,6 +53037,10 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_modules_navigation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../js/modules/navigation */ "./resources/js/modules/navigation.js");
 /* harmony import */ var _js_modules_navigation__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_modules_navigation__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _js_modules_showInputForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../js/modules/showInputForm */ "./resources/js/modules/showInputForm.js");
+/* harmony import */ var _js_modules_showInputForm__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_modules_showInputForm__WEBPACK_IMPORTED_MODULE_1__);
+ // スマホ用ナビゲーションの読み込み
+
  // スマホ用ナビゲーションの読み込み
 
 /**
@@ -53881,6 +53885,43 @@ window.addEventListener('DOMContentLoaded', function () {
       target.classList.remove('is-active');
     }
   });
+});
+
+/***/ }),
+
+/***/ "./resources/js/modules/showInputForm.js":
+/*!***********************************************!*\
+  !*** ./resources/js/modules/showInputForm.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+window.addEventListener('DOMContentLoaded', function () {
+  var tieUp = document.querySelector('.js-tieUp'); // 値を取得
+
+  var active = document.querySelector('.js-showInput'); // is-active挿入
+  // 金額の表示は「単発案件」のみで必要になるため、それを選択した場合に表示させるよう制御する
+
+  if (tieUp) {
+    tieUp.addEventListener('change', function (e) {
+      if (e.target.value === '1') {
+        active.classList.add('is-active');
+        active.style.transition = '0.2s';
+      } else {
+        active.classList.remove('is-active');
+        active.style.transition = '0.2s';
+      }
+    }); // submitした時に、「単発案件」を指定た場合に再表示する
+    // 単発案件を指定後のsubmit時に、表示が少し遅れて表示されるのは、スタイルをjsで制御しているため
+    // jsは一番最後に読み込んでいるので、表示が反映されるまで少し時間がかかる
+
+    window.onload = function () {
+      if (document.querySelector('.js-tieUp').value === '1') {
+        active.style.transition = '0s';
+        active.classList.add('is-active');
+      }
+    };
+  }
 });
 
 /***/ }),

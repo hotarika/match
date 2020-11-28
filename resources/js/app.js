@@ -1,4 +1,5 @@
 import '../js/modules/navigation'; // スマホ用ナビゲーションの読み込み
+import '../js/modules/showInputForm'; // スマホ用ナビゲーションの読み込み
 
 /**
  * First we will load all of this project's JavaScript dependencies which

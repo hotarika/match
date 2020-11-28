@@ -26,6 +26,18 @@
          flex-direction: column;
          padding: 0;
       }
+      &.-money {
+         margin-top: -63px;
+         visibility: hidden;
+         opacity: 0;
+         transition: 0.2s;
+         &.is-active {
+            margin-top: 0;
+            visibility: visible;
+            opacity: 1;
+            transition: 0.2s;
+         }
+      }
    }
    &__label {
       position: relative;

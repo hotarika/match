@@ -3754,6 +3754,20 @@ body {
   }
 }
 
+.p-workForm__wrap.-money {
+  margin-top: -63px;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.p-workForm__wrap.-money.is-active {
+  margin-top: 0;
+  visibility: visible;
+  opacity: 1;
+  transition: 0.2s;
+}
+
 .p-workForm__label {
   position: relative;
   display: block;
