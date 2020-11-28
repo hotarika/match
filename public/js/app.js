@@ -2396,11 +2396,11 @@ var _data_workData_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__
 
       // チェックボックスに応じて、表示カード変更（絞り込み機能）
       this.newList = this.works.filter(function (val) {
-        if (_this.oneoff_checkbox === false && val.contract === 1) {
+        if (_this.oneoff_checkbox === false && val.contract_id === 1) {
           return;
         }
 
-        if (_this.share_checkbox === false && val.contract === 2) {
+        if (_this.share_checkbox === false && val.contract_id === 2) {
           return;
         }
 
