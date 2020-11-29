@@ -2463,9 +2463,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['parent'],
   methods: {
     childTextHandler: function childTextHandler() {
-      this.$emit('child-text', this.$refs);
+      this.$emit('child-text', this.$refs, this.parent);
     }
   }
 });
@@ -2658,10 +2659,6 @@ var _data_workData_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _data_pubMsg_parent_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../data/pubMsg_parent.json */ "./resources/js/data/pubMsg_parent.json");
-var _data_pubMsg_parent_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../data/pubMsg_parent.json */ "./resources/js/data/pubMsg_parent.json", 1);
-/* harmony import */ var _data_pubMsg_child_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../data/pubMsg_child.json */ "./resources/js/data/pubMsg_child.json");
-var _data_pubMsg_child_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../data/pubMsg_child.json */ "./resources/js/data/pubMsg_child.json", 1);
 //
 //
 //
@@ -2732,19 +2729,28 @@ var _data_pubMsg_child_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__
 //
 //
 //
-
+//
+//
+//
+//
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['work_id', 'user', 'parent_msg', 'child_msg', 'public_path'],
   data: function data() {
     return {
-      parent: _data_pubMsg_parent_json__WEBPACK_IMPORTED_MODULE_0__,
-      child: _data_pubMsg_child_json__WEBPACK_IMPORTED_MODULE_1__,
+      parentMsg: this.parent_msg,
+      childMsg: this.child_msg,
       parentTitle: '',
-      parentTextarea: ''
+      parentTextarea: '',
+      childTextarea: '',
+      parentLastId: 0
     };
   },
   methods: {
     addParentMsg: function addParentMsg() {
+      var _this = this;
+
       // 親テキストエリアが空欄の場合
       if (!this.parentTitle.trim('') || !this.parentTextarea.trim('')) {
         alert('タイトルまたはメッセージが空欄です');
@@ -2752,21 +2758,47 @@ var _data_pubMsg_child_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__
       }
 
       if (confirm('送信してもよろしいですか？')) {
-        // メッセージの挿入
-        this.parent.unshift({
-          id: 10,
-          name: 'test-name',
+        axios //store
+        .post(this.public_path + 'pubmsg', {
+          work_id: this.work_id,
+          user_id: this.user.id,
+          title: this.parentTitle,
+          content: this.parentTextarea
+        }).then(function (res) {
+          console.log(res);
+        }); // 最後の行番号を取得（Vueのfor文で使用する:keyの重複を防ぐために利用）
+
+        axios.get(this.public_path + 'pubmsg').then(function (res) {
+          console.log(res);
+          _this.parentLastId = res.data[0].id + 1;
+        })["catch"](function (err) {
+          console.log('err:', err);
+        }); // 今日の日付
+
+        var date = new Date();
+        var today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate(); // // メッセージの挿入
+
+        this.parentMsg.unshift({
+          id: this.parentLastId,
+          name: this.user.name,
+          work_id: this.parentMsg[0].work_id,
+          user_id: this.user.id,
+          image: this.user.image,
           title: this.parentTitle,
           content: this.parentTextarea,
-          time: '2020/11/18 10:11'
+          created_at: today
         }); // 挿入後に、メッセージを空にする
 
         this.parentTitle = '';
         this.parentTextarea = '';
       }
     },
-    addChildMsg: function addChildMsg(refs) {
-      var text = refs.childMessage.value; // テキストエリアが空欄の場合
+    addChildMsg: function addChildMsg() {
+      for (var _len = arguments.length, refs = new Array(_len), _key = 0; _key < _len; _key++) {
+        refs[_key] = arguments[_key];
+      }
+
+      var text = refs[0].childMessage.value; // テキストエリアが空欄の場合
 
       if (!text.trim('')) {
         alert('メッセージが空欄です');
@@ -2774,13 +2806,25 @@ var _data_pubMsg_child_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__
       }
 
       if (confirm('送信してもよろしいですか？')) {
-        // メッセージの挿入
-        this.child.push({
-          id: 10,
-          parent_id: 1,
-          name: 'Child',
+        axios //store
+        .post(this.public_path + 'child', {
+          parent_id: refs[1],
+          user_id: this.user.id,
+          content: text
+        }).then(function (res) {
+          console.log(res);
+        }); // 今日の日付
+
+        var date = new Date();
+        var today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate(); // メッセージの挿入
+
+        this.childMsg.push({
+          user_id: this.user.id,
+          parent_id: refs[1],
           content: text,
-          time: '2020/11/18 10:11'
+          name: this.user.name,
+          image: this.user.image,
+          created_at: today
         }); // 挿入後に、メッセージを空にする
 
         document.querySelector('.js-childTextarea').value = '';
@@ -40457,20 +40501,20 @@ var render = function() {
         _vm._v(" "),
         _c(
           "transition-group",
-          _vm._l(_vm.parent, function(p) {
+          _vm._l(_vm.parentMsg, function(p) {
             return _c(
               "div",
               { key: p.id, staticClass: "p-workDetail__parentWrap" },
               [
                 _c("time", { staticClass: "p-workDetail__parentDate" }, [
-                  _vm._v(_vm._s(p.time))
+                  _vm._v(_vm._s(p.created_at))
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "p-workDetail__parentMsgWrap" }, [
                   _c("img", {
                     staticClass: "c-img p-workDetail__parentImg",
                     attrs: {
-                      src: "../../images/img1.png",
+                      src: _vm.public_path + "storage/user_img/" + p.image,
                       alt: "ユーザーのアイコン"
                     }
                   }),
@@ -40501,7 +40545,7 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _vm._l(_vm.child, function(c) {
+                      _vm._l(_vm.childMsg, function(c) {
                         return [
                           p.id === c.parent_id
                             ? [
@@ -40517,14 +40561,17 @@ var render = function() {
                                       {
                                         staticClass: "p-workDetail__childDate"
                                       },
-                                      [_vm._v(_vm._s(c.time))]
+                                      [_vm._v(_vm._s(c.created_at))]
                                     ),
                                     _vm._v(" "),
                                     _c("img", {
                                       staticClass:
                                         "c-img p-workDetail__childImg",
                                       attrs: {
-                                        src: "../../images/img1.png",
+                                        src:
+                                          _vm.public_path +
+                                          "storage/user_img/" +
+                                          c.image,
                                         alt: "ユーザーのアイコン"
                                       }
                                     }),
@@ -40569,6 +40616,7 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("child-form-component", {
+                        attrs: { parent: p.id },
                         on: { "child-text": _vm.addChildMsg }
                       })
                     ],
@@ -53579,28 +53627,6 @@ module.exports = JSON.parse("[{\"id\":1,\"user_id\":1,\"content\":\"私は1番�
 /***/ (function(module) {
 
 module.exports = JSON.parse("[{\"id\":1,\"name\":\"Name-1\",\"content\":\"1.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":3,\"name\":\"Name-3\",\"content\":\"2.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":6,\"name\":\"Name-6\",\"content\":\"3.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":9,\"name\":\"Name-9\",\"content\":\"4.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":15,\"name\":\"Name-15\",\"content\":\"5.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":28,\"name\":\"Name-28\",\"content\":\"6.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":33,\"name\":\"Name-33\",\"content\":\"7.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":56,\"name\":\"Name-56\",\"content\":\"8.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":66,\"name\":\"Name-66\",\"content\":\"9.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":82,\"name\":\"Name-82\",\"content\":\"10.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"}]");
-
-/***/ }),
-
-/***/ "./resources/js/data/pubMsg_child.json":
-/*!*********************************************!*\
-  !*** ./resources/js/data/pubMsg_child.json ***!
-  \*********************************************/
-/*! exports provided: 0, 1, 2, 3, 4, 5, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("[{\"id\":1,\"parent_id\":1,\"name\":\"Parent_1-1\",\"content\":\"テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1\",\"time\":\"2020/11/17 19:10\"},{\"id\":2,\"parent_id\":1,\"name\":\"Parent_1-2\",\"content\":\"テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1テキスト1\",\"time\":\"2020/11/17 19:10\"},{\"id\":3,\"parent_id\":2,\"name\":\"Parent_2-1\",\"content\":\"テキスト2テキスト2テキスト2テキスト2テキスト2テキスト2テキスト2テキスト2テキスト2テキスト2テキスト2テキスト2\",\"time\":\"2020/11/17 19:10\"},{\"id\":4,\"parent_id\":3,\"name\":\"Parent_3-1\",\"content\":\"テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3\",\"time\":\"2020/11/17 19:10\"},{\"id\":5,\"parent_id\":3,\"name\":\"Parent_3-2\",\"content\":\"テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3\",\"time\":\"2020/11/17 19:10\"},{\"id\":6,\"parent_id\":3,\"name\":\"Parent_3-3\",\"content\":\"テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3テキスト3\",\"time\":\"2020/11/17 19:10\"}]");
-
-/***/ }),
-
-/***/ "./resources/js/data/pubMsg_parent.json":
-/*!**********************************************!*\
-  !*** ./resources/js/data/pubMsg_parent.json ***!
-  \**********************************************/
-/*! exports provided: 0, 1, 2, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("[{\"id\":1,\"name\":\"Name-1\",\"title\":\"納期限について\",\"content\":\"1.テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト\",\"time\":\"2020/11/17 19:10\"},{\"id\":2,\"name\":\"Name-2\",\"title\":\"納期限について\",\"content\":\"2.テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト\",\"time\":\"2020/11/17 19:10\"},{\"id\":3,\"name\":\"Name-3\",\"title\":\"納期限について\",\"content\":\"3.テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト\",\"time\":\"2020/11/17 19:10\"}]");
 
 /***/ }),
 

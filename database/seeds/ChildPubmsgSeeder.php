@@ -37,5 +37,21 @@ class ChildPubmsgSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+        DB::table('child_pubmsg')->insert([
+            'id' => 4,
+            'parent_id' => 2,
+            'user_id' => 2,
+            'content' => '2-1.私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('child_pubmsg')->insert([
+            'id' => 5,
+            'parent_id' => 2,
+            'user_id' => 2,
+            'content' => '2-2.私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
     }
 }

@@ -71,6 +71,11 @@ class WorksController extends Controller
      */
     public function show($id)
     {
+        $work_id = $id; // Vueに渡すために変数に格納
+
+        // **********************************
+        // 仕事詳細
+        // **********************************
         $work = DB::table('works as w')
             ->select('w.id as work_id', 'w.name as work_name', 'u.id as owner_id', 'u.name as owner_name', 'w.contract_id', 'c.type', 'w.end_date', 'w.hope_date', 'w.money_lower', 'w.money_upper', 'w.content', 'w.created_at')
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
@@ -94,7 +99,38 @@ class WorksController extends Controller
             $work->remaining_date = "本日終了";
         }
 
-        return view('works.show', compact('work'));
+        // **********************************
+        // パブリックメッセージ
+        // **********************************
+        $user = Auth::user();
+
+        // 親掲示板
+        $parent_msg = DB::table('parent_pubmsg as pm')
+            ->select('pm.id', 'pm.user_id', 'u.name', 'u.image', 'pm.title', 'pm.content', 'pm.created_at')
+            ->leftJoin('users as u', 'pm.user_id', '=', 'u.id')
+            ->where('work_id', $id)
+            ->latest()
+            ->get();
+
+        // 日付の形式を変更
+        for ($i = 0; $i < count($parent_msg); $i++) {
+            $parent_msg[$i]->created_at = date('Y/m/d', strtotime($parent_msg[$i]->created_at));
+        }
+
+        // 子掲示板
+        $child_msg = DB::table('child_pubmsg as cm')
+            ->select('cm.id', 'cm.parent_id', 'cm.user_id', 'u.name', 'u.image', 'cm.content', 'cm.created_at')
+            ->leftJoin('users as u', 'cm.user_id', '=', 'u.id')
+            ->oldest()
+            ->get();
+
+        // 日付の形式を変更
+        for ($i = 0; $i < count($child_msg); $i++) {
+            $child_msg[$i]->created_at = date('Y/m/d', strtotime($child_msg[$i]->created_at));
+        }
+
+
+        return view('works.show', compact('work_id', 'user', 'work', 'parent_msg', 'child_msg'));
     }
 
     /**

@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Carbon;
 use App\ChildMsg;
-use App\ParentMsg;
+use Illuminate\Support\Facades\DB;
 
-class PubmsgController extends Controller
+class ChildMsgController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,7 @@ class PubmsgController extends Controller
      */
     public function index()
     {
-        // 最後の行番号（id）を取得（Vueで使用）
-        return DB::table('parent_pubmsg')->orderBy('id', 'desc')->take(1)->get();
+        return DB::table('child_pubmsg')->orderBy('id', 'desc')->take(1)->get();
     }
 
     /**
@@ -39,12 +36,11 @@ class PubmsgController extends Controller
      */
     public function store(Request $request)
     {
-        $pubmsg = new ParentMsg;
-        $pubmsg->work_id = $request->work_id;
-        $pubmsg->user_id = $request->user_id;
-        $pubmsg->title = $request->title;
-        $pubmsg->content = $request->content;
-        $pubmsg->save();
+        $child = new ChildMsg();
+        $child->parent_id = $request->parent_id;
+        $child->user_id = $request->user_id;
+        $child->content = $request->content;
+        $child->save();
     }
 
     /**

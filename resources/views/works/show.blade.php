@@ -112,7 +112,10 @@
             </section>
 
             <!-- パブリックメッセージ -->
-            <pubmsg-area-section></pubmsg-area-section>
+            <pubmsg-area-section :work_id="{{json_encode($work_id)}}" :parent_msg="{{json_encode($parent_msg)}}"
+               :child_msg="{{json_encode($child_msg)}}"
+               :public_path="{{ json_encode(asset('')) }}" :user="{{json_encode($user)}}">
+            </pubmsg-area-section>
          </div>
       </div>
    </div>

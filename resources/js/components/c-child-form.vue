@@ -18,9 +18,10 @@
 
 <script>
 export default {
+   props: ['parent'],
    methods: {
       childTextHandler() {
-         this.$emit('child-text', this.$refs);
+         this.$emit('child-text', this.$refs, this.parent);
       }
    }
 };

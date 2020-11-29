@@ -26,10 +26,14 @@
 
          <transition-group>
             <!-- メッセージボード -->
-            <div class="p-workDetail__parentWrap" v-for="p in parent" :key="p.id">
-               <time class="p-workDetail__parentDate">{{ p.time }}</time>
+            <div class="p-workDetail__parentWrap" v-for="p in parentMsg" :key="p.id">
+               <time class="p-workDetail__parentDate">{{ p.created_at }}</time>
                <div class="p-workDetail__parentMsgWrap">
-                  <img class="c-img p-workDetail__parentImg" :src="'../../images/img1.png'" alt="ユーザーのアイコン" />
+                  <img
+                     class="c-img p-workDetail__parentImg"
+                     :src="public_path + 'storage/user_img/' + p.image"
+                     alt="ユーザーのアイコン"
+                  />
                   <!-- 親掲示板 -->
                   <div class="p-workDetail__parentRight">
                      <a class="c-link p-workDetail__parentName -workOwner" href="profile">{{ p.name }}</a>
@@ -39,13 +43,13 @@
                      </p>
 
                      <!-- 子掲示板 -->
-                     <template v-for="c in child">
+                     <template v-for="c in childMsg">
                         <template v-if="p.id === c.parent_id">
                            <div class="p-workDetail__childWrap" :key="c.id">
-                              <time class="p-workDetail__childDate">{{ c.time }}</time>
+                              <time class="p-workDetail__childDate">{{ c.created_at }}</time>
                               <img
                                  class="c-img p-workDetail__childImg"
-                                 :src="'../../images/img1.png'"
+                                 :src="public_path + 'storage/user_img/' + c.image"
                                  alt="ユーザーのアイコン"
                               />
                               <div class="p-workDetail__childRight">
@@ -59,7 +63,7 @@
                      </template>
 
                      <!-- 子フォーム -->
-                     <child-form-component @child-text="addChildMsg"></child-form-component>
+                     <child-form-component @child-text="addChildMsg" :parent="p.id"></child-form-component>
                   </div>
                </div>
             </div>
@@ -69,16 +73,18 @@
 </template>
 
 <script>
-import parent from '../data/pubMsg_parent.json';
-import child from '../data/pubMsg_child.json';
+const axios = require('axios');
 
 export default {
+   props: ['work_id', 'user', 'parent_msg', 'child_msg', 'public_path'],
    data() {
       return {
-         parent,
-         child,
+         parentMsg: this.parent_msg,
+         childMsg: this.child_msg,
          parentTitle: '',
-         parentTextarea: ''
+         parentTextarea: '',
+         childTextarea: '',
+         parentLastId: 0
       };
    },
    methods: {
@@ -90,13 +96,42 @@ export default {
          }
 
          if (confirm('送信してもよろしいですか？')) {
-            // メッセージの挿入
-            this.parent.unshift({
-               id: 10,
-               name: 'test-name',
+            axios //store
+               .post(this.public_path + 'pubmsg', {
+                  work_id: this.work_id,
+                  user_id: this.user.id,
+                  title: this.parentTitle,
+                  content: this.parentTextarea
+               })
+               .then(res => {
+                  console.log(res);
+               });
+
+            // 最後の行番号を取得（Vueのfor文で使用する:keyの重複を防ぐために利用）
+            axios
+               .get(this.public_path + 'pubmsg')
+               .then(res => {
+                  console.log(res);
+                  this.parentLastId = res.data[0].id + 1;
+               })
+               .catch(err => {
+                  console.log('err:', err);
+               });
+
+            // 今日の日付
+            var date = new Date();
+            const today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+
+            // // メッセージの挿入
+            this.parentMsg.unshift({
+               id: this.parentLastId,
+               name: this.user.name,
+               work_id: this.parentMsg[0].work_id,
+               user_id: this.user.id,
+               image: this.user.image,
                title: this.parentTitle,
                content: this.parentTextarea,
-               time: '2020/11/18 10:11'
+               created_at: today
             });
 
             // 挿入後に、メッセージを空にする
@@ -104,8 +139,8 @@ export default {
             this.parentTextarea = '';
          }
       },
-      addChildMsg(refs) {
-         const text = refs.childMessage.value;
+      addChildMsg(...refs) {
+         const text = refs[0].childMessage.value;
 
          // テキストエリアが空欄の場合
          if (!text.trim('')) {
@@ -114,13 +149,28 @@ export default {
          }
 
          if (confirm('送信してもよろしいですか？')) {
+            axios //store
+               .post(this.public_path + 'child', {
+                  parent_id: refs[1],
+                  user_id: this.user.id,
+                  content: text
+               })
+               .then(res => {
+                  console.log(res);
+               });
+
+            // 今日の日付
+            var date = new Date();
+            const today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+
             // メッセージの挿入
-            this.child.push({
-               id: 10,
-               parent_id: 1,
-               name: 'Child',
+            this.childMsg.push({
+               user_id: this.user.id,
+               parent_id: refs[1],
                content: text,
-               time: '2020/11/18 10:11'
+               name: this.user.name,
+               image: this.user.image,
+               created_at: today
             });
 
             // 挿入後に、メッセージを空にする

@@ -26,7 +26,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Resource（今後CRUD処理を拡張する可能性を踏まえて、resourceで定義）
     Route::resource('/users', 'UsersController');
     Route::resource('/works', 'WorksController');
-    Route::resource('/pubmsg', 'PubmsgController');
+    Route::resource('/pubmsg', 'PubmsgController'); //親掲示板
+    Route::resource('/child', 'ChildMsgController');
     Route::resource('/dm', 'DmController');
 
     // Invoke Controller（1つのコントローラーに1つの定義しか記述しないという意味）
