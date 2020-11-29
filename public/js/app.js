@@ -2743,14 +2743,11 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       childMsg: this.child_msg,
       parentTitle: '',
       parentTextarea: '',
-      childTextarea: '',
-      parentLastId: 0
+      childTextarea: ''
     };
   },
   methods: {
     addParentMsg: function addParentMsg() {
-      var _this = this;
-
       // 親テキストエリアが空欄の場合
       if (!this.parentTitle.trim('') || !this.parentTextarea.trim('')) {
         alert('タイトルまたはメッセージが空欄です');
@@ -2766,22 +2763,15 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
           content: this.parentTextarea
         }).then(function (res) {
           console.log(res);
-        }); // 最後の行番号を取得（Vueのfor文で使用する:keyの重複を防ぐために利用）
-
-        axios.get(this.public_path + 'pubmsg').then(function (res) {
-          console.log(res);
-          _this.parentLastId = res.data[0].id + 1;
-        })["catch"](function (err) {
-          console.log('err:', err);
         }); // 今日の日付
 
         var date = new Date();
         var today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate(); // // メッセージの挿入
 
         this.parentMsg.unshift({
-          id: this.parentLastId,
+          id: this.parentMsg.length + 1,
           name: this.user.name,
-          work_id: this.parentMsg[0].work_id,
+          work_id: this.work_id,
           user_id: this.user.id,
           image: this.user.image,
           title: this.parentTitle,
@@ -2827,7 +2817,10 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
           created_at: today
         }); // 挿入後に、メッセージを空にする
 
-        document.querySelector('.js-childTextarea').value = '';
+        var textarea = document.getElementsByClassName('js-childTextarea');
+        Array.prototype.forEach.call(textarea, function (el) {
+          el.value = '';
+        });
       }
     }
   }
