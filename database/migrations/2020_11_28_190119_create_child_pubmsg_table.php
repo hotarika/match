@@ -15,6 +15,7 @@ class CreateChildPubmsgTable extends Migration
     {
         Schema::create('child_pubmsg', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('work_id');
             $table->bigInteger('parent_id');
             $table->bigInteger('user_id');
             $table->string('content');

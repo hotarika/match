@@ -40540,7 +40540,7 @@ var render = function() {
                       _vm._v(" "),
                       _vm._l(_vm.childMsg, function(c) {
                         return [
-                          p.id === c.parent_id
+                          p.id === c.parent_id && _vm.$work_id === c.work_id
                             ? [
                                 _c(
                                   "div",

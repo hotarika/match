@@ -119,7 +119,7 @@ class WorksController extends Controller
 
         // 子掲示板
         $child_msg = DB::table('child_pubmsg as cm')
-            ->select('cm.id', 'cm.parent_id', 'cm.user_id', 'u.name', 'u.image', 'cm.content', 'cm.created_at')
+            ->select('cm.id', 'cm.work_id', 'cm.parent_id', 'cm.user_id', 'u.name', 'u.image', 'cm.content', 'cm.created_at')
             ->leftJoin('users as u', 'cm.user_id', '=', 'u.id')
             ->oldest()
             ->get();
