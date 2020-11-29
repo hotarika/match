@@ -1697,6 +1697,7 @@ body {
   position: relative;
   flex-basis: 15%;
   padding: 15px 15px 50px 15px;
+  margin: 0;
   background: #ced4da;
   /* IE11 対応 */
 }

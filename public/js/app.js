@@ -1962,11 +1962,16 @@ var _data_dmData_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__we
 //
 //
 
+
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['public_path', 'contents', 'user_id'],
   data: function data() {
     return {
       textarea: '',
-      msgs: _data_dmData_json__WEBPACK_IMPORTED_MODULE_0__
+      msgs: _data_dmData_json__WEBPACK_IMPORTED_MODULE_0__,
+      conts: this.contents
     };
   },
   methods: {
@@ -1975,15 +1980,28 @@ var _data_dmData_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__we
       if (!this.textarea.trim('')) {
         alert('メッセージが空欄です');
         return;
-      } // メッセージの送信
+      } // 今日の日付
 
+
+      var date = new Date();
+      var today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate(); // メッセージの送信
 
       if (confirm('送信してもよろしいですか？')) {
-        this.msgs.push({
-          id: 10,
-          user_id: 2,
+        this.conts.push({
+          board_id: this.conts.length + 1,
+          contents_id: this.conts.length + 1,
+          user_id: this.user_id,
           content: this.textarea,
-          time: '2020/11/18 10:11'
+          created_at: today
+        });
+        axios //store
+        .post(this.public_path + 'dm', {
+          board_id: 1,
+          user_id: 1,
+          content: this.textarea,
+          work_id: 1
+        }).then(function (res) {
+          console.log(res);
         }); // 挿入後に、メッセージを空にする
 
         this.textarea = '';
@@ -39312,34 +39330,28 @@ var render = function() {
         [
           _c(
             "transition-group",
-            [
-              _vm._l(_vm.msgs, function(msg) {
-                return [
-                  msg.user_id === 1
-                    ? _c("div", { key: msg.id, staticClass: "p-dm__msgMe" }, [
-                        _vm._v(
-                          "\n                  " +
-                            _vm._s(msg.content) +
-                            "\n                  "
-                        ),
-                        _c("time", [_vm._v(_vm._s(msg.time))])
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  msg.user_id === 2
-                    ? _c("div", { key: msg.id, staticClass: "p-dm__msgYou" }, [
-                        _vm._v(
-                          "\n                  " +
-                            _vm._s(msg.content) +
-                            "\n                  "
-                        ),
-                        _c("time", [_vm._v(_vm._s(msg.time))])
-                      ])
-                    : _vm._e()
-                ]
-              })
-            ],
-            2
+            _vm._l(_vm.contents, function(msg) {
+              return _c("div", { key: msg.contents_id }, [
+                msg.user_id === _vm.user_id
+                  ? _c("div", { key: msg.id, staticClass: "p-dm__msgMe" }, [
+                      _vm._v(
+                        "\n                  " +
+                          _vm._s(msg.content) +
+                          "\n                  "
+                      ),
+                      _c("time", [_vm._v(_vm._s(msg.time))])
+                    ])
+                  : _c("div", { key: msg.id, staticClass: "p-dm__msgYou" }, [
+                      _vm._v(
+                        "\n                  " +
+                          _vm._s(msg.content) +
+                          "\n                  "
+                      ),
+                      _c("time", [_vm._v(_vm._s(msg.time))])
+                    ])
+              ])
+            }),
+            0
           )
         ],
         1

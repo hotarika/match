@@ -15,18 +15,18 @@
       <div class="p-dm__msgSec">
          <div class="p-dm__msgArea js-scroll" data-scroll>
             <transition-group>
-               <template v-for="msg in msgs">
+               <div v-for="msg in contents" :key="msg.contents_id">
                   <!-- 自分ののメッセージ -->
-                  <div class="p-dm__msgMe" v-if="msg.user_id === 1" :key="msg.id">
+                  <div class="p-dm__msgMe" v-if="msg.user_id === user_id" :key="msg.id">
                      {{ msg.content }}
                      <time>{{ msg.time }}</time>
                   </div>
                   <!-- 相手のメッセージ -->
-                  <div class="p-dm__msgYou" v-if="msg.user_id === 2" :key="msg.id">
+                  <div class="p-dm__msgYou" v-else :key="msg.id">
                      {{ msg.content }}
                      <time>{{ msg.time }}</time>
                   </div>
-               </template>
+               </div>
             </transition-group>
          </div>
          <!-- フォーム -->
@@ -51,12 +51,15 @@
 
 <script>
 import msgs from '../data/dmData.json';
+const axios = require('axios');
 
 export default {
+   props: ['public_path', 'contents', 'user_id'],
    data() {
       return {
          textarea: '',
-         msgs
+         msgs,
+         conts: this.contents
       };
    },
    methods: {
@@ -67,14 +70,31 @@ export default {
             return;
          }
 
+         // 今日の日付
+         var date = new Date();
+         const today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+
          // メッセージの送信
          if (confirm('送信してもよろしいですか？')) {
-            this.msgs.push({
-               id: 10,
-               user_id: 2,
+            this.conts.push({
+               board_id: this.conts.length + 1,
+               contents_id: this.conts.length + 1,
+               user_id: this.user_id,
                content: this.textarea,
-               time: '2020/11/18 10:11'
+               created_at: today
             });
+
+            axios //store
+               .post(this.public_path + 'dm', {
+                  board_id: 1,
+                  user_id: 1,
+                  content: this.textarea,
+                  work_id: 1
+               })
+               .then(res => {
+                  console.log(res);
+               });
+
             // 挿入後に、メッセージを空にする
             this.textarea = '';
          }
