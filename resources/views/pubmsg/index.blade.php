@@ -11,17 +11,21 @@
 
          <div class="l-main__mainArea -twoColumns">
             <section class="c-h2__sec">
+               @foreach ( $pubmsgs as $pubmsg )
                <!-- ダイレクトメッセージ一覧 -->
-               <pubmsg-card-component></pubmsg-card-component>
-               <pubmsg-card-component></pubmsg-card-component>
-               <pubmsg-card-component></pubmsg-card-component>
-               <pubmsg-card-component></pubmsg-card-component>
-               <pubmsg-card-component></pubmsg-card-component>
-               <pubmsg-card-component></pubmsg-card-component>
-               <pubmsg-card-component></pubmsg-card-component>
-               <pubmsg-card-component></pubmsg-card-component>
-               <pubmsg-card-component></pubmsg-card-component>
-               <pubmsg-card-component></pubmsg-card-component>
+               <a class="c-card c-msgCard" href="work-detail#pub-msg">
+                  <div class="c-pubMsgCard__infoWrap">
+                     <div class="c-pubMsgCard__basicInfo">
+                        {{$pubmsg->user_name}} / {{$pubmsg->work_name}}
+                     </div>
+                     <time class="c-pubMsgCard__msgTime">2020/11/09 10:33</time>
+                  </div>
+                  <div class="c-pubMsgCard__msgTitle">
+                     {{$pubmsg->title}}
+                  </div>
+                  <div class="c-pubMsgCard__pubMsg">{{$pubmsg->content}}</div>
+               </a>
+               @endforeach
             </section>
             <!-- ページネーション -->
             @include('components/pagination')

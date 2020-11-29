@@ -18,7 +18,28 @@ class PubmsgController extends Controller
     public function index()
     {
         // 最後の行番号（id）を取得（Vueで使用）
-        return DB::table('parent_pubmsg')->orderBy('id', 'desc')->take(1)->get();
+        // $pubmsgs = DB::table('parent_pubmsg as pm')
+        //     ->select('pm.id', 'pm.title', 'pm.content', 'pm.work_id', 'w.name as work_name', 'pm.user_id', 'u.name as user_name', 'pm.created_at')
+        //     ->leftJoin('users as u', 'pm.user_id', '=', 'u.id')
+        //     ->leftJoin('works as w', 'pm.work_id', '=', 'w.id')
+        //     ->get();
+
+        // 最後の行番号（id）を取得（Vueで使用）
+        $pubmsgs = DB::table('parent_pubmsg as pm')
+            ->select('pm.id', 'pm.title', 'pm.content', 'pm.work_id', 'w.name as work_name', 'pm.user_id', 'u.name as user_name', 'pm.created_at')
+            ->leftJoin('users as u', 'pm.user_id', '=', 'u.id')
+            ->leftJoin('works as w', 'pm.work_id', '=', 'w.id')
+            ->get();
+
+        // $child = DB::table('child_pubmsg')->where()->get();
+
+        // for ($i = 0; $i < count($child); $i++) {
+        //     $child[$i]->parent_id;
+        // }
+
+
+
+        return view('pubmsg.index', compact('pubmsgs'));
     }
 
     /**
