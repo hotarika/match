@@ -175,6 +175,8 @@ class WorksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Work::find($id)->delete();
+
+        return redirect()->route('works.index');
     }
 }
