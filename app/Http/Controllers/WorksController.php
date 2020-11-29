@@ -141,7 +141,8 @@ class WorksController extends Controller
      */
     public function edit($id)
     {
-        return view('works.form');
+        $work = Work::find($id);
+        return view('works.form', compact('work'));
     }
 
     /**
@@ -153,7 +154,17 @@ class WorksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $work = Work::find($id);
+        $work->name = $request->name;
+        $work->contract_id = $request->contract;
+        $work->end_date = $request->endRecruitment;
+        $work->hope_date = $request->hopeDeadline;
+        $work->money_lower = $request->moneyLower;
+        $work->money_upper = $request->moneyUpper;
+        $work->content = $request->content;
+        $work->save();
+
+        return redirect()->route('works.show', $work->id);
     }
 
     /**

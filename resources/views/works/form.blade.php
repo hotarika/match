@@ -4,7 +4,7 @@
 @section('content')
 <main class="l-main p-workForm">
    <div class="container">
-      <h1 class="c-h1__head">仕事登録</h1>
+      <h1 class="c-h1__head">@if ( request()->is('*edit*') )仕事編集 @else 仕事登録 @endif</h1>
       <div class="l-main__mainAreaWrap">
          <!-- サイドバー -->
          @include('components/sidebar')
@@ -12,7 +12,10 @@
          <div class="l-main__mainArea -twoColumns">
             <section class="c-h2__sec">
                <div class="c-h2__oneRowBody p-workForm__body">
-                  <form method="POST" class="p-workForm__form" action="{{route('works.store')}}">
+                  <form method="POST" class="p-workForm__form"
+                     action="@if ( request()->is('*edit*') ){{route('works.update',$work->id)}} @else {{route('works.store')}} @endif">
+                     @if( request()->is('*edit*') ) @method('PUT') @endif
+                     {{-- @method('PUT') --}}
                      @csrf
 
                      <!-- 案件名 -->
@@ -24,10 +27,9 @@
                               class="c-form__input p-workForm__input -name"
                               type="text"
                               name="name"
-                              value="{{ old('name') }}"
+                              value="{{ old('name',$work->name ?? '') }}"
                               autofocus
                               placeholder="仕事名を記入" />
-
                            @error('name')
                            <span class="c-form__invalid" role="alert">
                               <strong>入力してください</strong>
@@ -46,7 +48,7 @@
                               class="c-form__input p-workForm__input -endRecruitment"
                               type="date"
                               name="endRecruitment"
-                              value="{{ old('endRecruitment') }}"
+                              value="{{ old('endRecruitment',$work->end_date ?? '') }}"
                               placeholder="例：2021/01/01" />
 
                            @error('endRecruitment')
@@ -67,7 +69,7 @@
                               class="c-form__input p-workForm__input -hopeDeadline"
                               type="date"
                               name="hopeDeadline"
-                              value="{{ old('hopeDeadline') }}"
+                              value="{{ old('hopeDeadline',$work->hope_date ??  '') }}"
                               placeholder="例：2021/02/01" />
 
                            @error('hopeDeadline')
@@ -88,8 +90,11 @@
                               class="c-form__input p-workForm__input -contract js-contract"
                               name="contract">
                               <option value="" selected>選択してください</option>
-                              <option value="1" @if(old('contract')=='1' ) selected @endif>単発案件</option>
-                              <option value="2" @if(old('contract')=='2' ) selected @endif>レベニューシェア</option>
+                              <option value="1" @if(old('contract',$work->contract_id ?? '')=='1' ) selected @endif>単発案件
+                              </option>
+                              <option value="2" @if(old('contract',$work->contract_id ?? '')=='2' ) selected
+                                 @endif>レベニューシェア
+                              </option>
                            </select>
 
                            @error('contract')
@@ -110,14 +115,14 @@
                                  class="c-form__input p-workForm__input -money"
                                  type="number"
                                  name="moneyLower"
-                                 value="{{ old('moneyLower') }}"
+                                 value="{{ old('moneyLower',$work->money_lower ?? '') }}"
                                  placeholder="例：1000" /><span>千円〜</span>
                               <input
                                  id="money"
                                  class="c-form__input p-workForm__input -money"
                                  type="number"
                                  name="moneyUpper"
-                                 value="{{ old('moneyUpper') }}"
+                                 value="{{ old('moneyUpper',$work->money_upper ?? '') }}"
                                  placeholder="例：2000" /><span>千円</span>
                            </div>
 
@@ -140,7 +145,7 @@
                               name="content"
                               cols="30"
                               rows="10"
-                              placeholder="具体的に依頼内容を記入&#10;（例：どのような仕事を依頼したいのか・期待する効果は何か・仕事の規模はどれくらいか などご自由にご記入ください）">{{ old('content') }}</textarea>
+                              placeholder="具体的に依頼内容を記入&#10;（例：どのような仕事を依頼したいのか・期待する効果は何か・仕事の規模はどれくらいか などご自由にご記入ください）">{{ old('content',$work->content ?? '') }}</textarea>
 
                            @error('content')
                            <span class="c-form__invalid" role="alert">
@@ -149,7 +154,8 @@
                            @enderror
                         </div>
                      </div>
-                     <button class="c-btn p-workForm__editBtn" type="submit">編集する</button>
+                     <button class="c-btn p-workForm__editBtn" type="submit">@if ( request()->is('*edit*') )編集する @else
+                        登録する @endif</button>
                   </form>
                </div>
             </section>

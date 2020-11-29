@@ -16,17 +16,4 @@
          <li><i class="fas fa-cog"></i><span class="u-ml2">アカウント設定</span></li>
       </a>
    </ul>
-
-   <div class="p-side__linkHead">発注者メニュー</div>
-   <ul class="p-side__lists">
-      <a class="c-btn p-side__link" href="applicant">
-         <li><i class="fas fa-list-alt"></i><span class="u-ml1">応募者一覧</span></li>
-      </a>
-      <a class="c-btn p-side__link" href="work-form">
-         <li><i class="fas fa-edit"></i><span>編集</span></li>
-      </a>
-      <a class="c-btn p-side__link" href="/">
-         <li><i class="fas fa-trash-alt"></i><span class="u-ml3">削除</span></li>
-      </a>
-   </ul>
 </aside>

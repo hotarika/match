@@ -28,8 +28,42 @@
       <!-- 仕事詳細 -->
       <h1 class="c-h1__head">仕事詳細</h1>
       <div class="l-main__mainAreaWrap">
+
          <!-- サイドバー -->
-         @include('components/sidebar')
+         <aside class="l-side">
+            <ul class="p-side__lists">
+               <a class="c-btn p-side__link is-active" href="{{ route('mypage') }}">
+                  <li><i class="fas fa-user"></i><span class="u-ml4">マイページ</span></li>
+               </a>
+               <a class="c-btn p-side__link" href="{{route('works.index')}}">
+                  <li><i class="fas fa-star"></i><span class="u-ml2">気になる案件</span></li>
+               </a>
+               <a class="c-btn p-side__link" href="{{route('pubmsg.index')}}">
+                  <li><i class="fas fa-users"></i><span>パブリックメッセージ</span></li>
+               </a>
+               <a class="c-btn p-side__link" href="{{route('dm.index')}}">
+                  <li><i class="fas fa-comments"></i><span>ダイレクトメッセージ</span></li>
+               </a>
+               <a class="c-btn p-side__link" href="{{route('users.edit',Auth::id())}}">
+                  <li><i class="fas fa-cog"></i><span class="u-ml2">アカウント設定</span></li>
+               </a>
+            </ul>
+
+            @if($work->owner_id === Auth::id())
+            <div class="p-side__linkHead">発注者メニュー</div>
+            <ul class="p-side__lists">
+               <a class="c-btn p-side__link" href="applicant">
+                  <li><i class="fas fa-list-alt"></i><span class="u-ml1">応募者一覧</span></li>
+               </a>
+               <a class="c-btn p-side__link" href="{{route('works.edit',$work_id)}}">
+                  <li><i class="fas fa-edit"></i><span>編集</span></li>
+               </a>
+               <a class="c-btn p-side__link" href="/">
+                  <li><i class="fas fa-trash-alt"></i><span class="u-ml3">削除</span></li>
+               </a>
+            </ul>
+            @endif
+         </aside>
 
          {{-- メインエリア --}}
          <div class="l-main__mainArea -twoColumns">
