@@ -12,16 +12,20 @@
          <div class="l-main__mainArea -twoColumns">
             <section class="c-h2__sec">
                <!-- ダイレクトメッセージ一覧 -->
-               <dm-list-component></dm-list-component>
-               <dm-list-component></dm-list-component>
-               <dm-list-component></dm-list-component>
-               <dm-list-component></dm-list-component>
-               <dm-list-component></dm-list-component>
-               <dm-list-component></dm-list-component>
-               <dm-list-component></dm-list-component>
-               <dm-list-component></dm-list-component>
-               <dm-list-component></dm-list-component>
-               <dm-list-component></dm-list-component>
+               @foreach ($boards as $board)
+               <a class="c-card c-msgCard c-dmMsgCard__msgItem" href="{{route('dm.show',$board->id)}}">
+                  <img class="c-img c-dmMsgCard__userImg" :src="'../../images/img1.png'" alt="ユーザーの画像" />
+                  <div class="c-dmMsgCard__mainAreaWrap">
+                     <div class="c-dmMsgCard__infoWrap">
+                        <div class="c-dmMsgCard__basicInfo">{{$board->user_name}} / {{$board->work_name}}</div>
+                        <time class="c-dmMsgCard__time">2020/11/09 10:33</time>
+                     </div>
+                     <div class="c-dmMsgCard__dm">
+                        案件の受注の件について質問があるのですが、よろしいでしょうか。まず契約の件についてのの質問からお聞きしたいと思います。まず初めにあああああああああああ
+                     </div>
+                  </div>
+               </a>
+               @endforeach
             </section>
 
             <!-- ページネーション -->

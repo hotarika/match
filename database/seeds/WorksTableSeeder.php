@@ -28,7 +28,7 @@ class WorksTableSeeder extends Seeder
         ]);
         DB::table('works')->insert([
             'id' => 2,
-            'user_id' => 2,
+            'user_id' => 1,
             'name' => '2.お願いしますよ',
             'contract_id' => 2,
             'end_date' => '2020/11/28',
@@ -41,7 +41,7 @@ class WorksTableSeeder extends Seeder
         ]);
         DB::table('works')->insert([
             'id' => 3,
-            'user_id' => 3,
+            'user_id' => 1,
             'name' => '3.お願いしますよ',
             'contract_id' => 1,
             'end_date' => '2020/11/28',
