@@ -18,12 +18,14 @@
                      <div class="c-pubMsgCard__basicInfo">
                         {{$pubmsg->user_name}} / {{$pubmsg->work_name}}
                      </div>
-                     <time class="c-pubMsgCard__msgTime">2020/11/09 10:33</time>
+                     <time class="c-pubMsgCard__msgTime">{{$pubmsg->latest_date}}</time>
                   </div>
                   <div class="c-pubMsgCard__msgTitle">
                      {{$pubmsg->title}}
                   </div>
-                  <div class="c-pubMsgCard__pubMsg">{{$pubmsg->content}}</div>
+                  <div class="c-pubMsgCard__pubMsg">
+                     {{$pubmsg->latest_content}}
+                  </div>
                </a>
                @endforeach
             </section>

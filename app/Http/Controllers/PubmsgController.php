@@ -17,27 +17,26 @@ class PubmsgController extends Controller
      */
     public function index()
     {
-        // 最後の行番号（id）を取得（Vueで使用）
-        // $pubmsgs = DB::table('parent_pubmsg as pm')
-        //     ->select('pm.id', 'pm.title', 'pm.content', 'pm.work_id', 'w.name as work_name', 'pm.user_id', 'u.name as user_name', 'pm.created_at')
-        //     ->leftJoin('users as u', 'pm.user_id', '=', 'u.id')
-        //     ->leftJoin('works as w', 'pm.work_id', '=', 'w.id')
-        //     ->get();
+        // 子
+        $child = DB::table('child_pubmsg as c')->whereIn(
+            DB::raw('c.created_at'),
+            function ($query) {
+                return $query->select(DB::raw('max(cc.created_at) as max'))
+                    ->from('child_pubmsg as cc')
+                    ->groupBy('cc.parent_id');
+            }
+        );
 
-        // 最後の行番号（id）を取得（Vueで使用）
-        $pubmsgs = DB::table('parent_pubmsg as pm')
-            ->select('pm.id', 'pm.title', 'pm.content', 'pm.work_id', 'w.name as work_name', 'pm.user_id', 'u.name as user_name', 'pm.created_at')
-            ->leftJoin('users as u', 'pm.user_id', '=', 'u.id')
-            ->leftJoin('works as w', 'pm.work_id', '=', 'w.id')
+        // 親子結合
+        $pubmsgs = DB::table('parent_pubmsg as p')
+            ->select('p.id', 'p.title', 'p.content', 'c.content as latest_content', 'c.created_at as latest_date', 'p.work_id', 'w.name as work_name', 'p.user_id', 'u.name as user_name', 'p.created_at', 'c.created_at as latestdate')
+            ->leftJoin('users as u', 'p.user_id', '=', 'u.id')
+            ->leftJoin('works as w', 'p.work_id', '=', 'w.id')
+            ->joinSub($child, 'c', function ($join) {
+                $join->on('p.id', '=', 'c.parent_id');
+            })
+            ->orderBy('latest_date', 'DESC')
             ->get();
-
-        // $child = DB::table('child_pubmsg')->where()->get();
-
-        // for ($i = 0; $i < count($child); $i++) {
-        //     $child[$i]->parent_id;
-        // }
-
-
 
         return view('pubmsg.index', compact('pubmsgs'));
     }

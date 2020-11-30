@@ -29,7 +29,8 @@ class DmController extends Controller
             )
             ->get();
         echo $child;
-        //////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////
+
         $boards = array();
         $boards = DB::table('dm_boards as b')
             ->select('b.id', 'b.work_id', 'w.name as work_name', 'b.owner_user_id', 'u.name as user_name', 'u.image')
