@@ -21,7 +21,7 @@
                         <time class="c-dmMsgCard__time">2020/11/09 10:33</time>
                      </div>
                      <div class="c-dmMsgCard__dm">
-                        案件の受注の件について質問があるのですが、よろしいでしょうか。まず契約の件についてのの質問からお聞きしたいと思います。まず初めにあああああああああああ
+                        {{$board->latest_content}}
                      </div>
                   </div>
                </a>

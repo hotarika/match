@@ -18,7 +18,7 @@ class DmBoardsSeeder extends Seeder
             'work_id' => 1,
             'owner_user_id' => 1,
             'order_user_id' => 2,
-            'created_at' => Carbon::now(),
+            'created_at' => '2020-11-30 00:52:49',
             'updated_at' => Carbon::now(),
         ]);
         DB::table('dm_boards')->insert([
@@ -26,7 +26,7 @@ class DmBoardsSeeder extends Seeder
             'work_id' => 2,
             'owner_user_id' => 1,
             'order_user_id' => 2,
-            'created_at' => Carbon::now(),
+            'created_at' => '2020-11-20 00:52:49',
             'updated_at' => Carbon::now(),
         ]);
         DB::table('dm_boards')->insert([
@@ -34,7 +34,7 @@ class DmBoardsSeeder extends Seeder
             'work_id' => 3,
             'owner_user_id' => 1,
             'order_user_id' => 2,
-            'created_at' => Carbon::now(),
+            'created_at' => '2020-11-10 00:52:49',
             'updated_at' => Carbon::now(),
         ]);
     }

@@ -19,7 +19,7 @@ class ChildPubmsgSeeder extends Seeder
             'parent_id' => 1,
             'user_id' => 2,
             'content' => '1-1.私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。',
-            'created_at' => Carbon::now(),
+            'created_at' => '2020-11-29 18:19:29',
             'updated_at' => Carbon::now(),
         ]);
         DB::table('child_pubmsg')->insert([
@@ -28,7 +28,7 @@ class ChildPubmsgSeeder extends Seeder
             'parent_id' => 1,
             'user_id' => 1,
             'content' => '1-2.私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。',
-            'created_at' => Carbon::now(),
+            'created_at' => '2020-11-28 18:19:29',
             'updated_at' => Carbon::now(),
         ]);
         DB::table('child_pubmsg')->insert([
@@ -37,7 +37,7 @@ class ChildPubmsgSeeder extends Seeder
             'parent_id' => 1,
             'user_id' => 2,
             'content' => '1-3.私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。',
-            'created_at' => Carbon::now(),
+            'created_at' => '2020-11-26 18:19:29',
             'updated_at' => Carbon::now(),
         ]);
         DB::table('child_pubmsg')->insert([
@@ -46,7 +46,7 @@ class ChildPubmsgSeeder extends Seeder
             'parent_id' => 2,
             'user_id' => 2,
             'content' => '2-1.私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。',
-            'created_at' => Carbon::now(),
+            'created_at' => '2020-11-20 18:19:29',
             'updated_at' => Carbon::now(),
         ]);
         DB::table('child_pubmsg')->insert([
@@ -55,7 +55,7 @@ class ChildPubmsgSeeder extends Seeder
             'parent_id' => 2,
             'user_id' => 2,
             'content' => '2-2.私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。私は子どもです。',
-            'created_at' => Carbon::now(),
+            'created_at' => '2020-11-21 18:19:29',
             'updated_at' => Carbon::now(),
         ]);
     }
