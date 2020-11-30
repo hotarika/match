@@ -26,7 +26,7 @@
 
                      @error('email')
                      <span class="c-form__invalid" role="alert">
-                        <strong>入力してください</strong>
+                        <strong>{{$message}}</strong>
                      </span>
                      @enderror
                   </div>
@@ -44,7 +44,7 @@
 
                      @error('password')
                      <span class="c-form__invalid" role="alert">
-                        <strong>入力してください</strong>
+                        <strong>{{$message}}</strong>
                      </span>
                      @enderror
                   </div>
