@@ -18,7 +18,7 @@
                   <div class="c-dmMsgCard__mainAreaWrap">
                      <div class="c-dmMsgCard__infoWrap">
                         <div class="c-dmMsgCard__basicInfo">{{$board->user_name}} / {{$board->work_name}}</div>
-                        <time class="c-dmMsgCard__time">2020/11/09 10:33</time>
+                        <time class="c-dmMsgCard__time">{{$board->latest_date}}</time>
                      </div>
                      <div class="c-dmMsgCard__dm">
                         {{$board->latest_content}}

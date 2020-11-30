@@ -29,10 +29,10 @@ class PubmsgController extends Controller
 
         // 親子結合
         $pubmsgs = DB::table('parent_pubmsg as p')
-            ->select('p.id', 'p.title', 'p.content', 'c.content as latest_content', 'c.created_at as latest_date', 'p.work_id', 'w.name as work_name', 'p.user_id', 'u.name as user_name', 'p.created_at', 'c.created_at as latestdate')
+            ->select('p.id', 'p.title', 'p.content',  'p.work_id', 'w.name as work_name', 'p.user_id', 'u.name as user_name', 'p.created_at', 'c.content as latest_content', 'c.created_at as latest_date')
             ->leftJoin('users as u', 'p.user_id', '=', 'u.id')
             ->leftJoin('works as w', 'p.work_id', '=', 'w.id')
-            ->joinSub($child, 'c', function ($join) {
+            ->leftJoinSub($child, 'c', function ($join) {
                 $join->on('p.id', '=', 'c.parent_id');
             })
             ->orderBy('latest_date', 'DESC')

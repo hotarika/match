@@ -16,36 +16,27 @@ class DmController extends Controller
      */
     public function index()
     {
-        // 時間が一緒だと全て出力されるので注意
-        ////////////////////////////////////////////////////////////////////
-        $child = DB::table('dm_contents as a')
+        // 子
+        $child = DB::table('dm_contents as c')
             ->whereIn(
-                DB::raw('a.created_at'),
+                DB::raw('c.created_at'),
                 function ($query) {
-                    return $query->select(DB::raw('max(b.created_at) as max'))
-                        ->from('dm_contents as b')
-                        ->groupBy('b.board_id')->get();
+                    return $query->select(DB::raw('max(cc.created_at) as max'))
+                        ->from('dm_contents as cc')
+                        ->groupBy('cc.board_id');
                 }
-            )
-            ->get();
-        echo $child;
-        /////////////////////////////////////////////////////////////////////
+            );
 
-        $boards = array();
+        // 親子結合
         $boards = DB::table('dm_boards as b')
-            ->select('b.id', 'b.work_id', 'w.name as work_name', 'b.owner_user_id', 'u.name as user_name', 'u.image')
+            ->select('b.id', 'b.work_id', 'w.name as work_name', 'b.owner_user_id', 'u.name as user_name', 'u.image', 'c.content as latest_content', 'c.created_at as latest_date')
             ->leftJoin('users as u', 'b.owner_user_id', '=', 'u.id')
             ->leftJoin('works as w', 'b.work_id', '=', 'w.id')
+            ->leftJoinSub($child, 'c', function ($join) {
+                $join->on('b.id', '=', 'c.board_id');
+            })
+            ->orderBy('latest_date', 'DESC')
             ->get();
-
-        // 親ボードに最新のコンテンツを挿入
-        foreach ($boards as $key => $value) {
-            for ($i = 0; $i < count($boards); $i++) {
-                if ($value->id === $child[$i]->board_id) {
-                    $boards[$key]->latest_content = $child[$i]->content;
-                }
-            }
-        }
 
         return view('dm.index', compact('boards'));
     }
