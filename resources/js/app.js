@@ -49,6 +49,7 @@ Vue.component('pubmsg-card-component', require('./components/PubmsgCard.vue').de
 Vue.component('dm-component', require('./components/DmArea.vue').default);
 Vue.component('work-component', require('./components/WorkList.vue').default);
 Vue.component('image-edit-component', require('./components/ImageEdit.vue').default);
+Vue.component('pagination-component', require('./components/Pagination.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

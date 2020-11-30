@@ -15,7 +15,7 @@
                :public_path="{{ json_encode(asset('')) }}"></work-component>
 
             <!-- ページネーション -->
-            @include('components/pagination')
+            {{-- @include('components/pagination') --}}
          </div>
 
       </div>

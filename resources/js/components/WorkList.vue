@@ -15,7 +15,12 @@
 
       <!-- 仕事カード -->
       <transition-group tag="div" class="c-h2__workCardBody p-workList__workCardBody">
-         <a class="c-workCard" :href="public_path + 'works/' + work.id" v-for="work in newList" :key="work.id">
+         <a
+            class="c-workCard"
+            :href="public_path + 'works/' + work.id"
+            v-for="work in newList.slice(minCardNum, maxCardNum)"
+            :key="work.id"
+         >
             <div class="c-workCard__decisionTag">決定</div>
             <div class="c-workCard__nameWrap">
                <!-- <img class="c-img c-workCard__img" :src="'../../images/img2.png'" alt="ユーザーのアイコン" /> -->
@@ -64,6 +69,7 @@
             </div>
          </a>
       </transition-group>
+      <pagination-component :page="page" :totalPage="totalPage" @change="orderList"></pagination-component>
    </section>
 </template>
 
@@ -79,11 +85,26 @@ export default {
          newList: [], // 並び替えするための空の配列
          oneoff_checkbox: true, // 単発案件チェックボックス
          share_checkbox: true, // レベニューシェアチェックボックス
-         works: []
+         works: [],
+         page: 1,
+         perPage: 3
       };
    },
+   computed: {
+      totalPage() {
+         return Math.ceil(this.newList.length / this.perPage);
+      },
+      minCardNum() {
+         return this.page === 1 ? this.page - 1 : this.perPage * (this.page - 1);
+      },
+      maxCardNum() {
+         return this.perPage * this.page;
+      }
+   },
    methods: {
-      orderList() {
+      orderList(refs) {
+         this.page = Number.isInteger(refs) ? refs : 1;
+
          // チェックボックスに応じて、表示カード変更（絞り込み機能）
          this.newList = this.works.filter(val => {
             if (this.oneoff_checkbox === false && val.contract_id === 1) {
