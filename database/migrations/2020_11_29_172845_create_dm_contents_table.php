@@ -15,7 +15,6 @@ class CreateDmContentsTable extends Migration
     {
         Schema::create('dm_contents', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('work_id');
             $table->bigInteger('board_id');
             $table->bigInteger('user_id');
             $table->string('content');

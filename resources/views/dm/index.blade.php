@@ -10,11 +10,12 @@
          @include('components/sidebar')
 
          <div class="l-main__mainArea -twoColumns">
-            <section class="c-h2__sec">
+            <section class="c-h2__sec p-dmList__sec">
                <!-- ダイレクトメッセージ一覧 -->
                @foreach ($boards as $board)
                <a class="c-card c-msgCard c-dmMsgCard__msgItem" href="{{route('dm.show',$board->id)}}">
-                  <img class="c-img c-dmMsgCard__userImg" :src="'../../images/img1.png'" alt="ユーザーの画像" />
+                  <img class="c-img c-dmMsgCard__userImg" src={{asset('storage/user_img/'.$board->image)}}
+                     alt="ユーザーの画像" />
                   <div class="c-dmMsgCard__mainAreaWrap">
                      <div class="c-dmMsgCard__infoWrap">
                         <div class="c-dmMsgCard__basicInfo">{{$board->user_name}} / {{$board->work_name}}</div>
@@ -29,7 +30,7 @@
             </section>
 
             <!-- ページネーション -->
-            @include('components/pagination')
+            {{-- @include('components/pagination') --}}
          </div>
       </div>
    </div>

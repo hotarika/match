@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\DmBoard;
 use App\DmContent;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class DmController extends Controller
@@ -35,6 +36,8 @@ class DmController extends Controller
             ->leftJoinSub($child, 'c', function ($join) {
                 $join->on('b.id', '=', 'c.board_id');
             })
+            ->orWhere('b.owner_user_id', Auth::id())
+            ->orWhere('b.order_user_id', Auth::id())
             ->orderBy('latest_date', 'DESC')
             ->get();
 

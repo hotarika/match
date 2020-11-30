@@ -1494,6 +1494,12 @@ body {
   background-color: #0081ff;
 }
 
+.p-dmList__sec {
+  max-height: 70vh;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
 .p-dm__msgMe,
 .p-dm__msgYou {
   border-radius: 5px;

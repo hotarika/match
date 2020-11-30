@@ -2,7 +2,7 @@
 @section('title', 'パブリックメッセージ一覧')
 
 @section('content')
-<main class="l-main p-dmLists">
+<main class="l-main p-pubmsgList">
    <div class="container">
       <h1 class="c-h1__head">パブリックメッセージ一覧</h1>
       <div class="l-main__mainAreaWrap">
@@ -10,7 +10,7 @@
          @include('components/sidebar')
 
          <div class="l-main__mainArea -twoColumns">
-            <section class="c-h2__sec">
+            <section class="c-h2__sec p-dmList__sec">
                @foreach ( $pubmsgs as $pubmsg )
                <!-- ダイレクトメッセージ一覧 -->
                <a class="c-card c-msgCard" href="work-detail#pub-msg">
