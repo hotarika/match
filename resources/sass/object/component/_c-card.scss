@@ -58,7 +58,7 @@
       cursor: pointer;
       box-shadow: rgba(0, 0, 0, 0.18) 3px 3px 10px;
       transition: all 0.5s 0s ease;
-      transform: scale(1.03, 1.03);
+      transform: scale(1.01, 1.01);
    }
    &__decisionTag {
       @include border-radius('all', 50%);
@@ -239,9 +239,8 @@
       padding: 7px 10px 7px 15px;
    }
    &:hover {
-      box-shadow: rgba(0, 0, 0, 0.18) 3px 3px 10px;
-      transition: all 0.5s 0s ease;
-      transform: scale(1.03, 1.03);
+      box-sizing: content-box;
+      border: 1px solid $primary;
    }
    &::before {
       position: absolute;

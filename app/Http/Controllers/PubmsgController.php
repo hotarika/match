@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use App\ChildMsg;
 use App\ParentMsg;
+use Illuminate\Support\Facades\Auth;
 
 class PubmsgController extends Controller
 {
@@ -35,6 +36,7 @@ class PubmsgController extends Controller
             ->leftJoinSub($child, 'c', function ($join) {
                 $join->on('p.id', '=', 'c.parent_id');
             })
+            ->orWhere('p.user_id', Auth::id())
             ->orderBy('latest_date', 'DESC')
             ->get();
 

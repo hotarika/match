@@ -626,7 +626,7 @@ body {
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.18) 3px 3px 10px;
   transition: all 0.5s 0s ease;
-  transform: scale(1.03, 1.03);
+  transform: scale(1.01, 1.01);
 }
 
 .c-workCard__decisionTag {
@@ -874,9 +874,8 @@ body {
 }
 
 .c-msgCard:hover {
-  box-shadow: rgba(0, 0, 0, 0.18) 3px 3px 10px;
-  transition: all 0.5s 0s ease;
-  transform: scale(1.03, 1.03);
+  box-sizing: content-box;
+  border: 1px solid #0081ff;
 }
 
 .c-msgCard::before {
@@ -1495,7 +1494,7 @@ body {
 }
 
 .p-dmList__sec {
-  max-height: 70vh;
+  height: 70vh;
   overflow: scroll;
   overflow-x: hidden;
 }
@@ -2993,6 +2992,12 @@ body {
   .p-profile__proIntroduceBody {
     font-size: 13px;
   }
+}
+
+.p-pubmsgList__sec {
+  height: 70vh;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .p-side__lists {

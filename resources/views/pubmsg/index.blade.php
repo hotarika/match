@@ -10,11 +10,11 @@
          @include('components/sidebar')
 
          <div class="l-main__mainArea -twoColumns">
-            <section class="c-h2__sec p-dmList__sec">
+            <section class="c-h2__sec p-pubmsgList__sec">
                @foreach ( $pubmsgs as $pubmsg )
                <!-- ダイレクトメッセージ一覧 -->
-               <a class="c-card c-msgCard" href="work-detail#pub-msg">
-                  <div class="c-pubMsgCard__infoWrap">
+               <a class="c-card c-msgCard" href="{{url('works/'.$pubmsg->work_id.'#pub-msg')}}">
+                  <div class=" c-pubMsgCard__infoWrap">
                      <div class="c-pubMsgCard__basicInfo">
                         {{$pubmsg->user_name}} / {{$pubmsg->work_name}}
                      </div>
@@ -30,7 +30,7 @@
                @endforeach
             </section>
             <!-- ページネーション -->
-            @include('components/pagination')
+            {{-- @include('components/pagination') --}}
          </div>
       </div>
    </div>

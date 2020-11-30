@@ -119,7 +119,7 @@ class WorksController extends Controller
 
         // 子掲示板
         $child_msg = DB::table('child_pubmsg as cm')
-            ->select('cm.id', 'cm.work_id', 'cm.parent_id', 'cm.user_id', 'u.name', 'u.image', 'cm.content', 'cm.created_at')
+            ->select('cm.id', 'cm.parent_id', 'cm.user_id', 'u.name', 'u.image', 'cm.content', 'cm.created_at')
             ->leftJoin('users as u', 'cm.user_id', '=', 'u.id')
             ->oldest()
             ->get();
@@ -128,7 +128,6 @@ class WorksController extends Controller
         for ($i = 0; $i < count($child_msg); $i++) {
             $child_msg[$i]->created_at = date('Y/m/d', strtotime($child_msg[$i]->created_at));
         }
-
 
         return view('works.show', compact('work_id', 'user', 'work', 'parent_msg', 'child_msg'));
     }
