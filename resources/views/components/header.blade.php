@@ -3,7 +3,7 @@
       <div class="p-header">
          <!-- ロゴ -->
          <a class="p-header__logo" href="/">
-            <img :src="'/images/logo/logo-blue.svg'" alt="ロゴ" />
+            <img src="{{ asset('images/logo/logo-blue.svg') }}" alt="ロゴ" />
          </a>
 
          {{-- 右側のアイテム --}}
@@ -12,12 +12,12 @@
             <!-- ログイン前 -->
             <ul class="p-header__items -beforeLogin">
                <li class="p-header__item -beforeLogin">
-                  <a class="c-link p-header__navLink -beforeLogin" href="login">
+                  <a class="c-link p-header__navLink -beforeLogin" href="{{route('login')}}">
                      ログイン
                   </a>
                </li>
                <li class="p-header__item -beforeLogin">
-                  <a class="c-link p-header__navLink -beforeLogin" href="register">
+                  <a class="c-link p-header__navLink -beforeLogin" href="{{route('register')}}">
                      会員登録
                   </a>
                </li>
