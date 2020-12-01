@@ -87,7 +87,7 @@ export default {
          share_checkbox: true, // レベニューシェアチェックボックス
          works: [],
          page: 1,
-         perPage: 3
+         perPage: 6
       };
    },
    computed: {

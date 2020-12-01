@@ -1076,6 +1076,19 @@ body {
   }
 }
 
+.c-flash {
+  position: absolute;
+  top: 80px;
+  z-index: 10;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  background: #6da6ff;
+  border-radius: 0 0 2px 2px;
+}
+
 .c-form__input {
   line-height: 1.3;
   letter-spacing: 0.5px;
@@ -3529,6 +3542,14 @@ body {
     padding: 15px 50px;
     font-size: 14px;
   }
+}
+
+.p-workDetail__appBtn.-stop {
+  background-color: #6c757d;
+}
+
+.p-workDetail__appBtn.-end {
+  background-color: #6c757d;
 }
 
 .p-workDetail__pubMsgBody {

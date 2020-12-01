@@ -16,7 +16,7 @@
 
       {{-- フラッシュメッセージ --}}
       @if(session('flash_message'))
-      <div class=" flash" role="alert">{{ session('flash_message') }}
+      <div class="c-flash" role="alert">{{ session('flash_message') }}
       </div>
       @endif
       @if(session('error_message'))

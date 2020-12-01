@@ -29,12 +29,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/pubmsg', 'PubmsgController'); //親掲示板
     Route::resource('/child', 'ChildMsgController');
     Route::resource('/dm', 'DmController');
+    Route::resource('/applicant', 'ApplicantController');
 
     // Invoke Controller（1つのコントローラーに1つの定義しか記述しないという意味）
     Route::get('/', 'HomeController');
     Route::get('/mypage', 'MypageController')->name('mypage');
     Route::get('/history', 'WorksHistoryController')->name('history');
-    Route::get('/applicant', 'ApplicantController')->name('applicant');
     Route::get('/change-pass', 'ChangePassController')->name('change-pass');
     Route::get('/settings-menu', 'SettingsMenuController')->name('settings-menu');
 });

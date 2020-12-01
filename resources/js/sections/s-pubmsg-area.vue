@@ -44,7 +44,7 @@
 
                      <!-- 子掲示板 -->
                      <template v-for="c in childMsg">
-                        <template v-if="p.id === c.parent_id && $work_id === c.work_id">
+                        <template v-if="p.id === c.parent_id && p.work_id === c.work_id">
                            <div class="p-workDetail__childWrap" :key="c.id">
                               <time class="p-workDetail__childDate">{{ c.created_at }}</time>
                               <img

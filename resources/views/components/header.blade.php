@@ -34,9 +34,9 @@
                   <div class="p-header__orderMenuWrap">
                      <!-- スマホのみ表示 -->
                      <li class="p-header__item -sp">
-                        <a class="c-link p-header__navLink" href="{{ route('applicant') }}">
-                           <i class="fas fa-list-alt p-header__navIcon"></i>
-                           <div class="p-header__navName u-ml2">応募者一覧</div>
+                        {{-- <a class="c-link p-header__navLink" href="{{ route('applicant') }}"> --}}
+                        <i class="fas fa-list-alt p-header__navIcon"></i>
+                        <div class="p-header__navName u-ml2">応募者一覧</div>
                         </a>
                      </li>
                      <!-- スマホのみ表示 -->
@@ -118,7 +118,7 @@
                   </li>
                   <!-- 全ての端末で表示 -->
                   <li class="p-header__item -orderBtn">
-                     <a href="{{ route('works.create') }}" class="p-header__orderBtn">仕事を依頼</a>
+                     <a href="{{ route('works.store') }}" class="p-header__orderBtn">仕事を依頼</a>
                   </li>
                </ul>
             </nav>

@@ -2496,7 +2496,7 @@ var _data_workData_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__
       // レベニューシェアチェックボックス
       works: [],
       page: 1,
-      perPage: 3
+      perPage: 6
     };
   },
   computed: {
@@ -40767,7 +40767,7 @@ var render = function() {
                       _vm._v(" "),
                       _vm._l(_vm.childMsg, function(c) {
                         return [
-                          p.id === c.parent_id && _vm.$work_id === c.work_id
+                          p.id === c.parent_id && p.work_id === c.work_id
                             ? [
                                 _c(
                                   "div",

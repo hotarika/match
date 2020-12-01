@@ -61,7 +61,7 @@
                <form method="POST" name="workDeleteForm" action="{{route('works.destroy',$work->owner_id)}}">
                   <a class="c-btn p-side__link" href="javascript:workDeleteForm.submit()"
                      onclick='return confirm("削除しますか？");'>
-                     @method(' DELETE')
+                     @method('DELETE')
                      @csrf
 
                      <li><i class="fas fa-trash-alt"></i><span class="u-ml3">削除</span></li>
@@ -147,7 +147,27 @@
                      <div class="p-workDetail__requestHead">依頼内容</div>
                      <p class="p-workDetail__requestBody">{{$work->content}}</p>
                   </div>
-                  <button class="c-btn p-workDetail__appBtn" type="submit">応募する</button>
+
+                  {{-- 応募ボタン --}}
+                  @if ($work->owner_id !== Auth::id())
+                  @if($work->work_state === 1)
+                  @if($applicant)
+                  <form method="POST" action="{{route('applicant.destroy',$applicant->id)}}">
+                     @method('DELETE')
+                     @csrf
+                     <button class="c-btn p-workDetail__appBtn -stop" type="submit">応募を取りやめる</button>
+                  </form>
+                  @else
+                  <form method="POST" action="{{route('applicant.store')}}">
+                     @csrf
+                     <input type="hidden" name="work_id" value="{{$work->work_id}}">
+                     <button class="c-btn p-workDetail__appBtn -app" type="submit">応募する</button>
+                  </form>
+                  @endif
+                  @else
+                  <div class="c-btn p-workDetail__appBtn -end">応募終了</div>
+                  @endif
+                  @endif
                </div>
             </section>
 

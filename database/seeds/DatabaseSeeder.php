@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FavoritesSeeder::class);
         $this->call(DmBoardsSeeder::class);
         $this->call(DmContentsSeeder::class);
+        $this->call(WorkStateSeeder::class);
+        $this->call(ApplicantStateSeeder::class);
     }
 }

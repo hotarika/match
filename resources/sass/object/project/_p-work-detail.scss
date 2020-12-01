@@ -347,6 +347,12 @@
          padding: 15px 50px;
          font-size: 14px;
       }
+      &.-stop {
+         background-color: $gray-600;
+      }
+      &.-end {
+         background-color: $gray-600;
+      }
    }
 
    // =========================

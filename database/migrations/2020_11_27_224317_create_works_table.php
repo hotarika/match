@@ -23,6 +23,7 @@ class CreateWorksTable extends Migration
             $table->integer('money_upper')->nullable();
             $table->integer('money_lower')->nullable();
             $table->string('content');
+            $table->integer('state')->default(1);
             $table->boolean('delete_flg')->default(false);
             $table->timestamps();
         });

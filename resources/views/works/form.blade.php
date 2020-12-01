@@ -15,7 +15,6 @@
                   <form method="POST" class="p-workForm__form"
                      action="@if ( request()->is('*edit*') ){{route('works.update',$work->id)}} @else {{route('works.store')}} @endif">
                      @if( request()->is('*edit*') ) @method('PUT') @endif
-                     {{-- @method('PUT') --}}
                      @csrf
 
                      <!-- 案件名 -->
