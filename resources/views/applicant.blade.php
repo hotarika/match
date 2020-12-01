@@ -48,8 +48,8 @@
 
                         </div>
 
-                        <form action="">
-                           <button class="c-btn p-applicant__decideBtn -decide -decided -wait" type="submit">
+                        <form action="" class="p-applicant__decideForm -decide -decided -wait">
+                           <button class="c-btn p-applicant__decideBtn" type="submit">
                               決定する
                            </button>
                         </form>
