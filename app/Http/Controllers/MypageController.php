@@ -26,11 +26,17 @@ class MypageController extends Controller
             ->where('user_id', Auth::id())
             ->get();
 
-
-
-
-
-
+        // *******************************
+        // 応募中の仕事
+        // *******************************
+        $order_works = DB::table('applicants as a')
+            ->select('a.applicant_id', 'u.name as user_name', 'a.work_id', 'w.name as work_name', 'w.contract_id', 'w.end_date', 'w.money_upper', 'w.money_lower', 'w.state', 'a.applicant_id', 'u.name as user_name', 'u.image')
+            ->leftJoin('users as u', 'a.applicant_id', '=', 'u.id')
+            ->leftJoin('works as w', 'a.work_id', '=', 'w.id')
+            ->where('a.applicant_id', Auth::id())
+            ->where('w.state', 1)
+            ->where('w.end_date', '>=', date('Y/m/d'))
+            ->get();
 
 
         // *******************************
@@ -86,6 +92,6 @@ class MypageController extends Controller
             ->orderBy('latest_date', 'DESC')
             ->get();
 
-        return view('mypage', compact('pubmsgs', 'boards', 'owner_works'));
+        return view('mypage', compact('owner_works', 'order_works', 'pubmsgs', 'boards'));
     }
 }

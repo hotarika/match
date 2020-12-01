@@ -13,8 +13,9 @@
          <div class="l-main__mainArea -twoColumns">
             <!-- 新着通知 -->
             <notification-component></notification-component>
-
-            <!-- 発注した仕事 -->
+            {{-- --------------------------------- --}}
+            {{-- 発注した仕事                        --}}
+            {{-- --------------------------------- --}}
             <section class="c-h2__sec">
                <h2 class="c-h2__head">発注した仕事</h2>
                <div class="c-h2__workCardBody">
@@ -65,9 +66,62 @@
             </section>
 
 
-            <!-- 受注した仕事 -->
-            <workcard-area-section head="応募中の仕事"></workcard-area-section>
+            {{-- --------------------------------- --}}
+            {{-- 応募中の仕事                        --}}
+            {{-- --------------------------------- --}}
+            <section class="c-h2__sec">
+               <h2 class="c-h2__head">応募中の仕事</h2>
+               <div class="c-h2__workCardBody">
+                  @foreach ($order_works as $work)
+                  <a class="c-workCard" href="work-detail">
+                     <div class="c-workCard__nameWrap">
+                        <img class="c-img c-workCard__img" src="{{url('storage/user_img/'.$work->image)}}"
+                           alt="ユーザーのアイコン" />
+                        <span class="c-workCard__name">{{$work->user_name}}</span>
+                     </div>
 
+                     <div class="c-workCard__head">
+                        {{$work->work_name}}
+                     </div>
+                     <!-- 単発案件 -->
+                     @if($work->contract_id === 1)
+                     <div class="c-workCard__contract">
+                        <div class="c-workCard__contractIconWrap">
+                           <i class="fas fa-male c-workCard__contractIcon -oneoff"></i>
+                        </div>
+                        <div class="c-workCard__contractWayWrap">
+                           <div class="c-workCard__contractWay">単発案件</div>
+                           <div class="c-workCard__contractMoney">{{$work->money_lower}}~{{$work->money_upper}}千円</div>
+                        </div>
+                     </div>
+                     @endif
+
+                     <!-- レベニューシェア -->
+                     @if($work->contract_id === 2)
+                     <div class="c-workCard__contract">
+                        <div class="c-workCard__contractIconWrap">
+                           <i class="fas fa-people-arrows c-workCard__contractIcon -share"></i>
+                        </div>
+                        <div class="c-workCard__contractWayWrap">
+                           <div class="c-workCard__contractWay -share">レベニューシェア</div>
+                        </div>
+                     </div>
+                     @endif
+                     <!-- その他情報 -->
+                     <div class="c-workCard__info">
+                        <div class="c-workCard__infoItem">
+                           <div class="c-workCard__infoItemHead">締め切り日：</div>
+                           <span class="c-workCard__endDate">{{$work->end_date}}</span>
+                        </div>
+                     </div>
+                  </a>
+                  @endforeach
+               </div>
+            </section>
+
+            {{-- --------------------------------- --}}
+            {{-- パブリックメッセージ                  --}}
+            {{-- --------------------------------- --}}
             <!-- パブリックメッセージ -->
             <section class="c-h2__sec">
                <a class="c-btn c-h2__seeMore" href="work-detail#pub-msg">
@@ -95,7 +149,10 @@
                </div>
             </section>
 
-            <!-- ダイレクトメッセージ -->
+            {{-- --------------------------------- --}}
+            {{-- ダイレクトメッセージ                  --}}
+            {{-- --------------------------------- --}}
+
             <section class="c-h2__sec">
                <a class="c-btn c-h2__seeMore" href="dm-list">
                   <i class="fas fa-chevron-right"></i>
