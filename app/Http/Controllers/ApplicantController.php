@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Applicant;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -44,7 +45,7 @@ class ApplicantController extends Controller
         $applicant->save();
 
         return redirect()->route('works.index')
-            ->with('flash_message', '応募しました');;
+            ->with('flash_message', '応募しました');
     }
 
     /**
@@ -56,7 +57,7 @@ class ApplicantController extends Controller
     public function show($id)
     {
         $applicants = DB::table('applicants as a')
-            ->select('a.applicant_id', 'u.name as user_name', 'u.image', 'b.id as board_id')
+            ->select('a.id', 'a.applicant_id', 'u.name as user_name', 'u.image', 'b.id as board_id')
             ->leftJoin('users as u', 'a.applicant_id', '=', 'u.id')
             ->leftJoin('dm_boards as b', function ($join) {
                 $join->on('a.work_id', '=', 'b.work_id');
@@ -69,12 +70,6 @@ class ApplicantController extends Controller
             ->select('id', 'name')
             ->where('id', $id)
             ->first();
-
-        // $board = DB::table('dm_boards as b')
-        //     ->select('*')
-        //     ->where('b.work_id', $id)
-        //     ->where('')
-        //     ->get();
 
         return view('applicant', compact('applicants', 'work'));
     }
@@ -99,7 +94,12 @@ class ApplicantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $applicant = Applicant::find($id);
+        $applicant->state = 2; // 応募者決定決定
+        $applicant->save();
+
+        return redirect()->route('dm.show', $request->applicant_board_id)
+            ->with('flash_message', '決定者と詳細について連絡を取りましょう！');;
     }
 
     /**

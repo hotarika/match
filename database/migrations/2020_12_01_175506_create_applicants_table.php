@@ -14,9 +14,10 @@ class CreateApplicantsTable extends Migration
     public function up()
     {
         Schema::create('applicants', function (Blueprint $table) {
-            // $table->bigIncrements('id');
+            $table->bigIncrements('id');
             $table->bigInteger('work_id');
             $table->bigInteger('applicant_id');
+            $table->bigInteger('state')->default(1);
             $table->timestamps();
         });
     }
