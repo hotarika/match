@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Applicant;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\DmBoard;
 use Illuminate\Support\Facades\DB;
 
-class ApplicantController extends Controller
+class DmBoardsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,6 @@ class ApplicantController extends Controller
      */
     public function index()
     {
-
         //
     }
 
@@ -38,13 +36,13 @@ class ApplicantController extends Controller
      */
     public function store(Request $request)
     {
-        $applicant = new Applicant;
-        $applicant->work_id = $request->work_id;
-        $applicant->applicant_id = Auth::id();
-        $applicant->save();
+        $board = new DmBoard;
+        $board->work_id = $request->work_id;
+        $board->owner_user_id = $request->owner_user_id;
+        $board->order_user_id = $request->order_user_id;
+        $board->save();
 
-        return redirect()->route('works.index')
-            ->with('flash_message', '応募しました');;
+        return redirect()->route('dm.show', DB::getPdo()->lastInsertId());
     }
 
     /**
@@ -55,28 +53,7 @@ class ApplicantController extends Controller
      */
     public function show($id)
     {
-        $applicants = DB::table('applicants as a')
-            ->select('a.applicant_id', 'u.name as user_name', 'u.image', 'b.id as board_id')
-            ->leftJoin('users as u', 'a.applicant_id', '=', 'u.id')
-            ->leftJoin('dm_boards as b', function ($join) {
-                $join->on('a.work_id', '=', 'b.work_id');
-                $join->on('a.applicant_id', '=', 'b.order_user_id');
-            })
-            ->where('a.work_id', $id)
-            ->get();
-
-        $work = DB::table('works')
-            ->select('id', 'name')
-            ->where('id', $id)
-            ->first();
-
-        // $board = DB::table('dm_boards as b')
-        //     ->select('*')
-        //     ->where('b.work_id', $id)
-        //     ->where('')
-        //     ->get();
-
-        return view('applicant', compact('applicants', 'work'));
+        //
     }
 
     /**
@@ -110,7 +87,6 @@ class ApplicantController extends Controller
      */
     public function destroy($id)
     {
-        Applicant::find($id)->delete();
-        return redirect()->route('works.index');
+        //
     }
 }

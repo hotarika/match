@@ -1433,6 +1433,11 @@ body {
   }
 }
 
+.p-applicant__msgBtn.-create {
+  width: 100%;
+  padding: 0;
+}
+
 .p-applicant__msgBtn > i {
   font-size: 26px;
   color: #000;
@@ -1442,6 +1447,11 @@ body {
   .p-applicant__msgBtn > i {
     font-size: 20px;
   }
+}
+
+.p-applicant__dmBoardCreateForm {
+  margin: 0;
+  margin-right: 4px;
 }
 
 .p-applicant__decideBtn {

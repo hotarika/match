@@ -89,6 +89,10 @@
       @include mq('3xs') {
          margin-right: 0;
       }
+      &.-create {
+         width: 100%;
+         padding: 0;
+      }
       & > i {
          font-size: 26px;
          color: $black;
@@ -96,6 +100,10 @@
             font-size: 20px;
          }
       }
+   }
+   &__dmBoardCreateForm {
+      margin: 0;
+      margin-right: 4px;
    }
    &__decideBtn {
       @include border-radius('right', 5px);

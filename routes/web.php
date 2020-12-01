@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/pubmsg', 'PubmsgController'); //親掲示板
     Route::resource('/child', 'ChildMsgController');
     Route::resource('/dm', 'DmController');
+    Route::resource('/dm-board', 'DmBoardsController');
     Route::resource('/applicant', 'ApplicantController');
 
     // Invoke Controller（1つのコントローラーに1つの定義しか記述しないという意味）

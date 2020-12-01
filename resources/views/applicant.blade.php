@@ -28,16 +28,31 @@
                                  {{$applicant->user_name}}
                               </a>
                            </div>
-                           <a class="p-applicant__msgBtn" href="dm">
+
+                           @if ($applicant->board_id)
+                           <a class="c-btn p-applicant__msgBtn" href="{{route('dm.show',$applicant->board_id)}}">
                               <i class="fas fa-envelope"></i>
                            </a>
+                           @else
+                           <form method="POST" action="{{route('dm-board.store')}}"
+                              class="p-applicant__dmBoardCreateForm">
+                              @csrf
+                              <input type="hidden" name="work_id" value="{{$work->id}}">
+                              <input type="hidden" name="owner_user_id" value="{{Auth::id()}}">
+                              <input type="hidden" name="order_user_id" value="{{$applicant->applicant_id}}">
+                              <button class="c-btn p-applicant__msgBtn -create" type="submit">
+                                 <i class="fas fa-envelope"></i>
+                              </button>
+                           </form>
+                           @endif
+
                         </div>
 
-                        {{-- <form action=""> --}}
-                        <button class="c-btn p-applicant__decideBtn -decide -decided -wait" type="submit">
-                           決定する
-                        </button>
-                        {{-- </form> --}}
+                        <form action="">
+                           <button class="c-btn p-applicant__decideBtn -decide -decided -wait" type="submit">
+                              決定する
+                           </button>
+                        </form>
                      </div>
                      @endforeach
 
