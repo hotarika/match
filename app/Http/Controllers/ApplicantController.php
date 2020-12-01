@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Applicant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ApplicantController extends Controller
 {
@@ -15,7 +16,8 @@ class ApplicantController extends Controller
      */
     public function index()
     {
-        return view('applicant');
+
+        //
     }
 
     /**
@@ -53,7 +55,18 @@ class ApplicantController extends Controller
      */
     public function show($id)
     {
-        //
+        $applicants = DB::table('applicants as a')
+            ->select('a.applicant_id', 'u.name as user_name', 'u.image')
+            ->leftJoin('users as u', 'a.applicant_id', '=', 'u.id')
+            ->where('a.work_id', $id)
+            ->get();
+
+        $work = DB::table('works')
+            ->select('name')
+            ->where('id', $id)
+            ->first();
+
+        return view('applicant', compact('applicants', 'work'));
     }
 
     /**

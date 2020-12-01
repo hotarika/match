@@ -14,25 +14,33 @@
             <section class="c-h2__sec">
                <div class="c-h2__oneRowBody p-applicant__body">
                   <h2 class="c-h2__head p-applicant__head">
-                     カーナビシステムを作成した後に、業務システムを作成して欲しい
+                     {{$work->name}}
                   </h2>
                   <div class="p-applicant__lists">
+
+                     @foreach ($applicants as $applicant)
                      <div class="p-applicant__list">
                         <div class="p-applicant__userWrap">
                            <div class="p-applicant__user">
-                              <img class="c-img p-applicant__userImg" :src="'images/home_img.jpg'" alt="ユーザーの画像" />
+                              <img class="c-img p-applicant__userImg"
+                                 src="{{url('/').'/storage/user_img/'.$applicant->image}}" alt="ユーザーの画像" />
                               <a class="c-link p-applicant__userName" href="profile">
-                                 山田太郎ああああああああ
+                                 {{$applicant->user_name}}
                               </a>
                            </div>
                            <a class="p-applicant__msgBtn" href="dm">
                               <i class="fas fa-envelope"></i>
                            </a>
                         </div>
+
+                        {{-- <form action=""> --}}
                         <button class="c-btn p-applicant__decideBtn -decide -decided -wait" type="submit">
                            決定する
                         </button>
+                        {{-- </form> --}}
                      </div>
+                     @endforeach
+
                   </div>
                </div>
             </section>

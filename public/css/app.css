@@ -1346,6 +1346,7 @@ body {
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
   background-color: #f8f9fa;
   border: 1px solid #dee2e6;
 }

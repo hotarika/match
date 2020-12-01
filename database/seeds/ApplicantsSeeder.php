@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 class ApplicantsSeeder extends Seeder
 {
@@ -11,6 +13,29 @@ class ApplicantsSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('applicants')->insert([
+            'work_id' => 1,
+            'applicant_id' => 2,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('applicants')->insert([
+            'work_id' => 1,
+            'applicant_id' => 3,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('applicants')->insert([
+            'work_id' => 2,
+            'applicant_id' => 1,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('applicants')->insert([
+            'work_id' => 2,
+            'applicant_id' => 3,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
     }
 }

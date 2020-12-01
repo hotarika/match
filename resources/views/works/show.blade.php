@@ -52,7 +52,7 @@
             @if($work->owner_id === Auth::id())
             <div class="p-side__linkHead">発注者メニュー</div>
             <ul class="p-side__lists">
-               <a class="c-btn p-side__link" href="applicant">
+               <a class="c-btn p-side__link" href="{{route('applicant.show',$work->work_id)}}">
                   <li><i class="fas fa-list-alt"></i><span class="u-ml1">応募者一覧</span></li>
                </a>
                <a class="c-btn p-side__link" href="{{route('works.edit',$work_id)}}">

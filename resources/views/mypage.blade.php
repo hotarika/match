@@ -20,7 +20,7 @@
                <h2 class="c-h2__head">発注した仕事</h2>
                <div class="c-h2__workCardBody">
                   @foreach ($owner_works as $work)
-                  <a class="c-workCard" href="work-detail">
+                  <a class="c-workCard" href="{{route('works.show',$work->work_id)}}">
                      <div class="c-workCard__nameWrap">
                         <img class="c-img c-workCard__img" src="{{url('storage/user_img/'.$work->image)}}"
                            alt="ユーザーのアイコン" />

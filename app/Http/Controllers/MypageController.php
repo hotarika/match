@@ -20,7 +20,7 @@ class MypageController extends Controller
         // 発注中の仕事
         // *******************************
         $owner_works = DB::table('works as w')
-            ->select('w.user_id', 'u.name as user_name', 'w.name as work_name', 'w.contract_id', 'c.type', 'w.money_lower', 'w.money_upper', 'u.image', 'w.end_date')
+            ->select('w.id as work_id', 'w.user_id', 'u.name as user_name', 'w.name as work_name', 'w.contract_id', 'c.type', 'w.money_lower', 'w.money_upper', 'u.image', 'w.end_date')
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
             ->leftJoin('contracts as c', 'w.contract_id', '=', 'c.id')
             ->where('user_id', Auth::id())
