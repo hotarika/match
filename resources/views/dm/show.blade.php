@@ -15,7 +15,8 @@
             <dm-component
                :public_path="{{ json_encode(asset('')) }}"
                :contents="{{json_encode($contents)}}"
-               :user_id="{{json_encode(Auth::id())}}" />
+               :user_id="{{json_encode(Auth::id())}}"
+               :info="{{json_encode($info)}}" />
             </dm-component>
          </div>
       </div>

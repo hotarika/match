@@ -18,7 +18,6 @@ class CreateDmBoardsTable extends Migration
             $table->bigInteger('work_id');
             $table->bigInteger('owner_user_id');
             $table->bigInteger('order_user_id');
-            $table->string('latest_content')->nullable();
             $table->timestamps();
         });
     }

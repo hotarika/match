@@ -1,13 +1,23 @@
 <template>
    <section class="c-h2__sec p-dm__h2sec">
       <div class="c-h2__head p-dm__h2">
-         <img :src="'../../images/img1.png'" alt="ユーザーの画像" />
+         <template v-if="info.owner_user_id === user_id">
+            <img :src="public_path + 'storage/user_img/' + info.owner_img" alt="ユーザーの画像" />
+         </template>
+         <template v-else>
+            <img :src="public_path + 'storage/user_img/' + info.order_img" alt="ユーザーの画像" />
+         </template>
          <div class="p-dm__h2InfoWrap">
             <div class="p-dm__h2InfoName">
-               山田太郎
+               <template v-if="info.owner_user_id === user_id">
+                  {{ info.order_user_name }}
+               </template>
+               <template v-else>
+                  {{ info.owner_user_name }}
+               </template>
             </div>
             <div class="p-dm__h2InfoOrderName">
-               カーナビシステムを作成して欲しい
+               {{ info.work_name }}
             </div>
          </div>
       </div>
@@ -50,15 +60,15 @@
 </template>
 
 <script>
-import msgs from '../data/dmData.json';
+// import msgs from '../data/dmData.json';
 const axios = require('axios');
 
 export default {
-   props: ['public_path', 'contents', 'user_id'],
+   props: ['public_path', 'contents', 'user_id', 'info'],
    data() {
       return {
          textarea: '',
-         msgs,
+         // msgs,
          conts: this.contents
       };
    },
@@ -86,10 +96,9 @@ export default {
 
             axios //store
                .post(this.public_path + 'dm', {
-                  board_id: 1,
-                  user_id: 1,
-                  content: this.textarea,
-                  work_id: 1
+                  board_id: this.info.board_id,
+                  user_id: this.user_id,
+                  content: this.textarea
                })
                .then(res => {
                   console.log(res);

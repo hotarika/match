@@ -1908,8 +1908,6 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _data_dmData_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../data/dmData.json */ "./resources/js/data/dmData.json");
-var _data_dmData_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../data/dmData.json */ "./resources/js/data/dmData.json", 1);
 //
 //
 //
@@ -1961,16 +1959,25 @@ var _data_dmData_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__we
 //
 //
 //
-
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// import msgs from '../data/dmData.json';
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['public_path', 'contents', 'user_id'],
+  props: ['public_path', 'contents', 'user_id', 'info'],
   data: function data() {
     return {
       textarea: '',
-      msgs: _data_dmData_json__WEBPACK_IMPORTED_MODULE_0__,
+      // msgs,
       conts: this.contents
     };
   },
@@ -1996,10 +2003,9 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
         });
         axios //store
         .post(this.public_path + 'dm', {
-          board_id: 1,
-          user_id: 1,
-          content: this.textarea,
-          work_id: 1
+          board_id: this.info.board_id,
+          user_id: this.user_id,
+          content: this.textarea
         }).then(function (res) {
           console.log(res);
         }); // 挿入後に、メッセージを空にする
@@ -39409,13 +39415,63 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "c-h2__sec p-dm__h2sec" }, [
-    _c("div", { staticClass: "c-h2__head p-dm__h2" }, [
-      _c("img", {
-        attrs: { src: "../../images/img1.png", alt: "ユーザーの画像" }
-      }),
-      _vm._v(" "),
-      _vm._m(0)
-    ]),
+    _c(
+      "div",
+      { staticClass: "c-h2__head p-dm__h2" },
+      [
+        _vm.info.owner_user_id === _vm.user_id
+          ? [
+              _c("img", {
+                attrs: {
+                  src:
+                    _vm.public_path + "storage/user_img/" + _vm.info.owner_img,
+                  alt: "ユーザーの画像"
+                }
+              })
+            ]
+          : [
+              _c("img", {
+                attrs: {
+                  src:
+                    _vm.public_path + "storage/user_img/" + _vm.info.order_img,
+                  alt: "ユーザーの画像"
+                }
+              })
+            ],
+        _vm._v(" "),
+        _c("div", { staticClass: "p-dm__h2InfoWrap" }, [
+          _c(
+            "div",
+            { staticClass: "p-dm__h2InfoName" },
+            [
+              _vm.info.owner_user_id === _vm.user_id
+                ? [
+                    _vm._v(
+                      "\n               " +
+                        _vm._s(_vm.info.order_user_name) +
+                        "\n            "
+                    )
+                  ]
+                : [
+                    _vm._v(
+                      "\n               " +
+                        _vm._s(_vm.info.owner_user_name) +
+                        "\n            "
+                    )
+                  ]
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "p-dm__h2InfoOrderName" }, [
+            _vm._v(
+              "\n            " + _vm._s(_vm.info.work_name) + "\n         "
+            )
+          ])
+        ])
+      ],
+      2
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "p-dm__msgSec" }, [
       _c(
@@ -39504,22 +39560,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "p-dm__h2InfoWrap" }, [
-      _c("div", { staticClass: "p-dm__h2InfoName" }, [
-        _vm._v("\n            山田太郎\n         ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "p-dm__h2InfoOrderName" }, [
-        _vm._v("\n            カーナビシステムを作成して欲しい\n         ")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -53852,17 +53893,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_c_child_form_vue_vue_type_template_id_734d42ca___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-
-/***/ }),
-
-/***/ "./resources/js/data/dmData.json":
-/*!***************************************!*\
-  !*** ./resources/js/data/dmData.json ***!
-  \***************************************/
-/*! exports provided: 0, 1, 2, 3, 4, 5, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("[{\"id\":1,\"user_id\":1,\"content\":\"私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。\",\"time\":\"2020/11/17 19:10\"},{\"id\":2,\"user_id\":2,\"content\":\"私は2番です。私は2番です私は2番です私は2番です私は2番です私は2番です私は2番です私は2番です私は2番です私は2番です\",\"time\":\"2020/11/17 19:10\"},{\"id\":3,\"user_id\":1,\"content\":\"私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。\",\"time\":\"2020/11/17 19:10\"},{\"id\":4,\"user_id\":2,\"content\":\"私は2番です。私は2番です私は2番です私は2番です私は2番です私は2番です私は2番です私は2番です私は2番です私は2番です\",\"time\":\"2020/11/17 19:10\"},{\"id\":5,\"user_id\":2,\"content\":\"私は2番です。私は2番です私は2番です私は2番です私は2番です私は2番です私は2番です私は2番です私は2番です私は2番です\",\"time\":\"2020/11/17 19:10\"},{\"id\":6,\"user_id\":1,\"content\":\"私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。私は1番です。\",\"time\":\"2020/11/17 19:10\"}]");
 
 /***/ }),
 

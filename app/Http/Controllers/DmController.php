@@ -63,7 +63,6 @@ class DmController extends Controller
     public function store(Request $request)
     {
         $dm = new DmContent;
-        $dm->work_id = $request->work_id;
         $dm->board_id = $request->board_id;
         $dm->user_id = $request->user_id;
         $dm->content = $request->content;
@@ -78,18 +77,30 @@ class DmController extends Controller
      */
     public function show($id)
     {
-        $board = '';
 
+        // DM情報
+        // select * from dm_contents as c
+        // left join dm_boards as b on c.`board_id` = b.id
+        // left join works as w on b.`work_id` = w.id
+        // left join users as u on w.user_id = u.id
+        $info = DB::table('dm_boards as b')
+            ->select('b.id as board_id', 'w.name as work_name', 'b.owner_user_id', 'u1.name as owner_user_name', 'u1.image as owner_img', 'b.order_user_id', 'u2.name as order_user_name', 'u2.image as order_img')
+            ->leftJoin('works as w', 'b.work_id', '=', 'w.id')
+            ->leftJoin('users as u1', 'b.owner_user_id', '=', 'u1.id')
+            ->leftJoin('users as u2', 'b.order_user_id', '=', 'u2.id')
+            ->where('b.id', $id)
+            ->first();
+
+        // echo $info;
+
+        // メッセージの出力
         $contents = DB::table('dm_contents as c')
-            ->select('c.id as contents_id',  'c.board_id', 'c.user_id', 'c.content', 'c.created_at')
-            ->leftJoin('works as w', 'c.work_id', '=', 'w.id')
-            ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
+            ->select('c.id as contents_id', 'c.board_id', 'c.user_id', 'c.content', 'c.created_at',)
             ->where('board_id', $id)
             ->get();
+        // echo $contents;
 
-        echo $contents;
-
-        return view('dm.show', compact('contents'));
+        return view('dm.show', compact('contents', 'info'));
     }
 
     /**
