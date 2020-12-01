@@ -61,11 +61,11 @@
                   </div>
                </div>
             </template>
-
-            <!-- その他情報 -->
             <div class="c-workCard__info">
-               <div class="c-workCard__infoItem -left">残り{{ work.remain_date }}日</div>
-               <div class="c-workCard__infoItem -right">応募者{{ work.app_num }}人</div>
+               <div class="c-workCard__infoItem">
+                  <div class="c-workCard__infoItemHead">締め切り日：</div>
+                  <span class="c-workCard__endDate">2020/12/01</span>
+               </div>
             </div>
          </a>
       </transition-group>

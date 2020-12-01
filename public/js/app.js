@@ -40359,12 +40359,14 @@ var render = function() {
                 : _vm._e(),
               _vm._v(" "),
               _c("div", { staticClass: "c-workCard__info" }, [
-                _c("div", { staticClass: "c-workCard__infoItem -left" }, [
-                  _vm._v("残り" + _vm._s(work.remain_date) + "日")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "c-workCard__infoItem -right" }, [
-                  _vm._v("応募者" + _vm._s(work.app_num) + "人")
+                _c("div", { staticClass: "c-workCard__infoItem" }, [
+                  _c("div", { staticClass: "c-workCard__infoItemHead" }, [
+                    _vm._v("締め切り日：")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "c-workCard__endDate" }, [
+                    _vm._v("2020/12/01")
+                  ])
                 ])
               ])
             ],

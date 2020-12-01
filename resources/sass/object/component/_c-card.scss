@@ -195,8 +195,10 @@
    &__infoItem {
       @include flex-center;
       @include border-radius('all', 5px);
+      position: relative;
+      width: 100%;
       padding: 14px;
-      font-size: 12px;
+      font-size: 11px;
       background-color: $primary-light;
       @include mq('xs') {
          padding: 10px 12px;
@@ -209,6 +211,16 @@
       @include mq('3xs') {
          padding: 9px 9px;
       }
+   }
+   &__infoItemHead {
+      position: absolute;
+      top: 7px;
+      left: 12px;
+   }
+   &__endDate {
+      margin-top: 7px;
+      font-size: 14px;
+      font-weight: bold;
    }
 }
 

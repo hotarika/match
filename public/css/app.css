@@ -815,8 +815,10 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+  position: relative;
+  width: 100%;
   padding: 14px;
-  font-size: 12px;
+  font-size: 11px;
   background-color: #bedcfd;
 }
 
@@ -838,6 +840,18 @@ body {
   .c-workCard__infoItem {
     padding: 9px 9px;
   }
+}
+
+.c-workCard__infoItemHead {
+  position: absolute;
+  top: 7px;
+  left: 12px;
+}
+
+.c-workCard__endDate {
+  margin-top: 7px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .c-dmMsgCard__basicInfo,
