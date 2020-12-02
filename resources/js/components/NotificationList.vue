@@ -43,7 +43,14 @@
 
 <script>
 export default {
-   props: ['notification', 'public_path'],
+   // props: ['notification', 'public_path'],
+   props: {
+      notification: {
+         type: Array,
+         default: () => ['']
+      },
+      public_path: String
+   },
    data() {
       return {
          displayItems: [], // 実際に表示している通知
@@ -79,23 +86,28 @@ export default {
       remainNum: function() {
          //「残りxx件を全て表示する」に使用
          // 式：[全体の通知数 - 削除した通知数 - 表示している通知数 = 残りの表示されていない通知数]
-         return this.notification.length - this.removeNum - this.displayItemsNum;
+         if (this.notification !== null) {
+            return this.notification.length - this.removeNum - this.displayItemsNum;
+         }
+         return null;
       }
    },
    mounted() {
-      const showData = []; // 表示するためのデータ配列を作成
-      const forNum = this.allData >= this.displayNum ? this.displayNum : this.allData.length;
+      if (this.allData !== null) {
+         const showData = []; // 表示するためのデータ配列を作成
+         const forNum = this.allData >= this.displayNum ? this.displayNum : this.allData.length;
 
-      // 表示する5件を絞り込み
-      for (let i = 0; i < forNum; i++) {
-         showData[i] = this.allData[i];
+         // 表示する5件を絞り込み
+         for (let i = 0; i < forNum; i++) {
+            showData[i] = this.allData[i];
+         }
+
+         // vueデータに、上記で取り出したデータ（showData）をreturn
+         // 上記のforで直接displayItemsに格納できず、filterを通さないと表示されない（ようです）
+         this.displayItems = showData.filter(val => {
+            return val;
+         });
       }
-
-      // vueデータに、上記で取り出したデータ（showData）をreturn
-      // 上記のforで直接displayItemsに格納できず、filterを通さないと表示されない（ようです）
-      this.displayItems = showData.filter(val => {
-         return val;
-      });
    }
 };
 </script>
