@@ -57,7 +57,7 @@ class ApplicantsNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'invoice_id' => $this->user->name,
+            'order_user_name' => $this->user->name,
             'content' => 'あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。',
         ];
     }

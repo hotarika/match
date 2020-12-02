@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\User;
+use Mockery\Undefined;
 
 class MypageController extends Controller
 {
@@ -16,6 +18,18 @@ class MypageController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $user = User::find(Auth::id());
+        foreach ($user->unreadNotifications as $key => $value) {
+            if ($value) {
+                $notification[$key] = $value;
+            }
+        }
+        // 通知がなかった場合はundefinedになるため、null値を格納してエラー回避
+        if (!isset($notification)) {
+            $notification = null;
+        }
+
+
         // *******************************
         // 発注中の仕事
         // *******************************
@@ -92,6 +106,6 @@ class MypageController extends Controller
             ->orderBy('latest_date', 'DESC')
             ->get();
 
-        return view('mypage', compact('owner_works', 'order_works', 'pubmsgs', 'boards'));
+        return view('mypage', compact('owner_works', 'order_works', 'pubmsgs', 'boards', 'notification'));
     }
 }

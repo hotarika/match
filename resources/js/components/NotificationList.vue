@@ -44,6 +44,7 @@
 import notifications from '../data/notificationData.json';
 
 export default {
+   props: ['notification', 'public_path'],
    data() {
       return {
          notifications, // 通知のデータを取得

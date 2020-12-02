@@ -2233,6 +2233,7 @@ var _data_notificationData_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PU
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['notification', 'public_path'],
   data: function data() {
     return {
       notifications: _data_notificationData_json__WEBPACK_IMPORTED_MODULE_0__,
