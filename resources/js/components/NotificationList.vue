@@ -84,13 +84,11 @@ export default {
    },
    mounted() {
       const showData = []; // 表示するためのデータ配列を作成
+      const forNum = this.allData >= this.displayNum ? this.displayNum : this.allData.length;
 
       // 表示する5件を絞り込み
-      if (this.allData.length >= this.displayItemsNum) {
-         // 表示する通知idの取り出し
-         for (let i = 0; i < this.displayItemsNum; i++) {
-            showData[i] = this.allData[i];
-         }
+      for (let i = 0; i < forNum; i++) {
+         showData[i] = this.allData[i];
       }
 
       // vueデータに、上記で取り出したデータ（showData）をreturn
