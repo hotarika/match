@@ -2,7 +2,7 @@
    <section class="c-h2__sec">
       <h2 class="c-h2__head">新着通知</h2>
 
-      <div class="c-h2__oneRowBody p-mypage__notificationBody">
+      <div class="c-h2__oneRowBody p-mypage__secBody">
          <!-- 通知 -->
          <transition-group>
             <div
@@ -38,8 +38,8 @@
          <button class="c-btn p-mypage__notificationSeeMore" @click.prevent="openNotifications" v-if="remainNum >= 1">
             残り{{ remainNum }}件を全て表示する
          </button>
-         <div class="c-h2__noItems" v-if="allData === null">
-            現在、新着通知はありません
+         <div class="c-h2__noItems -notification" v-if="allData === null">
+            新着通知はありません
          </div>
       </div>
    </section>

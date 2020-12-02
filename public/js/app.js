@@ -39798,7 +39798,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "c-h2__oneRowBody p-mypage__notificationBody" },
+      { staticClass: "c-h2__oneRowBody p-mypage__secBody" },
       [
         _c(
           "transition-group",
@@ -39895,8 +39895,8 @@ var render = function() {
           : _vm._e(),
         _vm._v(" "),
         _vm.allData === null
-          ? _c("div", { staticClass: "c-h2__noItems" }, [
-              _vm._v("\n         現在、新着通知はありません\n      ")
+          ? _c("div", { staticClass: "c-h2__noItems -notification" }, [
+              _vm._v("\n         新着通知はありません\n      ")
             ])
           : _vm._e()
       ],

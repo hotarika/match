@@ -20,8 +20,8 @@
             {{-- --------------------------------- --}}
             <section class="c-h2__sec">
                <h2 class="c-h2__head">発注した仕事</h2>
-               <div class="c-h2__workCardBody">
-                  @foreach ($owner_works as $work)
+               <div class="c-h2__workCardBody p-mypage__secBody">
+                  @forelse ($owner_works as $work)
                   <a class="c-workCard" href="{{route('works.show',$work->work_id)}}">
                      <div class="c-workCard__nameWrap">
                         <img class="c-img c-workCard__img" src="{{url('storage/user_img/'.$work->image)}}"
@@ -63,7 +63,11 @@
                         </div>
                      </div>
                   </a>
-                  @endforeach
+                  @empty
+                  <div class="c-h2__noItems -order">
+                     発注している仕事はありません。
+                  </div>
+                  @endforelse
                </div>
             </section>
 
@@ -73,8 +77,9 @@
             {{-- --------------------------------- --}}
             <section class="c-h2__sec">
                <h2 class="c-h2__head">応募中の仕事</h2>
-               <div class="c-h2__workCardBody">
-                  @foreach ($order_works as $work)
+               <div class="c-h2__workCardBody p-mypage__secBody">
+
+                  @forelse ($order_works as $work)
                   <a class="c-workCard" href="work-detail">
                      <div class="c-workCard__nameWrap">
                         <img class="c-img c-workCard__img" src="{{url('storage/user_img/'.$work->image)}}"
@@ -109,6 +114,7 @@
                         </div>
                      </div>
                      @endif
+
                      <!-- その他情報 -->
                      <div class="c-workCard__info">
                         <div class="c-workCard__infoItem">
@@ -117,7 +123,11 @@
                         </div>
                      </div>
                   </a>
-                  @endforeach
+                  @empty
+                  <div class="c-h2__noItems -apply">
+                     応募中の仕事はありません。
+                  </div>
+                  @endforelse
                </div>
             </section>
 
@@ -130,8 +140,8 @@
                   <i class="fas fa-chevron-right"></i>
                </a>
                <h2 class="c-h2__head">パブリックメッセージ</h2>
-               <div class="c-h2__body">
-                  @foreach ( $pubmsgs as $pubmsg )
+               <div class="c-h2__body p-mypage__secBody">
+                  @forelse ( $pubmsgs as $pubmsg )
                   <!-- ダイレクトメッセージ一覧 -->
                   <a class="c-card c-msgCard" href="{{url('works/'.$pubmsg->work_id.'#pub-msg')}}">
                      <div class=" c-pubMsgCard__infoWrap">
@@ -147,7 +157,11 @@
                         {{$pubmsg->latest_content}}
                      </div>
                   </a>
-                  @endforeach
+                  @empty
+                  <div class="c-h2__noItems -pubmsg">
+                     パブリックメッセージはありません。
+                  </div>
+                  @endforelse
                </div>
             </section>
 
@@ -160,9 +174,9 @@
                   <i class="fas fa-chevron-right"></i>
                </a>
                <h2 class="c-h2__head">ダイレクトメッセージ</h2>
-               <div class="c-h2__body">
+               <div class="c-h2__body p-mypage__secBody">
                   <!-- ダイレクトメッセージ一覧 -->
-                  @foreach ($boards as $board)
+                  @forelse ($boards as $board)
                   <a class="c-card c-msgCard c-dmMsgCard__msgItem" href="{{route('dm.show',$board->id)}}">
                      <img class="c-img c-dmMsgCard__userImg" src={{asset('storage/user_img/'.$board->image)}}
                         alt="ユーザーの画像" />
@@ -176,7 +190,11 @@
                         </div>
                      </div>
                   </a>
-                  @endforeach
+                  @empty
+                  <div class="c-h2__noItems -dm">
+                     ダイレクトメッセージはありません。
+                  </div>
+                  @endforelse
                </div>
             </section>
          </div>

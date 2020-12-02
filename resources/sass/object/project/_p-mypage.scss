@@ -3,9 +3,8 @@
 // **********************************
 .p-mypage {
    // 新着通知
-   &__notificationBody {
-      min-height: 97px;
-      padding: 20px;
+   &__secBody {
+      min-height: 100px;
       @include mq('xs') {
          padding: 15px 10px;
       }

@@ -96,9 +96,30 @@
    }
    // 「現在、xxxはありません」の表示
    &__noItems {
-      margin: 16px 0;
+      width: 100%;
+      height: 100%;
+      // margin: 20px 0;
+      padding-top: 23px;
       font-size: 14px;
       color: $gray-600;
       text-align: center;
+
+      &.-notification {
+         padding-top: 41px;
+      }
+      &.-order {
+         padding-right: 20px;
+      }
+      &.-apply {
+         padding-right: 27px;
+      }
+      &.-pubmsg {
+         padding-top: 40px;
+         padding-left: 15px;
+      }
+      &.-dm {
+         padding-top: 40px;
+         padding-left: 10px;
+      }
    }
 }
