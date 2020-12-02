@@ -25,7 +25,11 @@
                </div>
 
                <!-- 削除ボタン -->
-               <button class="c-btn p-mypage__notificationDelBtn" type="submit" @click.prevent="remove(index)">
+               <button
+                  class="c-btn p-mypage__notificationDelBtn"
+                  type="submit"
+                  @click.prevent="remove(index, notification.id)"
+               >
                   <i class="fas fa-trash-alt"></i>
                </button>
             </div>
@@ -34,7 +38,7 @@
          <button class="c-btn p-mypage__notificationSeeMore" @click.prevent="openNotifications" v-if="remainNum >= 1">
             残り{{ remainNum }}件を全て表示する
          </button>
-         <div class="c-h2__noItems" v-if="displayItems === []">
+         <div class="c-h2__noItems" v-if="allData === null">
             現在、新着通知はありません
          </div>
       </div>
@@ -42,12 +46,13 @@
 </template>
 
 <script>
+const axios = require('axios');
+
 export default {
-   // props: ['notification', 'public_path'],
    props: {
       notification: {
          type: Array,
-         default: () => ['']
+         default: () => []
       },
       public_path: String
    },
@@ -60,7 +65,7 @@ export default {
       };
    },
    methods: {
-      remove(index) {
+      remove(index, id) {
          // 「残りxx件を全て表示する」に使用
          this.removeNum++;
 
@@ -71,6 +76,17 @@ export default {
          if (this.remainNum >= 0) {
             this.displayItems.push(this.notification[this.displayItemsNum]);
          }
+
+         // 通知を既読（notificationsテーブルのread_atカラム）
+         const today = new Date();
+         axios
+            .put(this.public_path + 'notification/' + id, { read_at: today.toLocaleString() })
+            .then(res => {
+               console.log(res);
+            })
+            .catch(err => {
+               console.log('err:', err);
+            });
       },
       // 通知件数全て表示
       openNotifications() {

@@ -2230,8 +2230,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['notification', 'public_path'],
+  props: {
+    notification: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
+    },
+    public_path: String
+  },
   data: function data() {
     return {
       displayItems: [],
@@ -2244,7 +2258,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    remove: function remove(index) {
+    remove: function remove(index, id) {
       // 「残りxx件を全て表示する」に使用
       this.removeNum++; // 通知の削除
 
@@ -2252,7 +2266,17 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.remainNum >= 0) {
         this.displayItems.push(this.notification[this.displayItemsNum]);
-      }
+      } // 通知を既読（notificationsテーブルのread_atカラム）
+
+
+      var today = new Date();
+      axios.put(this.public_path + 'notification/' + id, {
+        read_at: today.toLocaleString()
+      }).then(function (res) {
+        console.log(res);
+      })["catch"](function (err) {
+        console.log('err:', err);
+      });
     },
     // 通知件数全て表示
     openNotifications: function openNotifications() {
@@ -2268,25 +2292,29 @@ __webpack_require__.r(__webpack_exports__);
     remainNum: function remainNum() {
       //「残りxx件を全て表示する」に使用
       // 式：[全体の通知数 - 削除した通知数 - 表示している通知数 = 残りの表示されていない通知数]
-      return this.notification.length - this.removeNum - this.displayItemsNum;
+      if (this.notification !== null) {
+        return this.notification.length - this.removeNum - this.displayItemsNum;
+      }
+
+      return null;
     }
   },
   mounted: function mounted() {
-    var showData = []; // 表示するためのデータ配列を作成
-    // 表示する5件を絞り込み
+    if (this.allData !== null) {
+      var showData = []; // 表示するためのデータ配列を作成
 
-    if (this.allData.length >= this.displayItemsNum) {
-      // 表示する通知idの取り出し
-      for (var i = 0; i < this.displayItemsNum; i++) {
+      var forNum = this.allData >= this.displayNum ? this.displayNum : this.allData.length; // 表示する5件を絞り込み
+
+      for (var i = 0; i < forNum; i++) {
         showData[i] = this.allData[i];
-      }
-    } // vueデータに、上記で取り出したデータ（showData）をreturn
-    // 上記のforで直接displayItemsに格納できず、filterを通さないと表示されない（ようです）
+      } // vueデータに、上記で取り出したデータ（showData）をreturn
+      // 上記のforで直接displayItemsに格納できず、filterを通さないと表示されない（ようです）
 
 
-    this.displayItems = showData.filter(function (val) {
-      return val;
-    });
+      this.displayItems = showData.filter(function (val) {
+        return val;
+      });
+    }
   }
 });
 
@@ -39832,7 +39860,7 @@ var render = function() {
                     on: {
                       click: function($event) {
                         $event.preventDefault()
-                        return _vm.remove(index)
+                        return _vm.remove(index, notification.id)
                       }
                     }
                   },
@@ -39866,7 +39894,7 @@ var render = function() {
             )
           : _vm._e(),
         _vm._v(" "),
-        _vm.displayItems === []
+        _vm.allData === null
           ? _c("div", { staticClass: "c-h2__noItems" }, [
               _vm._v("\n         現在、新着通知はありません\n      ")
             ])
