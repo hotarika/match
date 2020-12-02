@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Applicant;
+use App\Notifications\ApplicantsNotification;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Notifications\Notification;
 
 class ApplicantController extends Controller
 {
@@ -39,6 +41,12 @@ class ApplicantController extends Controller
      */
     public function store(Request $request)
     {
+        // 仕事発注者へ通知
+        $owner_user = User::find($request->owner_id);
+        $order_user = Auth::user();
+        $owner_user->notify(new ApplicantsNotification($order_user));
+
+        // DB保存
         $applicant = new Applicant;
         $applicant->work_id = $request->work_id;
         $applicant->applicant_id = Auth::id();

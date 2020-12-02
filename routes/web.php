@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/dm', 'DmController');
     Route::resource('/dm-board', 'DmBoardsController');
     Route::resource('/applicant', 'ApplicantController');
+    Route::resource('/notification', 'ApplicantsNotificationController');
 
     // Invoke Controller（1つのコントローラーに1つの定義しか記述しないという意味）
     Route::get('/', 'HomeController');

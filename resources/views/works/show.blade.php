@@ -161,6 +161,7 @@
                   <form method="POST" action="{{route('applicant.store')}}">
                      @csrf
                      <input type="hidden" name="work_id" value="{{$work->work_id}}">
+                     <input type="hidden" name="owner_id" value="{{$work->owner_id}}">
                      <button class="c-btn p-workDetail__appBtn -app" type="submit">応募する</button>
                   </form>
                   @endif

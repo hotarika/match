@@ -12,7 +12,7 @@
          {{-- メインエリア --}}
          <div class="l-main__mainArea -twoColumns">
             <!-- 新着通知 -->
-            <notification-component></notification-component>
+            <notification-component :public_path="{{ json_encode(asset('')) }}"></notification-component>
             {{-- --------------------------------- --}}
             {{-- 発注した仕事                        --}}
             {{-- --------------------------------- --}}
