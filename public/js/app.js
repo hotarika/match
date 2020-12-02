@@ -2187,8 +2187,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _data_notificationData_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../data/notificationData.json */ "./resources/js/data/notificationData.json");
-var _data_notificationData_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../data/notificationData.json */ "./resources/js/data/notificationData.json", 1);
 //
 //
 //
@@ -2231,85 +2229,63 @@ var _data_notificationData_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PU
 //
 //
 //
-
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['notification', 'public_path'],
   data: function data() {
     return {
-      notifications: _data_notificationData_json__WEBPACK_IMPORTED_MODULE_0__,
-      // 通知のデータを取得
-      getId: Number,
-      // 要素削除に利用
       displayItems: [],
       // 実際に表示している通知
       displayItemsNum: 5,
       // 表示数
-      removeNum: 0 // 「全てを表示」ボタンに利用
-
+      removeNum: 0,
+      // 「全てを表示」ボタンに利用
+      allData: this.notification
     };
   },
   methods: {
     remove: function remove(index) {
       // 「残りxx件を全て表示する」に使用
-      this.removeNum++; // 現在表示しているリストの最後のidを取得
-      // もし現在表示している通知の最下部の通知idが現在のidと同じであれば、最下部の通知idを記述し、そうでなければ、新しい最下部の通知idを記述する（これは最下部の通知idを取得している）
+      this.removeNum++; // 通知の削除
 
-      this.getId = this.notifications.slice(-1)[0].id === this.getId ? this.getId : this.displayItems.slice(-1)[0].id;
-      console.log(this.getId); // 通知の削除
+      this.displayItems.splice(index, 1); // 削除した場合に、表示されていない通知を表示（push）
 
-      this.displayItems.splice(index, 1); // 削除した場合に、表示されていない通知を表示する（push）
-
-      for (var i = 0; i < this.notifications.length; i++) {
-        // 最下部の通知idの次のidを取得（削除すると残りの表示されていない通知が表示される）
-        if (this.notifications[i].id > this.getId) {
-          this.displayItems.push(this.notifications[i]);
-          return;
-        }
+      if (this.remainNum >= 0) {
+        this.displayItems.push(this.notification[this.displayItemsNum]);
       }
     },
     // 通知件数全て表示
     openNotifications: function openNotifications() {
-      this.displayItemsNum = this.notifications.length; // 全件数を表示数変数に格納
-
-      var allData = Object.values(this.notifications); //データを取得
-
-      var showData = []; // 表示するためのデータ配列を作成
-      // 表示する通知idの取り出し
+      this.displayItemsNum = this.notification.length; // 全件数を表示数変数に格納
+      // 全て表示
 
       for (var i = 0; i < this.displayItemsNum; i++) {
-        showData[i] = allData[i].id;
-      } // vueデータに、上記で取り出した通知をreturn
-
-
-      this.displayItems = this.notifications.filter(function (val) {
-        if (showData.includes(val.id)) {
-          return val;
-        }
-      });
+        this.displayItems[i] = this.allData[i];
+      }
     }
   },
   computed: {
     remainNum: function remainNum() {
       //「残りxx件を全て表示する」に使用
       // 式：[全体の通知数 - 削除した通知数 - 表示している通知数 = 残りの表示されていない通知数]
-      return this.notifications.length - this.removeNum - this.displayItemsNum;
+      return this.notification.length - this.removeNum - this.displayItemsNum;
     }
   },
   mounted: function mounted() {
-    var allData = Object.values(this.notifications); //データを取得
-
     var showData = []; // 表示するためのデータ配列を作成
-    // 表示する通知idの取り出し
+    // 表示する5件を絞り込み
 
-    for (var i = 0; i < this.displayItemsNum; i++) {
-      showData[i] = allData[i].id;
-    } // vueデータに、上記で取り出した通知をreturn
-
-
-    this.displayItems = this.notifications.filter(function (val) {
-      if (showData.includes(val.id)) {
-        return val;
+    if (this.allData.length >= this.displayItemsNum) {
+      // 表示する通知idの取り出し
+      for (var i = 0; i < this.displayItemsNum; i++) {
+        showData[i] = this.allData[i];
       }
+    } // vueデータに、上記で取り出したデータ（showData）をreturn
+    // 上記のforで直接displayItemsに格納できず、filterを通さないと表示されない（ようです）
+
+
+    this.displayItems = showData.filter(function (val) {
+      return val;
     });
   }
 });
@@ -39817,13 +39793,18 @@ var render = function() {
                           staticClass: "c-link p-mypage__notificationName",
                           attrs: { href: "profile" }
                         },
-                        [_vm._v(_vm._s(notification.name))]
+                        [
+                          _vm._v(
+                            "\n                     応募者：" +
+                              _vm._s(notification.data["order_user_name"])
+                          )
+                        ]
                       ),
                       _vm._v(" "),
                       _c(
                         "time",
                         { staticClass: "p-mypage__notificationTime" },
-                        [_vm._v(_vm._s(notification.time))]
+                        [_vm._v(_vm._s(notification.created_at))]
                       )
                     ]
                   ),
@@ -39835,7 +39816,7 @@ var render = function() {
                       _c("p", { staticClass: "p-mypage__notificationMsg" }, [
                         _vm._v(
                           "\n                     " +
-                            _vm._s(notification.content) +
+                            _vm._s(notification.data["content"]) +
                             "\n                  "
                         )
                       ])
@@ -53485,14 +53466,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************!*\
   !*** ./resources/js/components/NotificationList.vue ***!
   \******************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NotificationList_vue_vue_type_template_id_14689614_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NotificationList.vue?vue&type=template&id=14689614&scoped=true& */ "./resources/js/components/NotificationList.vue?vue&type=template&id=14689614&scoped=true&");
 /* harmony import */ var _NotificationList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NotificationList.vue?vue&type=script&lang=js& */ "./resources/js/components/NotificationList.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _NotificationList_vue_vue_type_style_index_0_id_14689614_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NotificationList.vue?vue&type=style&index=0&id=14689614&scoped=true&lang=css& */ "./resources/js/components/NotificationList.vue?vue&type=style&index=0&id=14689614&scoped=true&lang=css&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _NotificationList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _NotificationList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _NotificationList_vue_vue_type_style_index_0_id_14689614_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NotificationList.vue?vue&type=style&index=0&id=14689614&scoped=true&lang=css& */ "./resources/js/components/NotificationList.vue?vue&type=style&index=0&id=14689614&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -53524,7 +53506,7 @@ component.options.__file = "resources/js/components/NotificationList.vue"
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/NotificationList.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53896,17 +53878,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_c_child_form_vue_vue_type_template_id_734d42ca___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-
-/***/ }),
-
-/***/ "./resources/js/data/notificationData.json":
-/*!*************************************************!*\
-  !*** ./resources/js/data/notificationData.json ***!
-  \*************************************************/
-/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("[{\"id\":1,\"name\":\"Name-1\",\"content\":\"1.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":3,\"name\":\"Name-3\",\"content\":\"2.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":6,\"name\":\"Name-6\",\"content\":\"3.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":9,\"name\":\"Name-9\",\"content\":\"4.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":15,\"name\":\"Name-15\",\"content\":\"5.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":28,\"name\":\"Name-28\",\"content\":\"6.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":33,\"name\":\"Name-33\",\"content\":\"7.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":56,\"name\":\"Name-56\",\"content\":\"8.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":66,\"name\":\"Name-66\",\"content\":\"9.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"},{\"id\":82,\"name\":\"Name-82\",\"content\":\"10.あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。\",\"time\":\"2020/11/17 19:10\"}]");
 
 /***/ }),
 

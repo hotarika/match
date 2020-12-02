@@ -8,7 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Notifications\Notification;
+use Notification;
 
 class ApplicantController extends Controller
 {
@@ -45,6 +45,7 @@ class ApplicantController extends Controller
         $owner_user = User::find($request->owner_id);
         $order_user = Auth::user();
         $owner_user->notify(new ApplicantsNotification($order_user));
+        // Notification::send($owner_user, new ApplicantsNotification($order_user));
 
         // DB保存
         $applicant = new Applicant;

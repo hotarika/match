@@ -12,12 +12,14 @@
             >
                <div class="p-mypage__notificationMsgSecWrap">
                   <div class="p-mypage__notificationItemUpper">
-                     <a class="c-link p-mypage__notificationName" href="profile">{{ notification.name }}</a>
-                     <time class="p-mypage__notificationTime">{{ notification.time }}</time>
+                     <a class="c-link p-mypage__notificationName" href="profile">
+                        応募者：{{ notification.data['order_user_name'] }}</a
+                     >
+                     <time class="p-mypage__notificationTime">{{ notification.created_at }}</time>
                   </div>
                   <div class="p-mypage__notificationItemLower">
                      <p class="p-mypage__notificationMsg">
-                        {{ notification.content }}
+                        {{ notification.data['content'] }}
                      </p>
                   </div>
                </div>
@@ -32,7 +34,6 @@
          <button class="c-btn p-mypage__notificationSeeMore" @click.prevent="openNotifications" v-if="remainNum >= 1">
             残り{{ remainNum }}件を全て表示する
          </button>
-
          <div class="c-h2__noItems" v-if="displayItems === []">
             現在、新着通知はありません
          </div>
@@ -41,17 +42,14 @@
 </template>
 
 <script>
-import notifications from '../data/notificationData.json';
-
 export default {
    props: ['notification', 'public_path'],
    data() {
       return {
-         notifications, // 通知のデータを取得
-         getId: Number, // 要素削除に利用
          displayItems: [], // 実際に表示している通知
          displayItemsNum: 5, // 表示数
-         removeNum: 0 // 「全てを表示」ボタンに利用
+         removeNum: 0, // 「全てを表示」ボタンに利用
+         allData: this.notification
       };
    },
    methods: {
@@ -59,64 +57,46 @@ export default {
          // 「残りxx件を全て表示する」に使用
          this.removeNum++;
 
-         // 現在表示しているリストの最後のidを取得
-         // もし現在表示している通知の最下部の通知idが現在のidと同じであれば、最下部の通知idを記述し、そうでなければ、新しい最下部の通知idを記述する（これは最下部の通知idを取得している）
-         this.getId =
-            this.notifications.slice(-1)[0].id === this.getId ? this.getId : this.displayItems.slice(-1)[0].id;
-         console.log(this.getId);
-
          // 通知の削除
          this.displayItems.splice(index, 1);
 
-         // 削除した場合に、表示されていない通知を表示する（push）
-         for (let i = 0; i < this.notifications.length; i++) {
-            // 最下部の通知idの次のidを取得（削除すると残りの表示されていない通知が表示される）
-            if (this.notifications[i].id > this.getId) {
-               this.displayItems.push(this.notifications[i]);
-               return;
-            }
+         // 削除した場合に、表示されていない通知を表示（push）
+         if (this.remainNum >= 0) {
+            this.displayItems.push(this.notification[this.displayItemsNum]);
          }
       },
       // 通知件数全て表示
       openNotifications() {
-         this.displayItemsNum = this.notifications.length; // 全件数を表示数変数に格納
-         const allData = Object.values(this.notifications); //データを取得
-         const showData = []; // 表示するためのデータ配列を作成
+         this.displayItemsNum = this.notification.length; // 全件数を表示数変数に格納
 
-         // 表示する通知idの取り出し
+         // 全て表示
          for (let i = 0; i < this.displayItemsNum; i++) {
-            showData[i] = allData[i].id;
+            this.displayItems[i] = this.allData[i];
          }
-
-         // vueデータに、上記で取り出した通知をreturn
-         this.displayItems = this.notifications.filter(val => {
-            if (showData.includes(val.id)) {
-               return val;
-            }
-         });
       }
    },
    computed: {
       remainNum: function() {
          //「残りxx件を全て表示する」に使用
          // 式：[全体の通知数 - 削除した通知数 - 表示している通知数 = 残りの表示されていない通知数]
-         return this.notifications.length - this.removeNum - this.displayItemsNum;
+         return this.notification.length - this.removeNum - this.displayItemsNum;
       }
    },
    mounted() {
-      const allData = Object.values(this.notifications); //データを取得
       const showData = []; // 表示するためのデータ配列を作成
 
-      // 表示する通知idの取り出し
-      for (let i = 0; i < this.displayItemsNum; i++) {
-         showData[i] = allData[i].id;
+      // 表示する5件を絞り込み
+      if (this.allData.length >= this.displayItemsNum) {
+         // 表示する通知idの取り出し
+         for (let i = 0; i < this.displayItemsNum; i++) {
+            showData[i] = this.allData[i];
+         }
       }
 
-      // vueデータに、上記で取り出した通知をreturn
-      this.displayItems = this.notifications.filter(val => {
-         if (showData.includes(val.id)) {
-            return val;
-         }
+      // vueデータに、上記で取り出したデータ（showData）をreturn
+      // 上記のforで直接displayItemsに格納できず、filterを通さないと表示されない（ようです）
+      this.displayItems = showData.filter(val => {
+         return val;
       });
    }
 };
