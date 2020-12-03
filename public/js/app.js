@@ -2430,8 +2430,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['page', 'totalPage'],
+  props: {
+    page: Number,
+    totalPage: Number
+  },
   data: function data() {
     return {
       currentPage: this.page,
@@ -2440,9 +2447,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   computed: {
+    // 現在のページの前のページ番号（前へボタン）
     prevPage: function prevPage() {
       return Math.max(this.currentPage - 1, 1);
     },
+    // 現在のページの次のページ番号（次へボタン）
     nextPage: function nextPage() {
       return Math.min(this.currentPage + 1, this.totalPage);
     }
@@ -2451,23 +2460,18 @@ __webpack_require__.r(__webpack_exports__);
     onPrev: function onPrev() {
       this.currentPage = this.prevPage;
       this.$emit('change', this.currentPage);
-      return false;
     },
     onNext: function onNext() {
-      if (this.nextPage < 3) this.nextDisable = true;
       this.currentPage = this.nextPage;
       this.$emit('change', this.currentPage);
-      return false;
     }
   },
   watch: {
-    // this.pageを監視している。名前はdataと同じ名前にする。pageプロパティが変更されたら発火
+    // this.currentPageを監視
+    // propsに反映されても、dataに反映されない場合があるためwatchに記述
     page: function page() {
       this.currentPage = this.page;
-    } // totalPage(val) {
-    //    this.currentPage = val;
-    // }
-
+    }
   }
 });
 
@@ -40325,7 +40329,7 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("pagination-component", {
-        attrs: { page: _vm.page, totalPage: _vm.totalPage },
+        attrs: { page: _vm.page, "total-page": _vm.totalPage },
         on: { change: _vm.searchListClick }
       })
     ],

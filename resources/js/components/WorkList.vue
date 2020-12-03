@@ -69,7 +69,7 @@
             </div>
          </a>
       </div>
-      <pagination-component :page="page" :totalPage="totalPage" @change="searchListClick"> </pagination-component>
+      <pagination-component :page="page" :total-page="totalPage" @change="searchListClick"> </pagination-component>
    </section>
 </template>
 

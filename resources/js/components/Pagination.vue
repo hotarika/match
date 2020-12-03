@@ -1,5 +1,6 @@
 <template>
    <div class="c-pagination">
+      <!-- 前へボタン -->
       <a
          :href="`?page=${prevPage}`"
          class="c-btn c-pagination__btn"
@@ -10,14 +11,17 @@
          >&lt; 前へ</a
       >
 
+      <!-- ページ番号 -->
       <div class="c-pagination__total -total" ref="total" v-if="totalPage > 0">{{ currentPage }} / {{ totalPage }}</div>
+
+      <!-- 次へボタン -->
       <a
          :href="`?page=${nextPage}`"
          class="c-btn c-pagination__btn"
          :class="{ '-disabled': totalPage === currentPage }"
          ref="next"
-         v-if="totalPage > 0"
          @click.prevent="onNext"
+         v-if="totalPage > 0"
          >次へ &gt;</a
       >
    </div>
@@ -25,7 +29,10 @@
 
 <script>
 export default {
-   props: ['page', 'totalPage'],
+   props: {
+      page: Number,
+      totalPage: Number
+   },
    data() {
       return {
          currentPage: this.page,
@@ -34,9 +41,11 @@ export default {
       };
    },
    computed: {
+      // 現在のページの前のページ番号（前へボタン）
       prevPage() {
          return Math.max(this.currentPage - 1, 1);
       },
+      // 現在のページの次のページ番号（次へボタン）
       nextPage() {
          return Math.min(this.currentPage + 1, this.totalPage);
       }
@@ -45,23 +54,18 @@ export default {
       onPrev() {
          this.currentPage = this.prevPage;
          this.$emit('change', this.currentPage);
-         return false;
       },
       onNext() {
-         if (this.nextPage < 3) this.nextDisable = true;
          this.currentPage = this.nextPage;
          this.$emit('change', this.currentPage);
-         return false;
       }
    },
    watch: {
-      // this.pageを監視している。名前はdataと同じ名前にする。pageプロパティが変更されたら発火
+      // this.currentPageを監視
+      // propsに反映されても、dataに反映されない場合があるためwatchに記述
       page: function() {
          this.currentPage = this.page;
       }
-      // totalPage(val) {
-      //    this.currentPage = val;
-      // }
    }
 };
 </script>
