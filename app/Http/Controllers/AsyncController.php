@@ -20,4 +20,15 @@ class AsyncController extends Controller
 
         return $work->toJson();
     }
+
+    public function getNotificationsBadgeNumber()
+    {
+        $count = DB::table('notifications')
+            ->select(DB::raw('count(*) as count'))
+            ->where('notifiable_id', '=', Auth::id())
+            ->whereNull('read_at')
+            ->get();
+
+        return $count->toJson();
+    }
 }

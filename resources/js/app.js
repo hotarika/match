@@ -42,6 +42,7 @@ Vue.component('newly-workcard-section', require('./sections/s-newly-workcard.vue
 // 仕事詳細画面 / work-detail
 Vue.component('child-form-component', require('./components/c-child-form.vue').default);
 Vue.component('notification-component', require('./components/NotificationList.vue').default);
+Vue.component('notification-badge-component', require('./components/NotificationBadge.vue').default);
 Vue.component('work-card-component', require('./components/WorkCard.vue').default);
 Vue.component('dm-list-component', require('./components/DmList.vue').default);
 Vue.component('pubmsg-card-component', require('./components/PubmsgCard.vue').default);

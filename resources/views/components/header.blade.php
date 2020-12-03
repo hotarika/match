@@ -71,13 +71,17 @@
                      </a>
                   </li>
                   <!-- 全ての端末で表示 -->
-                  <li class="p-header__item">
+                  <notification-badge-component
+                     :public-path="{{ json_encode(asset('')) }}"
+                     :mypage-url="{{json_encode(route('mypage'))}}">
+                  </notification-badge-component>
+                  {{-- <li class="p-header__item">
                      <a class="c-link p-header__navLink" href="{{ route('mypage') }}">
-                        <span class="p-header__notificationNum">1</span>
-                        <i class="fas fa-bell p-header__navIcon"></i>
-                        <div class="p-header__navName u-ml6">新着通知</div>
-                     </a>
-                  </li>
+                  <span class="p-header__notificationNum">1</span>
+                  <i class="fas fa-bell p-header__navIcon"></i>
+                  <div class="p-header__navName u-ml6">新着通知</div>
+                  </a>
+                  </li> --}}
                   <!-- スマホのみ表示 -->
                   <li class="p-header__item -sp">
                      <a class="c-link p-header__navLink" href="{{ route('pubmsg.index') }}">
