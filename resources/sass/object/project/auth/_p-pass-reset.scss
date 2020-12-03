@@ -1,7 +1,7 @@
 // **********************************
-// ユーザー登録画面
+// パスワード再設定フォーム
 // **********************************
-.p-reset {
+.p-passReset {
    padding-top: 8vh;
    &__resetMsg {
       @include border-radius('all', 10px);

@@ -6,7 +6,7 @@
 @if ($level === 'error')
 # @lang('Whoops!')
 @else
-# パスワード再設定
+# @lang('Hello!')
 @endif
 @endif
 

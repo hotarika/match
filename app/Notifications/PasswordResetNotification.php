@@ -27,6 +27,7 @@ class PasswordResetNotification extends ResetPassword
 
         return (new MailMessage)
             ->subject(Lang::get('パスワード再設定'))
+            ->greeting('パスワード再設定')
             ->line(Lang::get('下のボタンをクリックしてパスワードを再設定してください。'))
             ->action(Lang::get('パスワード再設定'), url(route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
             ->line(Lang::get('パスワード再設定の有効期限は :count 分です。', ['count' => config('auth.passwords.' . config('auth.defaults.passwords') . '.expire')]))

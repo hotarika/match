@@ -1,21 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="l-main p-reset">
+<main class="l-main p-passEmail">
    <div class="container">
       <div class="l-main__mainArea -oneColumn_auth">
          <section class="c-h2__sec">
             <div class="row justify-content-center">
                <h2 class="c-h2__head">パスワードをリセット</h2>
-               <div class="c-h2__oneRowBody p-reset__body">
+               <div class="c-h2__oneRowBody p-passEmail__body">
                   @if (session('status'))
-                  <div class="p-reset__resetMsg" role="alert">
+                  <div class="p-passEmail__resetMsg" role="alert">
                      {{ session('status') }}
                   </div>
                   @endif
                   <form method="POST" action="{{ route('password.email') }}">
                      @csrf
-                     <div class="p-reset__inputWrap">
+                     <div class="p-passEmail__inputWrap">
                         <input
                            id="email"
                            type="email"

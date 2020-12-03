@@ -4195,6 +4195,88 @@ body {
   }
 }
 
+.p-passEmail {
+  padding-top: 8vh;
+}
+
+.p-passEmail__resetMsg {
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  text-align: center;
+  background-color: #bedcfd;
+}
+
+.p-passEmail__body {
+  padding: 50px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-passEmail__body {
+    padding: 40px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .p-passEmail__body {
+    padding: 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .p-passEmail__body {
+    padding: 30px 20px;
+  }
+}
+
+.p-passEmail__inputWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.p-passReset {
+  padding-top: 8vh;
+}
+
+.p-passReset__resetMsg {
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  text-align: center;
+  background-color: #bedcfd;
+}
+
+.p-passReset__body {
+  padding: 50px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-passReset__body {
+    padding: 40px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .p-passReset__body {
+    padding: 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .p-passReset__body {
+    padding: 30px 20px;
+  }
+}
+
+.p-passReset__inputWrap {
+  display: flex;
+  flex-direction: column;
+}
+
 .p-register {
   padding-top: 8vh;
 }
@@ -4225,47 +4307,6 @@ body {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
-}
-
-.p-reset {
-  padding-top: 8vh;
-}
-
-.p-reset__resetMsg {
-  border-radius: 10px;
-  padding: 10px 20px;
-  margin-top: -20px;
-  margin-bottom: 20px;
-  font-size: 13px;
-  text-align: center;
-  background-color: #bedcfd;
-}
-
-.p-reset__body {
-  padding: 50px;
-}
-
-@media screen and (max-width: 414px) {
-  .p-reset__body {
-    padding: 40px;
-  }
-}
-
-@media screen and (max-width: 375px) {
-  .p-reset__body {
-    padding: 30px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .p-reset__body {
-    padding: 30px 20px;
-  }
-}
-
-.p-reset__inputWrap {
-  display: flex;
-  flex-direction: column;
 }
 
 .u-m0 {

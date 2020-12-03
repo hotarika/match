@@ -1,0 +1,31 @@
+// **********************************
+// パスワード再設定のメール送信フォーム
+// **********************************
+.p-passEmail {
+   padding-top: 8vh;
+   &__resetMsg {
+      @include border-radius('all', 10px);
+      padding: 10px 20px;
+      margin-top: -20px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      text-align: center;
+      background-color: $primary-light;
+   }
+   &__body {
+      padding: 50px;
+      @include mq('xs') {
+         padding: 40px;
+      }
+      @include mq('2xs') {
+         padding: 30px;
+      }
+      @include mq('3xs') {
+         padding: 30px 20px;
+      }
+   }
+   &__inputWrap {
+      display: flex;
+      flex-direction: column;
+   }
+}
