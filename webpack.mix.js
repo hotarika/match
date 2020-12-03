@@ -61,7 +61,7 @@ mix.options({
 // 自動リロード
 mix.browserSync({
    proxy: {
-      target: 'http://localhost:8888',
+      target: 'dev.match',
       ws: true // web socket
    },
    open: false,

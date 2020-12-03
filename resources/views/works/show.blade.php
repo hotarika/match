@@ -88,8 +88,11 @@
                         data-hashtags="match">Tweet</a>
 
                      <!-- お気に入りボタン -->
-                     <favorite-component :public_path="{{ json_encode(asset('')) }}"
-                        :work="{{json_encode($work)}}" :user_id="{{json_encode(Auth::id())}}"></favorite-component>
+                     <favorite-component
+                        :public-path="{{ json_encode(asset('')) }}"
+                        :user-id="{{json_encode(Auth::id())}}"
+                        :work-id="{{json_encode($work->work_id)}}">
+                     </favorite-component>
                   </div>
 
                   <!-- 仕事詳細説明 -->

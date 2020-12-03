@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/dm-board', 'DmBoardsController');
     Route::resource('/applicant', 'ApplicantController');
     Route::resource('/notification', 'ApplicantsNotificationController');
+    Route::resource('/favorites', 'FavoritesController', ['only' => ['index', 'store']]);
+    Route::delete('/favorites/{user_id}/{work_id}', 'FavoritesController@destroy')->name('favorites.destroy');
 
     // Invoke Controller（1つのコントローラーに1つの定義しか記述しないという意味）
     Route::get('/', 'HomeController');
