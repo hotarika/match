@@ -562,6 +562,21 @@ body {
   color: #fff;
 }
 
+.c-authSendBtn {
+  display: block;
+  padding: 10px 20px;
+  margin: 20px auto 0;
+  font-size: 14px;
+  color: #fff;
+  background-color: #0081ff;
+}
+
+@media screen and (max-width: 320px) {
+  .c-authSendBtn {
+    font-size: 13px;
+  }
+}
+
 .c-card {
   display: block;
   color: #000;
@@ -4130,7 +4145,6 @@ body {
 }
 
 .p-login__body {
-  position: relative;
   padding: 50px;
 }
 
@@ -4167,21 +4181,6 @@ body {
   margin-right: 3px;
 }
 
-.p-login__submitBtn {
-  display: block;
-  padding: 10px 20px;
-  margin: 20px auto 0;
-  font-size: 14px;
-  color: #fff;
-  background-color: #0081ff;
-}
-
-@media screen and (max-width: 320px) {
-  .p-login__submitBtn {
-    font-size: 13px;
-  }
-}
-
 .p-login__passReminder {
   position: absolute;
   right: 0;
@@ -4201,7 +4200,6 @@ body {
 }
 
 .p-register__body {
-  position: relative;
   padding: 50px;
 }
 
@@ -4229,19 +4227,45 @@ body {
   margin-bottom: 10px;
 }
 
-.p-register__submitBtn {
-  display: block;
+.p-reset {
+  padding-top: 8vh;
+}
+
+.p-reset__resetMsg {
+  border-radius: 10px;
   padding: 10px 20px;
-  margin: 20px auto 0;
-  font-size: 14px;
-  color: #fff;
-  background-color: #0081ff;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  text-align: center;
+  background-color: #bedcfd;
+}
+
+.p-reset__body {
+  padding: 50px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-reset__body {
+    padding: 40px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .p-reset__body {
+    padding: 30px;
+  }
 }
 
 @media screen and (max-width: 320px) {
-  .p-register__submitBtn {
-    font-size: 13px;
+  .p-reset__body {
+    padding: 30px 20px;
   }
+}
+
+.p-reset__inputWrap {
+  display: flex;
+  flex-direction: column;
 }
 
 .u-m0 {

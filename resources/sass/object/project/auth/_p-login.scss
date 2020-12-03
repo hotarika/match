@@ -4,7 +4,6 @@
 .p-login {
    padding-top: 8vh;
    &__body {
-      position: relative;
       padding: 50px;
       @include mq('xs') {
          padding: 40px;
@@ -27,17 +26,6 @@
    }
    &__remember {
       margin-right: 3px;
-   }
-   &__submitBtn {
-      display: block;
-      padding: 10px 20px;
-      margin: 20px auto 0;
-      font-size: 14px;
-      color: $white;
-      background-color: $primary;
-      @include mq('3xs') {
-         font-size: 13px;
-      }
    }
    &__passReminder {
       position: absolute;

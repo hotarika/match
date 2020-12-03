@@ -36,3 +36,16 @@
       color: $white;
    }
 }
+
+// 認証ボタン（ログイン画面・ユーザー登録画面・パスワードリセット）
+.c-authSendBtn {
+   display: block;
+   padding: 10px 20px;
+   margin: 20px auto 0;
+   font-size: 14px;
+   color: $white;
+   background-color: $primary;
+   @include mq('3xs') {
+      font-size: 13px;
+   }
+}

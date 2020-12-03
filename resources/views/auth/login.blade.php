@@ -57,7 +57,7 @@
                   </div>
 
                   <!-- ログインボタン -->
-                  <button type="submit" class="c-btn p-login__submitBtn">ログイン</button>
+                  <button type="submit" class="c-btn c-authSendBtn">ログイン</button>
 
                   <!-- パスワードリマインダー -->
                   @if (Route::has('password.request'))

@@ -79,7 +79,7 @@
                   </div>
 
                   <!-- 登録ボタン -->
-                  <button type="submit" class="c-btn p-register__submitBtn">ユーザー登録</button>
+                  <button type="submit" class="c-btn c-authSendBtn">ユーザー登録</button>
                </form>
             </div>
          </section>
