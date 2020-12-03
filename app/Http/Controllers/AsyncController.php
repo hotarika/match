@@ -31,19 +31,4 @@ class AsyncController extends Controller
 
         return $favorites->toJson();
     }
-
-    public function postFavorites(Request $request)
-    {
-        $favorite = new Favorite;
-        $favorite->user_id = $request->user_id;
-        $favorite->work_id = $request->work_id;
-        $favorite->created_at = Carbon::now();
-        $favorite->updated_at = Carbon::now();
-        $favorite->save();
-    }
-
-    public function deleteFavorites($user_id, $work_id)
-    {
-        Favorite::where('user_id', $user_id)->where('work_id', $work_id)->delete();
-    }
 }

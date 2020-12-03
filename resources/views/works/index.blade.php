@@ -12,10 +12,7 @@
          {{-- メインエリア --}}
          <div class="l-main__mainArea -twoColumns">
             <work-component
-               :public_path="{{ json_encode(asset('')) }}"></work-component>
-
-            <!-- ページネーション -->
-            {{-- @include('components/pagination') --}}
+               :public-path="{{ json_encode(asset('')) }}"></work-component>
          </div>
 
       </div>

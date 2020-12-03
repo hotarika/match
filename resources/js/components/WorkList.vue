@@ -1,7 +1,7 @@
 <template>
    <section class="c-h2__sec">
       <!-- 絞り込みフォーム -->
-      <form class="p-workList__orderForm" action="">
+      <form class="p-workList__orderForm" action="" onsubmit="return false;">
          <div class="p-workList__checkbox -oneoff">
             <input type="checkbox" name="work" id="oneoff" value="oneoff" v-model="oneoff_checkbox" />
             <label for="oneoff">単発案件</label>
@@ -10,34 +10,31 @@
             <input type="checkbox" name="work" id="share" value="share" v-model="share_checkbox" />
             <label for="share">レベニューシェア</label>
          </div>
-         <button class="c-btn p-workList__formBtn" type="submit" @click.prevent="orderList">検索</button>
+         <button class="c-btn p-workList__formBtn" type="submit" @click.prevent="searchListClick">検索</button>
       </form>
 
       <!-- 仕事カード -->
-      <transition-group tag="div" class="c-h2__workCardBody p-workList__workCardBody">
+      <div class="c-h2__workCardBody p-workList__workCardBody">
          <a
             class="c-workCard"
-            :href="public_path + 'works/' + work.id"
-            v-for="work in newList.slice(minCardNum, maxCardNum)"
+            :href="publicPath + 'works/' + work.id"
+            v-for="work in showList.slice(minCardNum, maxCardNum)"
             :key="work.id"
          >
             <div class="c-workCard__decisionTag">決定</div>
             <div class="c-workCard__nameWrap">
-               <!-- <img class="c-img c-workCard__img" :src="'../../images/img2.png'" alt="ユーザーのアイコン" /> -->
                <img
                   class="c-img c-workCard__img"
-                  :src="public_path + 'storage/user_img/' + work.image"
+                  :src="publicPath + 'storage/user_img/' + work.image"
                   alt="ユーザーのアイコン"
                />
                <span class="c-workCard__name">{{ work.u_name }}</span>
             </div>
 
-            <div class="c-workCard__head">
-               {{ work.w_name }}
-            </div>
+            <div class="c-workCard__head">{{ work.w_name }}</div>
 
+            <!-- 単発案件 -->
             <template v-if="work.contract_id === 1">
-               <!-- 単発案件 -->
                <div class="c-workCard__contract">
                   <div class="c-workCard__contractIconWrap">
                      <i class="fas fa-male c-workCard__contractIcon -oneoff"></i>
@@ -50,8 +47,9 @@
                   </div>
                </div>
             </template>
+
+            <!-- レベニューシェア -->
             <template v-if="work.contract_id === 2">
-               <!-- レベニューシェア -->
                <div class="c-workCard__contract">
                   <div class="c-workCard__contractIconWrap">
                      <i class="fas fa-people-arrows c-workCard__contractIcon -share"></i>
@@ -61,6 +59,8 @@
                   </div>
                </div>
             </template>
+
+            <!-- 情報 -->
             <div class="c-workCard__info">
                <div class="c-workCard__infoItem">
                   <div class="c-workCard__infoItemHead">締め切り日：</div>
@@ -68,45 +68,47 @@
                </div>
             </div>
          </a>
-      </transition-group>
-      <pagination-component :page="page" :totalPage="totalPage" @change="orderList"></pagination-component>
+      </div>
+      <pagination-component :page="page" :totalPage="totalPage" @change="searchListClick"> </pagination-component>
    </section>
 </template>
 
 <script>
-import workList from '../data/workData.json';
 import axios from 'axios';
 
 export default {
-   props: ['public_path', 'image_path'],
+   props: {
+      publicPath: String
+   },
    data() {
       return {
-         workList, // 仕事カードのデータ
-         newList: [], // 並び替えするための空の配列
+         allData: [], // 全データ（このデータを元に検索を行う）
+         showList: [], // 並び替えするための空の配列
          oneoff_checkbox: true, // 単発案件チェックボックス
          share_checkbox: true, // レベニューシェアチェックボックス
-         works: [],
          page: 1,
          perPage: 6
       };
    },
    computed: {
       totalPage() {
-         return Math.ceil(this.newList.length / this.perPage);
+         return Math.ceil(this.showList.length / this.perPage);
       },
       minCardNum() {
+         // 表示カードが何枚目から始まるのか定義
          return this.page === 1 ? this.page - 1 : this.perPage * (this.page - 1);
       },
       maxCardNum() {
+         // 表示カードが何枚目で終わるのか定義
          return this.perPage * this.page;
       }
    },
    methods: {
-      orderList(refs) {
+      searchListClick(refs) {
          this.page = Number.isInteger(refs) ? refs : 1;
 
          // チェックボックスに応じて、表示カード変更（絞り込み機能）
-         this.newList = this.works.filter(val => {
+         this.showList = this.allData.filter(val => {
             if (this.oneoff_checkbox === false && val.contract_id === 1) {
                return;
             }
@@ -118,49 +120,23 @@ export default {
       }
    },
    filters: {
+      // 単発案件の金額にカンマをつけるためのフィルター
       addComma(value) {
-         // 単発案件の金額にカンマをつけるためのフィルター
          return value.toLocaleString();
       }
    },
    mounted() {
       // 非同期取得
       axios
-         .get(this.public_path + 'async/works')
+         .get(this.publicPath + 'async/works')
          .then(res => {
             console.log(res);
-            this.works = res.data;
-            this.newList = this.works.filter(val => {
-               return val;
-            });
+            this.allData = res.data; // 全データを格納
+            this.showList = res.data; // 表示リストを格納
          })
          .catch(err => {
-            console.log('err:', err);
+            console.log(err);
          });
-
-      // マウント時に仕事カードを全て表示
-      // this.newList = this.workList.filter(val => {
-      //    return val;
-      // });
    }
 };
 </script>
-
-<style scoped>
-.v-enter,
-.v-leave-to {
-   opacity: 0;
-}
-
-.v-enter-active,
-.v-leave-active {
-   transition: all 0.5s ease-out;
-}
-.v-leave-active {
-   position: absolute;
-}
-
-.v-move {
-   transition: all 1s;
-}
-</style>
