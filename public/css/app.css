@@ -1317,7 +1317,7 @@ body {
 }
 
 .c-h2__noItems.-notification {
-  padding-top: 41px;
+  padding-top: 22px;
 }
 
 .c-h2__noItems.-order {
@@ -2685,6 +2685,10 @@ body {
   .p-mypage__secBody {
     padding: 15px 10px;
   }
+}
+
+.p-mypage__secBody.-notification {
+  padding: 20px;
 }
 
 .p-mypage__notificationItem {

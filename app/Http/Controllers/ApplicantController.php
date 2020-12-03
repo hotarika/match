@@ -44,7 +44,7 @@ class ApplicantController extends Controller
         // 仕事発注者へ通知
         $owner_user = User::find($request->owner_id);
         $order_user = Auth::user();
-        $owner_user->notify(new ApplicantsNotification($order_user));
+        $owner_user->notify(new ApplicantsNotification($order_user, $request));
         // Notification::send($owner_user, new ApplicantsNotification($order_user));
 
         // DB保存

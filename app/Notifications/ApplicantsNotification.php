@@ -18,9 +18,10 @@ class ApplicantsNotification extends Notification
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($user, $request)
     {
         $this->user = $user;
+        $this->request = $request;
     }
 
     /**
@@ -59,6 +60,7 @@ class ApplicantsNotification extends Notification
         return [
             'order_user_name' => $this->user->name,
             'content' => 'あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。',
+            'work_id' => $this->request->work_id
 
         ];
     }

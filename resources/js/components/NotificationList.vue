@@ -2,7 +2,7 @@
    <section class="c-h2__sec">
       <h2 class="c-h2__head">新着通知</h2>
 
-      <div class="c-h2__oneRowBody p-mypage__secBody">
+      <div class="c-h2__oneRowBody p-mypage__secBody -notification">
          <!-- 通知 -->
          <transition-group>
             <div
@@ -10,11 +10,14 @@
                v-for="(notification, index) in displayItems"
                :key="notification.id"
             >
-               <div class="p-mypage__notificationMsgSecWrap">
+               <a
+                  :href="public_path + '/applicant/' + notification.data['work_id']"
+                  class="c-link p-mypage__notificationMsgSecWrap"
+               >
                   <div class="p-mypage__notificationItemUpper">
-                     <a class="c-link p-mypage__notificationName" href="profile">
-                        応募者：{{ notification.data['order_user_name'] }}</a
-                     >
+                     <div class="c-link p-mypage__notificationName">
+                        応募者：{{ notification.data['order_user_name'] }}
+                     </div>
                      <time class="p-mypage__notificationTime">{{ notification.created_at }}</time>
                   </div>
                   <div class="p-mypage__notificationItemLower">
@@ -22,7 +25,7 @@
                         {{ notification.data['content'] }}
                      </p>
                   </div>
-               </div>
+               </a>
 
                <!-- 削除ボタン -->
                <button
@@ -38,7 +41,7 @@
          <button class="c-btn p-mypage__notificationSeeMore" @click.prevent="openNotifications" v-if="remainNum >= 1">
             残り{{ remainNum }}件を全て表示する
          </button>
-         <div class="c-h2__noItems -notification" v-if="allData === null">
+         <div class="c-h2__noItems -notification" v-if="displayItems.length === 0">
             新着通知はありません
          </div>
       </div>

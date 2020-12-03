@@ -8,6 +8,9 @@
       @include mq('xs') {
          padding: 15px 10px;
       }
+      &.-notification {
+         padding: 20px;
+      }
    }
    &__notificationItem {
       display: flex;

@@ -2280,6 +2280,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -39771,7 +39774,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "c-h2__oneRowBody p-mypage__secBody" },
+      { staticClass: "c-h2__oneRowBody p-mypage__secBody -notification" },
       [
         _c(
           "transition-group",
@@ -39783,47 +39786,57 @@ var render = function() {
                 staticClass: "p-mypage__notificationItem"
               },
               [
-                _c("div", { staticClass: "p-mypage__notificationMsgSecWrap" }, [
-                  _c(
-                    "div",
-                    { staticClass: "p-mypage__notificationItemUpper" },
-                    [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "c-link p-mypage__notificationName",
-                          attrs: { href: "profile" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                     応募者：" +
-                              _vm._s(notification.data["order_user_name"])
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "time",
-                        { staticClass: "p-mypage__notificationTime" },
-                        [_vm._v(_vm._s(notification.created_at))]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "p-mypage__notificationItemLower" },
-                    [
-                      _c("p", { staticClass: "p-mypage__notificationMsg" }, [
-                        _vm._v(
-                          "\n                     " +
-                            _vm._s(notification.data["content"]) +
-                            "\n                  "
+                _c(
+                  "a",
+                  {
+                    staticClass: "c-link p-mypage__notificationMsgSecWrap",
+                    attrs: {
+                      href:
+                        _vm.public_path +
+                        "/applicant/" +
+                        notification.data["work_id"]
+                    }
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "p-mypage__notificationItemUpper" },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "c-link p-mypage__notificationName" },
+                          [
+                            _vm._v(
+                              "\n                     応募者：" +
+                                _vm._s(notification.data["order_user_name"]) +
+                                "\n                  "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "time",
+                          { staticClass: "p-mypage__notificationTime" },
+                          [_vm._v(_vm._s(notification.created_at))]
                         )
-                      ])
-                    ]
-                  )
-                ]),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "p-mypage__notificationItemLower" },
+                      [
+                        _c("p", { staticClass: "p-mypage__notificationMsg" }, [
+                          _vm._v(
+                            "\n                     " +
+                              _vm._s(notification.data["content"]) +
+                              "\n                  "
+                          )
+                        ])
+                      ]
+                    )
+                  ]
+                ),
                 _vm._v(" "),
                 _c(
                   "button",
@@ -39867,7 +39880,7 @@ var render = function() {
             )
           : _vm._e(),
         _vm._v(" "),
-        _vm.allData === null
+        _vm.displayItems.length === 0
           ? _c("div", { staticClass: "c-h2__noItems -notification" }, [
               _vm._v("\n         新着通知はありません\n      ")
             ])
