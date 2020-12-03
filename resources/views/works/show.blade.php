@@ -4,26 +4,6 @@
 @section('content')
 <main class="l-main p-workDetail">
    <div class="container">
-      <!-- 契約ボタン -->
-      <div class="p-workDetail__contractBtnSec is-active">
-         <p class="p-workDetail__contractMsg">
-            現在応募している下記の案件にあなたが選ばれました！<br />契約するには、「契約する」ボタンを押してください。
-         </p>
-         <div class="p-workDetail__contractBtnWrap">
-            <button
-               class="c-btn p-workDetail__contractOkBtn"
-               type="submit"
-               onclick="confirm('契約します。よろしいですか？')">
-               契約する
-            </button>
-            <button
-               class="c-btn p-workDetail__contractNoBtn"
-               type="submit"
-               onclick="confirm('辞退します。よろしいですか？')">
-               辞退する
-            </button>
-         </div>
-      </div>
 
       <!-- 仕事詳細 -->
       <h1 class="c-h1__head">仕事詳細</h1>
@@ -34,9 +14,6 @@
             <ul class="p-side__lists">
                <a class="c-btn p-side__link is-active" href="{{ route('mypage') }}">
                   <li><i class="fas fa-user"></i><span class="u-ml4">マイページ</span></li>
-               </a>
-               <a class="c-btn p-side__link" href="{{route('works.index')}}">
-                  <li><i class="fas fa-star"></i><span class="u-ml2">気になる案件</span></li>
                </a>
                <a class="c-btn p-side__link" href="{{route('pubmsg.index')}}">
                   <li><i class="fas fa-users"></i><span>パブリックメッセージ</span></li>
@@ -86,13 +63,6 @@
                         data-text="【match】カーナビシステムを作成した後に、業務システムを作成して欲しい"
                         data-url="http://localhost:8000/work-detail"
                         data-hashtags="match">Tweet</a>
-
-                     <!-- お気に入りボタン -->
-                     <favorite-component
-                        :public-path="{{ json_encode(asset('')) }}"
-                        :user-id="{{json_encode(Auth::id())}}"
-                        :work-id="{{json_encode($work->work_id)}}">
-                     </favorite-component>
                   </div>
 
                   <!-- 仕事詳細説明 -->
@@ -138,10 +108,6 @@
                         </div>
                         <div class="p-workDetail__infoLowerItem -appNum">
                            <div class="p-workDetail__infoLowerHead">応募人数</div>
-                           <div class="p-workDetail__infoLowerBody">20000人</div>
-                        </div>
-                        <div class="p-workDetail__infoLowerItem -favNum">
-                           <div class="p-workDetail__infoLowerHead">お気に入り人数</div>
                            <div class="p-workDetail__infoLowerBody">20000人</div>
                         </div>
                      </div>

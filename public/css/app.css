@@ -3144,70 +3144,6 @@ body {
   }
 }
 
-.p-workDetail__contractBtnSec {
-  border-radius: 2px;
-  display: block;
-  flex-direction: column;
-  padding: 20px;
-  margin-bottom: 30px;
-  background-color: #fff;
-  border: 5px solid #dc3545;
-}
-
-@media screen and (max-width: 320px) {
-  .p-workDetail__contractBtnSec {
-    margin: 0 0 20px;
-  }
-}
-
-.p-workDetail__contractBtnSec.is-active {
-  text-align: center;
-}
-
-.p-workDetail__contractMsg {
-  line-height: 1.3;
-  letter-spacing: 0.5px;
-  margin: 0;
-  margin-bottom: 15px;
-}
-
-@media screen and (max-width: 414px) {
-  .p-workDetail__contractMsg {
-    font-size: 14px;
-    text-align: left;
-  }
-
-  .p-workDetail__contractMsg > br {
-    display: none;
-  }
-}
-
-.p-workDetail__contractOkBtn {
-  border-radius: 20px;
-  padding: 10px 30px;
-  margin-right: 25px;
-  font-weight: bold;
-  color: #fff;
-  letter-spacing: 1px;
-  background-color: #dc3545;
-}
-
-@media screen and (max-width: 414px) {
-  .p-workDetail__contractOkBtn {
-    font-size: 14px;
-  }
-}
-
-.p-workDetail__contractNoBtn {
-  font-size: 14px;
-}
-
-@media screen and (max-width: 414px) {
-  .p-workDetail__contractNoBtn {
-    font-size: 13px;
-  }
-}
-
 .p-workDetail__workBody {
   border-radius: 2px 0 0 2px;
   padding: 30px 50px 50px;
@@ -3246,23 +3182,6 @@ body {
 .p-workDetail__tweetBtn > img {
   width: 15px;
   margin-right: 4px;
-}
-
-.p-workDetail__favBtn {
-  width: 30px;
-  margin-left: 15px;
-}
-
-.p-workDetail__favBtnIcon {
-  font-size: 25px;
-}
-
-.p-workDetail__favBtnIcon.-true {
-  color: #ffa500;
-}
-
-.p-workDetail__favBtnIcon.-false {
-  color: #adb5bd;
 }
 
 .p-workDetail__head {
@@ -3510,12 +3429,6 @@ body {
   .p-workDetail__infoLowerItem.-appNum {
     flex-basis: 50%;
     border-right: none;
-  }
-}
-
-@media screen and (max-width: 414px) {
-  .p-workDetail__infoLowerItem.-favNum {
-    flex-basis: 50%;
   }
 }
 

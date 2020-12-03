@@ -5,53 +5,6 @@
    // =========================
    // 仕事詳細
    // =========================
-   // 契約ボタンセクション
-   &__contractBtnSec {
-      @include border-radius;
-      display: block;
-      flex-direction: column;
-      padding: 20px;
-      margin-bottom: 30px;
-      background-color: $white;
-      border: 5px solid $red;
-      @include mq('3xs') {
-         margin: 0 0 20px;
-      }
-      &.is-active {
-         text-align: center;
-      }
-   }
-   &__contractMsg {
-      @include letter-settings;
-      margin: 0;
-      margin-bottom: 15px;
-      @include mq('xs') {
-         font-size: 14px;
-         text-align: left;
-         & > br {
-            display: none;
-         }
-      }
-   }
-   &__contractOkBtn {
-      @include border-radius('all', 20px);
-      padding: 10px 30px;
-      margin-right: 25px;
-      font-weight: bold;
-      color: $white;
-      letter-spacing: 1px;
-      background-color: $red;
-      @include mq('xs') {
-         font-size: 14px;
-      }
-   }
-   &__contractNoBtn {
-      font-size: 14px;
-      @include mq('xs') {
-         font-size: 13px;
-      }
-   }
-
    // 仕事詳細セクション
    &__workBody {
       @include border-radius('left');
@@ -65,7 +18,7 @@
       }
    }
 
-   // ツイート & お気に入りボタン
+   // ツイート
    &__assetBtnWrap {
       display: flex;
       align-items: center;
@@ -84,19 +37,6 @@
       & > img {
          width: 15px;
          margin-right: 4px;
-      }
-   }
-   &__favBtn {
-      width: 30px;
-      margin-left: 15px;
-   }
-   &__favBtnIcon {
-      font-size: 25px;
-      &.-true {
-         color: $orange;
-      }
-      &.-false {
-         color: $gray-500;
       }
    }
 
@@ -280,11 +220,6 @@
          @include mq('xs') {
             flex-basis: 50%;
             border-right: none;
-         }
-      }
-      &.-favNum {
-         @include mq('xs') {
-            flex-basis: 50%;
          }
       }
    }

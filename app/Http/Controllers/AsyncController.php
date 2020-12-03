@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Work;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Favorite;
 use Illuminate\Support\Carbon;
 
 
@@ -20,15 +19,5 @@ class AsyncController extends Controller
             ->get();
 
         return $work->toJson();
-    }
-
-    public function getFavorites()
-    {
-        $favorites = DB::table('favorites')
-            ->select('user_id', 'work_id')
-            ->where('user_id', Auth::id())
-            ->get();
-
-        return $favorites->toJson();
     }
 }

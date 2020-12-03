@@ -3,9 +3,6 @@
       <a class="c-btn p-side__link is-active" href="{{ route('mypage') }}">
          <li><i class="fas fa-user"></i><span class="u-ml4">マイページ</span></li>
       </a>
-      <a class="c-btn p-side__link" href="{{route('works.index')}}">
-         <li><i class="fas fa-star"></i><span class="u-ml2">気になる案件</span></li>
-      </a>
       <a class="c-btn p-side__link" href="{{route('pubmsg.index')}}">
          <li><i class="fas fa-users"></i><span>パブリックメッセージ</span></li>
       </a>

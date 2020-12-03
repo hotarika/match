@@ -32,8 +32,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/dm-board', 'DmBoardsController');
     Route::resource('/applicant', 'ApplicantController');
     Route::resource('/notification', 'ApplicantsNotificationController');
-    Route::resource('/favorites', 'FavoritesController', ['only' => ['index', 'store']]);
-    Route::delete('/favorites/{user_id}/{work_id}', 'FavoritesController@destroy')->name('favorites.destroy');
 
     // Invoke Controller（1つのコントローラーに1つの定義しか記述しないという意味）
     Route::get('/', 'HomeController');
@@ -49,6 +47,3 @@ Route::post('/password/change', 'Auth\ChangePasswordController@ChangePassword')-
 
 // 非同期処理
 Route::get('/async/works', 'AsyncController@getWorks');
-Route::get('/async/favorites', 'AsyncController@getFavorites');
-Route::post('/async/favorites', 'AsyncController@postFavorites');
-Route::delete('/async/favorites/{user_id}/{work_id}', 'AsyncController@deleteFavorites');

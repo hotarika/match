@@ -80,13 +80,6 @@
                   </li>
                   <!-- スマホのみ表示 -->
                   <li class="p-header__item -sp">
-                     <a class="c-link p-header__navLink" href="{{ route('works.index') }}">
-                        <i class="fas fa-star p-header__navIcon"></i>
-                        <div class="p-header__navName u-ml2">気になる案件</div>
-                     </a>
-                  </li>
-                  <!-- スマホのみ表示 -->
-                  <li class="p-header__item -sp">
                      <a class="c-link p-header__navLink" href="{{ route('pubmsg.index') }}">
                         <i class="fas fa-users p-header__navIcon"></i>
                         <div class="p-header__navName">パブリックメッセージ</div>
