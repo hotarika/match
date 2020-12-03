@@ -11,49 +11,51 @@
          <div class="l-main__mainArea -twoColumns">
             <section class="c-h2__sec">
                <div class="c-h2__oneRowBody p-changePass__body">
-                  <form class="p-changePass__form" action="">
+                  <form method="POST" class="p-changePass__form" action="{{route('password.change')}}">
+                     @csrf
+
                      <!-- 現在のパスワード -->
                      <div class="p-changePass__inputWrap -currentPass">
                         <input
-                           id="current-pass"
+                           id="current_password"
                            class="c-form__input p-changePass__input -currentPass"
                            type="password"
-                           name="current-pass"
-                           required
+                           name="current_password"
                            autofocus
                            autocomplete="current-password"
                            placeholder="現在のパスワード" />
+
+                        @error('current_password')
                         <span class="c-form__invalid is-invalid" role="alert">
-                           <strong>入力してください</strong>
+                           <strong>{{ $message }}</strong>
                         </span>
+                        @enderror
                      </div>
 
                      <!-- 現在のパスワード -->
                      <div class="p-changePass__inputWrap -newPass">
                         <input
-                           id="new-pass"
+                           id="password"
                            class="c-form__input p-changePass__input -newPass"
                            type="password"
-                           name="new-pass"
-                           required
+                           name="password"
                            placeholder="新しいパスワード" />
+
+                        @error('password')
                         <span class="c-form__invalid is-invalid" role="alert">
-                           <strong>入力してください</strong>
+                           <strong>{{ $message }}</strong>
                         </span>
+                        @enderror
                      </div>
 
                      <!-- 現在のパスワード -->
                      <div class="p-changePass__inputWrap -confirmPass">
                         <input
-                           id="confirm-pass"
+                           id="password-confirm"
                            class="c-form__input p-changePass__input -confirmPass"
                            type="password"
-                           name="confirm-pass"
-                           required
+                           name="password_confirmation"
                            placeholder="新しいパスワードの再入力" />
-                        <span class="c-form__invalid is-invalid" role="alert">
-                           <strong>入力してください</strong>
-                        </span>
                      </div>
 
                      <button class="c-btn p-changePass__submitBtn" type="submit">変更する</button>

@@ -37,9 +37,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController');
     Route::get('/mypage', 'MypageController')->name('mypage');
     Route::get('/history', 'WorksHistoryController')->name('history');
-    Route::get('/change-pass', 'ChangePassController')->name('change-pass');
     Route::get('/settings-menu', 'SettingsMenuController')->name('settings-menu');
 });
+
+// パスワード変更
+Route::get('/password/change', 'Auth\ChangePasswordController@showChangePasswordForm')->name('password.form');
+Route::post('/password/change', 'Auth\ChangePasswordController@ChangePassword')->name('password.change');
 
 
 // 非同期処理
