@@ -1,4 +1,12 @@
+{{-- 仕事詳細（url の works/*）は、サイドバーの他に、設定メニューを配置する必要があり、直接仕事詳細で<aside>が定義されているため不要 --}}
+
+@if(
+!Request::is('works/*') ||
+Request::is('works/*/edit') ||
+Request::is('works/create'))
 <aside class="l-side">
+   @endif
+
    <ul class="p-side__lists">
       <a class="c-btn p-side__link @if(Request::is('mypage')) is-active @endif" href="{{ route('mypage') }}">
          <li><i class="fas fa-user"></i><span class="u-ml4">マイページ</span></li>
@@ -14,4 +22,9 @@
       </a>
    </ul>
 
+   @if(
+   !Request::is('works/*') ||
+   Request::is('works/*/edit') ||
+   Request::is('works/create'))
 </aside>
+@endif

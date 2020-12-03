@@ -31,14 +31,22 @@
             <nav class="p-header__nav js-nav">
                <i class="far fa-times-circle p-header__menuClose js-closeIcon"></i>
                <ul class="p-header__items">
+
+                  @if(
+                  !Request::is('works/create') &&
+                  !Request::is('works/*/edit') &&
+                  Request::is('works/*') &&
+                  $work->owner_id === Auth::id()
+                  )
                   <div class="p-header__orderMenuWrap">
                      <!-- スマホのみ表示 -->
                      <li class="p-header__item -sp">
-                        {{-- <a class="c-link p-header__navLink" href="{{ route('applicant') }}"> --}}
-                        <i class="fas fa-list-alt p-header__navIcon"></i>
-                        <div class="p-header__navName u-ml2">応募者一覧</div>
+                        <a class="c-link p-header__navLink" href="{{route('applicant.show',$work->work_id)}}">
+                           <i class="fas fa-list-alt p-header__navIcon"></i>
+                           <div class="p-header__navName u-ml2">応募者一覧</div>
                         </a>
                      </li>
+
                      <!-- スマホのみ表示 -->
                      <li class="p-header__item -sp">
                         <a class="c-link p-header__navLink" href="{{ route('works.edit', 1) }}">
@@ -46,6 +54,7 @@
                            <div class="p-header__navName">編集</div>
                         </a>
                      </li>
+
                      <!-- スマホのみ表示 -->
                      <li class="p-header__item -sp">
                         <a class="c-link p-header__navLink" href="mypage">
@@ -55,6 +64,7 @@
                      </li>
                      <hr class="p-header__navHr" />
                   </div>
+                  @endif
 
                   <!-- 全ての端末で表示 -->
                   <li class="p-header__item">
@@ -63,6 +73,7 @@
                         <div class="p-header__navName u-ml4">案件一覧</div>
                      </a>
                   </li>
+
                   <!-- 全ての端末で表示 -->
                   <li class="p-header__item">
                      <a class="c-link p-header__navLink" href="{{ route('mypage') }}">
@@ -70,18 +81,13 @@
                         <div class="p-header__navName u-ml5">マイページ</div>
                      </a>
                   </li>
+
                   <!-- 全ての端末で表示 -->
                   <notification-badge-component
                      :public-path="{{ json_encode(asset('')) }}"
                      :mypage-url="{{json_encode(route('mypage'))}}">
                   </notification-badge-component>
-                  {{-- <li class="p-header__item">
-                     <a class="c-link p-header__navLink" href="{{ route('mypage') }}">
-                  <span class="p-header__notificationNum">1</span>
-                  <i class="fas fa-bell p-header__navIcon"></i>
-                  <div class="p-header__navName u-ml6">新着通知</div>
-                  </a>
-                  </li> --}}
+
                   <!-- スマホのみ表示 -->
                   <li class="p-header__item -sp">
                      <a class="c-link p-header__navLink" href="{{ route('pubmsg.index') }}">
@@ -89,6 +95,7 @@
                         <div class="p-header__navName">パブリックメッセージ</div>
                      </a>
                   </li>
+
                   <!-- スマホのみ表示 -->
                   <li class="p-header__item -sp">
                      <a class="c-link p-header__navLink" href="{{ route('dm.index') }}">
@@ -96,6 +103,7 @@
                         <div class="p-header__navName u-ml2">ダイレクトメッセージ</div>
                      </a>
                   </li>
+
                   <!-- スマホのみ表示 -->
                   <li class="p-header__item -sp">
                      <a class="c-link p-header__navLink" href="{{route('settings-menu')}}">
@@ -103,6 +111,7 @@
                         <div class="p-header__navName u-ml4">アカウント設定</div>
                      </a>
                   </li>
+
                   <!-- 全ての端末で表示 -->
                   <li class="p-header__item">
                      <a
@@ -113,14 +122,15 @@
                         <div class="p-header__navName u-ml4">ログアウト</div>
                      </a>
                   </li>
+
                   <!-- 全ての端末で表示 -->
                   <li class="p-header__item -orderBtn">
-                     <a href="{{ route('works.store') }}" class="p-header__orderBtn">仕事を依頼</a>
+                     <a href="{{ route('works.create') }}" class="p-header__orderBtn">仕事を依頼</a>
                   </li>
                </ul>
             </nav>
-            <!-- <i class="fas fa-bars p-header__menuOpen js-openIcon"></i> -->
-            <img class="p-header__menuOpen js-openIcon" :src="'/images/icon/bars-solid.svg'" alt="ハンバーガーメニュー" />
+            <img class="p-header__menuOpen js-openIcon" src="{{asset('images/icon/bars-solid.svg')}}"
+               alt="ハンバーガーメニュー" />
          </div>
          @endguest
       </div>
