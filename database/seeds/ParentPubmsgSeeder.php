@@ -37,5 +37,21 @@ class ParentPubmsgSeeder extends Seeder
             'created_at' => '2020-10-7 12:44:57',
             'updated_at' => Carbon::now(),
         ]);
+        DB::table('parent_pubmsg')->insert([
+            'work_id' => 4,
+            'user_id' => 4,
+            'title' => '4番のボードです',
+            'content' => '4.こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。',
+            'created_at' => '2020-10-7 12:45:57',
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('parent_pubmsg')->insert([
+            'work_id' => 5,
+            'user_id' => 5,
+            'title' => '5番のボードです',
+            'content' => '5.こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。',
+            'created_at' => '2020-10-7 12:45:57',
+            'updated_at' => Carbon::now(),
+        ]);
     }
 }
