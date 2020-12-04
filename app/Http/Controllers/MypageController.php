@@ -83,12 +83,12 @@ class MypageController extends Controller
         // DM
         // *******************************
         // 子
-        $child = DB::table('dm_contents as c')
+        $child = DB::table('direct_messages_contents as c')
             ->whereIn(
                 DB::raw('c.created_at'),
                 function ($query) {
                     return $query->select(DB::raw('max(cc.created_at) as max'))
-                        ->from('dm_contents as cc')
+                        ->from('direct_messages_contents as cc')
                         ->groupBy('cc.board_id');
                 }
             );

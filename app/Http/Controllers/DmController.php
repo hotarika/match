@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\DmBoard;
-use App\DmContent;
+use App\DirectMessageContent;
+// use App\DmContent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -18,12 +19,12 @@ class DmController extends Controller
     public function index()
     {
         // 子
-        $child = DB::table('dm_contents as c')
+        $child = DB::table('direct_messages_contents as c')
             ->whereIn(
                 DB::raw('c.created_at'),
                 function ($query) {
                     return $query->select(DB::raw('max(cc.created_at) as max'))
-                        ->from('dm_contents as cc')
+                        ->from('direct_messages_contents as cc')
                         ->groupBy('cc.board_id');
                 }
             );
@@ -62,7 +63,8 @@ class DmController extends Controller
      */
     public function store(Request $request)
     {
-        $dm = new DmContent;
+        // $dm = new DmContent;
+        $dm = new DirectMessageContent;
         $dm->board_id = $request->board_id;
         $dm->user_id = $request->user_id;
         $dm->content = $request->content;
@@ -94,7 +96,7 @@ class DmController extends Controller
         // echo $info;
 
         // メッセージの出力
-        $contents = DB::table('dm_contents as c')
+        $contents = DB::table('direct_messages_contents as c')
             ->select('c.id as contents_id', 'c.board_id', 'c.user_id', 'c.content', 'c.created_at',)
             ->where('board_id', $id)
             ->get();

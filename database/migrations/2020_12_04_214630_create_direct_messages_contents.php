@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDmContentsTable extends Migration
+class CreateDirectMessagesContents extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateDmContentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('dm_contents', function (Blueprint $table) {
+        Schema::create('direct_messages_contents', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('board_id');
             $table->bigInteger('user_id');
             $table->string('content');
+            $table->boolean('delete_flg')->default(false);
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateDmContentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dm_contents');
+        Schema::dropIfExists('direct_messages_contents');
     }
 }
