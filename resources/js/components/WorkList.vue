@@ -61,11 +61,9 @@
             </template>
 
             <!-- 情報 -->
-            <div class="c-workCard__info">
-               <div class="c-workCard__infoItem">
-                  <div class="c-workCard__infoItemHead">締め切り日：</div>
-                  <span class="c-workCard__endDate">2020/12/01</span>
-               </div>
+            <div class="c-workCard__infoItem">
+               <div class="c-workCard__infoItemHead">締め切り日：</div>
+               <span class="c-workCard__endDate">{{ work.end_date }}</span>
             </div>
          </a>
       </div>

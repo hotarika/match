@@ -2534,8 +2534,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -40318,7 +40316,15 @@ var render = function() {
               _vm._v(" "),
               work.contract_id === 2 ? [_vm._m(1, true)] : _vm._e(),
               _vm._v(" "),
-              _vm._m(2, true)
+              _c("div", { staticClass: "c-workCard__infoItem" }, [
+                _c("div", { staticClass: "c-workCard__infoItemHead" }, [
+                  _vm._v("締め切り日：")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "c-workCard__endDate" }, [
+                  _vm._v(_vm._s(work.end_date))
+                ])
+              ])
             ],
             2
           )
@@ -40357,22 +40363,6 @@ var staticRenderFns = [
       _c("div", { staticClass: "c-workCard__contractWayWrap" }, [
         _c("div", { staticClass: "c-workCard__contractWay -share" }, [
           _vm._v("レベニューシェア")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "c-workCard__info" }, [
-      _c("div", { staticClass: "c-workCard__infoItem" }, [
-        _c("div", { staticClass: "c-workCard__infoItemHead" }, [
-          _vm._v("締め切り日：")
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "c-workCard__endDate" }, [
-          _vm._v("2020/12/01")
         ])
       ])
     ])
