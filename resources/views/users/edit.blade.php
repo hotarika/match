@@ -75,7 +75,7 @@
                               name="introduce"
                               cols="30"
                               rows="10"
-                              placeholder="自己紹介文を記入">{{$user->introduce}}</textarea>
+                              placeholder="自己紹介文を記入">{{$user->introduction}}</textarea>
                         </div>
                      </div>
                      <button class="c-btn p-profileEdit__editBtn" type="submit">編集する</button>

@@ -62,7 +62,7 @@
                            <span>依頼者：</span>
                            <div class="p-workDetail__userInfoWrap">
                               <img class="c-img p-workDetail__infoImg" :src="'../images/home_img.jpg'" alt="ユーザーの画像" />
-                              <a href="profile" class="c-link p-workDetail__infoName">山田たろう</a>
+                              <a href="{{route('users.show',1)}}" class="c-link p-workDetail__infoName">山田たろう</a>
                            </div>
                         </div>
                         <div class="p-workDetail__infoUpperItem -right">

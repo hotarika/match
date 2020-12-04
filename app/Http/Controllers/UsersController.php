@@ -87,7 +87,7 @@ class UsersController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->image = ($request->file()) ? $request->file('image')->hashName() : $user->image_name;
-        $user->introduce = $request->introduce;
+        $user->introduction = $request->introduction;
         $user->save();
 
         // この方法もある
