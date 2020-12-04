@@ -22,19 +22,12 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-// =====================
-// common
-// =====================
-// 全体で使用
-
 // =====================
 // sections
 // =====================
 // 仕事詳細画面 / work-detail
 Vue.component('pubmsg-area-section', require('./sections/s-pubmsg-area.vue').default);
 Vue.component('workcard-area-section', require('./sections/s-workcard-area.vue').default);
-Vue.component('newly-workcard-section', require('./sections/s-newly-workcard.vue').default);
 
 // =====================
 // components
@@ -48,6 +41,7 @@ Vue.component('dm-list-component', require('./components/DmList.vue').default);
 Vue.component('pubmsg-card-component', require('./components/PubmsgCard.vue').default);
 Vue.component('dm-component', require('./components/DmArea.vue').default);
 Vue.component('work-component', require('./components/WorkList.vue').default);
+Vue.component('work-new-section', require('./components/WorkListNew.vue').default);
 Vue.component('image-edit-component', require('./components/ImageEdit.vue').default);
 Vue.component('pagination-component', require('./components/Pagination.vue').default);
 

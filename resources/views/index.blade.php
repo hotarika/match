@@ -152,7 +152,9 @@
    </section>
 
    <!-- 新着の案件一覧 -->
-   <newly-workcard-section></newly-workcard-section>
+   <work-new-section
+      :public-path="{{ json_encode(asset('')) }}"></work-new-section>
+
 
    <!-- 会員登録ボタン -->
    <section class="p-home__btnSec">
