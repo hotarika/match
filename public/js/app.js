@@ -40164,9 +40164,9 @@ var render = function() {
                 _c("div", { staticClass: "c-workCard__contractMoney" }, [
                   _vm._v(
                     "\n               " +
-                      _vm._s(_vm._f("addComma")(_vm.work.money_lower)) +
+                      _vm._s(_vm._f("addComma")(_vm.work.price_lower)) +
                       " ~ " +
-                      _vm._s(_vm._f("addComma")(_vm.work.money_upper)) +
+                      _vm._s(_vm._f("addComma")(_vm.work.price_upper)) +
                       "千円\n            "
                   )
                 ])

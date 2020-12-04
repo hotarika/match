@@ -40,7 +40,7 @@
                         </div>
                         <div class="c-workCard__contractWayWrap">
                            <div class="c-workCard__contractWay">単発案件</div>
-                           <div class="c-workCard__contractMoney">{{$work->money_lower}}~{{$work->money_upper}}千円</div>
+                           <div class="c-workCard__contractMoney">{{$work->price_lower}}~{{$work->price_upper}}千円</div>
                         </div>
                      </div>
                      @endif
@@ -98,7 +98,7 @@
                         </div>
                         <div class="c-workCard__contractWayWrap">
                            <div class="c-workCard__contractWay">単発案件</div>
-                           <div class="c-workCard__contractMoney">{{$work->money_lower}}~{{$work->money_upper}}千円</div>
+                           <div class="c-workCard__contractMoney">{{$work->price_lower}}~{{$work->price_upper}}千円</div>
                         </div>
                      </div>
                      @endif

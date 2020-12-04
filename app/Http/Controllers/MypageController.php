@@ -34,7 +34,7 @@ class MypageController extends Controller
         // 発注中の仕事
         // *******************************
         $owner_works = DB::table('works as w')
-            ->select('w.id as work_id', 'w.user_id', 'u.name as user_name', 'w.name as work_name', 'w.contract_id', 'c.type', 'w.money_lower', 'w.money_upper', 'u.image', 'w.end_date')
+            ->select('w.id as work_id', 'w.user_id', 'u.name as user_name', 'w.name as work_name', 'w.contract_id', 'c.type', 'w.price_lower', 'w.price_upper', 'u.image', 'w.end_date')
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
             ->leftJoin('contracts as c', 'w.contract_id', '=', 'c.id')
             ->where('user_id', Auth::id())
@@ -44,7 +44,7 @@ class MypageController extends Controller
         // 応募中の仕事
         // *******************************
         $order_works = DB::table('applicants as a')
-            ->select('a.applicant_id', 'u.name as user_name', 'a.work_id', 'w.name as work_name', 'w.contract_id', 'w.end_date', 'w.money_upper', 'w.money_lower', 'w.state', 'a.applicant_id', 'u.name as user_name', 'u.image')
+            ->select('a.applicant_id', 'u.name as user_name', 'a.work_id', 'w.name as work_name', 'w.contract_id', 'w.end_date', 'w.price_upper', 'w.price_lower', 'w.state', 'a.applicant_id', 'u.name as user_name', 'u.image')
             ->leftJoin('users as u', 'a.applicant_id', '=', 'u.id')
             ->leftJoin('works as w', 'a.work_id', '=', 'w.id')
             ->where('a.applicant_id', Auth::id())

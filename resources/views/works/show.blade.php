@@ -88,8 +88,8 @@
                            <div class="p-workDetail__infoLowerBody -contract">
                               <div class="p-workDetail__infoLowerBodyOneoff">{{$work->type}}</div>
                               @if($work->type==='単発案件')
-                              <div class="p-workDetail__infoLowerBodyMoney">（{{$work->money_lower}} ~
-                                 {{$work->money_upper}}千円）</div>
+                              <div class="p-workDetail__infoLowerBodyMoney">（{{$work->price_lower}} ~
+                                 {{$work->price_upper}}千円）</div>
                               @endif
                            </div>
                         </div>

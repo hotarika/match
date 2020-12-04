@@ -56,8 +56,8 @@ class WorksController extends Controller
         $work->contract_id = $request->contract;
         $work->end_date = $request->endRecruitment;
         $work->hope_date = $request->hopeDeadline;
-        $work->money_lower = $request->moneyLower;
-        $work->money_upper = $request->moneyUpper;
+        $work->price_lower = $request->priceLower;
+        $work->price_upper = $request->priceUpper;
         $work->content = $request->content;
         $work->save();
 
@@ -78,7 +78,7 @@ class WorksController extends Controller
         // 仕事詳細
         // **********************************
         $work = DB::table('works as w')
-            ->select('w.id as work_id', 'w.name as work_name', 'u.id as owner_id', 'u.name as owner_name', 'w.contract_id', 'c.type', 'w.end_date', 'w.hope_date', 'w.money_lower', 'w.money_upper', 'w.content', 'w.created_at', 'w.state as works_states')
+            ->select('w.id as work_id', 'w.name as work_name', 'u.id as owner_id', 'u.name as owner_name', 'w.contract_id', 'c.type', 'w.end_date', 'w.hope_date', 'w.price_lower', 'w.price_upper', 'w.content', 'w.created_at', 'w.state as works_states')
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
             ->leftJoin('contracts as c', 'w.contract_id', '=', 'c.id')
             ->where('w.id', $id)->first();
@@ -86,8 +86,8 @@ class WorksController extends Controller
         $work->end_date =  date("Y/m/d", strtotime($work->end_date));
         $work->hope_date =  date("Y/m/d", strtotime($work->hope_date));
         $work->created_at =  date("Y/m/d", strtotime($work->created_at));
-        $work->money_lower =  number_format($work->money_lower);
-        $work->money_upper =  number_format($work->money_upper);
+        $work->price_lower =  number_format($work->price_lower);
+        $work->price_upper =  number_format($work->price_upper);
 
         // 残り日数
         $from = strtotime($work->end_date);
@@ -166,8 +166,8 @@ class WorksController extends Controller
         $work->contract_id = $request->contract;
         $work->end_date = $request->endRecruitment;
         $work->hope_date = $request->hopeDeadline;
-        $work->money_lower = $request->moneyLower;
-        $work->money_upper = $request->moneyUpper;
+        $work->price_lower = $request->priceLower;
+        $work->price_upper = $request->priceUpper;
         $work->content = $request->content;
         $work->save();
 

@@ -114,14 +114,14 @@
                                  class="c-form__input p-workForm__input -money"
                                  type="number"
                                  name="moneyLower"
-                                 value="{{ old('moneyLower',$work->money_lower ?? '') }}"
+                                 value="{{ old('moneyLower',$work->price_lower ?? '') }}"
                                  placeholder="例：1000" /><span>千円〜</span>
                               <input
                                  id="money"
                                  class="c-form__input p-workForm__input -money"
                                  type="number"
                                  name="moneyUpper"
-                                 value="{{ old('moneyUpper',$work->money_upper ?? '') }}"
+                                 value="{{ old('moneyUpper',$work->price_upper ?? '') }}"
                                  placeholder="例：2000" /><span>千円</span>
                            </div>
 
