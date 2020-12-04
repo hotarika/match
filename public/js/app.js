@@ -40161,7 +40161,7 @@ var render = function() {
                   _vm._v("単発案件")
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "c-workCard__contractMoney" }, [
+                _c("div", { staticClass: "c-workCard__contractPrice" }, [
                   _vm._v(
                     "\n               " +
                       _vm._s(_vm._f("addComma")(_vm.work.price_lower)) +

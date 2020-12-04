@@ -45,7 +45,7 @@
                   </div>
                   <div class="c-workCard__contractWayWrap">
                      <div class="c-workCard__contractWay">単発案件</div>
-                     <div class="c-workCard__contractMoney">
+                     <div class="c-workCard__contractPrice">
                         {{ work.money_low | addComma }}~{{ work.money_high | addComma }}千円
                      </div>
                   </div>
@@ -106,7 +106,7 @@ export default {
          this.page = Number.isInteger(refs) ? refs : 1;
 
          // チェックボックスに応じて、表示カード変更（絞り込み機能）
-         this.newList = this.workList.filter((val) => {
+         this.newList = this.workList.filter(val => {
             if (this.oneoff_checkbox === false && val.contract === 1) {
                return;
             }
@@ -127,7 +127,7 @@ export default {
    },
    mounted() {
       // マウント時に仕事カードを全て表示
-      this.newList = this.workList.filter((val) => {
+      this.newList = this.workList.filter(val => {
          return val;
       });
    }

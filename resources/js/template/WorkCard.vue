@@ -16,7 +16,7 @@
          </div>
          <div class="c-workCard__contractWayWrap">
             <div class="c-workCard__contractWay">単発案件</div>
-            <div class="c-workCard__contractMoney">1,000~2,000千円</div>
+            <div class="c-workCard__contractPrice">1,000~2,000千円</div>
          </div>
       </div>
       <!-- レベニューシェア -->

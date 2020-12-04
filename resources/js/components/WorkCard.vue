@@ -20,7 +20,7 @@
             </div>
             <div class="c-workCard__contractWayWrap">
                <div class="c-workCard__contractWay">単発案件</div>
-               <div class="c-workCard__contractMoney">
+               <div class="c-workCard__contractPrice">
                   {{ work.price_lower | addComma }} ~ {{ work.price_upper | addComma }}千円
                </div>
             </div>

@@ -800,19 +800,19 @@ body {
   margin-left: 6px;
 }
 
-.c-workCard__contractMoney {
+.c-workCard__contractPrice {
   margin-top: 4px;
   font-size: 12px;
 }
 
 @media screen and (max-width: 414px) {
-  .c-workCard__contractMoney {
+  .c-workCard__contractPrice {
     font-size: 11px;
   }
 }
 
 @media screen and (max-width: 375px) {
-  .c-workCard__contractMoney {
+  .c-workCard__contractPrice {
     font-size: 10px;
   }
 }
