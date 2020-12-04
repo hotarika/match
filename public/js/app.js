@@ -2450,6 +2450,76 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WorkCard.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/WorkCard.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['work', 'publicPath'],
+  filters: {
+    // 単発案件の金額にカンマをつけるためのフィルター
+    addComma: function addComma(value) {
+      return value.toLocaleString();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WorkList.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/WorkList.vue?vue&type=script&lang=js& ***!
@@ -2461,53 +2531,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2583,12 +2606,6 @@ __webpack_require__.r(__webpack_exports__);
 
         return val;
       });
-    }
-  },
-  filters: {
-    // 単発案件の金額にカンマをつけるためのフィルター
-    addComma: function addComma(value) {
-      return value.toLocaleString();
     }
   },
   mounted: function mounted() {
@@ -40040,27 +40057,68 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "a",
-    { staticClass: "c-workCard", attrs: { href: "work-detail" } },
+    {
+      staticClass: "c-workCard",
+      attrs: { href: _vm.publicPath + "works/" + _vm.work.id }
+    },
     [
       _c("div", { staticClass: "c-workCard__decisionTag" }, [_vm._v("決定")]),
       _vm._v(" "),
       _c("div", { staticClass: "c-workCard__nameWrap" }, [
         _c("img", {
           staticClass: "c-img c-workCard__img",
-          attrs: { src: "../../images/img2.png", alt: "ユーザーのアイコン" }
+          attrs: {
+            src: _vm.publicPath + "storage/user_img/" + _vm.work.image,
+            alt: "ユーザーのアイコン"
+          }
         }),
         _vm._v(" "),
-        _c("span", { staticClass: "c-workCard__name" }, [_vm._v("山田たろう")])
+        _c("span", { staticClass: "c-workCard__name" }, [
+          _vm._v(_vm._s(_vm.work.u_name))
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "c-workCard__head" }, [
-        _vm._v("\n      カーナビシステムあああああああああああ\n   ")
+        _vm._v(_vm._s(_vm.work.w_name))
       ]),
       _vm._v(" "),
-      _vm._m(0),
+      _vm.work.contract_id === 1
+        ? [
+            _c("div", { staticClass: "c-workCard__contract" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "c-workCard__contractWayWrap" }, [
+                _c("div", { staticClass: "c-workCard__contractWay" }, [
+                  _vm._v("単発案件")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "c-workCard__contractMoney" }, [
+                  _vm._v(
+                    "\n               " +
+                      _vm._s(_vm._f("addComma")(_vm.work.money_lower)) +
+                      " ~ " +
+                      _vm._s(_vm._f("addComma")(_vm.work.money_upper)) +
+                      "千円\n            "
+                  )
+                ])
+              ])
+            ])
+          ]
+        : _vm._e(),
       _vm._v(" "),
-      _vm._m(1)
-    ]
+      _vm.work.contract_id === 2 ? [_vm._m(1)] : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "c-workCard__infoItem" }, [
+        _c("div", { staticClass: "c-workCard__infoItemHead" }, [
+          _vm._v("締め切り日：")
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "c-workCard__endDate" }, [
+          _vm._v(_vm._s(_vm.work.end_date))
+        ])
+      ])
+    ],
+    2
   )
 }
 var staticRenderFns = [
@@ -40068,33 +40126,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "c-workCard__contract" }, [
-      _c("div", { staticClass: "c-workCard__contractIconWrap" }, [
-        _c("i", { staticClass: "fas fa-male c-workCard__contractIcon -oneoff" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "c-workCard__contractWayWrap" }, [
-        _c("div", { staticClass: "c-workCard__contractWay" }, [
-          _vm._v("単発案件")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "c-workCard__contractMoney" }, [
-          _vm._v("1,000~2,000千円")
-        ])
-      ])
+    return _c("div", { staticClass: "c-workCard__contractIconWrap" }, [
+      _c("i", { staticClass: "fas fa-male c-workCard__contractIcon -oneoff" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "c-workCard__info" }, [
-      _c("div", { staticClass: "c-workCard__infoItem -left" }, [
-        _vm._v("残り12日")
+    return _c("div", { staticClass: "c-workCard__contract" }, [
+      _c("div", { staticClass: "c-workCard__contractIconWrap" }, [
+        _c("i", {
+          staticClass: "fas fa-people-arrows c-workCard__contractIcon -share"
+        })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "c-workCard__infoItem -right" }, [
-        _vm._v("応募者5人")
+      _c("div", { staticClass: "c-workCard__contractWayWrap" }, [
+        _c("div", { staticClass: "c-workCard__contractWay -share" }, [
+          _vm._v("レベニューシェア")
+        ])
       ])
     ])
   }
@@ -40251,82 +40301,14 @@ var render = function() {
           work
         ) {
           return _c(
-            "a",
-            {
-              key: work.id,
-              staticClass: "c-workCard",
-              attrs: { href: _vm.publicPath + "works/" + work.id }
-            },
+            "span",
+            { key: work.id },
             [
-              _c("div", { staticClass: "c-workCard__decisionTag" }, [
-                _vm._v("決定")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "c-workCard__nameWrap" }, [
-                _c("img", {
-                  staticClass: "c-img c-workCard__img",
-                  attrs: {
-                    src: _vm.publicPath + "storage/user_img/" + work.image,
-                    alt: "ユーザーのアイコン"
-                  }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "c-workCard__name" }, [
-                  _vm._v(_vm._s(work.u_name))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "c-workCard__head" }, [
-                _vm._v(_vm._s(work.w_name))
-              ]),
-              _vm._v(" "),
-              work.contract_id === 1
-                ? [
-                    _c("div", { staticClass: "c-workCard__contract" }, [
-                      _vm._m(0, true),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "c-workCard__contractWayWrap" },
-                        [
-                          _c(
-                            "div",
-                            { staticClass: "c-workCard__contractWay" },
-                            [_vm._v("単発案件")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "c-workCard__contractMoney" },
-                            [
-                              _vm._v(
-                                "\n                     " +
-                                  _vm._s(_vm._f("addComma")(work.money_lower)) +
-                                  " ~ " +
-                                  _vm._s(_vm._f("addComma")(work.money_upper)) +
-                                  "千円\n                  "
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    ])
-                  ]
-                : _vm._e(),
-              _vm._v(" "),
-              work.contract_id === 2 ? [_vm._m(1, true)] : _vm._e(),
-              _vm._v(" "),
-              _c("div", { staticClass: "c-workCard__infoItem" }, [
-                _c("div", { staticClass: "c-workCard__infoItemHead" }, [
-                  _vm._v("締め切り日：")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "c-workCard__endDate" }, [
-                  _vm._v(_vm._s(work.end_date))
-                ])
-              ])
+              _c("work-card-component", {
+                attrs: { work: work, "public-path": _vm.publicPath }
+              })
             ],
-            2
+            1
           )
         }),
         0
@@ -40340,34 +40322,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "c-workCard__contractIconWrap" }, [
-      _c("i", { staticClass: "fas fa-male c-workCard__contractIcon -oneoff" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "c-workCard__contract" }, [
-      _c("div", { staticClass: "c-workCard__contractIconWrap" }, [
-        _c("i", {
-          staticClass: "fas fa-people-arrows c-workCard__contractIcon -share"
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "c-workCard__contractWayWrap" }, [
-        _c("div", { staticClass: "c-workCard__contractWay -share" }, [
-          _vm._v("レベニューシェア")
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -53721,15 +53676,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _WorkCard_vue_vue_type_template_id_019812ac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WorkCard.vue?vue&type=template&id=019812ac& */ "./resources/js/components/WorkCard.vue?vue&type=template&id=019812ac&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _WorkCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WorkCard.vue?vue&type=script&lang=js& */ "./resources/js/components/WorkCard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _WorkCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _WorkCard_vue_vue_type_template_id_019812ac___WEBPACK_IMPORTED_MODULE_0__["render"],
   _WorkCard_vue_vue_type_template_id_019812ac___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -53743,6 +53700,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/WorkCard.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/WorkCard.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/WorkCard.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WorkCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./WorkCard.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WorkCard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WorkCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
