@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApplicantStateTable extends Migration
+class CreateApplicantsStatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateApplicantStateTable extends Migration
      */
     public function up()
     {
-        Schema::create('applicant_state', function (Blueprint $table) {
+        Schema::create('applicants_states', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('state');
+            $table->boolean('delete_flg')->default(false);
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateApplicantStateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('applicant_state');
+        Schema::dropIfExists('applicants_states');
     }
 }

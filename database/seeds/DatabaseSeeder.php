@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DmContentsSeeder::class);
         $this->call(WorksStatesSeeder::class);
         $this->call(ApplicantsSeeder::class);
-        $this->call(ApplicantStateSeeder::class);
+        $this->call(ApplicantsStatesSeeder::class);
     }
 }
