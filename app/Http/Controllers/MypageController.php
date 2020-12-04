@@ -102,7 +102,7 @@ class MypageController extends Controller
                 $join->on('b.id', '=', 'c.board_id');
             })
             ->orWhere('w.user_id', Auth::id())
-            ->orWhere('b.order_user_id', Auth::id())
+            ->orWhere('b.contractor_id', Auth::id())
             ->orderBy('latest_date', 'DESC')
             ->get();
 

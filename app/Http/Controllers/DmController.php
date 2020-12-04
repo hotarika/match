@@ -37,7 +37,7 @@ class DmController extends Controller
                 $join->on('b.id', '=', 'c.board_id');
             })
             ->orWhere('w.user_id', Auth::id())
-            ->orWhere('b.order_user_id', Auth::id())
+            ->orWhere('b.contractor_id', Auth::id())
             ->orderBy('latest_date', 'DESC')
             ->get();
 
@@ -85,10 +85,10 @@ class DmController extends Controller
         // left join works as w on b.`work_id` = w.id
         // left join users as u on w.user_id = u.id
         $info = DB::table('direct_messages_boards as b')
-            ->select('b.id as board_id', 'w.name as work_name', 'w.user_id as orderer_id', 'u1.name as owner_user_name', 'u1.image as owner_img', 'b.order_user_id', 'u2.name as order_user_name', 'u2.image as order_img')
+            ->select('b.id as board_id', 'w.name as work_name', 'w.user_id as orderer_id', 'u1.name as owner_user_name', 'u1.image as owner_img', 'b.contractor_id', 'u2.name as contractor_name', 'u2.image as order_img')
             ->leftJoin('works as w', 'b.work_id', '=', 'w.id')
             ->leftJoin('users as u1', 'w.user_id', '=', 'u1.id')
-            ->leftJoin('users as u2', 'b.order_user_id', '=', 'u2.id')
+            ->leftJoin('users as u2', 'b.contractor_id', '=', 'u2.id')
             ->where('b.id', $id)
             ->first();
 

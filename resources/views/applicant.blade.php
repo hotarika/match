@@ -41,7 +41,7 @@
                               @csrf
                               <input type="hidden" name="work_id" value="{{$work->id}}">
                               <input type="hidden" name="owner_user_id" value="{{Auth::id()}}">
-                              <input type="hidden" name="order_user_id" value="{{$applicant->applicant_id}}">
+                              <input type="hidden" name="contractor_id" value="{{$applicant->applicant_id}}">
                               <button class="c-btn p-applicant__msgBtn -create" type="submit">
                                  <i class="fas fa-envelope"></i>
                               </button>
@@ -68,7 +68,7 @@
                            <input type="hidden" name="applicant_board_id" value="{{$applicant->id}}">
                            <input type="hidden" name="work_id" value="{{$work->id}}">
                            <input type="hidden" name="owner_user_id" value="{{Auth::id()}}">
-                           <input type="hidden" name="order_user_id" value="{{$applicant->applicant_id}}">
+                           <input type="hidden" name="contractor_id" value="{{$applicant->applicant_id}}">
                            <input type="hidden" name="decide" value="true">
                            <button class="c-btn p-applicant__decideBtn" type="submit">
                               決定する

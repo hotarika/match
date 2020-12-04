@@ -70,7 +70,7 @@ class ApplicantController extends Controller
             ->leftJoin('users as u', 'a.applicant_id', '=', 'u.id')
             ->leftJoin('direct_messages_boards as b', function ($join) {
                 $join->on('a.work_id', '=', 'b.work_id');
-                $join->on('a.applicant_id', '=', 'b.order_user_id');
+                $join->on('a.applicant_id', '=', 'b.contractor_id');
             })
             ->where('a.work_id', $id)
             ->get();
