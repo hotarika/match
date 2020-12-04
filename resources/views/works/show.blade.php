@@ -106,7 +106,7 @@
 
                   {{-- 応募ボタン --}}
                   @if ($work->owner_id !== Auth::id())
-                  @if($work->work_state === 1)
+                  @if($work->works_states === 1)
                   @if($applicant)
                   <form method="POST" action="{{route('applicant.destroy',$applicant->id)}}">
                      @method('DELETE')

@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ChildPubmsgSeeder::class);
         $this->call(DmBoardsSeeder::class);
         $this->call(DmContentsSeeder::class);
-        $this->call(WorkStateSeeder::class);
+        $this->call(WorksStatesSeeder::class);
         $this->call(ApplicantsSeeder::class);
         $this->call(ApplicantStateSeeder::class);
     }
