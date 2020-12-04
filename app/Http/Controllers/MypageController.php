@@ -67,7 +67,7 @@ class MypageController extends Controller
         );
 
         // 親子結合
-        $pubmsgs = DB::table('parent_pubmsg as p')
+        $pubmsgs = DB::table('parent_public_messages as p')
             ->select('p.id', 'p.title', 'p.content',  'p.work_id', 'w.name as work_name', 'p.user_id', 'u.name as user_name', 'p.created_at', 'c.content as latest_content', 'c.created_at as latest_date')
             ->leftJoin('users as u', 'p.user_id', '=', 'u.id')
             ->leftJoin('works as w', 'p.work_id', '=', 'w.id')

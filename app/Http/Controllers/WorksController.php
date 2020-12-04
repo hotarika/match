@@ -113,7 +113,7 @@ class WorksController extends Controller
         $user = Auth::user();
 
         // 親掲示板
-        $parent_msg = DB::table('parent_pubmsg as pm')
+        $parent_msg = DB::table('parent_public_messages as pm')
             ->select('pm.id', 'pm.user_id', 'u.name', 'u.image', 'pm.title', 'pm.content', 'pm.created_at')
             ->leftJoin('users as u', 'pm.user_id', '=', 'u.id')
             ->where('work_id', $id)

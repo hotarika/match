@@ -28,7 +28,7 @@ class PubmsgController extends Controller
         );
 
         // 親子結合
-        $pubmsgs = DB::table('parent_pubmsg as p')
+        $pubmsgs = DB::table('parent_public_messages as p')
             ->select('p.id', 'p.title', 'p.content',  'p.work_id', 'w.name as work_name', 'p.user_id', 'u.name as user_name', 'p.created_at', 'c.content as latest_content', 'c.created_at as latest_date')
             ->leftJoin('users as u', 'p.user_id', '=', 'u.id')
             ->leftJoin('works as w', 'p.work_id', '=', 'w.id')
@@ -59,7 +59,7 @@ class PubmsgController extends Controller
             ->whereIn('c3.created_at', $child2);
 
         // 上記のサブクエリを親テーブルと結合
-        $pubmsgss = DB::table('parent_pubmsg as pm')
+        $pubmsgss = DB::table('parent_public_messages as pm')
             ->select('pm.content as a', 'cm.content as b')
             ->joinSub($child3, 'cm', function ($join) {
                 $join->on('pm.id', '=', 'cm.parent_id');
@@ -67,7 +67,7 @@ class PubmsgController extends Controller
 
 
         // [ SQL ]
-        // select * from parent_pubmsg as pm
+        // select * from parent_public_messages as pm
         //    join (
         //※1     select * from child_public_messages as c1 where c1.created_at in (
         //※2        select max(c2.created_at) from child_public_messages as c2 where c2.parent_id in (

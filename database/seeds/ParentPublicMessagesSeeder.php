@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 
-class ParentPubmsgSeeder extends Seeder
+class ParentPublicMessagesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class ParentPubmsgSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('parent_pubmsg')->insert([
+        DB::table('parent_public_messages')->insert([
             'work_id' => 1,
             'user_id' => 1,
             'title' => '1番のボードです',
@@ -21,7 +21,7 @@ class ParentPubmsgSeeder extends Seeder
             'created_at' => '2020-10-3 12:44:57',
             'updated_at' => Carbon::now(),
         ]);
-        DB::table('parent_pubmsg')->insert([
+        DB::table('parent_public_messages')->insert([
             'work_id' => 2,
             'user_id' => 2,
             'title' => '2番のボードです',
@@ -29,7 +29,7 @@ class ParentPubmsgSeeder extends Seeder
             'created_at' => '2020-10-5 12:44:57',
             'updated_at' => Carbon::now(),
         ]);
-        DB::table('parent_pubmsg')->insert([
+        DB::table('parent_public_messages')->insert([
             'work_id' => 3,
             'user_id' => 3,
             'title' => '3番のボードです',
@@ -37,7 +37,7 @@ class ParentPubmsgSeeder extends Seeder
             'created_at' => '2020-10-7 12:44:57',
             'updated_at' => Carbon::now(),
         ]);
-        DB::table('parent_pubmsg')->insert([
+        DB::table('parent_public_messages')->insert([
             'work_id' => 4,
             'user_id' => 4,
             'title' => '4番のボードです',
@@ -45,7 +45,7 @@ class ParentPubmsgSeeder extends Seeder
             'created_at' => '2020-10-7 12:45:57',
             'updated_at' => Carbon::now(),
         ]);
-        DB::table('parent_pubmsg')->insert([
+        DB::table('parent_public_messages')->insert([
             'work_id' => 5,
             'user_id' => 5,
             'title' => '5番のボードです',
