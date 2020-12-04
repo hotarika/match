@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
 use App\ParentMsg;
 use Illuminate\Support\Facades\Auth;
 
-class PubmsgController extends Controller
+class ParentPublicMessagesController extends Controller
 {
     /**
      * Display a listing of the resource.

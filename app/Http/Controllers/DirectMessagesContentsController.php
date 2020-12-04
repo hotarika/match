@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\DirectMessageContent;
-// use App\DmContent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class DmController extends Controller
+class DirectMessagesContentsController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Notification;
 
-class ApplicantController extends Controller
+class ApplicantsController extends Controller
 {
     /**
      * Display a listing of the resource.

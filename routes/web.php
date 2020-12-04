@@ -26,17 +26,15 @@ Route::group(['middleware' => 'auth'], function () {
     // Resource（今後CRUD処理を拡張する可能性を踏まえて、resourceで定義）
     Route::resource('/users', 'UsersController');
     Route::resource('/works', 'WorksController');
-    Route::resource('/pubmsg', 'PubmsgController'); //親掲示板
-    Route::resource('/child', 'ChildMsgController');
-    Route::resource('/dm', 'DmController');
-    Route::resource('/dm-board', 'DmBoardsController');
-    Route::resource('/applicant', 'ApplicantController');
-    Route::resource('/notification', 'ApplicantsNotificationController');
+    Route::resource('/pubmsg', 'ParentPublicMessagesController'); //親掲示板
+    Route::resource('/child', 'ChildPublicMessagesController');
+    Route::resource('/dm', 'DirectMessagesContentsController');
+    Route::resource('/dm-board', 'DirectMessagesBoardsController');
+    Route::resource('/applicant', 'ApplicantsController');
+    Route::resource('/notification', 'ApplicantsNotificationsController');
 
     // Invoke Controller（1つのコントローラーに1つの定義しか記述しないという意味）
-    Route::get('/', 'HomeController');
-    Route::get('/mypage', 'MypageController')->name('mypage');
-    Route::get('/history', 'WorksHistoryController')->name('history');
+    Route::get('/mypage', 'MyPageController')->name('mypage');
     Route::get('/settings-menu', 'SettingsMenuController')->name('settings-menu');
 });
 
@@ -46,5 +44,5 @@ Route::post('/password/change', 'Auth\ChangePasswordController@ChangePassword')-
 
 
 // 非同期処理
-Route::get('/async/works', 'AsyncController@getWorks');
-Route::get('/async/badge', 'AsyncController@getNotificationsBadgeNumber');
+Route::get('/async/works', 'AsynchronousController@getWorks');
+Route::get('/async/badge', 'AsynchronousController@getNotificationsBadgeNumber');

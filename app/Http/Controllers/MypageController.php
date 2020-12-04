@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use Mockery\Undefined;
 
-class MypageController extends Controller
+class MyPageController extends Controller
 {
     /**
      * Handle the incoming request.

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\ChildPublicMessage;
 use Illuminate\Support\Facades\DB;
 
-class ChildMsgController extends Controller
+class ChildPublicMessagesController extends Controller
 {
     /**
      * Display a listing of the resource.
