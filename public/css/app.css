@@ -3455,13 +3455,13 @@ body {
   text-align: center;
 }
 
-.p-workDetail__infoLowerBodyMoney {
+.p-workDetail__infoLowerBodyPrice {
   margin-top: 5px;
   font-size: 13px;
 }
 
 @media screen and (max-width: 414px) {
-  .p-workDetail__infoLowerBodyMoney {
+  .p-workDetail__infoLowerBodyPrice {
     font-size: 12px;
   }
 }
