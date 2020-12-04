@@ -26,24 +26,21 @@ window.Vue = require('vue');
 // sections
 // =====================
 // 仕事詳細画面 / work-detail
-Vue.component('pubmsg-area-section', require('./sections/s-pubmsg-area.vue').default);
 Vue.component('workcard-area-section', require('./sections/s-workcard-area.vue').default);
 
 // =====================
 // components
 // =====================
-// 仕事詳細画面 / work-detail
-Vue.component('child-form-component', require('./components/c-child-form.vue').default);
+Vue.component('child-form-component', require('./components/PubmsgChild.vue').default);
 Vue.component('notification-component', require('./components/NotificationList.vue').default);
 Vue.component('notification-badge-component', require('./components/NotificationBadge.vue').default);
 Vue.component('work-card-component', require('./components/WorkCard.vue').default);
-Vue.component('dm-list-component', require('./components/DmList.vue').default);
-Vue.component('pubmsg-card-component', require('./components/PubmsgCard.vue').default);
 Vue.component('dm-component', require('./components/DmArea.vue').default);
 Vue.component('work-component', require('./components/WorkList.vue').default);
 Vue.component('work-new-section', require('./components/WorkListNew.vue').default);
 Vue.component('image-edit-component', require('./components/ImageEdit.vue').default);
 Vue.component('pagination-component', require('./components/Pagination.vue').default);
+Vue.component('pubmsg-area-section', require('./components/PubmsgArea.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

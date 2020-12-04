@@ -1,6 +1,6 @@
 <template>
-   <a class="c-card c-msgCard c-dmMsgCard__msgItem" href="dm">
-      <img class="c-img c-dmMsgCard__userImg" :src="'../../images/img1.png'" alt="ユーザーの画像" />
+   <a class="c-card c-msgCard c-dmMsgCard__msgItem" href="dm.html">
+      <img class="c-img c-dmMsgCard__userImg" :src="require('../../images/img1.png').default" alt="ユーザーの画像" />
       <div class="c-dmMsgCard__mainAreaWrap">
          <div class="c-dmMsgCard__infoWrap">
             <div class="c-dmMsgCard__basicInfo">山田たろう / カーナビシステムを作成して欲しい</div>
