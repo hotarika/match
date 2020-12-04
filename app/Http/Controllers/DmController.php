@@ -31,13 +31,13 @@ class DmController extends Controller
 
         // 親子結合
         $boards = DB::table('dm_boards as b')
-            ->select('b.id', 'b.work_id', 'w.name as work_name', 'b.owner_user_id', 'u.name as user_name', 'u.image', 'c.content as latest_content', 'c.created_at as latest_date')
-            ->leftJoin('users as u', 'b.owner_user_id', '=', 'u.id')
+            ->select('b.id', 'b.work_id', 'w.name as work_name', 'w.user_id as orderer_id', 'u.name as user_name', 'u.image', 'c.content as latest_content', 'c.created_at as latest_date')
             ->leftJoin('works as w', 'b.work_id', '=', 'w.id')
+            ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
             ->leftJoinSub($child, 'c', function ($join) {
                 $join->on('b.id', '=', 'c.board_id');
             })
-            ->orWhere('b.owner_user_id', Auth::id())
+            ->orWhere('w.user_id', Auth::id())
             ->orWhere('b.order_user_id', Auth::id())
             ->orderBy('latest_date', 'DESC')
             ->get();
