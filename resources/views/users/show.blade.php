@@ -34,9 +34,9 @@
                            </tr>
                         </table>
                      </div>
-                     <div class="p-profile__proIntroduce">
-                        <div class="p-profile__proIntroduceHead">自己紹介</div>
-                        <div class="p-profile__proIntroduceBody">{{$user->introduction}}</div>
+                     <div class="p-profile__proIntroduction">
+                        <div class="p-profile__proIntroductionHead">自己紹介</div>
+                        <div class="p-profile__proIntroductionBody">{{$user->introduction}}</div>
                      </div>
                   </div>
                </div>

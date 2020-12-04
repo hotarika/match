@@ -66,13 +66,13 @@
                      </div>
 
                      <!-- 自己紹介 -->
-                     <div class="p-profileEdit__wrap -introduce">
-                        <label class="p-profileEdit__label -introduce" for="introduce">自己紹介文</label>
+                     <div class="p-profileEdit__wrap -introduction">
+                        <label class="p-profileEdit__label -introduction" for="introduction">自己紹介文</label>
                         <div class="p-profileEdit__inputWrap">
                            <textarea
-                              id="introduce"
+                              id="introduction"
                               class="c-form__textarea p-profileEdit__textarea"
-                              name="introduce"
+                              name="introduction"
                               cols="30"
                               rows="10"
                               placeholder="自己紹介文を記入">{{$user->introduction}}</textarea>

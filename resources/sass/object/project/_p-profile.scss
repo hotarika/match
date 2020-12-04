@@ -66,7 +66,7 @@
       margin-bottom: 40px;
    }
    &__proResultHead,
-   &__proIntroduceHead {
+   &__proIntroductionHead {
       margin-bottom: 5px;
       font-weight: bold;
       @include mq('xs') {
@@ -94,7 +94,7 @@
       width: 70%;
       padding-left: 20px;
    }
-   &__proIntroduceBody {
+   &__proIntroductionBody {
       @include border-radius('all');
       min-height: 275px;
       padding: 15px;

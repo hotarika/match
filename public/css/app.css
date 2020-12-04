@@ -3016,14 +3016,14 @@ body {
 }
 
 .p-profile__proResultHead,
-.p-profile__proIntroduceHead {
+.p-profile__proIntroductionHead {
   margin-bottom: 5px;
   font-weight: bold;
 }
 
 @media screen and (max-width: 414px) {
   .p-profile__proResultHead,
-  .p-profile__proIntroduceHead {
+  .p-profile__proIntroductionHead {
     font-size: 15px;
   }
 }
@@ -3058,7 +3058,7 @@ body {
   padding-left: 20px;
 }
 
-.p-profile__proIntroduceBody {
+.p-profile__proIntroductionBody {
   border-radius: 2px;
   min-height: 275px;
   padding: 15px;
@@ -3069,7 +3069,7 @@ body {
 }
 
 @media screen and (max-width: 414px) {
-  .p-profile__proIntroduceBody {
+  .p-profile__proIntroductionBody {
     font-size: 13px;
   }
 }
