@@ -86,9 +86,9 @@ class DmController extends Controller
         // left join works as w on b.`work_id` = w.id
         // left join users as u on w.user_id = u.id
         $info = DB::table('dm_boards as b')
-            ->select('b.id as board_id', 'w.name as work_name', 'b.owner_user_id', 'u1.name as owner_user_name', 'u1.image as owner_img', 'b.order_user_id', 'u2.name as order_user_name', 'u2.image as order_img')
+            ->select('b.id as board_id', 'w.name as work_name', 'w.user_id as orderer_id', 'u1.name as owner_user_name', 'u1.image as owner_img', 'b.order_user_id', 'u2.name as order_user_name', 'u2.image as order_img')
             ->leftJoin('works as w', 'b.work_id', '=', 'w.id')
-            ->leftJoin('users as u1', 'b.owner_user_id', '=', 'u1.id')
+            ->leftJoin('users as u1', 'w.user_id', '=', 'u1.id')
             ->leftJoin('users as u2', 'b.order_user_id', '=', 'u2.id')
             ->where('b.id', $id)
             ->first();
