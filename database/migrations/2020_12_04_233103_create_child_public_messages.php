@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChildPubmsgTable extends Migration
+class CreateChildPublicMessages extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateChildPubmsgTable extends Migration
      */
     public function up()
     {
-        Schema::create('child_pubmsg', function (Blueprint $table) {
+        Schema::create('child_public_messages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('parent_id');
             $table->bigInteger('user_id');
@@ -30,6 +30,6 @@ class CreateChildPubmsgTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('child_pubmsg');
+        Schema::dropIfExists('child_public_messages');
     }
 }

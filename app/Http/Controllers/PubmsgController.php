@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
-use App\ChildMsg;
 use App\ParentMsg;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,11 +18,11 @@ class PubmsgController extends Controller
     public function index()
     {
         // 子
-        $child = DB::table('child_pubmsg as c')->whereIn(
+        $child = DB::table('child_public_messages as c')->whereIn(
             DB::raw('c.created_at'),
             function ($query) {
                 return $query->select(DB::raw('max(cc.created_at) as max'))
-                    ->from('child_pubmsg as cc')
+                    ->from('child_public_messages as cc')
                     ->groupBy('cc.parent_id');
             }
         );
@@ -42,20 +41,20 @@ class PubmsgController extends Controller
 
         // [サブクエリ1]
         // 子メッセージに自分のIDが含まれている親ボードのデータを全て取得
-        $child1 = DB::table('child_pubmsg as c1')
+        $child1 = DB::table('child_public_messages as c1')
             ->select('c1.parent_id')
             ->where('c1.user_id', '=', Auth::id());
 
         // [サブクエリ2]
         // 上記の結果から、最新の日時を持つレコードを親ボードIDでグループ化
-        $child2 = DB::table('child_pubmsg as c2')
+        $child2 = DB::table('child_public_messages as c2')
             ->select(DB::raw('max(c2.created_at) as latest_date'))
             ->whereIn('c2.parent_id', $child1)
             ->groupBy('c2.parent_id');
 
         // [サブクエリ3]
         // 上記の最新の日時を持つ子レコードを全て取得
-        $child3 = DB::table('child_pubmsg as c3')
+        $child3 = DB::table('child_public_messages as c3')
             ->select('*')
             ->whereIn('c3.created_at', $child2);
 
@@ -70,9 +69,9 @@ class PubmsgController extends Controller
         // [ SQL ]
         // select * from parent_pubmsg as pm
         //    join (
-        //※1     select * from child_pubmsg as c1 where c1.created_at in (
-        //※2        select max(c2.created_at) from child_pubmsg as c2 where c2.parent_id in (
-        //※3           select c3.parent_id from child_pubmsg as c3 where c3.user_id = 1
+        //※1     select * from child_public_messages as c1 where c1.created_at in (
+        //※2        select max(c2.created_at) from child_public_messages as c2 where c2.parent_id in (
+        //※3           select c3.parent_id from child_public_messages as c3 where c3.user_id = 1
         //       ) group by c2.parent_id
         //    )
         // ) as cm on pm.id = cm.parent_id /* 親と子を結合 */

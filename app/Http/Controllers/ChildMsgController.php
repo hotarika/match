@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\ChildMsg;
+use App\ChildPublicMessage;
 use Illuminate\Support\Facades\DB;
 
 class ChildMsgController extends Controller
@@ -15,7 +15,7 @@ class ChildMsgController extends Controller
      */
     public function index()
     {
-        return DB::table('child_pubmsg')->orderBy('id', 'desc')->take(1)->get();
+        return DB::table('child_public_messages')->orderBy('id', 'desc')->take(1)->get();
     }
 
     /**
@@ -36,7 +36,7 @@ class ChildMsgController extends Controller
      */
     public function store(Request $request)
     {
-        $child = new ChildMsg();
+        $child = new ChildPublicMessage;
         $child->parent_id = $request->parent_id;
         $child->user_id = $request->user_id;
         $child->content = $request->content;

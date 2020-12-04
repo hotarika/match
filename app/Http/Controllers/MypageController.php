@@ -57,11 +57,11 @@ class MypageController extends Controller
         // パブリックメッセージ
         // *******************************
         // 子
-        $child = DB::table('child_pubmsg as c')->whereIn(
+        $child = DB::table('child_public_messages as c')->whereIn(
             DB::raw('c.created_at'),
             function ($query) {
                 return $query->select(DB::raw('max(cc.created_at) as max'))
-                    ->from('child_pubmsg as cc')
+                    ->from('child_public_messages as cc')
                     ->groupBy('cc.parent_id');
             }
         );
