@@ -13,18 +13,18 @@
             <section class="c-h2__sec p-pubmsgList__sec">
                @foreach ( $pubmsgs as $pubmsg )
                <!-- ダイレクトメッセージ一覧 -->
-               <a class="c-card c-msgCard" href="{{url('works/'.$pubmsg->work_id.'#pub-msg')}}">
+               <a class="c-card c-msgCard" href="{{url('works/'.$pubmsg->w_id.'#pub-msg')}}">
                   <div class=" c-pubMsgCard__infoWrap">
                      <div class="c-pubMsgCard__basicInfo">
-                        {{$pubmsg->user_name}} / {{$pubmsg->work_name}}
+                        {{$pubmsg->u_name}} / {{$pubmsg->w_name}}
                      </div>
-                     <time class="c-pubMsgCard__msgTime">{{$pubmsg->latest_date}}</time>
+                     <time class="c-pubMsgCard__msgTime">{{$pubmsg->cm_latest_date}}</time>
                   </div>
                   <div class="c-pubMsgCard__msgTitle">
-                     {{$pubmsg->title}}
+                     {{$pubmsg->pm_title}}
                   </div>
                   <div class="c-pubMsgCard__pubMsg">
-                     {{$pubmsg->latest_content}}
+                     {{$pubmsg->cm_latest_content}}
                   </div>
                </a>
                @endforeach

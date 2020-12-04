@@ -17,28 +17,6 @@ class ParentPublicMessagesController extends Controller
      */
     public function index()
     {
-        // 子
-        $child = DB::table('child_public_messages as c')->whereIn(
-            DB::raw('c.created_at'),
-            function ($query) {
-                return $query->select(DB::raw('max(cc.created_at) as max'))
-                    ->from('child_public_messages as cc')
-                    ->groupBy('cc.parent_id');
-            }
-        );
-
-        // 親子結合
-        $pubmsgs = DB::table('parent_public_messages as p')
-            ->select('p.id', 'p.title', 'p.content',  'p.work_id', 'w.name as work_name', 'p.user_id', 'u.name as user_name', 'p.created_at', 'c.content as latest_content', 'c.created_at as latest_date')
-            ->leftJoin('users as u', 'p.user_id', '=', 'u.id')
-            ->leftJoin('works as w', 'p.work_id', '=', 'w.id')
-            ->leftJoinSub($child, 'c', function ($join) {
-                $join->on('p.id', '=', 'c.parent_id');
-            })
-            ->orWhere('p.user_id', Auth::id())
-            ->orderBy('latest_date', 'DESC')
-            ->get();
-
         // [サブクエリ1]
         // 子メッセージに自分のIDが含まれている親ボードのデータを全て取得
         $child1 = DB::table('child_public_messages as c1')
@@ -59,32 +37,26 @@ class ParentPublicMessagesController extends Controller
             ->whereIn('c3.created_at', $child2);
 
         // 上記のサブクエリを親テーブルと結合
-        $pubmsgss = DB::table('parent_public_messages as pm')
-            ->select('pm.content as a', 'cm.content as b')
+        $pubmsgs = DB::table('parent_public_messages as pm')
+            ->select(
+                'pm.id as pm_id',
+                'pm.title as pm_title',
+                'pm.content as pm.content',
+                'pm.work_id as w_id',
+                'w.name as w_name',
+                'pm.user_id as u_id',
+                'u.name as u_name',
+                'pm.created_at as pm_created_at',
+                'cm.content as cm_latest_content',
+                'cm.created_at as cm_latest_date'
+            )
+            ->leftJoin('users as u', 'pm.user_id', '=', 'u.id')
+            ->leftJoin('works as w', 'pm.work_id', '=', 'w.id')
             ->joinSub($child3, 'cm', function ($join) {
                 $join->on('pm.id', '=', 'cm.parent_id');
             })->get();
-
-
-        // [ SQL ]
-        // select * from parent_public_messages as pm
-        //    join (
-        //※1     select * from child_public_messages as c1 where c1.created_at in (
-        //※2        select max(c2.created_at) from child_public_messages as c2 where c2.parent_id in (
-        //※3           select c3.parent_id from child_public_messages as c3 where c3.user_id = 1
-        //       ) group by c2.parent_id
-        //    )
-        // ) as cm on pm.id = cm.parent_id /* 親と子を結合 */
-
-        //※1[サブクエリ3] - [サブクエリ2]の結果から、最新の日時を持つ子レコードを全て取得
-        //※2[サブクエリ2] - [サブクエリ1]の結果から、最新の日時を持つレコードを親ボードIDでグループ化
-        //※3[サブクエリ1] - 子メッセージに自分のIDが含まれている親ボードのデータを全て取得
-
-
-
-
-
-
+        // pm = public message の略
+        // cm = child message の略
 
         return view('pubmsg.index', compact('pubmsgs'));
     }
