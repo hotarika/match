@@ -9,12 +9,22 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 
 
-class AsyncController extends Controller
+class AsynchronousController extends Controller
 {
     public function getWorks()
     {
         $work = DB::table('works as w')
-            ->select('w.id', 'w.user_id as u_id', 'u.name as u_name', 'w.name as w_name', 'u.image', 'w.contract_id', 'w.end_date', 'w.price_upper', 'w.price_lower')
+            ->select(
+                'w.id',
+                'w.name as w_name',
+                'w.user_id as u_id',
+                'u.name as u_name',
+                'u.image as u_image',
+                'w.contract_id',
+                'w.end_date',
+                'w.price_lower',
+                'w.price_upper',
+            )
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
             ->get();
 

@@ -4,7 +4,7 @@
       <div class="c-workCard__nameWrap">
          <img
             class="c-img c-workCard__img"
-            :src="publicPath + 'storage/user_img/' + work.image"
+            :src="publicPath + 'storage/user_img/' + work.u_image"
             alt="ユーザーのアイコン"
          />
          <span class="c-workCard__name">{{ work.u_name }}</span>

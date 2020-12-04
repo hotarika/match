@@ -40137,7 +40137,7 @@ var render = function() {
         _c("img", {
           staticClass: "c-img c-workCard__img",
           attrs: {
-            src: _vm.publicPath + "storage/user_img/" + _vm.work.image,
+            src: _vm.publicPath + "storage/user_img/" + _vm.work.u_image,
             alt: "ユーザーのアイコン"
           }
         }),
