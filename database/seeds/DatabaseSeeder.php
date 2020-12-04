@@ -16,8 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ContractsTableSeeder::class);
         $this->call(ParentPubmsgSeeder::class);
         $this->call(ChildPubmsgSeeder::class);
-        $this->call(DmBoardsSeeder::class);
-        $this->call(DmContentsSeeder::class);
+        $this->call(DirectMessagesBoardsSeeder::class);
         $this->call(DirectMessagesContentsSeeder::class);
         $this->call(WorksStatesSeeder::class);
         $this->call(ApplicantsSeeder::class);

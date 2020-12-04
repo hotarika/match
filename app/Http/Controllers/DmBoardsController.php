@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Applicant;
-use App\DmBoard;
+use App\DirectMessageBoard;
 use Illuminate\Support\Facades\DB;
 
 class DmBoardsController extends Controller
@@ -44,7 +44,7 @@ class DmBoardsController extends Controller
             $applicant->save();
         }
 
-        $board = new DmBoard;
+        $board = new DirectMessageBoard;
         $board->work_id = $request->work_id;
         $board->owner_user_id = $request->owner_user_id;
         $board->order_user_id = $request->order_user_id;

@@ -94,7 +94,7 @@ class MypageController extends Controller
             );
 
         // 親子結合
-        $boards = DB::table('dm_boards as b')
+        $boards = DB::table('direct_messages_boards as b')
             ->select('b.id', 'b.work_id', 'w.name as work_name', 'w.user_id as orderer_id', 'u.name as user_name', 'u.image', 'c.content as latest_content', 'c.created_at as latest_date')
             ->leftJoin('works as w', 'b.work_id', '=', 'w.id')
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')

@@ -68,7 +68,7 @@ class ApplicantController extends Controller
         $applicants = DB::table('applicants as a')
             ->select('a.id', 'a.applicant_id', 'u.name as user_name', 'u.image', 'b.id as board_id')
             ->leftJoin('users as u', 'a.applicant_id', '=', 'u.id')
-            ->leftJoin('dm_boards as b', function ($join) {
+            ->leftJoin('direct_messages_boards as b', function ($join) {
                 $join->on('a.work_id', '=', 'b.work_id');
                 $join->on('a.applicant_id', '=', 'b.order_user_id');
             })

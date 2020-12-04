@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDmBoardsTable extends Migration
+class CreateDirectMessagesBoards extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateDmBoardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('dm_boards', function (Blueprint $table) {
+        Schema::create('direct_messages_boards', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('work_id');
-            $table->bigInteger('owner_user_id');
             $table->bigInteger('order_user_id');
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ class CreateDmBoardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dm_boards');
+        Schema::dropIfExists('direct_messages_boards');
     }
 }
