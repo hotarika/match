@@ -129,9 +129,12 @@
             </section>
 
             <!-- パブリックメッセージ -->
-            <pubmsg-area-section :work_id="{{json_encode($work_id)}}" :parent_msg="{{json_encode($parent_msg)}}"
-               :child_msg="{{json_encode($child_msg)}}"
-               :public_path="{{ json_encode(asset('')) }}" :user="{{json_encode($user)}}">
+            <pubmsg-area-section
+               :public-path="{{ json_encode(asset('')) }}"
+               :work-id="{{json_encode((integer)$work_id)}}"
+               :user="{{json_encode($user)}}"
+               :parent-msg="{{json_encode($parent_msg)}}"
+               :child-msg="{{json_encode($child_msg)}}">
             </pubmsg-area-section>
          </div>
       </div>

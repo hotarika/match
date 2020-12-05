@@ -26,12 +26,12 @@
 
          <transition-group>
             <!-- メッセージボード -->
-            <div class="p-workDetail__parentWrap" v-for="p in parentMsg" :key="p.id">
+            <div class="p-workDetail__parentWrap" v-for="p in parentMessages" :key="p.id">
                <time class="p-workDetail__parentDate">{{ p.created_at }}</time>
                <div class="p-workDetail__parentMsgWrap">
                   <img
                      class="c-img p-workDetail__parentImg"
-                     :src="public_path + 'storage/user_img/' + p.image"
+                     :src="publicPath + 'storage/user_img/' + p.image"
                      alt="ユーザーのアイコン"
                   />
                   <!-- 親掲示板 -->
@@ -43,13 +43,13 @@
                      </p>
 
                      <!-- 子掲示板 -->
-                     <template v-for="c in childMsg">
+                     <template v-for="c in childMessages">
                         <template v-if="p.id === c.parent_id && p.work_id === c.work_id">
                            <div class="p-workDetail__childWrap" :key="c.id">
                               <time class="p-workDetail__childDate">{{ c.created_at }}</time>
                               <img
                                  class="c-img p-workDetail__childImg"
-                                 :src="public_path + 'storage/user_img/' + c.image"
+                                 :src="publicPath + 'storage/user_img/' + c.image"
                                  alt="ユーザーのアイコン"
                               />
                               <div class="p-workDetail__childRight">
@@ -76,11 +76,17 @@
 const axios = require('axios');
 
 export default {
-   props: ['work_id', 'user', 'parent_msg', 'child_msg', 'public_path'],
+   props: {
+      publicPath: String,
+      workId: Number,
+      user: Object,
+      parentMsg: Array,
+      childMsg: Array
+   },
    data() {
       return {
-         parentMsg: this.parent_msg,
-         childMsg: this.child_msg,
+         parentMessages: this.parentMsg,
+         childMessages: this.childMsg,
          parentTitle: '',
          parentTextarea: '',
          childTextarea: ''
@@ -96,8 +102,8 @@ export default {
 
          if (confirm('送信してもよろしいですか？')) {
             axios //store
-               .post(this.public_path + 'parent-pubmsgs', {
-                  work_id: this.work_id,
+               .post(this.publicPath + 'parent-pubmsgs', {
+                  work_id: this.workId,
                   user_id: this.user.id,
                   title: this.parentTitle,
                   content: this.parentTextarea
@@ -109,12 +115,26 @@ export default {
             // 今日の日付
             var date = new Date();
             const today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+            var id =
+               date.getFullYear() +
+               '' +
+               date.getMonth() +
+               '' +
+               date.getDate() +
+               '' +
+               date.getHours() +
+               '' +
+               date.getMinutes() +
+               '' +
+               date.getSeconds() +
+               '' +
+               date.getMilliseconds();
 
-            // // メッセージの挿入
-            this.parentMsg.unshift({
-               id: this.parentMsg.length + 1,
+            // メッセージの挿入
+            this.parentMessages.unshift({
+               id: id,
                name: this.user.name,
-               work_id: this.work_id,
+               work_id: this.workId,
                user_id: this.user.id,
                image: this.user.image,
                title: this.parentTitle,
@@ -143,7 +163,7 @@ export default {
 
             // メッセージの挿入
             axios
-               .post(this.public_path + 'child', {
+               .post(this.publicPath + 'child', {
                   parent_id: refs[1],
                   user_id: this.user.id,
                   content: text
@@ -154,12 +174,12 @@ export default {
 
             // 親テーブルの更新日時（updated_at）を更新
             // 挿入する更新日時は、LaravelのController側で定義
-            axios.put(this.public_path + 'parent-pubmsgs/' + this.parent_msg[0].id).then(res => {
+            axios.put(this.publicPath + 'parent-pubmsgs/' + this.parentMessages[0].id).then(res => {
                console.log(res);
             });
 
             // メッセージの挿入
-            this.childMsg.push({
+            this.childMessages.push({
                user_id: this.user.id,
                parent_id: refs[1],
                content: text,

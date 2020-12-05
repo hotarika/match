@@ -2507,11 +2507,17 @@ __webpack_require__.r(__webpack_exports__);
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['work_id', 'user', 'parent_msg', 'child_msg', 'public_path'],
+  props: {
+    publicPath: String,
+    workId: Number,
+    user: Object,
+    parentMsg: Array,
+    childMsg: Array
+  },
   data: function data() {
     return {
-      parentMsg: this.parent_msg,
-      childMsg: this.child_msg,
+      parentMessages: this.parentMsg,
+      childMessages: this.childMsg,
       parentTitle: '',
       parentTextarea: '',
       childTextarea: ''
@@ -2527,8 +2533,8 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
       if (confirm('送信してもよろしいですか？')) {
         axios //store
-        .post(this.public_path + 'parent-pubmsgs', {
-          work_id: this.work_id,
+        .post(this.publicPath + 'parent-pubmsgs', {
+          work_id: this.workId,
           user_id: this.user.id,
           title: this.parentTitle,
           content: this.parentTextarea
@@ -2537,12 +2543,13 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
         }); // 今日の日付
 
         var date = new Date();
-        var today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate(); // // メッセージの挿入
+        var today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+        var id = date.getFullYear() + '' + date.getMonth() + '' + date.getDate() + '' + date.getHours() + '' + date.getMinutes() + '' + date.getSeconds() + '' + date.getMilliseconds(); // メッセージの挿入
 
-        this.parentMsg.unshift({
-          id: this.parentMsg.length + 1,
+        this.parentMessages.unshift({
+          id: id,
           name: this.user.name,
-          work_id: this.work_id,
+          work_id: this.workId,
           user_id: this.user.id,
           image: this.user.image,
           title: this.parentTitle,
@@ -2571,7 +2578,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
         var date = new Date();
         var today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate(); // メッセージの挿入
 
-        axios.post(this.public_path + 'child', {
+        axios.post(this.publicPath + 'child', {
           parent_id: refs[1],
           user_id: this.user.id,
           content: text
@@ -2580,11 +2587,11 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
         }); // 親テーブルの更新日時（updated_at）を更新
         // 挿入する更新日時は、LaravelのController側で定義
 
-        axios.put(this.public_path + 'parent-pubmsgs/' + this.parent_msg[0].id).then(function (res) {
+        axios.put(this.publicPath + 'parent-pubmsgs/' + this.parentMessages[0].id).then(function (res) {
           console.log(res);
         }); // メッセージの挿入
 
-        this.childMsg.push({
+        this.childMessages.push({
           user_id: this.user.id,
           parent_id: refs[1],
           content: text,
@@ -39980,7 +39987,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "transition-group",
-          _vm._l(_vm.parentMsg, function(p) {
+          _vm._l(_vm.parentMessages, function(p) {
             return _c(
               "div",
               { key: p.id, staticClass: "p-workDetail__parentWrap" },
@@ -39993,7 +40000,7 @@ var render = function() {
                   _c("img", {
                     staticClass: "c-img p-workDetail__parentImg",
                     attrs: {
-                      src: _vm.public_path + "storage/user_img/" + p.image,
+                      src: _vm.publicPath + "storage/user_img/" + p.image,
                       alt: "ユーザーのアイコン"
                     }
                   }),
@@ -40024,7 +40031,7 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _vm._l(_vm.childMsg, function(c) {
+                      _vm._l(_vm.childMessages, function(c) {
                         return [
                           p.id === c.parent_id && p.work_id === c.work_id
                             ? [
@@ -40048,7 +40055,7 @@ var render = function() {
                                         "c-img p-workDetail__childImg",
                                       attrs: {
                                         src:
-                                          _vm.public_path +
+                                          _vm.publicPath +
                                           "storage/user_img/" +
                                           c.image,
                                         alt: "ユーザーのアイコン"
