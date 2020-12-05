@@ -16,7 +16,7 @@
             @if($work->owner_id === Auth::id())
             <div class="p-side__linkHead">発注者メニュー</div>
             <ul class="p-side__lists">
-               <a class="c-btn p-side__link" href="{{route('applicant.show',$work->work_id)}}">
+               <a class="c-btn p-side__link" href="{{route('applicants.show',$work->work_id)}}">
                   <li><i class="fas fa-list-alt"></i><span class="u-ml1">応募者一覧</span></li>
                </a>
                <a class="c-btn p-side__link" href="{{route('works.edit',$work_id)}}">
@@ -108,13 +108,13 @@
                   @if ($work->owner_id !== Auth::id())
                   @if($work->works_states === 1)
                   @if($applicant)
-                  <form method="POST" action="{{route('applicant.destroy',$applicant->id)}}">
+                  <form method="POST" action="{{route('applicants.destroy',$applicant->id)}}">
                      @method('DELETE')
                      @csrf
                      <button class="c-btn p-workDetail__appBtn -stop" type="submit">応募を取りやめる</button>
                   </form>
                   @else
-                  <form method="POST" action="{{route('applicant.store')}}">
+                  <form method="POST" action="{{route('applicants.store')}}">
                      @csrf
                      <input type="hidden" name="work_id" value="{{$work->work_id}}">
                      <input type="hidden" name="owner_id" value="{{$work->owner_id}}">

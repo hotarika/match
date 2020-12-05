@@ -39737,7 +39737,7 @@ var render = function() {
                     attrs: {
                       href:
                         _vm.public_path +
-                        "/applicant/" +
+                        "applicants/" +
                         notification.data["work_id"]
                     }
                   },

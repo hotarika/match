@@ -41,7 +41,7 @@
                   <div class="p-header__orderMenuWrap">
                      <!-- スマホのみ表示 -->
                      <li class="p-header__item -sp">
-                        <a class="c-link p-header__navLink" href="{{route('applicant.show',$work->work_id)}}">
+                        <a class="c-link p-header__navLink" href="{{route('applicants.show',$work->work_id)}}">
                            <i class="fas fa-list-alt p-header__navIcon"></i>
                            <div class="p-header__navName u-ml2">応募者一覧</div>
                         </a>

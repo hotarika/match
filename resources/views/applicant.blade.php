@@ -53,7 +53,7 @@
                         {{-- 決定ボタン --}}
                         {{-- メールボタンを押した時に、ボードが作成されていれば既存のボードへ。そうでなければ作成する --}}
                         @if ($applicant->board_id)
-                        <form method="POST" action="{{route('applicant.update',$applicant->applicant_id)}}"
+                        <form method="POST" action="{{route('applicants.update',$applicant->applicant_id)}}"
                            class="p-applicant__decideForm -decide -decided -wait">
                            @method('PUT')
                            @csrf

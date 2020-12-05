@@ -31,9 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/child-pubmsgs', 'ChildPublicMessagesController');
     Route::resource('/dm-contents', 'DirectMessagesContentsController');
     Route::resource('/dm-boards', 'DirectMessagesBoardsController');
-
-    Route::resource('/applicant', 'ApplicantsController');
-    // Route::resource('/applicants', 'ApplicantsController');
+    Route::resource('/applicants', 'ApplicantsController');
 
     Route::resource('/notification', 'ApplicantsNotificationsController');
     // Route::resource('/applicants-notifications', 'ApplicantsNotificationsController');

@@ -11,7 +11,7 @@
                :key="notification.id"
             >
                <a
-                  :href="public_path + '/applicant/' + notification.data['work_id']"
+                  :href="public_path + 'applicants/' + notification.data['work_id']"
                   class="c-link p-mypage__notificationMsgSecWrap"
                >
                   <div class="p-mypage__notificationItemUpper">
