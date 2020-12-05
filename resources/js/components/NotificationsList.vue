@@ -83,7 +83,7 @@ export default {
          // 通知を既読（notificationsテーブルのread_atカラム）
          const today = new Date();
          axios
-            .put(this.public_path + 'notification/' + id, {
+            .put(this.public_path + 'notifications/' + id, {
                read_at: today.toLocaleString()
             })
             .then(res => {

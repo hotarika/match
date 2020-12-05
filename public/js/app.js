@@ -2286,7 +2286,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 
       var today = new Date();
-      axios.put(this.public_path + 'notification/' + id, {
+      axios.put(this.public_path + 'notifications/' + id, {
         read_at: today.toLocaleString()
       }).then(function (res) {
         console.log(res);

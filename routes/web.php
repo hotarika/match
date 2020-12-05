@@ -23,18 +23,14 @@
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    // Resource（今後CRUD処理を拡張する可能性を踏まえて、resourceで定義）
+    Route::resource('/applicants', 'ApplicantsController');
+    Route::resource('/applicants-notifications', 'ApplicantsNotificationsController');
+    Route::resource('/child-pubmsgs', 'ChildPublicMessagesController');
+    Route::resource('/dm-boards', 'DirectMessagesBoardsController');
+    Route::resource('/dm-contents', 'DirectMessagesContentsController');
+    Route::resource('/parent-pubmsgs', 'ParentPublicMessagesController'); //親掲示板
     Route::resource('/users', 'UsersController');
     Route::resource('/works', 'WorksController');
-
-    Route::resource('/parent-pubmsgs', 'ParentPublicMessagesController'); //親掲示板
-    Route::resource('/child-pubmsgs', 'ChildPublicMessagesController');
-    Route::resource('/dm-contents', 'DirectMessagesContentsController');
-    Route::resource('/dm-boards', 'DirectMessagesBoardsController');
-    Route::resource('/applicants', 'ApplicantsController');
-
-    Route::resource('/notification', 'ApplicantsNotificationsController');
-    // Route::resource('/applicants-notifications', 'ApplicantsNotificationsController');
 
     // Invoke Controller（1つのコントローラーに1つの定義しか記述しないという意味）
     Route::get('/mypage', 'MyPageController')->name('mypage');
@@ -44,7 +40,6 @@ Route::group(['middleware' => 'auth'], function () {
 // パスワード変更
 Route::get('/password/change', 'Auth\ChangePasswordController@showChangePasswordForm')->name('password.form');
 Route::post('/password/change', 'Auth\ChangePasswordController@ChangePassword')->name('password.change');
-
 
 // 非同期処理
 Route::get('/async/works', 'AsynchronousController@getWorks');
