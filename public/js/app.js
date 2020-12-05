@@ -2432,8 +2432,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _modules_getTempId__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/getTempId */ "./resources/js/modules/getTempId.js");
-/* harmony import */ var _modules_getCurrentDateTime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/getCurrentDateTime */ "./resources/js/modules/getCurrentDateTime.js");
+/* harmony import */ var _modules_getTemporaryId__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/getTemporaryId */ "./resources/js/modules/getTemporaryId.js");
+/* harmony import */ var _modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/getDateTimeNewFormat */ "./resources/js/modules/getDateTimeNewFormat.js");
 //
 //
 //
@@ -2540,7 +2540,7 @@ __webpack_require__.r(__webpack_exports__);
       if (confirm('送信してもよろしいですか？')) {
         // メッセージ挿入（表示用のため、このデータはDBには保存されません）
         this.parentMessages.unshift({
-          id: Object(_modules_getTempId__WEBPACK_IMPORTED_MODULE_1__["tempId"])(date),
+          id: Object(_modules_getTemporaryId__WEBPACK_IMPORTED_MODULE_1__["getTemporaryId"])(date),
           // keyの重複を避けるため、一時的にidを生成
           name: this.user.name,
           work_id: this.workId,
@@ -2548,7 +2548,7 @@ __webpack_require__.r(__webpack_exports__);
           image: this.user.image,
           title: this.parentTitle,
           content: this.parentTextarea,
-          created_at: Object(_modules_getCurrentDateTime__WEBPACK_IMPORTED_MODULE_2__["now"])(date)
+          created_at: Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__["getDateTimeNewFormat"])(date)
         }); // DBへ保存
 
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.publicPath + 'parent-pubmsgs', {
@@ -2561,7 +2561,11 @@ __webpack_require__.r(__webpack_exports__);
         }); // 挿入後に、メッセージを空にする
 
         this.parentTitle = '';
-        this.parentTextarea = '';
+        this.parentTextarea = ''; // Vueで重複のidを避けるために一時的にidを生成しているが、今回作成した掲示板の性質上、親掲示板を作成した直後にリロードせずに子フォームからメッセージを送信（滅多にないが、そのような場合を想定）すると、子フォームは一時的に作成したidをDBに送ってしまう。
+        // そのため一度リロードして、DBのデータを反映させた上で、子フォームからメッセージを送信すると正常にうまくいく。
+        // そのため、下記の通り一度リロードを挟んでいる。
+
+        location.reload();
       }
     },
     addChildMsg: function addChildMsg() {
@@ -2569,7 +2573,8 @@ __webpack_require__.r(__webpack_exports__);
         refs[_key] = arguments[_key];
       }
 
-      var text = refs[0].childMessage.value; // テキストエリアが空欄の場合
+      var text = refs[0].childMessage.value;
+      var date = new Date(); // テキストエリアが空欄の場合
 
       if (!text.trim('')) {
         alert('メッセージが空欄です');
@@ -2577,11 +2582,8 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (confirm('送信してもよろしいですか？')) {
-        // 今日の日付
-        var date = new Date();
-        var today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate(); // メッセージの挿入
-
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.publicPath + 'child', {
+        // メッセージの挿入
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.publicPath + 'child-pubmsgs', {
           parent_id: refs[1],
           user_id: this.user.id,
           content: text
@@ -2600,7 +2602,7 @@ __webpack_require__.r(__webpack_exports__);
           content: text,
           name: this.user.name,
           image: this.user.image,
-          created_at: today
+          created_at: Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__["getDateTimeNewFormat"])(date)
         }); // 挿入後に、メッセージを空にする
 
         var textarea = document.getElementsByClassName('js-childTextarea');
@@ -2613,12 +2615,7 @@ __webpack_require__.r(__webpack_exports__);
   filters: {
     formatDateTime: function formatDateTime(value) {
       var date = new Date(value);
-      var y = date.getFullYear(value);
-      var m = ('0' + date.getMonth(value) + 1).slice(-2);
-      var d = ('0' + date.getDate(value)).slice(-2);
-      var h = ('0' + date.getHours(value)).slice(-2);
-      var i = ('0' + date.getMinutes(value)).slice(-2);
-      var newFormat = y + '/' + m + '/' + d + ' ' + h + ':' + i;
+      var newFormat = Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__["getDateTimeNewFormat"])(date);
       return newFormat;
     }
   }
@@ -40168,7 +40165,7 @@ var render = function() {
     "a",
     {
       staticClass: "c-card c-msgCard",
-      attrs: { href: _vm.publicPath + "works/" + _vm.msgCard.w_id }
+      attrs: { href: _vm.publicPath + "works/" + _vm.msgCard.w_id + "#pub-msg" }
     },
     [
       _c("div", { staticClass: " c-pubMsgCard__infoWrap" }, [
@@ -53810,37 +53807,40 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/modules/getCurrentDateTime.js":
-/*!****************************************************!*\
-  !*** ./resources/js/modules/getCurrentDateTime.js ***!
-  \****************************************************/
-/*! exports provided: now */
+/***/ "./resources/js/modules/getDateTimeNewFormat.js":
+/*!******************************************************!*\
+  !*** ./resources/js/modules/getDateTimeNewFormat.js ***!
+  \******************************************************/
+/*! exports provided: getDateTimeNewFormat */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "now", function() { return now; });
-// const date = new Date();
-// module.exports =
-//    date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes();
-function now(date) {
-  var now = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes();
-  return now;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDateTimeNewFormat", function() { return getDateTimeNewFormat; });
+function getDateTimeNewFormat(date) {
+  var y = date.getFullYear();
+  var m = ('0' + (date.getMonth() + 1)).slice(-2); // 0から取得するので+1
+
+  var d = ('0' + date.getDate()).slice(-2);
+  var h = ('0' + date.getHours()).slice(-2);
+  var i = ('0' + date.getMinutes()).slice(-2);
+  var newFormat = y + '/' + m + '/' + d + ' ' + h + ':' + i;
+  return newFormat;
 }
 
 /***/ }),
 
-/***/ "./resources/js/modules/getTempId.js":
-/*!*******************************************!*\
-  !*** ./resources/js/modules/getTempId.js ***!
-  \*******************************************/
-/*! exports provided: tempId */
+/***/ "./resources/js/modules/getTemporaryId.js":
+/*!************************************************!*\
+  !*** ./resources/js/modules/getTemporaryId.js ***!
+  \************************************************/
+/*! exports provided: getTemporaryId */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tempId", function() { return tempId; });
-function tempId(date) {
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTemporaryId", function() { return getTemporaryId; });
+function getTemporaryId(date) {
   var tempId = date.getFullYear() + '' + date.getMonth() + '' + date.getDate() + '' + date.getHours() + '' + date.getMinutes() + '' + date.getSeconds() + '' + date.getMilliseconds();
   return tempId;
 }

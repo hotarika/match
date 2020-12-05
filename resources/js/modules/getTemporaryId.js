@@ -1,4 +1,4 @@
-export function tempId(date) {
+export function getTemporaryId(date) {
    const tempId =
       date.getFullYear() +
       '' +

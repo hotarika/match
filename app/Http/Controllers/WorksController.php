@@ -133,9 +133,9 @@ class WorksController extends Controller
             ->get();
 
         // 日付の形式を変更
-        for ($i = 0; $i < count($child_msg); $i++) {
-            $child_msg[$i]->created_at = date('Y/m/d', strtotime($child_msg[$i]->created_at));
-        }
+        // for ($i = 0; $i < count($child_msg); $i++) {
+        //     $child_msg[$i]->created_at = date('Y/m/d', strtotime($child_msg[$i]->created_at));
+        // }
 
         return view('works.show', compact('work_id', 'user', 'work', 'parent_msg', 'child_msg', 'applicant'));
     }

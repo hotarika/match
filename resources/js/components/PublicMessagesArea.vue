@@ -74,8 +74,8 @@
 
 <script>
 import axios from 'axios';
-import { tempId } from '../modules/getTempId';
-import { now } from '../modules/getCurrentDateTime';
+import { getTemporaryId } from '../modules/getTemporaryId';
+import { getDateTimeNewFormat } from '../modules/getDateTimeNewFormat';
 
 export default {
    props: {
@@ -107,14 +107,14 @@ export default {
          if (confirm('送信してもよろしいですか？')) {
             // メッセージ挿入（表示用のため、このデータはDBには保存されません）
             this.parentMessages.unshift({
-               id: tempId(date), // keyの重複を避けるため、一時的にidを生成
+               id: getTemporaryId(date), // keyの重複を避けるため、一時的にidを生成
                name: this.user.name,
                work_id: this.workId,
                user_id: this.user.id,
                image: this.user.image,
                title: this.parentTitle,
                content: this.parentTextarea,
-               created_at: now(date)
+               created_at: getDateTimeNewFormat(date)
             });
 
             // DBへ保存
@@ -132,10 +132,16 @@ export default {
             // 挿入後に、メッセージを空にする
             this.parentTitle = '';
             this.parentTextarea = '';
+
+            // Vueで重複のidを避けるために一時的にidを生成しているが、今回作成した掲示板の性質上、親掲示板を作成した直後にリロードせずに子フォームからメッセージを送信（滅多にないが、そのような場合を想定）すると、子フォームは一時的に作成したidをDBに送ってしまう。
+            // そのため一度リロードして、DBのデータを反映させた上で、子フォームからメッセージを送信すると正常にうまくいく。
+            // そのため、下記の通り一度リロードを挟んでいる。
+            location.reload();
          }
       },
       addChildMsg(...refs) {
          const text = refs[0].childMessage.value;
+         const date = new Date();
 
          // テキストエリアが空欄の場合
          if (!text.trim('')) {
@@ -144,13 +150,9 @@ export default {
          }
 
          if (confirm('送信してもよろしいですか？')) {
-            // 今日の日付
-            var date = new Date();
-            const today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
-
             // メッセージの挿入
             axios
-               .post(this.publicPath + 'child', {
+               .post(this.publicPath + 'child-pubmsgs', {
                   parent_id: refs[1],
                   user_id: this.user.id,
                   content: text
@@ -172,7 +174,7 @@ export default {
                content: text,
                name: this.user.name,
                image: this.user.image,
-               created_at: today
+               created_at: getDateTimeNewFormat(date)
             });
 
             // 挿入後に、メッセージを空にする
@@ -184,15 +186,9 @@ export default {
       }
    },
    filters: {
-      formatDateTime: function(value) {
+      formatDateTime(value) {
          const date = new Date(value);
-         const y = date.getFullYear(value);
-         const m = ('0' + date.getMonth(value) + 1).slice(-2);
-         const d = ('0' + date.getDate(value)).slice(-2);
-         const h = ('0' + date.getHours(value)).slice(-2);
-         const i = ('0' + date.getMinutes(value)).slice(-2);
-         const newFormat = y + '/' + m + '/' + d + ' ' + h + ':' + i;
-
+         const newFormat = getDateTimeNewFormat(date);
          return newFormat;
       }
    }
