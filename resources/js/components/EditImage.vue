@@ -18,7 +18,7 @@
             />
 
             <!-- 画像の切り替え -->
-            <img class="c-img p-profileEdit__img" :src="image_path" v-if="preview === ''" />
+            <img class="c-img p-profileEdit__img" :src="imagePath" v-if="preview === ''" />
             <img class="c-img p-profileEdit__img" :src="preview" v-else />
          </label>
       </div>
@@ -31,7 +31,9 @@
 
 <script>
 export default {
-   props: ['public_path', 'image_path'],
+   props: {
+      imagePath: String
+   },
    data() {
       return {
          preview: '', // 画像を表示

@@ -19,8 +19,8 @@
                      @csrf
 
                      <!-- 画像 -->
-                     <image-edit-component :public_path="{{ json_encode(asset('')) }}"
-                        :image_path="{{json_encode(asset('/storage/user_img/'. $user->image))}}"></image-edit-component>
+                     <image-edit-component
+                        :image-path="{{json_encode(asset('/storage/user_img/'. $user->image))}}"></image-edit-component>
 
                      <!-- 名前 -->
                      <div class="p-profileEdit__wrap -name">
