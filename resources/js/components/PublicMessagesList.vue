@@ -22,7 +22,7 @@ export default {
    mounted() {
       // 非同期取得
       axios
-         .get(this.publicPath + 'async/pubmsgs')
+         .get(this.publicPath + 'async/pubmsgs-list')
          .then(res => {
             console.log(res);
             this.allData = res.data; // 全データを格納

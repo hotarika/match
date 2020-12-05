@@ -11,7 +11,8 @@ Request::is('works/create'))
       <a class="c-btn p-side__link @if(Request::is('mypage')) is-active @endif" href="{{ route('mypage') }}">
          <li><i class="fas fa-user"></i><span class="u-ml4">マイページ</span></li>
       </a>
-      <a class="c-btn p-side__link @if(Request::is('pubmsg')) is-active @endif" href="{{route('pubmsg.index')}}">
+      <a class="c-btn p-side__link @if(Request::is('parent-pubmsgs')) is-active @endif"
+         href="{{route('parent-pubmsgs.index')}}">
          <li><i class="fas fa-users"></i><span>パブリックメッセージ</span></li>
       </a>
       <a class="c-btn p-side__link @if(Request::is('dm')) is-active @endif" href="{{route('dm.index')}}">

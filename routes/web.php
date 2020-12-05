@@ -26,12 +26,23 @@ Route::group(['middleware' => 'auth'], function () {
     // Resource（今後CRUD処理を拡張する可能性を踏まえて、resourceで定義）
     Route::resource('/users', 'UsersController');
     Route::resource('/works', 'WorksController');
-    Route::resource('/pubmsg', 'ParentPublicMessagesController'); //親掲示板
+
+    Route::resource('/parent-pubmsgs', 'ParentPublicMessagesController'); //親掲示板
+
     Route::resource('/child', 'ChildPublicMessagesController');
+    // Route::resource('/child-pubmsgs', 'ChildPublicMessagesController');
+
     Route::resource('/dm', 'DirectMessagesContentsController');
+    // Route::resource('/dm-contents', 'DirectMessagesContentsController');
+
     Route::resource('/dm-board', 'DirectMessagesBoardsController');
+    // Route::resource('/dm-boards', 'DirectMessagesBoardsController');
+
     Route::resource('/applicant', 'ApplicantsController');
+    // Route::resource('/applicants', 'ApplicantsController');
+
     Route::resource('/notification', 'ApplicantsNotificationsController');
+    // Route::resource('/applicants-notifications', 'ApplicantsNotificationsController');
 
     // Invoke Controller（1つのコントローラーに1つの定義しか記述しないという意味）
     Route::get('/mypage', 'MyPageController')->name('mypage');
@@ -46,4 +57,4 @@ Route::post('/password/change', 'Auth\ChangePasswordController@ChangePassword')-
 // 非同期処理
 Route::get('/async/works', 'AsynchronousController@getWorks');
 Route::get('/async/badge', 'AsynchronousController@getNotificationsBadgeNumber');
-Route::get('/async/pubmsgs', 'AsynchronousController@getPublicMessagesList');
+Route::get('/async/pubmsgs-list', 'AsynchronousController@getPublicMessagesList');

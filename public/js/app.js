@@ -2523,7 +2523,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
       if (confirm('送信してもよろしいですか？')) {
         axios //store
-        .post(this.public_path + 'pubmsg', {
+        .post(this.public_path + 'parent-pubmsgs', {
           work_id: this.work_id,
           user_id: this.user.id,
           title: this.parentTitle,
@@ -2576,7 +2576,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
         }); // 親テーブルの更新日時（updated_at）を更新
         // 挿入する更新日時は、LaravelのController側で定義
 
-        axios.put(this.public_path + 'pubmsg/' + this.parent_msg[0].id).then(function (res) {
+        axios.put(this.public_path + 'parent-pubmsgs/' + this.parent_msg[0].id).then(function (res) {
           console.log(res);
         }); // メッセージの挿入
 
@@ -2721,7 +2721,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     // 非同期取得
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.publicPath + 'async/pubmsgs').then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.publicPath + 'async/pubmsgs-list').then(function (res) {
       console.log(res);
       _this.allData = res.data; // 全データを格納
     })["catch"](function (err) {

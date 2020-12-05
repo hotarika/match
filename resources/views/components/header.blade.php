@@ -90,7 +90,7 @@
 
                   <!-- スマホのみ表示 -->
                   <li class="p-header__item -sp">
-                     <a class="c-link p-header__navLink" href="{{ route('pubmsg.index') }}">
+                     <a class="c-link p-header__navLink" href="{{ route('parent-pubmsgs.index') }}">
                         <i class="fas fa-users p-header__navIcon"></i>
                         <div class="p-header__navName">パブリックメッセージ</div>
                      </a>
