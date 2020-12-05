@@ -1,15 +1,15 @@
 <template>
    <section class="c-h2__sec p-dm__h2sec">
       <div class="c-h2__head p-dm__h2">
-         <template v-if="info.owner_user_id === user_id">
-            <img :src="public_path + 'storage/user_img/' + info.owner_img" alt="ユーザーの画像" />
+         <template v-if="info.owner_user_id === userId">
+            <img :src="publicPath + 'storage/user_img/' + info.owner_img" alt="ユーザーの画像" />
          </template>
          <template v-else>
-            <img :src="public_path + 'storage/user_img/' + info.order_img" alt="ユーザーの画像" />
+            <img :src="publicPath + 'storage/user_img/' + info.order_img" alt="ユーザーの画像" />
          </template>
          <div class="p-dm__h2InfoWrap">
             <div class="p-dm__h2InfoName">
-               <template v-if="info.owner_user_id === user_id">
+               <template v-if="info.owner_user_id === userId">
                   {{ info.order_user_name }}
                </template>
                <template v-else>
@@ -27,7 +27,7 @@
             <transition-group>
                <div v-for="msg in contents" :key="msg.contents_id">
                   <!-- 自分ののメッセージ -->
-                  <div class="p-dm__msgMe" v-if="msg.user_id === user_id" :key="msg.id">
+                  <div class="p-dm__msgMe" v-if="msg.user_id === userId" :key="msg.id">
                      {{ msg.content }}
                      <time>{{ msg.time }}</time>
                   </div>
@@ -51,7 +51,6 @@
                v-model="textarea"
             />
             <button class="c-btn c-msgSendBtn p-dm__sendBtn" type="submit" @click.prevent="addMsg">
-               <!-- <img :src="require('../../images/icon/send.svg').default" alt="送信のアイコン" /> -->
                <i class="far fa-arrow-alt-circle-up"></i>送信
             </button>
          </form>
@@ -60,15 +59,18 @@
 </template>
 
 <script>
-// import msgs from '../data/dmData.json';
 const axios = require('axios');
 
 export default {
-   props: ['public_path', 'contents', 'user_id', 'info'],
+   props: {
+      publicPath: String,
+      contents: Array,
+      userId: Number,
+      info: Object
+   },
    data() {
       return {
          textarea: '',
-         // msgs,
          conts: this.contents
       };
    },
@@ -89,15 +91,15 @@ export default {
             this.conts.push({
                board_id: this.conts.length + 1,
                contents_id: this.conts.length + 1,
-               user_id: this.user_id,
+               user_id: this.userId,
                content: this.textarea,
                created_at: today
             });
 
             axios //store
-               .post(this.public_path + 'dm', {
+               .post(this.publicPath + 'dm', {
                   board_id: this.info.board_id,
-                  user_id: this.user_id,
+                  user_id: this.userId,
                   content: this.textarea
                })
                .then(res => {

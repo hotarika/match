@@ -1968,16 +1968,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-// import msgs from '../data/dmData.json';
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['public_path', 'contents', 'user_id', 'info'],
+  props: {
+    publicPath: String,
+    contents: Array,
+    userId: Number,
+    info: Object
+  },
   data: function data() {
     return {
       textarea: '',
-      // msgs,
       conts: this.contents
     };
   },
@@ -1997,14 +1999,14 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
         this.conts.push({
           board_id: this.conts.length + 1,
           contents_id: this.conts.length + 1,
-          user_id: this.user_id,
+          user_id: this.userId,
           content: this.textarea,
           created_at: today
         });
         axios //store
-        .post(this.public_path + 'dm', {
+        .post(this.publicPath + 'dm', {
           board_id: this.info.board_id,
-          user_id: this.user_id,
+          user_id: this.userId,
           content: this.textarea
         }).then(function (res) {
           console.log(res);
@@ -39371,12 +39373,12 @@ var render = function() {
       "div",
       { staticClass: "c-h2__head p-dm__h2" },
       [
-        _vm.info.owner_user_id === _vm.user_id
+        _vm.info.owner_user_id === _vm.userId
           ? [
               _c("img", {
                 attrs: {
                   src:
-                    _vm.public_path + "storage/user_img/" + _vm.info.owner_img,
+                    _vm.publicPath + "storage/user_img/" + _vm.info.owner_img,
                   alt: "ユーザーの画像"
                 }
               })
@@ -39385,7 +39387,7 @@ var render = function() {
               _c("img", {
                 attrs: {
                   src:
-                    _vm.public_path + "storage/user_img/" + _vm.info.order_img,
+                    _vm.publicPath + "storage/user_img/" + _vm.info.order_img,
                   alt: "ユーザーの画像"
                 }
               })
@@ -39396,7 +39398,7 @@ var render = function() {
             "div",
             { staticClass: "p-dm__h2InfoName" },
             [
-              _vm.info.owner_user_id === _vm.user_id
+              _vm.info.owner_user_id === _vm.userId
                 ? [
                     _vm._v(
                       "\n               " +
@@ -39437,7 +39439,7 @@ var render = function() {
             "transition-group",
             _vm._l(_vm.contents, function(msg) {
               return _c("div", { key: msg.contents_id }, [
-                msg.user_id === _vm.user_id
+                msg.user_id === _vm.userId
                   ? _c("div", { key: msg.id, staticClass: "p-dm__msgMe" }, [
                       _vm._v(
                         "\n                  " +

@@ -13,9 +13,9 @@
          <div class="l-main__mainArea -twoColumns">
             <!-- ダイレクトメッセージ -->
             <dm-component
-               :public_path="{{ json_encode(asset('')) }}"
+               :public-path="{{ json_encode(asset('')) }}"
                :contents="{{json_encode($contents)}}"
-               :user_id="{{json_encode(Auth::id())}}"
+               :user-id="{{json_encode(Auth::id())}}"
                :info="{{json_encode($info)}}" />
             </dm-component>
          </div>
