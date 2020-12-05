@@ -41,9 +41,6 @@
                   </div>
                </div>
             </section>
-
-            <!-- 発注した案件 -->
-            <workcard-area-section head="応募中の仕事"></workcard-area-section>
          </div>
       </div>
    </div>

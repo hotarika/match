@@ -22,15 +22,9 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-// =====================
-// sections
-// =====================
-// 仕事詳細画面 / work-detail
-Vue.component('workcard-area-section', require('./sections/s-workcard-area.vue').default);
-
-// =====================
+// =======================================
 // components（ファイル名のアルファベット順）
-// =====================
+// =======================================
 Vue.component('dm-component', require('./components/DirectMessagesArea.vue').default);
 Vue.component('image-edit-component', require('./components/EditImage.vue').default);
 Vue.component('notification-badge-component', require('./components/NotificationsBadge.vue').default);
