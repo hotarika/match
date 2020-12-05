@@ -15,8 +15,8 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-// Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/', 'HomeController')->name('home');
 
 // Auth関連のルート
 // vendor/laravel/framework/src/illuminate/Routing/Router.phpに定義されている
