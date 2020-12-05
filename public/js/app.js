@@ -2430,6 +2430,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _modules_getTempId__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/getTempId */ "./resources/js/modules/getTempId.js");
+/* harmony import */ var _modules_getCurrentDateTime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/getCurrentDateTime */ "./resources/js/modules/getCurrentDateTime.js");
 //
 //
 //
@@ -2504,7 +2508,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2525,36 +2530,34 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
   },
   methods: {
     addParentMsg: function addParentMsg() {
-      // 親テキストエリアが空欄の場合
+      var date = new Date(); // 親テキストエリアが空欄の場合
+
       if (!this.parentTitle.trim('') || !this.parentTextarea.trim('')) {
         alert('タイトルまたはメッセージが空欄です');
         return;
       }
 
       if (confirm('送信してもよろしいですか？')) {
-        axios //store
-        .post(this.publicPath + 'parent-pubmsgs', {
-          work_id: this.workId,
-          user_id: this.user.id,
-          title: this.parentTitle,
-          content: this.parentTextarea
-        }).then(function (res) {
-          console.log(res);
-        }); // 今日の日付
-
-        var date = new Date();
-        var today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
-        var id = date.getFullYear() + '' + date.getMonth() + '' + date.getDate() + '' + date.getHours() + '' + date.getMinutes() + '' + date.getSeconds() + '' + date.getMilliseconds(); // メッセージの挿入
-
+        // メッセージ挿入（表示用のため、このデータはDBには保存されません）
         this.parentMessages.unshift({
-          id: id,
+          id: Object(_modules_getTempId__WEBPACK_IMPORTED_MODULE_1__["tempId"])(date),
+          // keyの重複を避けるため、一時的にidを生成
           name: this.user.name,
           work_id: this.workId,
           user_id: this.user.id,
           image: this.user.image,
           title: this.parentTitle,
           content: this.parentTextarea,
-          created_at: today
+          created_at: Object(_modules_getCurrentDateTime__WEBPACK_IMPORTED_MODULE_2__["now"])(date)
+        }); // DBへ保存
+
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.publicPath + 'parent-pubmsgs', {
+          work_id: this.workId,
+          user_id: this.user.id,
+          title: this.parentTitle,
+          content: this.parentTextarea
+        }).then(function (res) {
+          console.log(res);
         }); // 挿入後に、メッセージを空にする
 
         this.parentTitle = '';
@@ -2578,7 +2581,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
         var date = new Date();
         var today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate(); // メッセージの挿入
 
-        axios.post(this.publicPath + 'child', {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.publicPath + 'child', {
           parent_id: refs[1],
           user_id: this.user.id,
           content: text
@@ -2587,7 +2590,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
         }); // 親テーブルの更新日時（updated_at）を更新
         // 挿入する更新日時は、LaravelのController側で定義
 
-        axios.put(this.publicPath + 'parent-pubmsgs/' + this.parentMessages[0].id).then(function (res) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(this.publicPath + 'parent-pubmsgs/' + this.parentMessages[0].id).then(function (res) {
           console.log(res);
         }); // メッセージの挿入
 
@@ -2605,6 +2608,18 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
           el.value = '';
         });
       }
+    }
+  },
+  filters: {
+    formatDateTime: function formatDateTime(value) {
+      var date = new Date(value);
+      var y = date.getFullYear(value);
+      var m = ('0' + date.getMonth(value) + 1).slice(-2);
+      var d = ('0' + date.getDate(value)).slice(-2);
+      var h = ('0' + date.getHours(value)).slice(-2);
+      var i = ('0' + date.getMinutes(value)).slice(-2);
+      var newFormat = y + '/' + m + '/' + d + ' ' + h + ':' + i;
+      return newFormat;
     }
   }
 });
@@ -39993,7 +40008,7 @@ var render = function() {
               { key: p.id, staticClass: "p-workDetail__parentWrap" },
               [
                 _c("time", { staticClass: "p-workDetail__parentDate" }, [
-                  _vm._v(_vm._s(p.created_at))
+                  _vm._v(_vm._s(_vm._f("formatDateTime")(p.created_at)))
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "p-workDetail__parentMsgWrap" }, [
@@ -40047,7 +40062,15 @@ var render = function() {
                                       {
                                         staticClass: "p-workDetail__childDate"
                                       },
-                                      [_vm._v(_vm._s(c.created_at))]
+                                      [
+                                        _vm._v(
+                                          _vm._s(
+                                            _vm._f("formatDateTime")(
+                                              c.created_at
+                                            )
+                                          )
+                                        )
+                                      ]
                                     ),
                                     _vm._v(" "),
                                     _c("img", {
@@ -53784,6 +53807,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WorksListInHome_vue_vue_type_template_id_29527169___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/modules/getCurrentDateTime.js":
+/*!****************************************************!*\
+  !*** ./resources/js/modules/getCurrentDateTime.js ***!
+  \****************************************************/
+/*! exports provided: now */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "now", function() { return now; });
+// const date = new Date();
+// module.exports =
+//    date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes();
+function now(date) {
+  var now = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes();
+  return now;
+}
+
+/***/ }),
+
+/***/ "./resources/js/modules/getTempId.js":
+/*!*******************************************!*\
+  !*** ./resources/js/modules/getTempId.js ***!
+  \*******************************************/
+/*! exports provided: tempId */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tempId", function() { return tempId; });
+function tempId(date) {
+  var tempId = date.getFullYear() + '' + date.getMonth() + '' + date.getDate() + '' + date.getHours() + '' + date.getMinutes() + '' + date.getSeconds() + '' + date.getMilliseconds();
+  return tempId;
+}
 
 /***/ }),
 

@@ -121,9 +121,9 @@ class WorksController extends Controller
             ->get();
 
         // 日付の形式を変更
-        for ($i = 0; $i < count($parent_msg); $i++) {
-            $parent_msg[$i]->created_at = date('Y/m/d', strtotime($parent_msg[$i]->created_at));
-        }
+        // for ($i = 0; $i < count($parent_msg); $i++) {
+        //     $parent_msg[$i]->created_at = date('Y/m/d', strtotime($parent_msg[$i]->created_at));
+        // }
 
         // 子掲示板
         $child_msg = DB::table('child_public_messages as cm')

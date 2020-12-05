@@ -27,7 +27,7 @@
          <transition-group>
             <!-- メッセージボード -->
             <div class="p-workDetail__parentWrap" v-for="p in parentMessages" :key="p.id">
-               <time class="p-workDetail__parentDate">{{ p.created_at }}</time>
+               <time class="p-workDetail__parentDate">{{ p.created_at | formatDateTime }}</time>
                <div class="p-workDetail__parentMsgWrap">
                   <img
                      class="c-img p-workDetail__parentImg"
@@ -46,7 +46,7 @@
                      <template v-for="c in childMessages">
                         <template v-if="p.id === c.parent_id && p.work_id === c.work_id">
                            <div class="p-workDetail__childWrap" :key="c.id">
-                              <time class="p-workDetail__childDate">{{ c.created_at }}</time>
+                              <time class="p-workDetail__childDate">{{ c.created_at | formatDateTime }}</time>
                               <img
                                  class="c-img p-workDetail__childImg"
                                  :src="publicPath + 'storage/user_img/' + c.image"
@@ -73,7 +73,9 @@
 </template>
 
 <script>
-const axios = require('axios');
+import axios from 'axios';
+import { tempId } from '../modules/getTempId';
+import { now } from '../modules/getCurrentDateTime';
 
 export default {
    props: {
@@ -94,6 +96,8 @@ export default {
    },
    methods: {
       addParentMsg() {
+         const date = new Date();
+
          // 親テキストエリアが空欄の場合
          if (!this.parentTitle.trim('') || !this.parentTextarea.trim('')) {
             alert('タイトルまたはメッセージが空欄です');
@@ -101,7 +105,20 @@ export default {
          }
 
          if (confirm('送信してもよろしいですか？')) {
-            axios //store
+            // メッセージ挿入（表示用のため、このデータはDBには保存されません）
+            this.parentMessages.unshift({
+               id: tempId(date), // keyの重複を避けるため、一時的にidを生成
+               name: this.user.name,
+               work_id: this.workId,
+               user_id: this.user.id,
+               image: this.user.image,
+               title: this.parentTitle,
+               content: this.parentTextarea,
+               created_at: now(date)
+            });
+
+            // DBへ保存
+            axios
                .post(this.publicPath + 'parent-pubmsgs', {
                   work_id: this.workId,
                   user_id: this.user.id,
@@ -111,36 +128,6 @@ export default {
                .then(res => {
                   console.log(res);
                });
-
-            // 今日の日付
-            var date = new Date();
-            const today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
-            var id =
-               date.getFullYear() +
-               '' +
-               date.getMonth() +
-               '' +
-               date.getDate() +
-               '' +
-               date.getHours() +
-               '' +
-               date.getMinutes() +
-               '' +
-               date.getSeconds() +
-               '' +
-               date.getMilliseconds();
-
-            // メッセージの挿入
-            this.parentMessages.unshift({
-               id: id,
-               name: this.user.name,
-               work_id: this.workId,
-               user_id: this.user.id,
-               image: this.user.image,
-               title: this.parentTitle,
-               content: this.parentTextarea,
-               created_at: today
-            });
 
             // 挿入後に、メッセージを空にする
             this.parentTitle = '';
@@ -194,6 +181,19 @@ export default {
                el.value = '';
             });
          }
+      }
+   },
+   filters: {
+      formatDateTime: function(value) {
+         const date = new Date(value);
+         const y = date.getFullYear(value);
+         const m = ('0' + date.getMonth(value) + 1).slice(-2);
+         const d = ('0' + date.getDate(value)).slice(-2);
+         const h = ('0' + date.getHours(value)).slice(-2);
+         const i = ('0' + date.getMinutes(value)).slice(-2);
+         const newFormat = y + '/' + m + '/' + d + ' ' + h + ':' + i;
+
+         return newFormat;
       }
    }
 };
