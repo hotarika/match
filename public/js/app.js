@@ -2632,6 +2632,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/getDateTimeNewFormat */ "./resources/js/modules/getDateTimeNewFormat.js");
 //
 //
 //
@@ -2654,6 +2655,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     msgCard: Object,
@@ -2666,6 +2668,13 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         return this.msgCard.pm_content;
       }
+    }
+  },
+  filters: {
+    formatDateTime: function formatDateTime(value) {
+      var date = new Date(value);
+      var newFormat = Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_0__["getDateTimeNewFormat"])(date);
+      return newFormat;
     }
   }
 });
@@ -40176,7 +40185,11 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("time", { staticClass: "c-pubMsgCard__msgTime" }, [
-          _vm._v("\n         " + _vm._s(_vm.msgCard.pm_updated_at) + "\n      ")
+          _vm._v(
+            "\n         " +
+              _vm._s(_vm._f("formatDateTime")(_vm.msgCard.pm_updated_at)) +
+              "\n      "
+          )
         ])
       ]),
       _vm._v(" "),

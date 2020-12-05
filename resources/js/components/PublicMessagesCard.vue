@@ -3,7 +3,7 @@
       <div class=" c-pubMsgCard__infoWrap">
          <div class="c-pubMsgCard__basicInfo">{{ msgCard.u_name }} / {{ msgCard.w_name }}</div>
          <time class="c-pubMsgCard__msgTime">
-            {{ msgCard.pm_updated_at }}
+            {{ msgCard.pm_updated_at | formatDateTime }}
          </time>
       </div>
       <div class="c-pubMsgCard__msgTitle">
@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import { getDateTimeNewFormat } from '../modules/getDateTimeNewFormat';
+
 export default {
    props: {
       msgCard: Object,
@@ -33,6 +35,13 @@ export default {
          } else {
             return this.msgCard.pm_content;
          }
+      }
+   },
+   filters: {
+      formatDateTime(value) {
+         const date = new Date(value);
+         const newFormat = getDateTimeNewFormat(date);
+         return newFormat;
       }
    }
 };

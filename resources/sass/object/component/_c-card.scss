@@ -284,6 +284,7 @@
       }
    }
    &__msgTime {
+      margin-top: 4px;
       font-size: 12px;
       color: $gray-700;
       @include mq('xs') {
