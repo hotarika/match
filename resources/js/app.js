@@ -26,6 +26,8 @@ window.Vue = require('vue');
 // components（ファイル名のアルファベット順）
 // =======================================
 Vue.component('dm-component', require('./components/DirectMessagesArea.vue').default);
+Vue.component('dm-list-component', require('./components/DirectMessagesList.vue').default);
+Vue.component('dm-card-component', require('./components/DirectMessagesCard.vue').default);
 Vue.component('image-edit-component', require('./components/EditImage.vue').default);
 Vue.component('notification-badge-component', require('./components/NotificationsBadge.vue').default);
 Vue.component('notification-component', require('./components/NotificationsList.vue').default);

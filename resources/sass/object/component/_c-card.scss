@@ -339,6 +339,7 @@
       }
    }
    &__mainAreaWrap {
+      width: 100%;
       padding-left: 15px;
       overflow: hidden;
       @include mq('xs') {
@@ -362,7 +363,7 @@
    }
    &__basicInfo {
       @extend %c-msgCard__basicInfo; // 継承
-      margin-top: 8px;
+      margin-top: 6px;
       @include mq('xs') {
          max-width: 70%;
          margin-top: 0;
@@ -373,6 +374,7 @@
       }
    }
    &__time {
+      margin-top: 4px;
       font-size: 12px;
       color: $gray-700;
       @include mq('xs') {

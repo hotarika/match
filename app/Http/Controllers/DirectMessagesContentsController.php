@@ -16,31 +16,7 @@ class DirectMessagesContentsController extends Controller
      */
     public function index()
     {
-        // 子
-        $child = DB::table('direct_messages_contents as c')
-            ->whereIn(
-                DB::raw('c.created_at'),
-                function ($query) {
-                    return $query->select(DB::raw('max(cc.created_at) as max'))
-                        ->from('direct_messages_contents as cc')
-                        ->groupBy('cc.board_id');
-                }
-            );
-
-        // 親子結合
-        $boards = DB::table('direct_messages_boards as b')
-            ->select('b.id', 'b.work_id', 'w.name as work_name', 'w.user_id as orderer_id', 'u.name as user_name', 'u.image', 'c.content as latest_content', 'c.created_at as latest_date')
-            ->leftJoin('works as w', 'b.work_id', '=', 'w.id')
-            ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
-            ->leftJoinSub($child, 'c', function ($join) {
-                $join->on('b.id', '=', 'c.board_id');
-            })
-            ->orWhere('w.user_id', Auth::id())
-            ->orWhere('b.contractor_id', Auth::id())
-            ->orderBy('latest_date', 'DESC')
-            ->get();
-
-        return view('dm.index', compact('boards'));
+        return view('dm.index');
     }
 
     /**

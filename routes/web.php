@@ -45,3 +45,4 @@ Route::post('/password/change', 'Auth\ChangePasswordController@ChangePassword')-
 Route::get('/async/works', 'AsynchronousController@getWorks');
 Route::get('/async/badge', 'AsynchronousController@getNotificationsBadgeNumber');
 Route::get('/async/pubmsgs-list', 'AsynchronousController@getPublicMessagesList');
+Route::get('/async/dm-list', 'AsynchronousController@getDirectMessagesList');
