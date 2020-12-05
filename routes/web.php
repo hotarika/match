@@ -46,3 +46,4 @@ Route::post('/password/change', 'Auth\ChangePasswordController@ChangePassword')-
 // 非同期処理
 Route::get('/async/works', 'AsynchronousController@getWorks');
 Route::get('/async/badge', 'AsynchronousController@getNotificationsBadgeNumber');
+Route::get('/async/pubmsgs', 'AsynchronousController@getPublicMessagesList');

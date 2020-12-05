@@ -37,7 +37,9 @@ Vue.component('notification-badge-component', require('./components/Notification
 Vue.component('notification-component', require('./components/NotificationsList.vue').default);
 Vue.component('pagination-component', require('./components/Pagination.vue').default);
 Vue.component('pubmsg-area-section', require('./components/PublicMessagesArea.vue').default);
+Vue.component('public-messages-card', require('./components/PublicMessagesCard.vue').default);
 Vue.component('child-form-component', require('./components/PublicMessagesChildForm.vue').default);
+Vue.component('public-messages-list', require('./components/PublicMessagesList.vue').default);
 Vue.component('work-card-component', require('./components/WorksCard.vue').default);
 Vue.component('work-component', require('./components/WorksList.vue').default);
 Vue.component('work-new-section', require('./components/WorksListInHome.vue').default);

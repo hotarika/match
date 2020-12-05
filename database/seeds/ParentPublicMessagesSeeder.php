@@ -19,7 +19,7 @@ class ParentPublicMessagesSeeder extends Seeder
             'title' => '1番のボードです',
             'content' => '1.こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。',
             'created_at' => '2020-10-3 12:44:57',
-            'updated_at' => Carbon::now(),
+            'updated_at' => '2020-10-3 12:44:57',
         ]);
         DB::table('parent_public_messages')->insert([
             'work_id' => 2,
@@ -27,7 +27,7 @@ class ParentPublicMessagesSeeder extends Seeder
             'title' => '2番のボードです',
             'content' => '2.こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。',
             'created_at' => '2020-10-5 12:44:57',
-            'updated_at' => Carbon::now(),
+            'updated_at' => '2020-10-5 12:44:57',
         ]);
         DB::table('parent_public_messages')->insert([
             'work_id' => 3,
@@ -35,7 +35,7 @@ class ParentPublicMessagesSeeder extends Seeder
             'title' => '3番のボードです',
             'content' => '3.こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。',
             'created_at' => '2020-10-7 12:44:57',
-            'updated_at' => Carbon::now(),
+            'updated_at' => '2020-10-7 12:44:57',
         ]);
         DB::table('parent_public_messages')->insert([
             'work_id' => 4,
@@ -43,7 +43,7 @@ class ParentPublicMessagesSeeder extends Seeder
             'title' => '4番のボードです',
             'content' => '4.こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。',
             'created_at' => '2020-10-7 12:45:57',
-            'updated_at' => Carbon::now(),
+            'updated_at' => '2020-10-7 12:45:57',
         ]);
         DB::table('parent_public_messages')->insert([
             'work_id' => 5,
@@ -51,7 +51,7 @@ class ParentPublicMessagesSeeder extends Seeder
             'title' => '5番のボードです',
             'content' => '5.こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。こんにちは初めまして。',
             'created_at' => '2020-10-7 12:45:57',
-            'updated_at' => Carbon::now(),
+            'updated_at' => '2020-10-7 12:45:57',
         ]);
     }
 }

@@ -1,0 +1,35 @@
+<template>
+   <section class="c-h2__sec p-pubmsgList__sec">
+      <!-- ダイレクトメッセージ一覧 -->
+      <span v-for="msgCard of allData" :key="msgCard.pm_id">
+         <public-messages-card :msg-card="msgCard" :public-path="publicPath"></public-messages-card>
+      </span>
+   </section>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+   props: {
+      publicPath: String
+   },
+   data() {
+      return {
+         allData: []
+      };
+   },
+   mounted() {
+      // 非同期取得
+      axios
+         .get(this.publicPath + 'async/pubmsgs')
+         .then(res => {
+            console.log(res);
+            this.allData = res.data; // 全データを格納
+         })
+         .catch(err => {
+            console.log(err);
+         });
+   }
+};
+</script>

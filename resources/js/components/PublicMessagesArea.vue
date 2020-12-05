@@ -137,7 +137,12 @@ export default {
          }
 
          if (confirm('送信してもよろしいですか？')) {
-            axios //store
+            // 今日の日付
+            var date = new Date();
+            const today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+
+            // メッセージの挿入
+            axios
                .post(this.public_path + 'child', {
                   parent_id: refs[1],
                   user_id: this.user.id,
@@ -147,9 +152,11 @@ export default {
                   console.log(res);
                });
 
-            // 今日の日付
-            var date = new Date();
-            const today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+            // 親テーブルの更新日時（updated_at）を更新
+            // 挿入する更新日時は、LaravelのController側で定義
+            axios.put(this.public_path + 'pubmsg/' + this.parent_msg[0].id).then(res => {
+               console.log(res);
+            });
 
             // メッセージの挿入
             this.childMsg.push({
