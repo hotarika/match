@@ -30,9 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/parent-pubmsgs', 'ParentPublicMessagesController'); //親掲示板
     Route::resource('/child-pubmsgs', 'ChildPublicMessagesController');
     Route::resource('/dm-contents', 'DirectMessagesContentsController');
-
-    Route::resource('/dm-board', 'DirectMessagesBoardsController');
-    // Route::resource('/dm-boards', 'DirectMessagesBoardsController');
+    Route::resource('/dm-boards', 'DirectMessagesBoardsController');
 
     Route::resource('/applicant', 'ApplicantsController');
     // Route::resource('/applicants', 'ApplicantsController');
