@@ -15,7 +15,7 @@ Request::is('works/create'))
          href="{{route('parent-pubmsgs.index')}}">
          <li><i class="fas fa-users"></i><span>パブリックメッセージ</span></li>
       </a>
-      <a class="c-btn p-side__link @if(Request::is('dm')) is-active @endif" href="{{route('dm.index')}}">
+      <a class="c-btn p-side__link @if(Request::is('dm')) is-active @endif" href="{{route('dm-contents.index')}}">
          <li><i class="fas fa-comments"></i><span>ダイレクトメッセージ</span></li>
       </a>
       <a class="c-btn p-side__link" href="{{route('users.edit', Auth::id())}}">

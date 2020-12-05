@@ -32,11 +32,12 @@
                            {{-- メールボタン --}}
                            {{-- メールボタンを押した時に、ボードが作成されていれば既存のボードへ。そうでなければ作成する --}}
                            @if ($applicant->board_id)
-                           <a class="c-btn p-applicant__msgBtn" href="{{route('dm.show',$applicant->board_id)}}">
+                           <a class="c-btn p-applicant__msgBtn"
+                              href="{{route('dm-contents.show',$applicant->board_id)}}">
                               <i class="fas fa-envelope"></i>
                            </a>
                            @else
-                           <form method="POST" action="{{route('dm-board.store')}}"
+                           <form method="POST" action="{{route('dm-contents-board.store')}}"
                               class="p-applicant__dmBoardCreateForm">
                               @csrf
                               <input type="hidden" name="work_id" value="{{$work->id}}">
@@ -62,7 +63,7 @@
                            </button>
                         </form>
                         @else
-                        <form method="POST" action="{{route('dm-board.store')}}"
+                        <form method="POST" action="{{route('dm-contents-board.store')}}"
                            class="p-applicant__decideForm -decide -decided -wait">
                            @csrf
                            <input type="hidden" name="applicant_board_id" value="{{$applicant->id}}">

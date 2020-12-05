@@ -98,7 +98,7 @@
 
                   <!-- スマホのみ表示 -->
                   <li class="p-header__item -sp">
-                     <a class="c-link p-header__navLink" href="{{ route('dm.index') }}">
+                     <a class="c-link p-header__navLink" href="{{ route('dm-contents.index') }}">
                         <i class="fas fa-comments p-header__navIcon"></i>
                         <div class="p-header__navName u-ml2">ダイレクトメッセージ</div>
                      </a>

@@ -13,7 +13,7 @@
             <section class="c-h2__sec p-dmList__sec">
                <!-- ダイレクトメッセージ一覧 -->
                @foreach ($boards as $board)
-               <a class="c-card c-msgCard c-dmMsgCard__msgItem" href="{{route('dm.show',$board->id)}}">
+               <a class="c-card c-msgCard c-dmMsgCard__msgItem" href="{{route('dm-contents.show',$board->id)}}">
                   <img class="c-img c-dmMsgCard__userImg" src={{asset('storage/user_img/'.$board->image)}}
                      alt="ユーザーの画像" />
                   <div class="c-dmMsgCard__mainAreaWrap">

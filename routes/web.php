@@ -29,8 +29,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('/parent-pubmsgs', 'ParentPublicMessagesController'); //親掲示板
     Route::resource('/child-pubmsgs', 'ChildPublicMessagesController');
-
-    // Route::resource('/dm', 'DirectMessagesContentsController');
     Route::resource('/dm-contents', 'DirectMessagesContentsController');
 
     Route::resource('/dm-board', 'DirectMessagesBoardsController');

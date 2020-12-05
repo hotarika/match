@@ -52,11 +52,11 @@ class DirectMessagesBoardsController extends Controller
 
         if ($request->decide === "true") {
             return redirect()
-                ->route('dm.show', DB::getPdo()->lastInsertId())
+                ->route('dm-contents.show', DB::getPdo()->lastInsertId())
                 ->with('flash_message', '決定者と詳細について連絡を取りましょう！');
         } else {
             return redirect()
-                ->route('dm.show', DB::getPdo()
+                ->route('dm-contents.show', DB::getPdo()
                     ->lastInsertId());
         }
     }

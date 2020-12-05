@@ -107,7 +107,7 @@ class ApplicantsController extends Controller
         $applicant->state = 2; // 応募者決定決定
         $applicant->save();
 
-        return redirect()->route('dm.show', $request->applicant_board_id)
+        return redirect()->route('dm-contents.show', $request->applicant_board_id)
             ->with('flash_message', '決定者と詳細について連絡を取りましょう！');;
     }
 
