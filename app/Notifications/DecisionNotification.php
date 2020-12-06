@@ -58,8 +58,8 @@ class DecisionNotification extends Notification
     {
         return [
             'user_name' => $this->contractor->name,
+            'param' => $this->request->board_id, // 遷移させるボードのid
             'content' => '選考の結果、「' . $this->request->work_name . '」の仕事があなたに決定しました。メッセージを送って詳細を確認しましょう。',
-            'param' => $this->request->board_id // 遷移させるボードのid
         ];
     }
 }

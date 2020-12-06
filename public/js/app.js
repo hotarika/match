@@ -2384,6 +2384,9 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/getDateTimeNewFormat */ "./resources/js/modules/getDateTimeNewFormat.js");
 //
 //
 //
@@ -2445,7 +2448,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2482,7 +2519,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
       this.removeNum++; // 通知を既読（notificationsテーブルのread_atカラム）
 
-      axios.put(this.public_path + 'applicants-notifications/' + id, {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(this.public_path + 'applicants-notifications/' + id, {
         read_at: date.toLocaleString()
       }).then(function (res) {
         console.log(res);
@@ -2533,6 +2570,13 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       this.displayItems = showData.filter(function (val) {
         return val;
       });
+    }
+  },
+  filters: {
+    formatDateTime: function formatDateTime(value) {
+      var date = new Date(value);
+      var newFormat = Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_1__["getDateTimeNewFormat"])(date);
+      return newFormat;
     }
   }
 });
@@ -40338,57 +40382,146 @@ var render = function() {
                 staticClass: "p-mypage__notificationItem"
               },
               [
-                _c(
-                  "a",
-                  {
-                    staticClass: "c-link p-mypage__notificationMsgSecWrap",
-                    attrs: {
-                      href:
-                        _vm.public_path +
-                        "applicants/" +
-                        notification.data["param"]
-                    }
-                  },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "p-mypage__notificationItemUpper" },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "c-link p-mypage__notificationName" },
-                          [
-                            _vm._v(
-                              "\n                     応募者：" +
-                                _vm._s(notification.data["user_name"]) +
-                                "\n                  "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "time",
-                          { staticClass: "p-mypage__notificationTime" },
-                          [_vm._v(_vm._s(notification.created_at))]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "p-mypage__notificationItemLower" },
-                      [
-                        _c("p", { staticClass: "p-mypage__notificationMsg" }, [
-                          _vm._v(
-                            "\n                     " +
-                              _vm._s(notification.data["content"]) +
-                              "\n                  "
+                notification.type ===
+                "App\\Notifications\\ApplicantsNotification"
+                  ? [
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "c-link p-mypage__notificationMsgSecWrap",
+                          attrs: {
+                            href:
+                              _vm.public_path +
+                              "applicants/" +
+                              notification.data["param"]
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "p-mypage__notificationItemUpper" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "c-link p-mypage__notificationName"
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        応募者：" +
+                                      _vm._s(notification.data["user_name"]) +
+                                      "\n                     "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "time",
+                                { staticClass: "p-mypage__notificationTime" },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm._f("formatDateTime")(
+                                        notification.created_at
+                                      )
+                                    )
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "p-mypage__notificationItemLower" },
+                            [
+                              _c(
+                                "p",
+                                { staticClass: "p-mypage__notificationMsg" },
+                                [
+                                  _vm._v(
+                                    "\n                        " +
+                                      _vm._s(notification.data["content"]) +
+                                      "\n                     "
+                                  )
+                                ]
+                              )
+                            ]
                           )
-                        ])
-                      ]
-                    )
-                  ]
-                ),
+                        ]
+                      )
+                    ]
+                  : [
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "c-link p-mypage__notificationMsgSecWrap",
+                          attrs: {
+                            href:
+                              _vm.public_path +
+                              "dm-contents/" +
+                              notification.data["param"]
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "p-mypage__notificationItemUpper" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "c-link p-mypage__notificationName"
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                        発注者：" +
+                                      _vm._s(notification.data["user_name"]) +
+                                      "\n                     "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "time",
+                                { staticClass: "p-mypage__notificationTime" },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm._f("formatDateTime")(
+                                        notification.created_at
+                                      )
+                                    )
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "p-mypage__notificationItemLower" },
+                            [
+                              _c(
+                                "p",
+                                { staticClass: "p-mypage__notificationMsg" },
+                                [
+                                  _vm._v(
+                                    "\n                        " +
+                                      _vm._s(notification.data["content"]) +
+                                      "\n                     "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ],
                 _vm._v(" "),
                 _c(
                   "button",
@@ -40404,7 +40537,8 @@ var render = function() {
                   },
                   [_c("i", { staticClass: "fas fa-trash-alt" })]
                 )
-              ]
+              ],
+              2
             )
           }),
           0

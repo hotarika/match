@@ -59,8 +59,8 @@ class ApplicantsNotification extends Notification
     {
         return [
             'user_name' => $this->user->name,
+            'param' => $this->request->work_id, // 仕事id
             'content' => 'あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。',
-            'param' => $this->request->board_id
         ];
     }
 }

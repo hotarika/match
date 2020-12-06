@@ -10,26 +10,60 @@
                v-for="(notification, index) in displayItems"
                :key="notification.id"
             >
-               <a
-                  :href="
-                     public_path + 'applicants/' + notification.data['param']
+               <!-- 応募者通知 -->
+               <template
+                  v-if="
+                     notification.type ===
+                        'App\\Notifications\\ApplicantsNotification'
                   "
-                  class="c-link p-mypage__notificationMsgSecWrap"
                >
-                  <div class="p-mypage__notificationItemUpper">
-                     <div class="c-link p-mypage__notificationName">
-                        応募者：{{ notification.data['user_name'] }}
+                  <a
+                     :href="
+                        public_path + 'applicants/' + notification.data['param']
+                     "
+                     class="c-link p-mypage__notificationMsgSecWrap"
+                  >
+                     <div class="p-mypage__notificationItemUpper">
+                        <div class="c-link p-mypage__notificationName">
+                           応募者：{{ notification.data['user_name'] }}
+                        </div>
+                        <time class="p-mypage__notificationTime">{{
+                           notification.created_at | formatDateTime
+                        }}</time>
                      </div>
-                     <time class="p-mypage__notificationTime">{{
-                        notification.created_at
-                     }}</time>
-                  </div>
-                  <div class="p-mypage__notificationItemLower">
-                     <p class="p-mypage__notificationMsg">
-                        {{ notification.data['content'] }}
-                     </p>
-                  </div>
-               </a>
+                     <div class="p-mypage__notificationItemLower">
+                        <p class="p-mypage__notificationMsg">
+                           {{ notification.data['content'] }}
+                        </p>
+                     </div>
+                  </a>
+               </template>
+
+               <!-- 決定者通知 -->
+               <template v-else>
+                  <a
+                     :href="
+                        public_path +
+                           'dm-contents/' +
+                           notification.data['param']
+                     "
+                     class="c-link p-mypage__notificationMsgSecWrap"
+                  >
+                     <div class="p-mypage__notificationItemUpper">
+                        <div class="c-link p-mypage__notificationName">
+                           発注者：{{ notification.data['user_name'] }}
+                        </div>
+                        <time class="p-mypage__notificationTime">{{
+                           notification.created_at | formatDateTime
+                        }}</time>
+                     </div>
+                     <div class="p-mypage__notificationItemLower">
+                        <p class="p-mypage__notificationMsg">
+                           {{ notification.data['content'] }}
+                        </p>
+                     </div>
+                  </a>
+               </template>
 
                <!-- 削除ボタン -->
                <button
@@ -60,7 +94,8 @@
 </template>
 
 <script>
-const axios = require('axios');
+import axios from 'axios';
+import { getDateTimeNewFormat } from '../modules/getDateTimeNewFormat';
 
 export default {
    props: {
@@ -150,6 +185,13 @@ export default {
          this.displayItems = showData.filter(val => {
             return val;
          });
+      }
+   },
+   filters: {
+      formatDateTime(value) {
+         const date = new Date(value);
+         const newFormat = getDateTimeNewFormat(date);
+         return newFormat;
       }
    }
 };
