@@ -16,7 +16,7 @@ class DirectMessagesContentsController extends Controller
      */
     public function index()
     {
-        return view('dm.index');
+        //
     }
 
     /**

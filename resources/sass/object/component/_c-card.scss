@@ -246,8 +246,8 @@
       padding: 7px 10px 7px 15px;
    }
    &:hover {
-      box-sizing: content-box;
-      border: 1px solid $primary;
+      outline: 1px solid $primary;
+      outline-offset: -1px;
    }
    &::before {
       position: absolute;

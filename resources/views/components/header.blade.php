@@ -96,7 +96,7 @@
 
                      <!-- スマホのみ表示 -->
                      <li class="p-header__item -sp">
-                        <a class="c-link p-header__navLink" href="{{ route('parent-pubmsgs.index') }}">
+                        <a class="c-link p-header__navLink" href="{{ route('pubmsgs.index') }}">
                            <i class="fas fa-users p-header__navIcon"></i>
                            <div class="p-header__navName">パブリックメッセージ</div>
                         </a>
@@ -104,7 +104,7 @@
 
                      <!-- スマホのみ表示 -->
                      <li class="p-header__item -sp">
-                        <a class="c-link p-header__navLink" href="{{ route('dm-contents.index') }}">
+                        <a class="c-link p-header__navLink" href="{{ route('dm-boards.index') }}">
                            <i class="fas fa-comments p-header__navIcon"></i>
                            <div class="p-header__navName u-ml2">ダイレクトメッセージ</div>
                         </a>

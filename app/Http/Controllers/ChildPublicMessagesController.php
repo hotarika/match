@@ -15,7 +15,10 @@ class ChildPublicMessagesController extends Controller
      */
     public function index()
     {
-        return DB::table('child_public_messages')->orderBy('id', 'desc')->take(1)->get();
+        return DB::table('child_public_messages')
+            ->orderBy('id', 'desc')
+            ->take(1)
+            ->get();
     }
 
     /**

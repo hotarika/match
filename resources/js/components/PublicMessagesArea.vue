@@ -119,7 +119,7 @@ export default {
 
             // DBへ保存
             axios
-               .post(this.publicPath + 'parent-pubmsgs', {
+               .post(this.publicPath + 'pubmsgs', {
                   work_id: this.workId,
                   user_id: this.user.id,
                   title: this.parentTitle,
@@ -163,7 +163,7 @@ export default {
 
             // 親テーブルの更新日時（updated_at）を更新
             // 挿入する更新日時は、LaravelのController側で定義
-            axios.put(this.publicPath + 'parent-pubmsgs/' + this.parentMessages[0].id).then(res => {
+            axios.put(this.publicPath + 'pubmsgs/' + this.parentMessages[0].id).then(res => {
                console.log(res);
             });
 

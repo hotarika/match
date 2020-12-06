@@ -136,7 +136,7 @@
             {{-- --------------------------------- --}}
             <!-- パブリックメッセージ -->
             <section class="c-h2__sec">
-               <a class="c-btn c-h2__seeMore" href="work-detail#pub-msg">
+               <a class="c-btn c-h2__seeMore" href="{{route('pubmsgs.index')}}">
                   <i class="fas fa-chevron-right"></i>
                </a>
                <h2 class="c-h2__head">パブリックメッセージ</h2>
@@ -170,7 +170,7 @@
             {{-- --------------------------------- --}}
 
             <section class="c-h2__sec">
-               <a class="c-btn c-h2__seeMore" href="dm-list">
+               <a class="c-btn c-h2__seeMore" href="{{route('dm-boards.index')}}">
                   <i class="fas fa-chevron-right"></i>
                </a>
                <h2 class="c-h2__head">ダイレクトメッセージ</h2>

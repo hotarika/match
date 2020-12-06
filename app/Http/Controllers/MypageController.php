@@ -38,6 +38,7 @@ class MyPageController extends Controller
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
             ->leftJoin('contracts as c', 'w.contract_id', '=', 'c.id')
             ->where('user_id', Auth::id())
+            ->take(6)
             ->get();
 
         // *******************************
@@ -50,6 +51,7 @@ class MyPageController extends Controller
             ->where('a.applicant_id', Auth::id())
             ->where('w.state', 1)
             ->where('w.end_date', '>=', date('Y/m/d'))
+            ->take(6)
             ->get();
 
 
@@ -76,6 +78,7 @@ class MyPageController extends Controller
             })
             ->orWhere('p.user_id', Auth::id())
             ->orderBy('latest_date', 'DESC')
+            ->take(5)
             ->get();
 
 
@@ -104,6 +107,7 @@ class MyPageController extends Controller
             ->orWhere('w.user_id', Auth::id())
             ->orWhere('b.contractor_id', Auth::id())
             ->orderBy('latest_date', 'DESC')
+            ->take(5)
             ->get();
 
         return view('mypage', compact('owner_works', 'order_works', 'pubmsgs', 'boards', 'notification'));

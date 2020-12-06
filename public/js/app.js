@@ -2642,7 +2642,7 @@ __webpack_require__.r(__webpack_exports__);
           created_at: Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__["getDateTimeNewFormat"])(date)
         }); // DBへ保存
 
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.publicPath + 'parent-pubmsgs', {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.publicPath + 'pubmsgs', {
           work_id: this.workId,
           user_id: this.user.id,
           title: this.parentTitle,
@@ -2683,7 +2683,7 @@ __webpack_require__.r(__webpack_exports__);
         }); // 親テーブルの更新日時（updated_at）を更新
         // 挿入する更新日時は、LaravelのController側で定義
 
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(this.publicPath + 'parent-pubmsgs/' + this.parentMessages[0].id).then(function (res) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(this.publicPath + 'pubmsgs/' + this.parentMessages[0].id).then(function (res) {
           console.log(res);
         }); // メッセージの挿入
 

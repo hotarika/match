@@ -25,10 +25,10 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/applicants', 'ApplicantsController');
     Route::resource('/applicants-notifications', 'ApplicantsNotificationsController');
+    Route::resource('/pubmsgs', 'ParentPublicMessagesController'); //親掲示板
     Route::resource('/child-pubmsgs', 'ChildPublicMessagesController');
     Route::resource('/dm-boards', 'DirectMessagesBoardsController');
     Route::resource('/dm-contents', 'DirectMessagesContentsController');
-    Route::resource('/parent-pubmsgs', 'ParentPublicMessagesController'); //親掲示板
     Route::resource('/users', 'UsersController');
     Route::resource('/works', 'WorksController');
 

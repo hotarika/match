@@ -897,8 +897,8 @@ body {
 }
 
 .c-msgCard:hover {
-  box-sizing: content-box;
-  border: 1px solid #0081ff;
+  outline: 1px solid #0081ff;
+  outline-offset: -1px;
 }
 
 .c-msgCard::before {
