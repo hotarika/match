@@ -70,6 +70,10 @@ Vue.component(
    require('./components/PublicMessagesList.vue').default
 );
 Vue.component(
+   'public-messages-list-in-mypage-component',
+   require('./components/PublicMessagesListInMyPage.vue').default
+);
+Vue.component(
    'work-card-component',
    require('./components/WorksCard.vue').default
 );

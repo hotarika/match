@@ -36,41 +36,13 @@
             {{-- --------------------------------- --}}
             {{-- パブリックメッセージ                  --}}
             {{-- --------------------------------- --}}
-            <!-- パブリックメッセージ -->
-            <section class="c-h2__sec">
-               <a class="c-btn c-h2__seeMore" href="{{route('pubmsgs.index')}}">
-                  <i class="fas fa-chevron-right"></i>
-               </a>
-               <h2 class="c-h2__head">パブリックメッセージ</h2>
-               <div class="c-h2__body p-mypage__secBody">
-                  @forelse ( $pubmsgs as $pubmsg )
-                  <!-- ダイレクトメッセージ一覧 -->
-                  <a class="c-card c-msgCard" href="{{url('works/'.$pubmsg->work_id.'#pub-msg')}}">
-                     <div class=" c-pubMsgCard__infoWrap">
-                        <div class="c-pubMsgCard__basicInfo">
-                           {{$pubmsg->user_name}} / {{$pubmsg->work_name}}
-                        </div>
-                        <time class="c-pubMsgCard__msgTime">{{$pubmsg->latest_date}}</time>
-                     </div>
-                     <div class="c-pubMsgCard__msgTitle">
-                        {{$pubmsg->title}}
-                     </div>
-                     <div class="c-pubMsgCard__pubMsg">
-                        {{$pubmsg->latest_content}}
-                     </div>
-                  </a>
-                  @empty
-                  <div class="c-h2__noItems -pubmsg">
-                     パブリックメッセージはありません。
-                  </div>
-                  @endforelse
-               </div>
-            </section>
+            <public-messages-list-in-mypage-component
+               :public-path="{{ json_encode(asset('')) }}">
+            </public-messages-list-in-mypage-component>
 
             {{-- --------------------------------- --}}
             {{-- ダイレクトメッセージ                  --}}
             {{-- --------------------------------- --}}
-
             <section class="c-h2__sec">
                <a class="c-btn c-h2__seeMore" href="{{route('dm-boards.index')}}">
                   <i class="fas fa-chevron-right"></i>
