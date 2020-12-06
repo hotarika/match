@@ -2370,7 +2370,8 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
   },
   methods: {
     remove: function remove(index, id) {
-      // 「残りxx件を全て表示する」に使用
+      var date = new Date(); // 「残りxx件を全て表示する」に使用
+
       this.removeNum++; // 通知の削除
 
       this.displayItems.splice(index, 1); // 削除した場合に、表示されていない通知を表示（push）
@@ -2380,9 +2381,8 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       } // 通知を既読（notificationsテーブルのread_atカラム）
 
 
-      var today = new Date();
-      axios.put(this.public_path + 'notifications/' + id, {
-        read_at: today.toLocaleString()
+      axios.put(this.public_path + 'applicants-notifications/' + id, {
+        read_at: date.toLocaleString()
       }).then(function (res) {
         console.log(res);
       })["catch"](function (err) {
