@@ -10,7 +10,11 @@
          placeholder="必須：メッセージの内容を入力"
          ref="childMessage"
       ></textarea>
-      <button class="c-btn c-msgSendBtn p-workDetail__childBtn" type="submit" @click.prevent="childTextHandler">
+      <button
+         class="c-btn c-msgSendBtn p-workDetail__childBtn"
+         type="submit"
+         @click.prevent="childTextHandler"
+      >
          <i class="far fa-arrow-alt-circle-up"></i>送信
       </button>
    </form>

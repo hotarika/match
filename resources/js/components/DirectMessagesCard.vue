@@ -1,5 +1,8 @@
 <template>
-   <a class="c-card c-msgCard c-dmMsgCard__msgItem" :href="publicPath + 'dm-contents/' + card.id">
+   <a
+      class="c-card c-msgCard c-dmMsgCard__msgItem"
+      :href="publicPath + 'dm-contents/' + card.id"
+   >
       <img
          class="c-img c-dmMsgCard__userImg"
          :src="publicPath + 'storage/user_img/' + card.image"
@@ -7,8 +10,12 @@
       />
       <div class="c-dmMsgCard__mainAreaWrap">
          <div class="c-dmMsgCard__infoWrap">
-            <div class="c-dmMsgCard__basicInfo">{{ card.user_name }} / {{ card.work_name }}</div>
-            <time class="c-dmMsgCard__time">{{ card.latest_date | formatDateTime }}</time>
+            <div class="c-dmMsgCard__basicInfo">
+               {{ card.user_name }} / {{ card.work_name }}
+            </div>
+            <time class="c-dmMsgCard__time">{{
+               card.latest_date | formatDateTime
+            }}</time>
          </div>
          <div class="c-dmMsgCard__dm">
             {{ card.latest_content }}

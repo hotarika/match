@@ -12,7 +12,9 @@
       >
 
       <!-- ページ番号 -->
-      <div class="c-pagination__total -total" ref="total" v-if="totalPage > 0">{{ currentPage }} / {{ totalPage }}</div>
+      <div class="c-pagination__total -total" ref="total" v-if="totalPage > 0">
+         {{ currentPage }} / {{ totalPage }}
+      </div>
 
       <!-- 次へボタン -->
       <a

@@ -21,7 +21,8 @@
             <div class="c-workCard__contractWayWrap">
                <div class="c-workCard__contractWay">単発案件</div>
                <div class="c-workCard__contractPrice">
-                  {{ work.price_lower | addComma }} ~ {{ work.price_upper | addComma }}千円
+                  {{ work.price_lower | addComma }} ~
+                  {{ work.price_upper | addComma }}千円
                </div>
             </div>
          </div>
@@ -31,10 +32,14 @@
       <template v-if="work.contract_id === 2">
          <div class="c-workCard__contract">
             <div class="c-workCard__contractIconWrap">
-               <i class="fas fa-people-arrows c-workCard__contractIcon -share"></i>
+               <i
+                  class="fas fa-people-arrows c-workCard__contractIcon -share"
+               ></i>
             </div>
             <div class="c-workCard__contractWayWrap">
-               <div class="c-workCard__contractWay -share">レベニューシェア</div>
+               <div class="c-workCard__contractWay -share">
+                  レベニューシェア
+               </div>
             </div>
          </div>
       </template>

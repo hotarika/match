@@ -18,14 +18,22 @@
             />
 
             <!-- 画像の切り替え -->
-            <img class="c-img p-profileEdit__img" :src="imagePath" v-if="preview === ''" />
+            <img
+               class="c-img p-profileEdit__img"
+               :src="imagePath"
+               v-if="preview === ''"
+            />
             <img class="c-img p-profileEdit__img" :src="preview" v-else />
          </label>
       </div>
       <small class="p-profileEdit__imgEditCaption" v-if="device === 'PC'"
          >ドラッグ&amp;ドロップ<br />またはクリックで変更</small
       >
-      <small class="p-profileEdit__imgEditCaption -sp" v-if="device === 'Mobile'">クリックで変更</small>
+      <small
+         class="p-profileEdit__imgEditCaption -sp"
+         v-if="device === 'Mobile'"
+         >クリックで変更</small
+      >
    </div>
 </template>
 
@@ -66,7 +74,9 @@ export default {
             };
             reader.readAsDataURL(file); // バイナリファイルの読み込み（Data URL 取得）
          } else {
-            alert('FileReaderがサポートされていません。最新のブラウザで再度試してください。');
+            alert(
+               'FileReaderがサポートされていません。最新のブラウザで再度試してください。'
+            );
          }
       },
       changeStyle(e, flag) {
@@ -87,7 +97,8 @@ export default {
       // 画像のメッセージをデバイス毎（スマホ・タブレットとPC）で切り替え
       if (
          navigator.userAgent.indexOf('iPhone') > 0 ||
-         (navigator.userAgent.indexOf('Android') > 0 && navigator.userAgent.indexOf('Mobile') > 0) ||
+         (navigator.userAgent.indexOf('Android') > 0 &&
+            navigator.userAgent.indexOf('Mobile') > 0) ||
          navigator.userAgent.indexOf('iPad') > 0 ||
          navigator.userAgent.indexOf('Android') > 0
       ) {

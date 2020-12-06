@@ -1968,6 +1968,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2040,6 +2054,13 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/getDateTimeNewFormat */ "./resources/js/modules/getDateTimeNewFormat.js");
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2219,6 +2240,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     imagePath: String
@@ -2317,6 +2346,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2403,6 +2434,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2428,16 +2470,17 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
   },
   methods: {
     remove: function remove(index, id) {
-      var date = new Date(); // 「残りxx件を全て表示する」に使用
-
-      this.removeNum++; // 通知の削除
+      var date = new Date(); // 通知の削除
 
       this.displayItems.splice(index, 1); // 削除した場合に、表示されていない通知を表示（push）
 
-      if (this.remainNum >= 0) {
-        this.displayItems.push(this.notification[this.displayItemsNum]);
-      } // 通知を既読（notificationsテーブルのread_atカラム）
+      if (this.remainNum > 0) {
+        this.displayItems.push( // pushする配列番号を消した分だけ増加させなければならないので、以下のように指定
+        this.notification[this.displayItemsNum + this.removeNum]);
+      } // 消した通知数を増加させる
 
+
+      this.removeNum++; // 通知を既読（notificationsテーブルのread_atカラム）
 
       axios.put(this.public_path + 'applicants-notifications/' + id, {
         read_at: date.toLocaleString()
@@ -2472,7 +2515,14 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     if (this.allData !== null) {
       var showData = []; // 表示するためのデータ配列を作成
 
-      var forNum = this.allData >= this.displayNum ? this.displayNum : this.allData.length; // 表示する5件を絞り込み
+      var forNum;
+
+      if (this.allData.length >= this.displayItemsNum) {
+        forNum = this.displayItemsNum;
+      } else {
+        forNum = this.allData.length;
+      } // 表示する5件を絞り込み
+
 
       for (var i = 0; i < forNum; i++) {
         showData[i] = this.allData[i];
@@ -2498,6 +2548,8 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2833,6 +2885,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2868,6 +2925,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -3013,6 +3074,11 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_getDateNewFormat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/getDateNewFormat */ "./resources/js/modules/getDateNewFormat.js");
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7865,7 +7931,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* スマホ対応時に下記のスタイルを消したいため、<sytle scoped>で指定せず、グローバルスコープにしている */\n.js-img-over {\n   border: 3px dotted rgba(0, 200, 0, 0.7);\n}\n.js-img-leave {\n   border: 3px dotted gray;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* スマホ対応時に下記のスタイルを消したいため、<sytle scoped>で指定せず、グローバルスコープにしている */\n.js-img-over {\n   border: 3px dotted rgba(0, 200, 0, 0.7);\n}\n.js-img-leave {\n   border: 3px dotted gray;\n}\n", ""]);
 
 // exports
 
@@ -39975,7 +40041,11 @@ var render = function() {
         _c("div", { staticClass: "c-dmMsgCard__infoWrap" }, [
           _c("div", { staticClass: "c-dmMsgCard__basicInfo" }, [
             _vm._v(
-              _vm._s(_vm.card.user_name) + " / " + _vm._s(_vm.card.work_name)
+              "\n            " +
+                _vm._s(_vm.card.user_name) +
+                " / " +
+                _vm._s(_vm.card.work_name) +
+                "\n         "
             )
           ]),
           _vm._v(" "),
@@ -40416,7 +40486,13 @@ var render = function() {
     _vm._v(" "),
     _vm.totalPage > 0
       ? _c("div", { ref: "total", staticClass: "c-pagination__total -total" }, [
-          _vm._v(_vm._s(_vm.currentPage) + " / " + _vm._s(_vm.totalPage))
+          _vm._v(
+            "\n      " +
+              _vm._s(_vm.currentPage) +
+              " / " +
+              _vm._s(_vm.totalPage) +
+              "\n   "
+          )
         ])
       : _vm._e(),
     _vm._v(" "),
@@ -40720,7 +40796,11 @@ var render = function() {
       _c("div", { staticClass: " c-pubMsgCard__infoWrap" }, [
         _c("div", { staticClass: "c-pubMsgCard__basicInfo" }, [
           _vm._v(
-            _vm._s(_vm.msgCard.u_name) + " / " + _vm._s(_vm.msgCard.w_name)
+            "\n         " +
+              _vm._s(_vm.msgCard.u_name) +
+              " / " +
+              _vm._s(_vm.msgCard.w_name) +
+              "\n      "
           )
         ]),
         _vm._v(" "),
@@ -40962,7 +41042,7 @@ var render = function() {
                   _vm._v(
                     "\n               " +
                       _vm._s(_vm._f("addComma")(_vm.work.price_lower)) +
-                      " ~ " +
+                      " ~\n               " +
                       _vm._s(_vm._f("addComma")(_vm.work.price_upper)) +
                       "千円\n            "
                   )
@@ -41009,7 +41089,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "c-workCard__contractWayWrap" }, [
         _c("div", { staticClass: "c-workCard__contractWay -share" }, [
-          _vm._v("レベニューシェア")
+          _vm._v("\n               レベニューシェア\n            ")
         ])
       ])
     ])

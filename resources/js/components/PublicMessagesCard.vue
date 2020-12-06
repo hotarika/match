@@ -1,7 +1,12 @@
 <template>
-   <a class="c-card c-msgCard" :href="publicPath + 'works/' + msgCard.w_id + '#pub-msg'">
+   <a
+      class="c-card c-msgCard"
+      :href="publicPath + 'works/' + msgCard.w_id + '#pub-msg'"
+   >
       <div class=" c-pubMsgCard__infoWrap">
-         <div class="c-pubMsgCard__basicInfo">{{ msgCard.u_name }} / {{ msgCard.w_name }}</div>
+         <div class="c-pubMsgCard__basicInfo">
+            {{ msgCard.u_name }} / {{ msgCard.w_name }}
+         </div>
          <time class="c-pubMsgCard__msgTime">
             {{ msgCard.pm_updated_at | formatDateTime }}
          </time>

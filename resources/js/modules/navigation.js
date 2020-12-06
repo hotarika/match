@@ -33,7 +33,10 @@ window.addEventListener('DOMContentLoaded', () => {
    // ③ メニューバーの外側をクリックした場合に閉じる（Vueでの実装ができない）
    document.addEventListener('click', e => {
       // 外側をクリックした場合 && classにis-activeの文字列がない場合
-      if (!e.target.closest('.js-nav') && target.classList.contains('is-active')) {
+      if (
+         !e.target.closest('.js-nav') &&
+         target.classList.contains('is-active')
+      ) {
          target.classList.remove('is-active');
       }
    });

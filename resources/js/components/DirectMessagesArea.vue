@@ -2,10 +2,16 @@
    <section class="c-h2__sec p-dm__h2sec">
       <div class="c-h2__head p-dm__h2">
          <template v-if="info.owner_user_id === userId">
-            <img :src="publicPath + 'storage/user_img/' + info.owner_img" alt="ユーザーの画像" />
+            <img
+               :src="publicPath + 'storage/user_img/' + info.owner_img"
+               alt="ユーザーの画像"
+            />
          </template>
          <template v-else>
-            <img :src="publicPath + 'storage/user_img/' + info.order_img" alt="ユーザーの画像" />
+            <img
+               :src="publicPath + 'storage/user_img/' + info.order_img"
+               alt="ユーザーの画像"
+            />
          </template>
          <div class="p-dm__h2InfoWrap">
             <div class="p-dm__h2InfoName">
@@ -27,7 +33,11 @@
             <transition-group>
                <div v-for="msg in contents" :key="msg.contents_id">
                   <!-- 自分ののメッセージ -->
-                  <div class="p-dm__msgMe" v-if="msg.user_id === userId" :key="msg.id">
+                  <div
+                     class="p-dm__msgMe"
+                     v-if="msg.user_id === userId"
+                     :key="msg.id"
+                  >
                      {{ msg.content }}
                      <time>{{ msg.time }}</time>
                   </div>
@@ -50,7 +60,11 @@
                placeholder="ここにメッセージを入力"
                v-model="textarea"
             />
-            <button class="c-btn c-msgSendBtn p-dm__sendBtn" type="submit" @click.prevent="addMsg">
+            <button
+               class="c-btn c-msgSendBtn p-dm__sendBtn"
+               type="submit"
+               @click.prevent="addMsg"
+            >
                <i class="far fa-arrow-alt-circle-up"></i>送信
             </button>
          </form>
@@ -84,7 +98,8 @@ export default {
 
          // 今日の日付
          var date = new Date();
-         const today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+         const today =
+            date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
 
          // メッセージの送信
          if (confirm('送信してもよろしいですか？')) {
