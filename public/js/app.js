@@ -40802,7 +40802,14 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "c-h2__sec" }, [
-    _vm._m(0),
+    _c(
+      "a",
+      {
+        staticClass: "c-btn c-h2__seeMore",
+        attrs: { href: _vm.publicPath + "pubmsgs" }
+      },
+      [_c("i", { staticClass: "fas fa-chevron-right" })]
+    ),
     _vm._v(" "),
     _c("h2", { staticClass: "c-h2__head" }, [_vm._v("パブリックメッセージ")]),
     _vm._v(" "),
@@ -40825,18 +40832,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "c-btn c-h2__seeMore", attrs: { href: "" } },
-      [_c("i", { staticClass: "fas fa-chevron-right" })]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -1,6 +1,6 @@
 <template>
    <section class="c-h2__sec">
-      <a class="c-btn c-h2__seeMore" href="">
+      <a class="c-btn c-h2__seeMore" :href="publicPath + 'pubmsgs'">
          <i class="fas fa-chevron-right"></i>
       </a>
       <h2 class="c-h2__head">パブリックメッセージ</h2>
