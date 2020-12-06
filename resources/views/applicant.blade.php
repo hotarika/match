@@ -30,52 +30,23 @@
                            </div>
 
                            {{-- メールボタン --}}
-                           {{-- メールボタンを押した時に、ボードが作成されていれば既存のボードへ。そうでなければ作成する --}}
-                           @if ($applicant->board_id)
                            <a class="c-btn p-applicant__msgBtn"
                               href="{{route('dm-contents.show',$applicant->board_id)}}">
                               <i class="fas fa-envelope"></i>
                            </a>
-                           @else
-                           <form method="POST" action="{{route('dm-contents-board.store')}}"
-                              class="p-applicant__dmBoardCreateForm">
-                              @csrf
-                              <input type="hidden" name="work_id" value="{{$work->id}}">
-                              <input type="hidden" name="owner_user_id" value="{{Auth::id()}}">
-                              <input type="hidden" name="contractor_id" value="{{$applicant->applicant_id}}">
-                              <button class="c-btn p-applicant__msgBtn -create" type="submit">
-                                 <i class="fas fa-envelope"></i>
-                              </button>
-                           </form>
-                           @endif
                         </div>
 
                         {{-- 決定ボタン --}}
-                        {{-- メールボタンを押した時に、ボードが作成されていれば既存のボードへ。そうでなければ作成する --}}
-                        @if ($applicant->board_id)
                         <form method="POST" action="{{route('applicants.update',$applicant->applicant_id)}}"
                            class="p-applicant__decideForm -decide -decided -wait">
                            @method('PUT')
                            @csrf
                            <input type="hidden" name="applicant_board_id" value="{{$applicant->id}}">
+                           <input type="hidden" name="work_id" value="{{$applicant->work_id}}">
                            <button class="c-btn p-applicant__decideBtn" type="submit">
                               決定する
                            </button>
                         </form>
-                        @else
-                        <form method="POST" action="{{route('dm-contents-board.store')}}"
-                           class="p-applicant__decideForm -decide -decided -wait">
-                           @csrf
-                           <input type="hidden" name="applicant_board_id" value="{{$applicant->id}}">
-                           <input type="hidden" name="work_id" value="{{$work->id}}">
-                           <input type="hidden" name="owner_user_id" value="{{Auth::id()}}">
-                           <input type="hidden" name="contractor_id" value="{{$applicant->applicant_id}}">
-                           <input type="hidden" name="decide" value="true">
-                           <button class="c-btn p-applicant__decideBtn" type="submit">
-                              決定する
-                           </button>
-                        </form>
-                        @endif
                      </div>
                      @endforeach
 

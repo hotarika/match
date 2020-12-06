@@ -29,9 +29,9 @@
             {{-- --------------------------------- --}}
             {{-- 応募中の仕事                        --}}
             {{-- --------------------------------- --}}
-            <works-list-of-contract-in-mypage-component
+            <works-list-of-application-in-mypage-component
                :public-path="{{ json_encode(asset('')) }}">
-            </works-list-of-contract-in-mypage-component>
+            </works-list-of-application-in-mypage-component>
 
             {{-- --------------------------------- --}}
             {{-- パブリックメッセージ                  --}}

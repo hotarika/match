@@ -37,12 +37,7 @@ class DirectMessagesContentsController extends Controller
      */
     public function store(Request $request)
     {
-        // $dm = new DmContent;
-        $dm = new DirectMessageContent;
-        $dm->board_id = $request->board_id;
-        $dm->user_id = $request->user_id;
-        $dm->content = $request->content;
-        $dm->save();
+        //
     }
 
     /**

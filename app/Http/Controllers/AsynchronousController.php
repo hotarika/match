@@ -11,29 +11,9 @@ use Illuminate\Support\Carbon;
 
 class AsynchronousController extends Controller
 {
-    public function getWorks()
-    {
-        $work = DB::table('works as w')
-            ->select(
-                'w.id',
-                'w.name as w_name',
-                'w.user_id as u_id',
-                'u.name as u_name',
-                'u.image as u_image',
-                'w.contract_id',
-                'w.end_date',
-                'w.price_lower',
-                'w.price_upper',
-            )
-            ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
-            ->where('w.end_date', '>=', today())
-            ->where('w.state', '=', 1) // 1 = 応募中
-            ->orderBy('w.created_at', 'DESC')
-            ->get();
-
-        return $work->toJson();
-    }
-
+    // ======================================
+    // マイページ
+    // ======================================
     public function getWorksListOfOrderInMyPage()
     {
         $work = DB::table('works as w')
@@ -56,6 +36,7 @@ class AsynchronousController extends Controller
         return $work->toJson();
     }
 
+
     public function getWorksListOfContractInMyPage()
     {
         $work = DB::table('works as w')
@@ -77,19 +58,6 @@ class AsynchronousController extends Controller
             ->get();
 
         return $work->toJson();
-    }
-
-
-
-    public function getNotificationsBadgeNumber()
-    {
-        $count = DB::table('notifications')
-            ->select(DB::raw('count(*) as count'))
-            ->where('notifiable_id', '=', Auth::id())
-            ->whereNull('read_at')
-            ->get();
-
-        return $count->toJson();
     }
 
 
@@ -141,6 +109,7 @@ class AsynchronousController extends Controller
         return $pubmsgs->toJson();
     }
 
+
     public function getDirectMessagesList()
     {
         // 子
@@ -156,7 +125,16 @@ class AsynchronousController extends Controller
 
         // 親子結合
         $boards = DB::table('direct_messages_boards as b')
-            ->select('b.id', 'b.work_id', 'w.name as work_name', 'w.user_id as orderer_id', 'u.name as user_name', 'u.image', 'c.content as latest_content', 'c.created_at as latest_date')
+            ->select(
+                'b.id',
+                'b.work_id',
+                'w.name as work_name',
+                'w.user_id as orderer_id',
+                'u.name as user_name',
+                'u.image',
+                'c.content as latest_content',
+                'c.created_at as latest_date'
+            )
             ->leftJoin('works as w', 'b.work_id', '=', 'w.id')
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
             ->leftJoinSub($child, 'c', function ($join) {
@@ -168,5 +146,47 @@ class AsynchronousController extends Controller
             ->get();
 
         return $boards->toJson();
+    }
+
+
+    // ======================================
+    // 仕事一覧
+    // ======================================
+    public function getWorks()
+    {
+        $work = DB::table('works as w')
+            ->select(
+                'w.id',
+                'w.name as w_name',
+                'w.user_id as u_id',
+                'u.name as u_name',
+                'u.image as u_image',
+                'w.contract_id',
+                'w.end_date',
+                'w.price_lower',
+                'w.price_upper',
+            )
+            ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
+            ->where('w.end_date', '>=', today())
+            ->where('w.state', '=', 1) // 1 = 応募中
+            ->orderBy('w.created_at', 'DESC')
+            ->get();
+
+        return $work->toJson();
+    }
+
+
+    // ======================================
+    // 通知
+    // ======================================
+    public function getNotificationsBadgeNumber()
+    {
+        $count = DB::table('notifications')
+            ->select(DB::raw('count(*) as count'))
+            ->where('notifiable_id', '=', Auth::id())
+            ->whereNull('read_at')
+            ->get();
+
+        return $count->toJson();
     }
 }

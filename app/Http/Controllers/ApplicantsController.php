@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Notification;
+use App\DirectMessageBoard;
+use App\Work;
 
 class ApplicantsController extends Controller
 {
@@ -19,7 +21,6 @@ class ApplicantsController extends Controller
      */
     public function index()
     {
-
         //
     }
 
@@ -45,9 +46,19 @@ class ApplicantsController extends Controller
         $owner_user = User::find($request->owner_id);
         $order_user = Auth::user();
         $owner_user->notify(new ApplicantsNotification($order_user, $request));
-        // Notification::send($owner_user, new ApplicantsNotification($order_user));
 
-        // DB保存
+        // 応募キャンセル機能を付けているため、もし一度応募をキャンセルしたが再度応募した場合に、DBにボードが以前作成されているかどうかを判断しそれぞれの処理をする
+        if (!DirectMessageBoard::where('work_id', '=', $request->work_id)
+            ->where('contractor_id', '=', Auth::id())
+            ->count()) {
+            // ダイレクトメッセージのボードを作成
+            $board = new DirectMessageBoard;
+            $board->work_id = $request->work_id;
+            $board->contractor_id = Auth::id();;
+            $board->save();
+        }
+
+        // 応募者情報をDB保存
         $applicant = new Applicant;
         $applicant->work_id = $request->work_id;
         $applicant->applicant_id = Auth::id();
@@ -66,7 +77,7 @@ class ApplicantsController extends Controller
     public function show($id)
     {
         $applicants = DB::table('applicants as a')
-            ->select('a.id', 'a.applicant_id', 'u.name as user_name', 'u.image', 'b.id as board_id')
+            ->select('a.id', 'a.work_id', 'a.applicant_id', 'u.name as user_name', 'u.image', 'b.id as board_id')
             ->leftJoin('users as u', 'a.applicant_id', '=', 'u.id')
             ->leftJoin('direct_messages_boards as b', function ($join) {
                 $join->on('a.work_id', '=', 'b.work_id');
@@ -104,8 +115,12 @@ class ApplicantsController extends Controller
     public function update(Request $request, $id)
     {
         $applicant = Applicant::find($id);
-        $applicant->state = 2; // 応募者決定決定
+        $applicant->state = 2; // 応募者決定
         $applicant->save();
+
+        $work = Work::find($request->work_id);
+        $work->state = 2; // 応募終了
+        $work->save();
 
         return redirect()->route('dm-contents.show', $request->applicant_board_id)
             ->with('flash_message', '決定者と詳細について連絡を取りましょう！');;

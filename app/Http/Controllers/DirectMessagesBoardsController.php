@@ -44,11 +44,7 @@ class DirectMessagesBoardsController extends Controller
             $applicant->save();
         }
 
-        $board = new DirectMessageBoard;
-        $board->work_id = $request->work_id;
-        $board->owner_user_id = $request->owner_user_id;
-        $board->contractor_id = $request->contractor_id;
-        $board->save();
+
 
         if ($request->decide === "true") {
             return redirect()

@@ -122,7 +122,7 @@
                   </form>
                   @endif
                   @else
-                  <div class="c-btn p-workDetail__appBtn -end">応募終了</div>
+                  <div class="c-btn p-workDetail__appBtn -end">この仕事の応募は終了しました。</div>
                   @endif
                   @endif
                </div>

@@ -101,8 +101,8 @@ Vue.component(
    require('./components/WorksListInHome.vue').default
 );
 Vue.component(
-   'works-list-of-contract-in-mypage-component',
-   require('./components/WorksListOfContractInMyPage.vue').default
+   'works-list-of-application-in-mypage-component',
+   require('./components/WorksListOfApplicationInMyPage.vue').default
 );
 Vue.component(
    'works-list-of-order-in-mypage-component',
