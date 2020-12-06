@@ -38,6 +38,10 @@ Vue.component(
    require('./components/DirectMessagesCard.vue').default
 );
 Vue.component(
+   'direct-messages-list-in-mypage-component',
+   require('./components/DirectMessagesListInMyPage.vue').default
+);
+Vue.component(
    'image-edit-component',
    require('./components/EditImage.vue').default
 );
@@ -73,6 +77,7 @@ Vue.component(
    'public-messages-list-in-mypage-component',
    require('./components/PublicMessagesListInMyPage.vue').default
 );
+
 Vue.component(
    'work-card-component',
    require('./components/WorksCard.vue').default
