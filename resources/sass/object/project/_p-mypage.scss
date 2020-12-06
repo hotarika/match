@@ -51,10 +51,10 @@
       color: $gray-700;
    }
    &__notificationMsg {
+      @include letter-settings;
       margin: 0;
       font-size: 12px;
       @include mq('xs') {
-         @include letter-settings;
          font-size: 11px;
       }
    }

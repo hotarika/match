@@ -8,8 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Channels\DatabaseChannel;
 
-
-class ApplicantsNotification extends Notification
+class DecisionNotification extends Notification
 {
     use Queueable;
 
@@ -18,9 +17,9 @@ class ApplicantsNotification extends Notification
      *
      * @return void
      */
-    public function __construct($user, $request)
+    public function __construct($contractor, $request)
     {
-        $this->user = $user;
+        $this->contractor = $contractor;
         $this->request = $request;
     }
 
@@ -58,9 +57,9 @@ class ApplicantsNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'user_name' => $this->user->name,
-            'content' => 'あなたの案件に応募しました。メッセージを送って詳細を確認しましょう。',
-            'param' => $this->request->board_id
+            'user_name' => $this->contractor->name,
+            'content' => '選考の結果、「' . $this->request->work_name . '」の仕事があなたに決定しました。メッセージを送って詳細を確認しましょう。',
+            'param' => $this->request->board_id // 遷移させるボードのid
         ];
     }
 }

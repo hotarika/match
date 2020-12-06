@@ -41,8 +41,10 @@
                            class="p-applicant__decideForm -decide -decided -wait">
                            @method('PUT')
                            @csrf
-                           <input type="hidden" name="applicant_board_id" value="{{$applicant->id}}">
+                           <input type="hidden" name="applicant_id" value="{{$applicant->applicant_id}}">
+                           <input type="hidden" name="board_id" value="{{$applicant->board_id}}">
                            <input type="hidden" name="work_id" value="{{$applicant->work_id}}">
+                           <input type="hidden" name="work_name" value="{{$applicant->w_name}}">
                            <button class="c-btn p-applicant__decideBtn" type="submit">
                               決定する
                            </button>

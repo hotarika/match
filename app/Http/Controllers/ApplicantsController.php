@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Notification;
 use App\DirectMessageBoard;
 use App\Work;
+use App\Notifications\DecisionNotification;
 
 class ApplicantsController extends Controller
 {
@@ -77,9 +78,19 @@ class ApplicantsController extends Controller
     public function show($id)
     {
         $applicants = DB::table('applicants as a')
-            ->select('a.id', 'a.work_id', 'a.applicant_id', 'u.name as user_name', 'u.image', 'b.id as board_id')
+            ->select(
+                'a.id',
+                'a.work_id',
+                'w.name as w_name',
+                'a.applicant_id',
+                'u.name as user_name',
+                'u.image',
+                'b.id as board_id'
+            )
             ->leftJoin('users as u', 'a.applicant_id', '=', 'u.id')
+            ->leftJoin('works as w', 'a.work_id', '=', 'w.id')
             ->leftJoin('direct_messages_boards as b', function ($join) {
+                // 複合キーでの結合
                 $join->on('a.work_id', '=', 'b.work_id');
                 $join->on('a.applicant_id', '=', 'b.contractor_id');
             })
@@ -114,15 +125,22 @@ class ApplicantsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // 決定者へ通知
+        $orderer = Auth::user();
+        $contractor =  User::find($request->applicant_id);
+        $contractor->notify(new DecisionNotification($orderer, $request));
+
+        // 応募者テーブルの更新
         $applicant = Applicant::find($id);
         $applicant->state = 2; // 応募者決定
         $applicant->save();
 
+        // 仕事テーブルの更新
         $work = Work::find($request->work_id);
         $work->state = 2; // 応募終了
         $work->save();
 
-        return redirect()->route('dm-contents.show', $request->applicant_board_id)
+        return redirect()->route('dm-contents.show', $request->board_id)
             ->with('flash_message', '決定者と詳細について連絡を取りましょう！');;
     }
 

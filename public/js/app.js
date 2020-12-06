@@ -40346,7 +40346,7 @@ var render = function() {
                       href:
                         _vm.public_path +
                         "applicants/" +
-                        notification.data["work_id"]
+                        notification.data["param"]
                     }
                   },
                   [
@@ -40360,7 +40360,7 @@ var render = function() {
                           [
                             _vm._v(
                               "\n                     応募者：" +
-                                _vm._s(notification.data["order_user_name"]) +
+                                _vm._s(notification.data["user_name"]) +
                                 "\n                  "
                             )
                           ]

@@ -12,13 +12,13 @@
             >
                <a
                   :href="
-                     public_path + 'applicants/' + notification.data['work_id']
+                     public_path + 'applicants/' + notification.data['param']
                   "
                   class="c-link p-mypage__notificationMsgSecWrap"
                >
                   <div class="p-mypage__notificationItemUpper">
                      <div class="c-link p-mypage__notificationName">
-                        応募者：{{ notification.data['order_user_name'] }}
+                        応募者：{{ notification.data['user_name'] }}
                      </div>
                      <time class="p-mypage__notificationTime">{{
                         notification.created_at
