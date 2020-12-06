@@ -14,10 +14,10 @@
             {{-- --------------------------------- --}}
             {{-- 試着通知                            --}}
             {{-- --------------------------------- --}}
-            <notification-component
+            <notifications-list-component
                :public_path="{{ json_encode(asset('')) }}"
                :notification="{{json_encode($notification)}}">
-            </notification-component>
+            </notifications-list-component>
 
             {{-- --------------------------------- --}}
             {{-- 発注した仕事                        --}}

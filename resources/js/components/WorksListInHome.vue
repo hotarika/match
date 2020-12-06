@@ -6,7 +6,10 @@
          <div class="p-home__workCards">
             <!-- 仕事カードコンポーネント -->
             <span v-for="work in showList" :key="work.id">
-               <work-card-component :work="work" :public-path="publicPath"></work-card-component>
+               <works-card-component
+                  :work="work"
+                  :public-path="publicPath"
+               ></works-card-component>
             </span>
          </div>
       </div>

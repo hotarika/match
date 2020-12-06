@@ -10,10 +10,10 @@
             v-for="msgCard of allData.slice(0, showNum)"
             :key="msgCard.pm_id"
          >
-            <public-messages-card
+            <public-messages-card-component
                :msg-card="msgCard"
                :public-path="publicPath"
-            ></public-messages-card>
+            ></public-messages-card-component>
          </span>
       </div>
    </section>

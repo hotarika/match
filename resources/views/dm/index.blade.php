@@ -10,7 +10,7 @@
          @include('components/sidebar')
 
          <div class="l-main__mainArea -twoColumns">
-            <dm-list-component :public-path="{{json_encode(asset(''))}}"></dm-list-component>
+            <direct-messages-list-component :public-path="{{json_encode(asset(''))}}"></direct-messages-list-component>
             {{-- <section class="c-h2__sec p-dmList__sec">
                <!-- ダイレクトメッセージ一覧 -->
                @foreach ($boards as $board)

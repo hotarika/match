@@ -89,10 +89,10 @@
                      </li>
 
                      <!-- 全ての端末で表示 -->
-                     <notification-badge-component
+                     <notifications-badge-component
                         :public-path="{{ json_encode(asset('')) }}"
                         :mypage-url="{{json_encode(route('mypage'))}}">
-                     </notification-badge-component>
+                     </notifications-badge-component>
 
                      <!-- スマホのみ表示 -->
                      <li class="p-header__item -sp">

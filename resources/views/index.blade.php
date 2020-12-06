@@ -152,8 +152,8 @@
    </section>
 
    <!-- 新着の案件一覧 -->
-   <work-new-section
-      :public-path="{{ json_encode(asset('')) }}"></work-new-section>
+   <works-list-in-home
+      :public-path="{{ json_encode(asset('')) }}"></works-list-in-home>
 
 
    <!-- 会員登録ボタン -->

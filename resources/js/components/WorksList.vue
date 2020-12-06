@@ -3,24 +3,53 @@
       <!-- 絞り込みフォーム -->
       <form class="p-workList__orderForm" action="" onsubmit="return false;">
          <div class="p-workList__checkbox -oneoff">
-            <input type="checkbox" name="work" id="oneoff" value="oneoff" v-model="oneoff_checkbox" />
+            <input
+               type="checkbox"
+               name="work"
+               id="oneoff"
+               value="oneoff"
+               v-model="oneoff_checkbox"
+            />
             <label for="oneoff">単発案件</label>
          </div>
          <div class="p-workList__checkbox -share">
-            <input type="checkbox" name="work" id="share" value="share" v-model="share_checkbox" />
+            <input
+               type="checkbox"
+               name="work"
+               id="share"
+               value="share"
+               v-model="share_checkbox"
+            />
             <label for="share">レベニューシェア</label>
          </div>
-         <button class="c-btn p-workList__formBtn" type="submit" @click.prevent="searchListClick">検索</button>
+         <button
+            class="c-btn p-workList__formBtn"
+            type="submit"
+            @click.prevent="searchListClick"
+         >
+            検索
+         </button>
       </form>
 
       <!-- 仕事カード -->
       <div class="c-h2__workCardBody p-workList__workCardBody">
-         <span v-for="work in showList.slice(minCardNum, maxCardNum)" :key="work.id">
+         <span
+            v-for="work in showList.slice(minCardNum, maxCardNum)"
+            :key="work.id"
+         >
             <!-- 仕事カードをコンポーネント化 -->
-            <work-card-component :work="work" :public-path="publicPath"></work-card-component>
+            <works-card-component
+               :work="work"
+               :public-path="publicPath"
+            ></works-card-component>
          </span>
       </div>
-      <pagination-component :page="page" :total-page="totalPage" @change="searchListClick"> </pagination-component>
+      <pagination-component
+         :page="page"
+         :total-page="totalPage"
+         @change="searchListClick"
+      >
+      </pagination-component>
    </section>
 </template>
 
@@ -47,7 +76,9 @@ export default {
       },
       minCardNum() {
          // 表示カードが何枚目から始まるのか定義
-         return this.page === 1 ? this.page - 1 : this.perPage * (this.page - 1);
+         return this.page === 1
+            ? this.page - 1
+            : this.perPage * (this.page - 1);
       },
       maxCardNum() {
          // 表示カードが何枚目で終わるのか定義

@@ -129,13 +129,13 @@
             </section>
 
             <!-- パブリックメッセージ -->
-            <pubmsg-area-section
+            <public-messages-area-component
                :public-path="{{ json_encode(asset('')) }}"
                :work-id="{{json_encode((integer)$work_id)}}"
                :user="{{json_encode($user)}}"
                :parent-msg="{{json_encode($parent_msg)}}"
                :child-msg="{{json_encode($child_msg)}}">
-            </pubmsg-area-section>
+            </public-messages-area-component>
          </div>
       </div>
    </div>

@@ -2,10 +2,10 @@
    <section class="c-h2__sec p-dmList__sec">
       <!-- ダイレクトメッセージ一覧 -->
       <span v-for="card in allData" :key="card.id">
-         <dm-card-component
+         <direct-messages-card-component
             :public-path="publicPath"
             :card="card"
-         ></dm-card-component>
+         ></direct-messages-card-component>
       </span>
    </section>
 </template>

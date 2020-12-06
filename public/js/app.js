@@ -2657,6 +2657,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2888,6 +2917,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -3097,6 +3129,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -3176,6 +3237,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
 //
 //
 //
@@ -3303,6 +3367,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
 //
 //
 //
@@ -39954,7 +40021,7 @@ var render = function() {
         "span",
         { key: card.id },
         [
-          _c("dm-card-component", {
+          _c("direct-messages-card-component", {
             attrs: { "public-path": _vm.publicPath, card: card }
           })
         ],
@@ -40006,7 +40073,7 @@ var render = function() {
           "span",
           { key: card.id },
           [
-            _c("dm-card-component", {
+            _c("direct-messages-card-component", {
               attrs: { "public-path": _vm.publicPath, card: card }
             })
           ],
@@ -40603,7 +40670,7 @@ var render = function() {
                         ]
                       }),
                       _vm._v(" "),
-                      _c("child-form-component", {
+                      _c("public-messages-child-form-component", {
                         attrs: { parent: p.id },
                         on: { "child-text": _vm.addChildMsg }
                       })
@@ -40769,7 +40836,7 @@ var render = function() {
         "span",
         { key: msgCard.pm_id },
         [
-          _c("public-messages-card", {
+          _c("public-messages-card-component", {
             attrs: { "msg-card": msgCard, "public-path": _vm.publicPath }
           })
         ],
@@ -40821,7 +40888,7 @@ var render = function() {
           "span",
           { key: msgCard.pm_id },
           [
-            _c("public-messages-card", {
+            _c("public-messages-card-component", {
               attrs: { "msg-card": msgCard, "public-path": _vm.publicPath }
             })
           ],
@@ -41088,7 +41155,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("検索")]
+            [_vm._v("\n         検索\n      ")]
           )
         ]
       ),
@@ -41103,7 +41170,7 @@ var render = function() {
             "span",
             { key: work.id },
             [
-              _c("work-card-component", {
+              _c("works-card-component", {
                 attrs: { work: work, "public-path": _vm.publicPath }
               })
             ],
@@ -41157,7 +41224,7 @@ var render = function() {
             "span",
             { key: work.id },
             [
-              _c("work-card-component", {
+              _c("works-card-component", {
                 attrs: { work: work, "public-path": _vm.publicPath }
               })
             ],
@@ -41202,7 +41269,7 @@ var render = function() {
           "span",
           { key: work.id },
           [
-            _c("work-card-component", {
+            _c("works-card-component", {
               attrs: { work: work, "public-path": _vm.publicPath }
             })
           ],
@@ -41246,7 +41313,7 @@ var render = function() {
           "span",
           { key: work.id },
           [
-            _c("work-card-component", {
+            _c("works-card-component", {
               attrs: { work: work, "public-path": _vm.publicPath }
             })
           ],
@@ -53464,25 +53531,31 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // =======================================
 // components（ファイル名のアルファベット順）
 // =======================================
+// DM
 
-Vue.component('dm-component', __webpack_require__(/*! ./components/DirectMessagesArea.vue */ "./resources/js/components/DirectMessagesArea.vue")["default"]);
-Vue.component('dm-list-component', __webpack_require__(/*! ./components/DirectMessagesList.vue */ "./resources/js/components/DirectMessagesList.vue")["default"]);
-Vue.component('dm-card-component', __webpack_require__(/*! ./components/DirectMessagesCard.vue */ "./resources/js/components/DirectMessagesCard.vue")["default"]);
-Vue.component('direct-messages-list-in-mypage-component', __webpack_require__(/*! ./components/DirectMessagesListInMyPage.vue */ "./resources/js/components/DirectMessagesListInMyPage.vue")["default"]);
-Vue.component('image-edit-component', __webpack_require__(/*! ./components/EditImage.vue */ "./resources/js/components/EditImage.vue")["default"]);
-Vue.component('notification-badge-component', __webpack_require__(/*! ./components/NotificationsBadge.vue */ "./resources/js/components/NotificationsBadge.vue")["default"]);
-Vue.component('notification-component', __webpack_require__(/*! ./components/NotificationsList.vue */ "./resources/js/components/NotificationsList.vue")["default"]);
-Vue.component('pagination-component', __webpack_require__(/*! ./components/Pagination.vue */ "./resources/js/components/Pagination.vue")["default"]);
-Vue.component('pubmsg-area-section', __webpack_require__(/*! ./components/PublicMessagesArea.vue */ "./resources/js/components/PublicMessagesArea.vue")["default"]);
-Vue.component('public-messages-card', __webpack_require__(/*! ./components/PublicMessagesCard.vue */ "./resources/js/components/PublicMessagesCard.vue")["default"]);
-Vue.component('child-form-component', __webpack_require__(/*! ./components/PublicMessagesChildForm.vue */ "./resources/js/components/PublicMessagesChildForm.vue")["default"]);
-Vue.component('public-messages-list', __webpack_require__(/*! ./components/PublicMessagesList.vue */ "./resources/js/components/PublicMessagesList.vue")["default"]);
-Vue.component('public-messages-list-in-mypage-component', __webpack_require__(/*! ./components/PublicMessagesListInMyPage.vue */ "./resources/js/components/PublicMessagesListInMyPage.vue")["default"]);
-Vue.component('work-card-component', __webpack_require__(/*! ./components/WorksCard.vue */ "./resources/js/components/WorksCard.vue")["default"]);
-Vue.component('work-component', __webpack_require__(/*! ./components/WorksList.vue */ "./resources/js/components/WorksList.vue")["default"]);
-Vue.component('work-new-section', __webpack_require__(/*! ./components/WorksListInHome.vue */ "./resources/js/components/WorksListInHome.vue")["default"]);
-Vue.component('works-list-of-order-in-mypage-component', __webpack_require__(/*! ./components/WorksListOfOrderInMyPage.vue */ "./resources/js/components/WorksListOfOrderInMyPage.vue")["default"]);
+Vue.component('direct-messages-area-component', __webpack_require__(/*! ./components/DirectMessagesArea.vue */ "./resources/js/components/DirectMessagesArea.vue")["default"]);
+Vue.component('direct-messages-card-component', __webpack_require__(/*! ./components/DirectMessagesCard.vue */ "./resources/js/components/DirectMessagesCard.vue")["default"]);
+Vue.component('direct-messages-list-component', __webpack_require__(/*! ./components/DirectMessagesList.vue */ "./resources/js/components/DirectMessagesList.vue")["default"]);
+Vue.component('direct-messages-list-in-mypage-component', __webpack_require__(/*! ./components/DirectMessagesListInMyPage.vue */ "./resources/js/components/DirectMessagesListInMyPage.vue")["default"]); // 画像編集
+
+Vue.component('edit-image-component', __webpack_require__(/*! ./components/EditImage.vue */ "./resources/js/components/EditImage.vue")["default"]); // 通知
+
+Vue.component('notifications-badge-component', __webpack_require__(/*! ./components/NotificationsBadge.vue */ "./resources/js/components/NotificationsBadge.vue")["default"]);
+Vue.component('notifications-list-component', __webpack_require__(/*! ./components/NotificationsList.vue */ "./resources/js/components/NotificationsList.vue")["default"]); // ページネーション
+
+Vue.component('pagination-component', __webpack_require__(/*! ./components/Pagination.vue */ "./resources/js/components/Pagination.vue")["default"]); // パブリックメッセージ
+
+Vue.component('public-messages-area-component', __webpack_require__(/*! ./components/PublicMessagesArea.vue */ "./resources/js/components/PublicMessagesArea.vue")["default"]);
+Vue.component('public-messages-card-component', __webpack_require__(/*! ./components/PublicMessagesCard.vue */ "./resources/js/components/PublicMessagesCard.vue")["default"]);
+Vue.component('public-messages-child-form-component', __webpack_require__(/*! ./components/PublicMessagesChildForm.vue */ "./resources/js/components/PublicMessagesChildForm.vue")["default"]);
+Vue.component('public-messages-list-component', __webpack_require__(/*! ./components/PublicMessagesList.vue */ "./resources/js/components/PublicMessagesList.vue")["default"]);
+Vue.component('public-messages-list-in-mypage-component', __webpack_require__(/*! ./components/PublicMessagesListInMyPage.vue */ "./resources/js/components/PublicMessagesListInMyPage.vue")["default"]); // 仕事カード
+
+Vue.component('works-card-component', __webpack_require__(/*! ./components/WorksCard.vue */ "./resources/js/components/WorksCard.vue")["default"]);
+Vue.component('works-list-component', __webpack_require__(/*! ./components/WorksList.vue */ "./resources/js/components/WorksList.vue")["default"]);
+Vue.component('works-list-in-home', __webpack_require__(/*! ./components/WorksListInHome.vue */ "./resources/js/components/WorksListInHome.vue")["default"]);
 Vue.component('works-list-of-contract-in-mypage-component', __webpack_require__(/*! ./components/WorksListOfContractInMyPage.vue */ "./resources/js/components/WorksListOfContractInMyPage.vue")["default"]);
+Vue.component('works-list-of-order-in-mypage-component', __webpack_require__(/*! ./components/WorksListOfOrderInMyPage.vue */ "./resources/js/components/WorksListOfOrderInMyPage.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -7,10 +7,10 @@
       <div class="c-h2__body p-mypage__secBody">
          <!-- ダイレクトメッセージ一覧 -->
          <span v-for="card in allData.slice(0, showNum)" :key="card.id">
-            <dm-card-component
+            <direct-messages-card-component
                :public-path="publicPath"
                :card="card"
-            ></dm-card-component>
+            ></direct-messages-card-component>
          </span>
       </div>
    </section>

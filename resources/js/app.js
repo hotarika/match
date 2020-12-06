@@ -25,52 +25,61 @@ window.Vue = require('vue');
 // =======================================
 // components（ファイル名のアルファベット順）
 // =======================================
+// DM
 Vue.component(
-   'dm-component',
+   'direct-messages-area-component',
    require('./components/DirectMessagesArea.vue').default
 );
 Vue.component(
-   'dm-list-component',
-   require('./components/DirectMessagesList.vue').default
+   'direct-messages-card-component',
+   require('./components/DirectMessagesCard.vue').default
 );
 Vue.component(
-   'dm-card-component',
-   require('./components/DirectMessagesCard.vue').default
+   'direct-messages-list-component',
+   require('./components/DirectMessagesList.vue').default
 );
 Vue.component(
    'direct-messages-list-in-mypage-component',
    require('./components/DirectMessagesListInMyPage.vue').default
 );
+
+// 画像編集
 Vue.component(
-   'image-edit-component',
+   'edit-image-component',
    require('./components/EditImage.vue').default
 );
+
+// 通知
 Vue.component(
-   'notification-badge-component',
+   'notifications-badge-component',
    require('./components/NotificationsBadge.vue').default
 );
 Vue.component(
-   'notification-component',
+   'notifications-list-component',
    require('./components/NotificationsList.vue').default
 );
+
+// ページネーション
 Vue.component(
    'pagination-component',
    require('./components/Pagination.vue').default
 );
+
+// パブリックメッセージ
 Vue.component(
-   'pubmsg-area-section',
+   'public-messages-area-component',
    require('./components/PublicMessagesArea.vue').default
 );
 Vue.component(
-   'public-messages-card',
+   'public-messages-card-component',
    require('./components/PublicMessagesCard.vue').default
 );
 Vue.component(
-   'child-form-component',
+   'public-messages-child-form-component',
    require('./components/PublicMessagesChildForm.vue').default
 );
 Vue.component(
-   'public-messages-list',
+   'public-messages-list-component',
    require('./components/PublicMessagesList.vue').default
 );
 Vue.component(
@@ -78,22 +87,26 @@ Vue.component(
    require('./components/PublicMessagesListInMyPage.vue').default
 );
 
+// 仕事カード
 Vue.component(
-   'work-card-component',
+   'works-card-component',
    require('./components/WorksCard.vue').default
 );
-Vue.component('work-component', require('./components/WorksList.vue').default);
 Vue.component(
-   'work-new-section',
-   require('./components/WorksListInHome.vue').default
+   'works-list-component',
+   require('./components/WorksList.vue').default
 );
 Vue.component(
-   'works-list-of-order-in-mypage-component',
-   require('./components/WorksListOfOrderInMyPage.vue').default
+   'works-list-in-home',
+   require('./components/WorksListInHome.vue').default
 );
 Vue.component(
    'works-list-of-contract-in-mypage-component',
    require('./components/WorksListOfContractInMyPage.vue').default
+);
+Vue.component(
+   'works-list-of-order-in-mypage-component',
+   require('./components/WorksListOfOrderInMyPage.vue').default
 );
 
 /**

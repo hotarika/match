@@ -2,7 +2,10 @@
    <section class="c-h2__sec p-pubmsgList__sec">
       <!-- ダイレクトメッセージ一覧 -->
       <span v-for="msgCard of allData" :key="msgCard.pm_id">
-         <public-messages-card :msg-card="msgCard" :public-path="publicPath"></public-messages-card>
+         <public-messages-card-component
+            :msg-card="msgCard"
+            :public-path="publicPath"
+         ></public-messages-card-component>
       </span>
    </section>
 </template>

@@ -10,8 +10,8 @@
          @include('components/sidebar')
 
          <div class="l-main__mainArea -twoColumns">
-            <public-messages-list
-               :public-path="{{json_encode(asset(''))}}"></public-messages-list>
+            <public-messages-list-component
+               :public-path="{{json_encode(asset(''))}}"></public-messages-list-component>
 
          </div>
       </div>

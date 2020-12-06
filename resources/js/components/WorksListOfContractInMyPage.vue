@@ -3,10 +3,10 @@
       <h2 class="c-h2__head">発注した仕事</h2>
       <div class="c-h2__workCardBody p-mypage__secBody">
          <span v-for="work of allData" :key="work.id">
-            <work-card-component
+            <works-card-component
                :work="work"
                :public-path="publicPath"
-            ></work-card-component>
+            ></works-card-component>
          </span>
       </div>
    </section>
