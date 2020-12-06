@@ -11,125 +11,27 @@
 
          {{-- メインエリア --}}
          <div class="l-main__mainArea -twoColumns">
-            <!-- 新着通知 -->
-            <notification-component :public_path="{{ json_encode(asset('')) }}"
+            {{-- --------------------------------- --}}
+            {{-- 試着通知                            --}}
+            {{-- --------------------------------- --}}
+            <notification-component
+               :public_path="{{ json_encode(asset('')) }}"
                :notification="{{json_encode($notification)}}">
             </notification-component>
+
             {{-- --------------------------------- --}}
             {{-- 発注した仕事                        --}}
             {{-- --------------------------------- --}}
-            <section class="c-h2__sec">
-               <h2 class="c-h2__head">発注した仕事</h2>
-               <div class="c-h2__workCardBody p-mypage__secBody">
-                  @forelse ($owner_works as $work)
-                  <a class="c-workCard" href="{{route('works.show',$work->work_id)}}">
-                     <div class="c-workCard__nameWrap">
-                        <img class="c-img c-workCard__img" src="{{url('storage/user_img/'.$work->image)}}"
-                           alt="ユーザーのアイコン" />
-                        <span class="c-workCard__name">{{$work->user_name}}</span>
-                     </div>
-
-                     <div class="c-workCard__head">
-                        {{$work->work_name}}
-                     </div>
-                     @if($work->contract_id === 1)
-                     <!-- 単発案件 -->
-                     <div class="c-workCard__contract">
-                        <div class="c-workCard__contractIconWrap">
-                           <i class="fas fa-male c-workCard__contractIcon -oneoff"></i>
-                        </div>
-                        <div class="c-workCard__contractWayWrap">
-                           <div class="c-workCard__contractWay">単発案件</div>
-                           <div class="c-workCard__contractPrice">{{$work->price_lower}}~{{$work->price_upper}}千円</div>
-                        </div>
-                     </div>
-                     @endif
-                     @if($work->contract_id === 2)
-                     <!-- レベニューシェア -->
-                     <div class="c-workCard__contract">
-                        <div class="c-workCard__contractIconWrap">
-                           <i class="fas fa-people-arrows c-workCard__contractIcon -share"></i>
-                        </div>
-                        <div class="c-workCard__contractWayWrap">
-                           <div class="c-workCard__contractWay -share">レベニューシェア</div>
-                        </div>
-                     </div>
-                     @endif
-                     <!-- その他情報 -->
-                     <div class="c-workCard__info">
-                        <div class="c-workCard__infoItem">
-                           <div class="c-workCard__infoItemHead">締め切り日：</div>
-                           <span class="c-workCard__endDate">{{$work->end_date}}</span>
-                        </div>
-                     </div>
-                  </a>
-                  @empty
-                  <div class="c-h2__noItems -order">
-                     発注している仕事はありません。
-                  </div>
-                  @endforelse
-               </div>
-            </section>
-
+            <works-list-of-order-in-mypage-component
+               :public-path="{{ json_encode(asset('')) }}">
+            </works-list-of-order-in-mypage-component>
 
             {{-- --------------------------------- --}}
             {{-- 応募中の仕事                        --}}
             {{-- --------------------------------- --}}
-            <section class="c-h2__sec">
-               <h2 class="c-h2__head">応募中の仕事</h2>
-               <div class="c-h2__workCardBody p-mypage__secBody">
-
-                  @forelse ($order_works as $work)
-                  <a class="c-workCard" href="work-detail">
-                     <div class="c-workCard__nameWrap">
-                        <img class="c-img c-workCard__img" src="{{url('storage/user_img/'.$work->image)}}"
-                           alt="ユーザーのアイコン" />
-                        <span class="c-workCard__name">{{$work->user_name}}</span>
-                     </div>
-
-                     <div class="c-workCard__head">
-                        {{$work->work_name}}
-                     </div>
-                     <!-- 単発案件 -->
-                     @if($work->contract_id === 1)
-                     <div class="c-workCard__contract">
-                        <div class="c-workCard__contractIconWrap">
-                           <i class="fas fa-male c-workCard__contractIcon -oneoff"></i>
-                        </div>
-                        <div class="c-workCard__contractWayWrap">
-                           <div class="c-workCard__contractWay">単発案件</div>
-                           <div class="c-workCard__contractPrice">{{$work->price_lower}}~{{$work->price_upper}}千円</div>
-                        </div>
-                     </div>
-                     @endif
-
-                     <!-- レベニューシェア -->
-                     @if($work->contract_id === 2)
-                     <div class="c-workCard__contract">
-                        <div class="c-workCard__contractIconWrap">
-                           <i class="fas fa-people-arrows c-workCard__contractIcon -share"></i>
-                        </div>
-                        <div class="c-workCard__contractWayWrap">
-                           <div class="c-workCard__contractWay -share">レベニューシェア</div>
-                        </div>
-                     </div>
-                     @endif
-
-                     <!-- その他情報 -->
-                     <div class="c-workCard__info">
-                        <div class="c-workCard__infoItem">
-                           <div class="c-workCard__infoItemHead">締め切り日：</div>
-                           <span class="c-workCard__endDate">{{$work->end_date}}</span>
-                        </div>
-                     </div>
-                  </a>
-                  @empty
-                  <div class="c-h2__noItems -apply">
-                     応募中の仕事はありません。
-                  </div>
-                  @endforelse
-               </div>
-            </section>
+            <works-list-of-contract-in-mypage-component
+               :public-path="{{ json_encode(asset('')) }}">
+            </works-list-of-contract-in-mypage-component>
 
             {{-- --------------------------------- --}}
             {{-- パブリックメッセージ                  --}}

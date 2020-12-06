@@ -25,20 +25,67 @@ window.Vue = require('vue');
 // =======================================
 // components（ファイル名のアルファベット順）
 // =======================================
-Vue.component('dm-component', require('./components/DirectMessagesArea.vue').default);
-Vue.component('dm-list-component', require('./components/DirectMessagesList.vue').default);
-Vue.component('dm-card-component', require('./components/DirectMessagesCard.vue').default);
-Vue.component('image-edit-component', require('./components/EditImage.vue').default);
-Vue.component('notification-badge-component', require('./components/NotificationsBadge.vue').default);
-Vue.component('notification-component', require('./components/NotificationsList.vue').default);
-Vue.component('pagination-component', require('./components/Pagination.vue').default);
-Vue.component('pubmsg-area-section', require('./components/PublicMessagesArea.vue').default);
-Vue.component('public-messages-card', require('./components/PublicMessagesCard.vue').default);
-Vue.component('child-form-component', require('./components/PublicMessagesChildForm.vue').default);
-Vue.component('public-messages-list', require('./components/PublicMessagesList.vue').default);
-Vue.component('work-card-component', require('./components/WorksCard.vue').default);
+Vue.component(
+   'dm-component',
+   require('./components/DirectMessagesArea.vue').default
+);
+Vue.component(
+   'dm-list-component',
+   require('./components/DirectMessagesList.vue').default
+);
+Vue.component(
+   'dm-card-component',
+   require('./components/DirectMessagesCard.vue').default
+);
+Vue.component(
+   'image-edit-component',
+   require('./components/EditImage.vue').default
+);
+Vue.component(
+   'notification-badge-component',
+   require('./components/NotificationsBadge.vue').default
+);
+Vue.component(
+   'notification-component',
+   require('./components/NotificationsList.vue').default
+);
+Vue.component(
+   'pagination-component',
+   require('./components/Pagination.vue').default
+);
+Vue.component(
+   'pubmsg-area-section',
+   require('./components/PublicMessagesArea.vue').default
+);
+Vue.component(
+   'public-messages-card',
+   require('./components/PublicMessagesCard.vue').default
+);
+Vue.component(
+   'child-form-component',
+   require('./components/PublicMessagesChildForm.vue').default
+);
+Vue.component(
+   'public-messages-list',
+   require('./components/PublicMessagesList.vue').default
+);
+Vue.component(
+   'work-card-component',
+   require('./components/WorksCard.vue').default
+);
 Vue.component('work-component', require('./components/WorksList.vue').default);
-Vue.component('work-new-section', require('./components/WorksListInHome.vue').default);
+Vue.component(
+   'work-new-section',
+   require('./components/WorksListInHome.vue').default
+);
+Vue.component(
+   'works-list-of-order-in-mypage-component',
+   require('./components/WorksListOfOrderInMyPage.vue').default
+);
+Vue.component(
+   'works-list-of-contract-in-mypage-component',
+   require('./components/WorksListOfContractInMyPage.vue').default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

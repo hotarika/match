@@ -43,6 +43,8 @@ Route::post('/password/change', 'Auth\ChangePasswordController@ChangePassword')-
 
 // 非同期処理
 Route::get('/async/works', 'AsynchronousController@getWorks');
+Route::get('/async/works-order-mypage', 'AsynchronousController@getWorksListOfOrderInMyPage');
+Route::get('/async/works-contract-mypage', 'AsynchronousController@getWorksListOfContractInMyPage');
 Route::get('/async/badge', 'AsynchronousController@getNotificationsBadgeNumber');
 Route::get('/async/pubmsgs-list', 'AsynchronousController@getPublicMessagesList');
 Route::get('/async/dm-list', 'AsynchronousController@getDirectMessagesList');

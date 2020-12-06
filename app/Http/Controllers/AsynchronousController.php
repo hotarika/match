@@ -34,6 +34,52 @@ class AsynchronousController extends Controller
         return $work->toJson();
     }
 
+    public function getWorksListOfOrderInMyPage()
+    {
+        $work = DB::table('works as w')
+            ->select(
+                'w.id',
+                'w.name as w_name',
+                'w.user_id as u_id',
+                'u.name as u_name',
+                'u.image as u_image',
+                'w.contract_id',
+                'w.end_date',
+                'w.price_lower',
+                'w.price_upper',
+            )
+            ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
+            ->where('w.user_id', '=', Auth::id())
+            ->orderBy('w.created_at', 'DESC')
+            ->get();
+
+        return $work->toJson();
+    }
+
+    public function getWorksListOfContractInMyPage()
+    {
+        $work = DB::table('works as w')
+            ->select(
+                'w.id',
+                'w.name as w_name',
+                'w.user_id as u_id',
+                'u.name as u_name',
+                'u.image as u_image',
+                'w.contract_id',
+                'w.end_date',
+                'w.price_lower',
+                'w.price_upper',
+            )
+            ->rightJoin('applicants as a', 'w.id', '=', 'a.work_id')
+            ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
+            ->where('a.applicant_id', '=', Auth::id())
+            ->orderBy('w.created_at', 'DESC')
+            ->get();
+
+        return $work->toJson();
+    }
+
+
 
     public function getNotificationsBadgeNumber()
     {
