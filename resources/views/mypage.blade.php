@@ -1,3 +1,4 @@
+{{-- チェック済み --}}
 @extends('layouts.app')
 @section('title', 'マイページ')
 

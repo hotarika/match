@@ -12,6 +12,20 @@ use Illuminate\Support\Carbon;
 class AsynchronousController extends Controller
 {
     // ======================================
+    // 通知
+    // ======================================
+    public function getNotificationsBadgeNumber()
+    {
+        $count = DB::table('notifications')
+            ->select(DB::raw('count(*) as count'))
+            ->where('notifiable_id', '=', Auth::id())
+            ->whereNull('read_at')
+            ->get();
+
+        return $count->toJson();
+    }
+
+    // ======================================
     // マイページ
     // ======================================
     public function getWorksListOfOrderInMyPage()
@@ -173,20 +187,5 @@ class AsynchronousController extends Controller
             ->get();
 
         return $work->toJson();
-    }
-
-
-    // ======================================
-    // 通知
-    // ======================================
-    public function getNotificationsBadgeNumber()
-    {
-        $count = DB::table('notifications')
-            ->select(DB::raw('count(*) as count'))
-            ->where('notifiable_id', '=', Auth::id())
-            ->whereNull('read_at')
-            ->get();
-
-        return $count->toJson();
     }
 }

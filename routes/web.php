@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/users', 'UsersController');
     Route::resource('/works', 'WorksController');
 
-    // Invoke Controller（1つのコントローラーに1つの定義しか記述しないという意味）
+    // シングルアクションコントローラー（__invoke）
     Route::get('/mypage', 'MyPageController')->name('mypage');
     Route::get('/settings-menu', 'SettingsMenuController')->name('settings-menu');
 });
