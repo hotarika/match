@@ -42,18 +42,37 @@
       <!-- 情報 -->
       <div class="c-workCard__infoItem">
          <div class="c-workCard__infoItemHead">締め切り日：</div>
-         <span class="c-workCard__endDate">{{ work.end_date }}</span>
+         <span class="c-workCard__endDate">{{ showEndDateContents }}</span>
       </div>
    </a>
 </template>
 
 <script>
+import { getDateNewFormat } from '../modules/getDateNewFormat';
+
 export default {
-   props: ['work', 'publicPath'],
+   props: {
+      work: Object,
+      publicPath: String
+   },
    filters: {
       // 単発案件の金額にカンマをつけるためのフィルター
       addComma(value) {
          return value.toLocaleString();
+      }
+   },
+   computed: {
+      showEndDateContents() {
+         const today = new Date();
+         const endDate = new Date(this.work.end_date);
+         const formatDate = getDateNewFormat(today);
+         const formatEndDate = getDateNewFormat(endDate);
+
+         if (formatDate === formatEndDate) {
+            return '本日終了';
+         } else {
+            return this.work.end_date;
+         }
       }
    }
 };

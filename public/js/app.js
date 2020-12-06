@@ -2039,7 +2039,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/getDateTimeNewFormat */ "./resources/js/modules/getDateTimeNewFormat.js");
+/* harmony import */ var _modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/getDateTimeNewFormat */ "./resources/js/modules/getDateTimeNewFormat.js");
 //
 //
 //
@@ -2068,7 +2068,7 @@ __webpack_require__.r(__webpack_exports__);
   filters: {
     formatDateTime: function formatDateTime(value) {
       var date = new Date(value);
-      var newFormat = Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_0__["getDateTimeNewFormat"])(date);
+      var newFormat = Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_1__["getDateTimeNewFormat"])(date);
       return newFormat;
     }
   }
@@ -2524,7 +2524,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _modules_getTemporaryId__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/getTemporaryId */ "./resources/js/modules/getTemporaryId.js");
-/* harmony import */ var _modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/getDateTimeNewFormat */ "./resources/js/modules/getDateTimeNewFormat.js");
+/* harmony import */ var _modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../modules/getDateTimeNewFormat */ "./resources/js/modules/getDateTimeNewFormat.js");
 //
 //
 //
@@ -2639,7 +2639,7 @@ __webpack_require__.r(__webpack_exports__);
           image: this.user.image,
           title: this.parentTitle,
           content: this.parentTextarea,
-          created_at: Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__["getDateTimeNewFormat"])(date)
+          created_at: Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_3__["getDateTimeNewFormat"])(date)
         }); // DBへ保存
 
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.publicPath + 'pubmsgs', {
@@ -2693,7 +2693,7 @@ __webpack_require__.r(__webpack_exports__);
           content: text,
           name: this.user.name,
           image: this.user.image,
-          created_at: Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__["getDateTimeNewFormat"])(date)
+          created_at: Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_3__["getDateTimeNewFormat"])(date)
         }); // 挿入後に、メッセージを空にする
 
         var textarea = document.getElementsByClassName('js-childTextarea');
@@ -2706,7 +2706,7 @@ __webpack_require__.r(__webpack_exports__);
   filters: {
     formatDateTime: function formatDateTime(value) {
       var date = new Date(value);
-      var newFormat = Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__["getDateTimeNewFormat"])(date);
+      var newFormat = Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_3__["getDateTimeNewFormat"])(date);
       return newFormat;
     }
   }
@@ -2723,7 +2723,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/getDateTimeNewFormat */ "./resources/js/modules/getDateTimeNewFormat.js");
+/* harmony import */ var _modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/getDateTimeNewFormat */ "./resources/js/modules/getDateTimeNewFormat.js");
 //
 //
 //
@@ -2764,7 +2764,7 @@ __webpack_require__.r(__webpack_exports__);
   filters: {
     formatDateTime: function formatDateTime(value) {
       var date = new Date(value);
-      var newFormat = Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_0__["getDateTimeNewFormat"])(date);
+      var newFormat = Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_1__["getDateTimeNewFormat"])(date);
       return newFormat;
     }
   }
@@ -2864,6 +2864,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modules_getDateNewFormat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/getDateNewFormat */ "./resources/js/modules/getDateNewFormat.js");
 //
 //
 //
@@ -2913,12 +2914,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['work', 'publicPath'],
+  props: {
+    work: Object,
+    publicPath: String
+  },
   filters: {
     // 単発案件の金額にカンマをつけるためのフィルター
     addComma: function addComma(value) {
       return value.toLocaleString();
+    }
+  },
+  computed: {
+    showEndDateContents: function showEndDateContents() {
+      var today = new Date();
+      var endDate = new Date(this.work.end_date);
+      var formatDate = Object(_modules_getDateNewFormat__WEBPACK_IMPORTED_MODULE_0__["getDateNewFormat"])(today);
+      var formatEndDate = Object(_modules_getDateNewFormat__WEBPACK_IMPORTED_MODULE_0__["getDateNewFormat"])(endDate);
+
+      if (formatDate === formatEndDate) {
+        return '本日終了';
+      } else {
+        return this.work.end_date;
+      }
     }
   }
 });
@@ -40575,7 +40594,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("span", { staticClass: "c-workCard__endDate" }, [
-          _vm._v(_vm._s(_vm.work.end_date))
+          _vm._v(_vm._s(_vm.showEndDateContents))
         ])
       ])
     ],
@@ -54145,6 +54164,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WorksListInHome_vue_vue_type_template_id_29527169___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/modules/getDateNewFormat.js":
+/*!**************************************************!*\
+  !*** ./resources/js/modules/getDateNewFormat.js ***!
+  \**************************************************/
+/*! exports provided: getDateNewFormat */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDateNewFormat", function() { return getDateNewFormat; });
+function getDateNewFormat(date) {
+  var y = date.getFullYear();
+  var m = ('0' + (date.getMonth() + 1)).slice(-2); // 0から取得するので+1
+
+  var d = ('0' + date.getDate()).slice(-2);
+  var newFormat = y + '/' + m + '/' + d;
+  return newFormat;
+}
 
 /***/ }),
 

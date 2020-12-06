@@ -26,6 +26,9 @@ class AsynchronousController extends Controller
                 'w.price_upper',
             )
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
+            ->where('w.end_date', '>=', today())
+            ->where('w.state', '=', 1) // 1 = 応募中
+            ->orderBy('w.created_at', 'DESC')
             ->get();
 
         return $work->toJson();
