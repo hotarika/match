@@ -69,6 +69,8 @@ export default {
    },
    methods: {
       remove(index, id) {
+         const date = new Date();
+
          // 「残りxx件を全て表示する」に使用
          this.removeNum++;
 
@@ -81,10 +83,9 @@ export default {
          }
 
          // 通知を既読（notificationsテーブルのread_atカラム）
-         const today = new Date();
          axios
-            .put(this.public_path + 'notifications/' + id, {
-               read_at: today.toLocaleString()
+            .put(this.public_path + 'applicants-notifications/' + id, {
+               read_at: date.toLocaleString()
             })
             .then(res => {
                console.log(res);
