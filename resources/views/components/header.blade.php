@@ -42,12 +42,12 @@
                      !Request::is('works/create') &&
                      !Request::is('works/*/edit') &&
                      Request::is('works/*') &&
-                     $work->owner_id === Auth::id()
+                     $work->orderer_id === Auth::id()
                      )
                      <div class="p-header__orderMenuWrap">
                         <!-- スマホのみ表示 -->
                         <li class="p-header__item -sp">
-                           <a class="c-link p-header__navLink" href="{{route('applicants.show',$work->work_id)}}">
+                           <a class="c-link p-header__navLink" href="{{route('applicants.show',$work->w_id)}}">
                               <i class="fas fa-list-alt p-header__navIcon"></i>
                               <div class="p-header__navName u-ml2">応募者一覧</div>
                            </a>

@@ -13,16 +13,16 @@
          <aside class="l-side">
             @include('components/sidebar')
 
-            @if($work->owner_id === Auth::id())
+            @if($work->orderer_id === Auth::id())
             <div class="p-side__linkHead">発注者メニュー</div>
             <ul class="p-side__lists">
-               <a class="c-btn p-side__link" href="{{route('applicants.show',$work->work_id)}}">
+               <a class="c-btn p-side__link" href="{{route('applicants.show',$work->w_id)}}">
                   <li><i class="fas fa-list-alt"></i><span class="u-ml1">応募者一覧</span></li>
                </a>
                <a class="c-btn p-side__link" href="{{route('works.edit',$work_id)}}">
                   <li><i class="fas fa-edit"></i><span>編集</span></li>
                </a>
-               <form method="POST" name="workDeleteForm" action="{{route('works.destroy',$work->owner_id)}}">
+               <form method="POST" name="workDeleteForm" action="{{route('works.destroy',$work->orderer_id)}}">
                   <a class="c-btn p-side__link" href="javascript:workDeleteForm.submit()"
                      onclick='return confirm("削除しますか？");'>
                      @method('DELETE')
@@ -53,7 +53,7 @@
                   </div>
 
                   <!-- 仕事詳細説明 -->
-                  <h2 class="c-h2__head p-workDetail__head">{{$work->work_name}}</h2>
+                  <h2 class="c-h2__head p-workDetail__head">{{$work->w_name}}</h2>
                   <div class="p-workDetail__infoWrap">
                      <!-- 仕事情報 上部 -->
                      <div class="p-workDetail__startRecruitment">募集開始：<time>{{$work->created_at}}</time></div>
@@ -105,8 +105,8 @@
                   </div>
 
                   {{-- 応募ボタン --}}
-                  @if ($work->owner_id !== Auth::id())
-                  @if($work->works_states === 1)
+                  @if ($work->orderer_id !== Auth::id())
+                  @if($work->w_states === 1)
                   @if($applicant)
                   <form method="POST" action="{{route('applicants.destroy',$applicant->id)}}">
                      @method('DELETE')
@@ -116,8 +116,8 @@
                   @else
                   <form method="POST" action="{{route('applicants.store')}}">
                      @csrf
-                     <input type="hidden" name="work_id" value="{{$work->work_id}}">
-                     <input type="hidden" name="owner_id" value="{{$work->owner_id}}">
+                     <input type="hidden" name="work_id" value="{{$work->w_id}}">
+                     <input type="hidden" name="owner_id" value="{{$work->orderer_id}}">
                      <button class="c-btn p-workDetail__appBtn -app" type="submit">応募する</button>
                   </form>
                   @endif

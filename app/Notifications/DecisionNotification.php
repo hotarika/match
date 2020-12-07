@@ -1,4 +1,5 @@
 <?php
+// チェック済み
 
 namespace App\Notifications;
 

@@ -79,10 +79,10 @@ class WorksController extends Controller
         // **********************************
         $work = DB::table('works as w')
             ->select(
-                'w.id as work_id',
-                'w.name as work_name',
-                'u.id as owner_id',
-                'u.name as owner_name',
+                'w.id as w_id',
+                'w.name as w_name',
+                'u.id as orderer_id',
+                'u.name as orderer_name',
                 'w.contract_id',
                 'c.type',
                 'w.end_date',
@@ -91,7 +91,7 @@ class WorksController extends Controller
                 'w.price_upper',
                 'w.content',
                 'w.created_at',
-                'w.state as works_states'
+                'w.state as w_states'
             )
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
             ->leftJoin('contracts as c', 'w.contract_id', '=', 'c.id')
@@ -118,7 +118,7 @@ class WorksController extends Controller
         $applicant = DB::table('applicants as a')
             ->select('*')
             ->where('applicant_id', Auth::id())
-            ->where('work_id', $work->work_id)
+            ->where('work_id', $work->w_id)
             ->first();
 
         // **********************************
@@ -171,7 +171,14 @@ class WorksController extends Controller
         //     $child_msg[$i]->created_at = date('Y/m/d', strtotime($child_msg[$i]->created_at));
         // }
 
-        return view('works.show', compact('work_id', 'user', 'work', 'parent_msg', 'child_msg', 'applicant'));
+        return view('works.show', compact(
+            'work_id',
+            'user',
+            'work',
+            'applicant',
+            'parent_msg',
+            'child_msg',
+        ));
     }
 
     /**
