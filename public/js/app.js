@@ -2707,7 +2707,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/getDateTimeNewFormat */ "./resources/js/modules/getDateTimeNewFormat.js");
+/* harmony import */ var _modules_getTemporaryId__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/getTemporaryId */ "./resources/js/modules/getTemporaryId.js");
+/* harmony import */ var _modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/getDateTimeNewFormat */ "./resources/js/modules/getDateTimeNewFormat.js");
 //
 //
 //
@@ -2813,7 +2814,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
- // import { getTemporaryId } from '../modules/getTemporaryId';
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2846,7 +2847,7 @@ __webpack_require__.r(__webpack_exports__);
         // メッセージ挿入（表示用のため、このデータはDBには保存されません）
         // 親要素を投稿した後にリロードせずに連続で子要素に投稿すると不具合が出るため、一番最下部でリロードしており、jsの動きは必要ないかもしれないが、少しだけでも投稿した雰囲気が出るため一応下記の通り定義している
         this.parentMessages.unshift({
-          pm_id: this.parentMessages.length + 1,
+          pm_id: Object(_modules_getTemporaryId__WEBPACK_IMPORTED_MODULE_1__["getTemporaryId"])(date),
           // keyの重複を避けるため、一時的にidを生成
           u_name: this.user.name,
           w_id: this.workId,
@@ -2854,7 +2855,7 @@ __webpack_require__.r(__webpack_exports__);
           u_image: this.user.image,
           pm_title: this.parentTitle,
           pm_content: this.parentTextarea,
-          pm_created_at: Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_1__["getDateTimeNewFormat"])(date)
+          pm_created_at: Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__["getDateTimeNewFormat"])(date)
         }); // DBへ保存
 
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.publicPath + 'pubmsgs', {
@@ -2896,7 +2897,7 @@ __webpack_require__.r(__webpack_exports__);
           cm_content: text,
           u_name: this.user.name,
           u_image: this.user.image,
-          cm_created_at: Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_1__["getDateTimeNewFormat"])(date)
+          cm_created_at: Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__["getDateTimeNewFormat"])(date)
         }); // DBへ挿入
 
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.publicPath + 'child-pubmsgs', {
@@ -2922,7 +2923,7 @@ __webpack_require__.r(__webpack_exports__);
   filters: {
     formatDateTime: function formatDateTime(value) {
       var date = new Date(value);
-      var newFormat = Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_1__["getDateTimeNewFormat"])(date);
+      var newFormat = Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__["getDateTimeNewFormat"])(date);
       return newFormat;
     }
   }

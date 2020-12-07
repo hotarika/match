@@ -70,7 +70,7 @@ class WorksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($w_id)
     {
         // **********************************
         // 仕事詳細
@@ -89,11 +89,11 @@ class WorksController extends Controller
                 'w.price_upper',
                 'w.content',
                 'w.created_at',
-                'w.state as w_states'
+                'w.state as w_state'
             )
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
             ->leftJoin('contracts as c', 'w.contract_id', '=', 'c.id')
-            ->where('w.id', $id)->first();
+            ->where('w.id', $w_id)->first();
 
         $work->end_date =  date("Y/m/d", strtotime($work->end_date));
         $work->hope_date =  date("Y/m/d", strtotime($work->hope_date));
@@ -119,10 +119,16 @@ class WorksController extends Controller
             ->where('work_id', $work->w_id)
             ->first();
 
+        // 応募人数のカウント
+        $countApplicants = DB::table('works as w')
+            ->leftJoin('applicants as a', 'w.id', '=', 'a.work_id')
+            ->where('w.id', $w_id)
+            ->count();
+
         // **********************************
         // パブリックメッセージ
         // **********************************
-        $work_id = $id; // Vueに渡すために変数に格納
+        $work_id = $w_id; // Vueに渡すために変数に格納
         $user = Auth::user();
 
         // 親掲示板
@@ -139,7 +145,7 @@ class WorksController extends Controller
                 'pm.created_at as pm_created_at'
             )
             ->leftJoin('users as u', 'pm.user_id', '=', 'u.id')
-            ->where('work_id', $id)
+            ->where('work_id', $w_id)
             ->orderBy('pm.created_at', 'DESC')
             ->get();
 
@@ -167,6 +173,7 @@ class WorksController extends Controller
             // 商品詳細
             'work',
             'applicant',
+            'countApplicants',
             // パブリックメッセージ
             'user',
             'work_id',

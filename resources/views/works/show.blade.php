@@ -95,7 +95,7 @@
                         </div>
                         <div class="p-workDetail__infoLowerItem -appNum">
                            <div class="p-workDetail__infoLowerHead">応募人数</div>
-                           <div class="p-workDetail__infoLowerBody">20000人</div>
+                           <div class="p-workDetail__infoLowerBody">{{$countApplicants}}人</div>
                         </div>
                      </div>
                   </div>
@@ -106,25 +106,25 @@
 
                   {{-- 応募ボタン --}}
                   @if ($work->orderer_id !== Auth::id())
-                  @if($work->w_states === 1)
+                  @if($work->w_state === 1)
                   @if($applicant)
                   <form method="POST" action="{{route('applicants.destroy',$applicant->id)}}">
                      @method('DELETE')
                      @csrf
                      <button class="c-btn p-workDetail__appBtn -stop" type="submit">応募を取りやめる</button>
                   </form>
-                  @else
+                  @else {{-- @if($applicant) --}}
                   <form method="POST" action="{{route('applicants.store')}}">
                      @csrf
                      <input type="hidden" name="work_id" value="{{$work->w_id}}">
                      <input type="hidden" name="owner_id" value="{{$work->orderer_id}}">
                      <button class="c-btn p-workDetail__appBtn -app" type="submit">応募する</button>
                   </form>
-                  @endif
-                  @else
+                  @endif {{-- @if($applicant) --}}
+                  @else {{-- @if($work->w_state === 1) --}}
                   <div class="c-btn p-workDetail__appBtn -end">この仕事の応募は終了しました。</div>
-                  @endif
-                  @endif
+                  @endif {{-- @if($work->w_state === 1) --}}
+                  @endif {{-- ($work->orderer_id !== Auth::id() --}}
                </div>
             </section>
 

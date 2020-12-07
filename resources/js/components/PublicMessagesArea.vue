@@ -105,7 +105,7 @@
 
 <script>
 import axios from 'axios';
-// import { getTemporaryId } from '../modules/getTemporaryId';
+import { getTemporaryId } from '../modules/getTemporaryId';
 import { getDateTimeNewFormat } from '../modules/getDateTimeNewFormat';
 
 export default {
@@ -139,7 +139,7 @@ export default {
             // メッセージ挿入（表示用のため、このデータはDBには保存されません）
             // 親要素を投稿した後にリロードせずに連続で子要素に投稿すると不具合が出るため、一番最下部でリロードしており、jsの動きは必要ないかもしれないが、少しだけでも投稿した雰囲気が出るため一応下記の通り定義している
             this.parentMessages.unshift({
-               pm_id: this.parentMessages.length + 1, // keyの重複を避けるため、一時的にidを生成
+               pm_id: getTemporaryId(date), // keyの重複を避けるため、一時的にidを生成
                u_name: this.user.name,
                w_id: this.workId,
                u_id: this.user.id,
