@@ -12,6 +12,9 @@
                :card="card"
             ></direct-messages-card-component>
          </span>
+         <div class="c-h2__noItems -dm" v-if="allData.length === 0">
+            ダイレクトメッセージはありません
+         </div>
       </div>
    </section>
 </template>

@@ -108,18 +108,23 @@
          padding-top: 22px;
       }
       &.-order {
-         padding-right: 20px;
+         padding-right: 31px;
       }
       &.-apply {
-         padding-right: 27px;
+         padding-right: 31px;
       }
       &.-pubmsg {
          padding-top: 40px;
-         padding-left: 15px;
+         padding-left: 8px;
       }
       &.-dm {
          padding-top: 40px;
-         padding-left: 10px;
+         padding-left: 8px;
+      }
+      // パブリックメッセージリスト & // ダイレクトメッセージリスト
+      &.-list {
+         padding-top: 40px;
+         margin-left: -35px;
       }
    }
 }

@@ -8,6 +8,9 @@
             :auth-id="authId"
          ></direct-messages-card-component>
       </span>
+      <div class="c-h2__noItems -list" v-if="allData.length === 0">
+         ダイレクトメッセージはありません
+      </div>
    </section>
 </template>
 

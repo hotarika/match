@@ -7,6 +7,9 @@
             :public-path="publicPath"
          ></public-messages-card-component>
       </span>
+      <div class="c-h2__noItems -list" v-if="allData.length === 0">
+         パブリックメッセージはありません
+      </div>
    </section>
 </template>
 

@@ -2149,6 +2149,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2186,6 +2189,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
 //
 //
 //
@@ -2366,6 +2372,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2378,7 +2386,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2394,7 +2401,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     var _this = this;
 
     // 取得
-    axios.get(this.publicPath + 'async/badge').then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.publicPath + 'async/badge').then(function (res) {
       console.log(res);
       _this.count = res.data[0].count;
     })["catch"](function (err) {
@@ -3059,6 +3066,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -3095,6 +3105,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
 //
 //
 //
@@ -3475,6 +3488,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -3511,6 +3527,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
 //
 //
 //
@@ -40139,23 +40158,31 @@ var render = function() {
   return _c(
     "section",
     { staticClass: "c-h2__sec p-dmList__sec" },
-    _vm._l(_vm.allData, function(card) {
-      return _c(
-        "span",
-        { key: card.id },
-        [
-          _c("direct-messages-card-component", {
-            attrs: {
-              "public-path": _vm.publicPath,
-              card: card,
-              "auth-id": _vm.authId
-            }
-          })
-        ],
-        1
-      )
-    }),
-    0
+    [
+      _vm._l(_vm.allData, function(card) {
+        return _c(
+          "span",
+          { key: card.id },
+          [
+            _c("direct-messages-card-component", {
+              attrs: {
+                "public-path": _vm.publicPath,
+                card: card,
+                "auth-id": _vm.authId
+              }
+            })
+          ],
+          1
+        )
+      }),
+      _vm._v(" "),
+      _vm.allData.length === 0
+        ? _c("div", { staticClass: "c-h2__noItems -list" }, [
+            _vm._v("\n      ダイレクトメッセージはありません\n   ")
+          ])
+        : _vm._e()
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -40195,19 +40222,27 @@ var render = function() {
     _c(
       "div",
       { staticClass: "c-h2__body p-mypage__secBody" },
-      _vm._l(_vm.allData.slice(0, _vm.showNum), function(card) {
-        return _c(
-          "span",
-          { key: card.id },
-          [
-            _c("direct-messages-card-component", {
-              attrs: { "public-path": _vm.publicPath, card: card }
-            })
-          ],
-          1
-        )
-      }),
-      0
+      [
+        _vm._l(_vm.allData.slice(0, _vm.showNum), function(card) {
+          return _c(
+            "span",
+            { key: card.id },
+            [
+              _c("direct-messages-card-component", {
+                attrs: { "public-path": _vm.publicPath, card: card }
+              })
+            ],
+            1
+          )
+        }),
+        _vm._v(" "),
+        _vm.allData.length === 0
+          ? _c("div", { staticClass: "c-h2__noItems -dm" }, [
+              _vm._v("\n         ダイレクトメッセージはありません\n      ")
+            ])
+          : _vm._e()
+      ],
+      2
     )
   ])
 }
@@ -41062,19 +41097,27 @@ var render = function() {
   return _c(
     "section",
     { staticClass: "c-h2__sec p-pubmsgList__sec" },
-    _vm._l(_vm.allData, function(msgCard) {
-      return _c(
-        "span",
-        { key: msgCard.pm_id },
-        [
-          _c("public-messages-card-component", {
-            attrs: { "msg-card": msgCard, "public-path": _vm.publicPath }
-          })
-        ],
-        1
-      )
-    }),
-    0
+    [
+      _vm._l(_vm.allData, function(msgCard) {
+        return _c(
+          "span",
+          { key: msgCard.pm_id },
+          [
+            _c("public-messages-card-component", {
+              attrs: { "msg-card": msgCard, "public-path": _vm.publicPath }
+            })
+          ],
+          1
+        )
+      }),
+      _vm._v(" "),
+      _vm.allData.length === 0
+        ? _c("div", { staticClass: "c-h2__noItems -list" }, [
+            _vm._v("\n      パブリックメッセージはありません\n   ")
+          ])
+        : _vm._e()
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -41114,19 +41157,27 @@ var render = function() {
     _c(
       "div",
       { staticClass: "c-h2__body p-mypage__secBody" },
-      _vm._l(_vm.allData.slice(0, _vm.showNum), function(msgCard) {
-        return _c(
-          "span",
-          { key: msgCard.pm_id },
-          [
-            _c("public-messages-card-component", {
-              attrs: { "msg-card": msgCard, "public-path": _vm.publicPath }
-            })
-          ],
-          1
-        )
-      }),
-      0
+      [
+        _vm._l(_vm.allData.slice(0, _vm.showNum), function(msgCard) {
+          return _c(
+            "span",
+            { key: msgCard.pm_id },
+            [
+              _c("public-messages-card-component", {
+                attrs: { "msg-card": msgCard, "public-path": _vm.publicPath }
+              })
+            ],
+            1
+          )
+        }),
+        _vm._v(" "),
+        _vm.allData.length === 0
+          ? _c("div", { staticClass: "c-h2__noItems -pubmsg" }, [
+              _vm._v("\n         パブリックメッセージはありません\n      ")
+            ])
+          : _vm._e()
+      ],
+      2
     )
   ])
 }
@@ -41495,19 +41546,27 @@ var render = function() {
     _c(
       "div",
       { staticClass: "c-h2__workCardBody p-mypage__secBody" },
-      _vm._l(_vm.allData, function(work) {
-        return _c(
-          "span",
-          { key: work.id },
-          [
-            _c("works-card-component", {
-              attrs: { work: work, "public-path": _vm.publicPath }
-            })
-          ],
-          1
-        )
-      }),
-      0
+      [
+        _vm._l(_vm.allData, function(work) {
+          return _c(
+            "span",
+            { key: work.id },
+            [
+              _c("works-card-component", {
+                attrs: { work: work, "public-path": _vm.publicPath }
+              })
+            ],
+            1
+          )
+        }),
+        _vm._v(" "),
+        _vm.allData.length === 0
+          ? _c("div", { staticClass: "c-h2__noItems -apply" }, [
+              _vm._v("\n         応募した仕事はありません\n      ")
+            ])
+          : _vm._e()
+      ],
+      2
     )
   ])
 }
@@ -41539,19 +41598,27 @@ var render = function() {
     _c(
       "div",
       { staticClass: "c-h2__workCardBody p-mypage__secBody" },
-      _vm._l(_vm.allData, function(work) {
-        return _c(
-          "span",
-          { key: work.id },
-          [
-            _c("works-card-component", {
-              attrs: { work: work, "public-path": _vm.publicPath }
-            })
-          ],
-          1
-        )
-      }),
-      0
+      [
+        _vm._l(_vm.allData, function(work) {
+          return _c(
+            "span",
+            { key: work.id },
+            [
+              _c("works-card-component", {
+                attrs: { work: work, "public-path": _vm.publicPath }
+              })
+            ],
+            1
+          )
+        }),
+        _vm._v(" "),
+        _vm.allData.length === 0
+          ? _c("div", { staticClass: "c-h2__noItems -order" }, [
+              _vm._v("\n         発注した仕事はありません\n      ")
+            ])
+          : _vm._e()
+      ],
+      2
     )
   ])
 }

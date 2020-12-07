@@ -1322,21 +1322,26 @@ body {
 }
 
 .c-h2__noItems.-order {
-  padding-right: 20px;
+  padding-right: 31px;
 }
 
 .c-h2__noItems.-apply {
-  padding-right: 27px;
+  padding-right: 31px;
 }
 
 .c-h2__noItems.-pubmsg {
   padding-top: 40px;
-  padding-left: 15px;
+  padding-left: 8px;
 }
 
 .c-h2__noItems.-dm {
   padding-top: 40px;
-  padding-left: 10px;
+  padding-left: 8px;
+}
+
+.c-h2__noItems.-list {
+  padding-top: 40px;
+  margin-left: -35px;
 }
 
 .p-applicant__body {

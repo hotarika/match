@@ -8,6 +8,9 @@
                :public-path="publicPath"
             ></works-card-component>
          </span>
+         <div class="c-h2__noItems -apply" v-if="allData.length === 0">
+            応募した仕事はありません
+         </div>
       </div>
    </section>
 </template>
