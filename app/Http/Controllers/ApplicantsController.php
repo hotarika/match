@@ -50,12 +50,12 @@ class ApplicantsController extends Controller
 
         // 応募キャンセル機能を付けているため、もし一度応募をキャンセルしたが再度応募した場合に、DBにボードが以前作成されているかどうかを判断しそれぞれの処理をする
         if (!DirectMessageBoard::where('work_id', '=', $request->work_id)
-            ->where('contractor_id', '=', Auth::id())
+            ->where('applicant_id', '=', Auth::id())
             ->count()) {
             // ダイレクトメッセージのボードを作成
             $board = new DirectMessageBoard;
             $board->work_id = $request->work_id;
-            $board->contractor_id = Auth::id();;
+            $board->applicant_id = Auth::id();;
             $board->save();
         }
 
@@ -92,7 +92,7 @@ class ApplicantsController extends Controller
             ->leftJoin('direct_messages_boards as b', function ($join) {
                 // 複合キーでの結合
                 $join->on('a.work_id', '=', 'b.work_id');
-                $join->on('a.applicant_id', '=', 'b.contractor_id');
+                $join->on('a.applicant_id', '=', 'b.applicant_id');
             })
             ->where('a.work_id', $id)
             ->get();

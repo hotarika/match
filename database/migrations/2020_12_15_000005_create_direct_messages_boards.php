@@ -16,7 +16,7 @@ class CreateDirectMessagesBoards extends Migration
         Schema::create('direct_messages_boards', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('work_id');
-            $table->bigInteger('contractor_id');
+            $table->bigInteger('applicant_id');
             $table->timestamps();
         });
     }

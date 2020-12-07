@@ -55,10 +55,10 @@ class DirectMessagesContentsController extends Controller
         // left join works as w on b.`work_id` = w.id
         // left join users as u on w.user_id = u.id
         $info = DB::table('direct_messages_boards as b')
-            ->select('b.id as board_id', 'w.name as work_name', 'w.user_id as orderer_id', 'u1.name as owner_user_name', 'u1.image as owner_img', 'b.contractor_id', 'u2.name as contractor_name', 'u2.image as order_img')
+            ->select('b.id as board_id', 'w.name as work_name', 'w.user_id as orderer_id', 'u1.name as owner_user_name', 'u1.image as owner_img', 'b.applicant_id', 'u2.name as contractor_name', 'u2.image as order_img')
             ->leftJoin('works as w', 'b.work_id', '=', 'w.id')
             ->leftJoin('users as u1', 'w.user_id', '=', 'u1.id')
-            ->leftJoin('users as u2', 'b.contractor_id', '=', 'u2.id')
+            ->leftJoin('users as u2', 'b.applicant_id', '=', 'u2.id')
             ->where('b.id', $id)
             ->first();
 
