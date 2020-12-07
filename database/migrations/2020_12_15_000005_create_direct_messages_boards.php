@@ -17,6 +17,7 @@ class CreateDirectMessagesBoards extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('work_id');
             $table->bigInteger('applicant_id');
+            $table->boolean('delete_flg')->default(false);
             $table->timestamps();
         });
     }

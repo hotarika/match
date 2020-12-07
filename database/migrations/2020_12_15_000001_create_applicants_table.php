@@ -18,6 +18,7 @@ class CreateApplicantsTable extends Migration
             $table->bigInteger('work_id');
             $table->bigInteger('applicant_id');
             $table->bigInteger('state')->default(1);
+            $table->boolean('delete_flg')->default(false);
             $table->timestamps();
         });
     }
