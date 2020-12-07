@@ -17,9 +17,9 @@ class DecisionNotification extends Notification
      *
      * @return void
      */
-    public function __construct($applicant, $request)
+    public function __construct($orderer, $request)
     {
-        $this->applicant = $applicant;
+        $this->orderer = $orderer;
         $this->request = $request;
     }
 
@@ -35,20 +35,6 @@ class DecisionNotification extends Notification
     }
 
     /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
-    }
-
-    /**
      * Get the array representation of the notification.
      *
      * @param  mixed  $notifiable
@@ -57,9 +43,9 @@ class DecisionNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'user_name' => $this->applicant->name,
+            'user_name' => $this->orderer->name,
             'param' => $this->request->board_id, // 遷移させるボードのid
-            'content' => '選考の結果、「' . $this->request->work_name . '」の仕事があなたに決定しました。メッセージを送って詳細を確認しましょう。',
+            'content' => '選考の結果、「' . $this->request->w_name . '」の仕事があなたに決定しました。メッセージを送って詳細を確認しましょう。',
         ];
     }
 }

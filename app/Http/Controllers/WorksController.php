@@ -78,7 +78,21 @@ class WorksController extends Controller
         // 仕事詳細
         // **********************************
         $work = DB::table('works as w')
-            ->select('w.id as work_id', 'w.name as work_name', 'u.id as owner_id', 'u.name as owner_name', 'w.contract_id', 'c.type', 'w.end_date', 'w.hope_date', 'w.price_lower', 'w.price_upper', 'w.content', 'w.created_at', 'w.state as works_states')
+            ->select(
+                'w.id as work_id',
+                'w.name as work_name',
+                'u.id as owner_id',
+                'u.name as owner_name',
+                'w.contract_id',
+                'c.type',
+                'w.end_date',
+                'w.hope_date',
+                'w.price_lower',
+                'w.price_upper',
+                'w.content',
+                'w.created_at',
+                'w.state as works_states'
+            )
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
             ->leftJoin('contracts as c', 'w.contract_id', '=', 'c.id')
             ->where('w.id', $id)->first();
@@ -113,8 +127,18 @@ class WorksController extends Controller
         $user = Auth::user();
 
         // 親掲示板
-        $parent_msg = DB::table('parent_public_messages as pm')
-            ->select('pm.id', 'pm.user_id', 'u.name', 'u.image', 'pm.title', 'pm.content', 'pm.created_at')
+        $parent_msg = DB::table(
+            'parent_public_messages as pm'
+        )
+            ->select(
+                'pm.id',
+                'pm.user_id',
+                'u.name',
+                'u.image',
+                'pm.title',
+                'pm.content',
+                'pm.created_at'
+            )
             ->leftJoin('users as u', 'pm.user_id', '=', 'u.id')
             ->where('work_id', $id)
             ->latest()
@@ -126,8 +150,18 @@ class WorksController extends Controller
         // }
 
         // 子掲示板
-        $child_msg = DB::table('child_public_messages as cm')
-            ->select('cm.id', 'cm.parent_id', 'cm.user_id', 'u.name', 'u.image', 'cm.content', 'cm.created_at')
+        $child_msg = DB::table(
+            'child_public_messages as cm'
+        )
+            ->select(
+                'cm.id',
+                'cm.parent_id',
+                'cm.user_id',
+                'u.name',
+                'u.image',
+                'cm.content',
+                'cm.created_at'
+            )
             ->leftJoin('users as u', 'cm.user_id', '=', 'u.id')
             ->oldest()
             ->get();

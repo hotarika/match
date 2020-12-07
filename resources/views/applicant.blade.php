@@ -23,9 +23,9 @@
                         <div class="p-applicant__userWrap">
                            <div class="p-applicant__user">
                               <img class="c-img p-applicant__userImg"
-                                 src="{{url('/').'/storage/user_img/'.$applicant->image}}" alt="ユーザーの画像" />
+                                 src="{{url('/').'/storage/user_img/'.$applicant->u_image}}" alt="ユーザーの画像" />
                               <a class="c-link p-applicant__userName" href="profile">
-                                 {{$applicant->user_name}}
+                                 {{$applicant->u_name}}
                               </a>
                            </div>
 
@@ -41,10 +41,8 @@
                            class="p-applicant__decideForm -decide -decided -wait">
                            @method('PUT')
                            @csrf
-                           <input type="hidden" name="applicant_id" value="{{$applicant->applicant_id}}">
                            <input type="hidden" name="board_id" value="{{$applicant->board_id}}">
-                           <input type="hidden" name="work_id" value="{{$applicant->work_id}}">
-                           <input type="hidden" name="work_name" value="{{$applicant->w_name}}">
+                           <input type="hidden" name="w_id" value="{{$applicant->w_id}}">
                            <button class="c-btn p-applicant__decideBtn" type="submit">
                               決定する
                            </button>

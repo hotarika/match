@@ -55,7 +55,7 @@ class ApplicantsController extends Controller
             // ダイレクトメッセージのボードを作成
             $board = new DirectMessageBoard;
             $board->work_id = $request->work_id;
-            $board->applicant_id = Auth::id();;
+            $board->applicant_id = Auth::id();
             $board->save();
         }
 
@@ -80,11 +80,11 @@ class ApplicantsController extends Controller
         $applicants = DB::table('applicants as a')
             ->select(
                 'a.id',
-                'a.work_id',
+                'a.work_id as w_id',
                 'w.name as w_name',
                 'a.applicant_id',
-                'u.name as user_name',
-                'u.image',
+                'u.name as u_name',
+                'u.image as u_image',
                 'b.id as board_id'
             )
             ->leftJoin('users as u', 'a.applicant_id', '=', 'u.id')
@@ -123,20 +123,20 @@ class ApplicantsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $applicant_id)
     {
-        // 決定者へ通知
-        $orderer = Auth::user();
-        $applicant =  User::find($request->applicant_id);
-        $applicant->notify(new DecisionNotification($orderer, $request));
+        // 応募者へ決定を通知
+        $toApplicant =  User::find($applicant_id); // 通知先
+        $fromOrderer = Auth::user(); // 通知者
+        $toApplicant->notify(new DecisionNotification($fromOrderer, $request));
 
         // 応募者テーブルの更新
-        $applicant = Applicant::find($id);
+        $applicant = Applicant::find($applicant_id);
         $applicant->state = 2; // 応募者決定
         $applicant->save();
 
         // 仕事テーブルの更新
-        $work = Work::find($request->work_id);
+        $work = Work::find($request->w_id);
         $work->state = 2; // 応募終了
         $work->save();
 
