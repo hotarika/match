@@ -76,17 +76,17 @@ class UsersController extends Controller
         $user = User::find($id);
 
         // ストレージファイルに保存（もし前回、画像登録をしていた場合、その画像を削除）
-        // if ($request->image) {
-        // if ($user->image) {
-        //     Storage::delete('public/user_img/' . $user->image_name);
-        // }
-        Storage::disk('public')
-            ->putFile('user_img', $request->file('image'));
-        // }
+        if ($request->image) {
+            if ($user->image !== 'no-image.png') {
+                Storage::delete('public/user_img/' . $user->image);
+            }
+            Storage::disk('public')
+                ->putFile('user_img', $request->file('image'));
+        }
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->image = ($request->file()) ? $request->file('image')->hashName() : $user->image_name;
+        $user->image = ($request->file()) ? $request->file('image')->hashName() : $user->image;
         $user->introduction = $request->introduction;
         $user->save();
 
