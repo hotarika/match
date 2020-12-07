@@ -127,8 +127,8 @@ class ApplicantsController extends Controller
     {
         // 決定者へ通知
         $orderer = Auth::user();
-        $contractor =  User::find($request->applicant_id);
-        $contractor->notify(new DecisionNotification($orderer, $request));
+        $applicant =  User::find($request->applicant_id);
+        $applicant->notify(new DecisionNotification($orderer, $request));
 
         // 応募者テーブルの更新
         $applicant = Applicant::find($id);

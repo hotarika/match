@@ -12,7 +12,8 @@
          {{-- メインエリア --}}
          <div class="l-main__mainArea -twoColumns">
             <works-list-component
-               :public-path="{{ json_encode(asset('')) }}"></works-list-component>
+               :public-path="{{ json_encode(asset('')) }}">
+            </works-list-component>
          </div>
 
       </div>

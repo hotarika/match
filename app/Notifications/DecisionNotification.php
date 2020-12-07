@@ -17,9 +17,9 @@ class DecisionNotification extends Notification
      *
      * @return void
      */
-    public function __construct($contractor, $request)
+    public function __construct($applicant, $request)
     {
-        $this->contractor = $contractor;
+        $this->applicant = $applicant;
         $this->request = $request;
     }
 
@@ -57,7 +57,7 @@ class DecisionNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'user_name' => $this->contractor->name,
+            'user_name' => $this->applicant->name,
             'param' => $this->request->board_id, // 遷移させるボードのid
             'content' => '選考の結果、「' . $this->request->work_name . '」の仕事があなたに決定しました。メッセージを送って詳細を確認しましょう。',
         ];
