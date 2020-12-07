@@ -62,17 +62,17 @@
                      <template v-for="c in childMessages">
                         <template
                            v-if="
-                              p.id === c.parent_id && p.work_id === c.work_id
+                              p.pm_id === c.parent_id && p.w_id === c.work_id
                            "
                         >
-                           <div class="p-workDetail__childWrap" :key="c.id">
+                           <div class="p-workDetail__childWrap" :key="c.cm_id">
                               <time class="p-workDetail__childDate">{{
-                                 c.created_at | formatDateTime
+                                 c.cm_created_at | formatDateTime
                               }}</time>
                               <img
                                  class="c-img p-workDetail__childImg"
                                  :src="
-                                    publicPath + 'storage/user_img/' + c.image
+                                    publicPath + 'storage/user_img/' + c.u_image
                                  "
                                  alt="ユーザーのアイコン"
                               />
@@ -80,10 +80,10 @@
                                  <a
                                     class="c-link p-workDetail__childName -workOwner"
                                     src="profile"
-                                    >{{ c.name }}</a
+                                    >{{ c.u_name }}</a
                                  >
                                  <p class="p-workDetail__childContent">
-                                    {{ c.content }}
+                                    {{ c.cm_content }}
                                  </p>
                               </div>
                            </div>
@@ -105,7 +105,7 @@
 
 <script>
 import axios from 'axios';
-import { getTemporaryId } from '../modules/getTemporaryId';
+// import { getTemporaryId } from '../modules/getTemporaryId';
 import { getDateTimeNewFormat } from '../modules/getDateTimeNewFormat';
 
 export default {
@@ -139,7 +139,7 @@ export default {
             // メッセージ挿入（表示用のため、このデータはDBには保存されません）
             // 親要素を投稿した後にリロードせずに連続で子要素に投稿すると不具合が出るため、一番最下部でリロードしており、jsの動きは必要ないかもしれないが、少しだけでも投稿した雰囲気が出るため一応下記の通り定義している
             this.parentMessages.unshift({
-               pm_id: getTemporaryId(date), // keyの重複を避けるため、一時的にidを生成
+               pm_id: this.parentMessages.length + 1, // keyの重複を避けるため、一時的にidを生成
                u_name: this.user.name,
                w_id: this.workId,
                u_id: this.user.id,
@@ -183,7 +183,17 @@ export default {
          }
 
          if (confirm('送信してもよろしいですか？')) {
-            // メッセージの挿入
+            // メッセージ挿入（表示用のため、このデータはDBには保存されません）
+            this.childMessages.push({
+               cm_id: this.childMessages.length + 1,
+               parent_id: refs[1],
+               cm_content: text,
+               u_name: this.user.name,
+               u_image: this.user.image,
+               cm_created_at: getDateTimeNewFormat(date)
+            });
+
+            // DBへ挿入
             axios
                .post(this.publicPath + 'child-pubmsgs', {
                   parent_id: refs[1],
@@ -195,22 +205,12 @@ export default {
                });
 
             // 親テーブルの更新日時（updated_at）を更新
-            // 挿入する更新日時は、LaravelのController側で定義
+            // 挿入する更新日時は、LaravelのController側で定義しているので、ここでは挿入するデータは何も指定していない
             axios
-               .put(this.publicPath + 'pubmsgs/' + this.parentMessages[0].id)
+               .put(this.publicPath + 'pubmsgs/' + this.parentMessages[0].pm_id)
                .then(res => {
                   console.log(res);
                });
-
-            // メッセージの挿入
-            this.childMessages.push({
-               user_id: this.user.id,
-               parent_id: refs[1],
-               content: text,
-               name: this.user.name,
-               image: this.user.image,
-               created_at: getDateTimeNewFormat(date)
-            });
 
             // 挿入後に、メッセージを空にする
             const textarea = document.getElementsByClassName(

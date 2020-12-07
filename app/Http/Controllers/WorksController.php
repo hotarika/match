@@ -148,16 +148,16 @@ class WorksController extends Controller
             'child_public_messages as cm'
         )
             ->select(
-                'cm.id',
+                'cm.id as cm_id',
                 'cm.parent_id',
-                'cm.user_id',
-                'u.name',
-                'u.image',
-                'cm.content',
-                'cm.created_at'
+                'cm.user_id as u_id',
+                'u.name as u_name',
+                'u.image as u_image',
+                'cm.content as cm_content',
+                'cm.created_at as cm_created_at'
             )
             ->leftJoin('users as u', 'cm.user_id', '=', 'u.id')
-            ->oldest()
+            ->orderBy('cm.created_at', 'ASC')
             ->get();
 
         // **********************************
