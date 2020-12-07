@@ -70,7 +70,7 @@ class WorksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($w_id)
+    public function show($work_id)
     {
         // **********************************
         // 仕事詳細
@@ -93,7 +93,7 @@ class WorksController extends Controller
             )
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
             ->leftJoin('contracts as c', 'w.contract_id', '=', 'c.id')
-            ->where('w.id', $w_id)->first();
+            ->where('w.id', $work_id)->first();
 
         $work->end_date =  date("Y/m/d", strtotime($work->end_date));
         $work->hope_date =  date("Y/m/d", strtotime($work->hope_date));
@@ -122,14 +122,13 @@ class WorksController extends Controller
         // 応募人数のカウント
         $countApplicants = DB::table('works as w')
             ->leftJoin('applicants as a', 'w.id', '=', 'a.work_id')
-            ->where('w.id', $w_id)
+            ->where('w.id', $work_id)
             ->count();
 
         // **********************************
         // パブリックメッセージ
         // **********************************
-        $work_id = $w_id; // Vueに渡すために変数に格納
-        $user = Auth::user();
+        $authUser = Auth::user();
 
         // 親掲示板
         $parent_msg = DB::table(
@@ -145,8 +144,8 @@ class WorksController extends Controller
                 'pm.created_at as pm_created_at'
             )
             ->leftJoin('users as u', 'pm.user_id', '=', 'u.id')
-            ->where('work_id', $w_id)
-            ->orderBy('pm.created_at', 'DESC')
+            ->where('work_id', $work_id)
+            ->orderBy('pm.updated_at', 'DESC')
             ->get();
 
         // 子掲示板
@@ -175,7 +174,7 @@ class WorksController extends Controller
             'applicant',
             'countApplicants',
             // パブリックメッセージ
-            'user',
+            'authUser',
             'work_id',
             'parent_msg',
             'child_msg',

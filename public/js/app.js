@@ -2821,7 +2821,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     publicPath: String,
     workId: Number,
-    user: Object,
+    authUser: Object,
     parentMsg: Array,
     childMsg: Array
   },
@@ -2849,10 +2849,10 @@ __webpack_require__.r(__webpack_exports__);
         this.parentMessages.unshift({
           pm_id: Object(_modules_getTemporaryId__WEBPACK_IMPORTED_MODULE_1__["getTemporaryId"])(date),
           // keyの重複を避けるため、一時的にidを生成
-          u_name: this.user.name,
+          u_name: this.authUser.name,
           w_id: this.workId,
-          u_id: this.user.id,
-          u_image: this.user.image,
+          u_id: this.authUser.id,
+          u_image: this.authUser.image,
           pm_title: this.parentTitle,
           pm_content: this.parentTextarea,
           pm_created_at: Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__["getDateTimeNewFormat"])(date)
@@ -2860,7 +2860,7 @@ __webpack_require__.r(__webpack_exports__);
 
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.publicPath + 'pubmsgs', {
           work_id: this.workId,
-          user_id: this.user.id,
+          user_id: this.authUser.id,
           title: this.parentTitle,
           content: this.parentTextarea
         }).then(function (res) {
@@ -2895,21 +2895,21 @@ __webpack_require__.r(__webpack_exports__);
           cm_id: this.childMessages.length + 1,
           parent_id: refs[1],
           cm_content: text,
-          u_name: this.user.name,
-          u_image: this.user.image,
+          u_name: this.authUser.name,
+          u_image: this.authUser.image,
           cm_created_at: Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__["getDateTimeNewFormat"])(date)
         }); // DBへ挿入
 
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.publicPath + 'child-pubmsgs', {
           parent_id: refs[1],
-          user_id: this.user.id,
+          user_id: this.authUser.id,
           content: text
         }).then(function (res) {
           console.log(res);
         }); // 親テーブルの更新日時（updated_at）を更新
         // 挿入する更新日時は、LaravelのController側で定義しているので、ここでは挿入するデータは何も指定していない
 
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(this.publicPath + 'pubmsgs/' + this.parentMessages[0].pm_id).then(function (res) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(this.publicPath + 'pubmsgs/' + refs[1]).then(function (res) {
           console.log(res);
         }); // 挿入後に、メッセージを空にする
 

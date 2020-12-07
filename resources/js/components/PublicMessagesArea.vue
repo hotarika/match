@@ -112,7 +112,7 @@ export default {
    props: {
       publicPath: String,
       workId: Number,
-      user: Object,
+      authUser: Object,
       parentMsg: Array,
       childMsg: Array
    },
@@ -140,10 +140,10 @@ export default {
             // 親要素を投稿した後にリロードせずに連続で子要素に投稿すると不具合が出るため、一番最下部でリロードしており、jsの動きは必要ないかもしれないが、少しだけでも投稿した雰囲気が出るため一応下記の通り定義している
             this.parentMessages.unshift({
                pm_id: getTemporaryId(date), // keyの重複を避けるため、一時的にidを生成
-               u_name: this.user.name,
+               u_name: this.authUser.name,
                w_id: this.workId,
-               u_id: this.user.id,
-               u_image: this.user.image,
+               u_id: this.authUser.id,
+               u_image: this.authUser.image,
                pm_title: this.parentTitle,
                pm_content: this.parentTextarea,
                pm_created_at: getDateTimeNewFormat(date)
@@ -153,7 +153,7 @@ export default {
             axios
                .post(this.publicPath + 'pubmsgs', {
                   work_id: this.workId,
-                  user_id: this.user.id,
+                  user_id: this.authUser.id,
                   title: this.parentTitle,
                   content: this.parentTextarea
                })
@@ -188,8 +188,8 @@ export default {
                cm_id: this.childMessages.length + 1,
                parent_id: refs[1],
                cm_content: text,
-               u_name: this.user.name,
-               u_image: this.user.image,
+               u_name: this.authUser.name,
+               u_image: this.authUser.image,
                cm_created_at: getDateTimeNewFormat(date)
             });
 
@@ -197,7 +197,7 @@ export default {
             axios
                .post(this.publicPath + 'child-pubmsgs', {
                   parent_id: refs[1],
-                  user_id: this.user.id,
+                  user_id: this.authUser.id,
                   content: text
                })
                .then(res => {
@@ -206,11 +206,9 @@ export default {
 
             // 親テーブルの更新日時（updated_at）を更新
             // 挿入する更新日時は、LaravelのController側で定義しているので、ここでは挿入するデータは何も指定していない
-            axios
-               .put(this.publicPath + 'pubmsgs/' + this.parentMessages[0].pm_id)
-               .then(res => {
-                  console.log(res);
-               });
+            axios.put(this.publicPath + 'pubmsgs/' + refs[1]).then(res => {
+               console.log(res);
+            });
 
             // 挿入後に、メッセージを空にする
             const textarea = document.getElementsByClassName(
