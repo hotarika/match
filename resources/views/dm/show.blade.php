@@ -15,7 +15,7 @@
             <direct-messages-area-component
                :public-path="{{ json_encode(asset('')) }}"
                :contents="{{json_encode($contents)}}"
-               :user-id="{{json_encode(Auth::id())}}"
+               :auth-id="{{json_encode(Auth::id())}}"
                :info="{{json_encode($info)}}" />
             </direct-messages-area-component>
          </div>

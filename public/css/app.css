@@ -1677,6 +1677,10 @@ body {
   }
 }
 
+.p-dm__h2.-myWork {
+  background-color: #bedcfd;
+}
+
 .p-dm__h2InfoWrap {
   display: flex;
   flex-direction: column;
@@ -1761,7 +1765,7 @@ body {
   border-radius: 0 0 2px 2px;
   position: relative;
   flex-basis: 15%;
-  padding: 15px 15px 50px 15px;
+  padding: 15px 15px 45px 15px;
   margin: 0;
   background: #ced4da;
   /* IE11 対応 */
@@ -1785,6 +1789,10 @@ body {
   }
 }
 
+.p-dm__form.-myWork {
+  background-color: #bedcfd;
+}
+
 @media all and (-ms-high-contrast: none) {
   .p-dm__form {
     min-height: 200px;
@@ -1792,8 +1800,8 @@ body {
 }
 
 .p-dm__sendBtn {
-  right: 16px;
-  bottom: 18px;
+  right: 57px;
+  bottom: 11px;
   /* IE11 対応 */
 }
 

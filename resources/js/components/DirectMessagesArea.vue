@@ -1,56 +1,39 @@
 <template>
    <section class="c-h2__sec p-dm__h2sec">
-      <div class="c-h2__head p-dm__h2">
-         <template v-if="info.owner_user_id === userId">
-            <img
-               :src="publicPath + 'storage/user_img/' + info.owner_img"
-               alt="ユーザーの画像"
-            />
-         </template>
-         <template v-else>
-            <img
-               :src="publicPath + 'storage/user_img/' + info.order_img"
-               alt="ユーザーの画像"
-            />
-         </template>
+      <div
+         class="c-h2__head p-dm__h2"
+         :class="{ '-myWork': authId === info.orderer_id }"
+      >
+         <img :src="divideImages" alt="ユーザーの画像" />
          <div class="p-dm__h2InfoWrap">
-            <div class="p-dm__h2InfoName">
-               <template v-if="info.owner_user_id === userId">
-                  {{ info.order_user_name }}
-               </template>
-               <template v-else>
-                  {{ info.owner_user_name }}
-               </template>
-            </div>
-            <div class="p-dm__h2InfoOrderName">
-               {{ info.work_name }}
-            </div>
+            <div class="p-dm__h2InfoName">{{ divideNames }}</div>
+            <div class="p-dm__h2InfoOrderName">{{ info.w_name }}</div>
          </div>
       </div>
 
       <div class="p-dm__msgSec">
          <div class="p-dm__msgArea js-scroll" data-scroll>
             <transition-group>
-               <div v-for="msg in contents" :key="msg.contents_id">
+               <div v-for="msg in contents" :key="msg.content_id">
                   <!-- 自分ののメッセージ -->
                   <div
-                     class="p-dm__msgMe"
-                     v-if="msg.user_id === userId"
                      :key="msg.id"
+                     :class="{
+                        'p-dm__msgMe': msg.user_id === authId,
+                        'p-dm__msgYou': msg.user_id !== authId
+                     }"
                   >
                      {{ msg.content }}
-                     <time>{{ msg.time }}</time>
-                  </div>
-                  <!-- 相手のメッセージ -->
-                  <div class="p-dm__msgYou" v-else :key="msg.id">
-                     {{ msg.content }}
-                     <time>{{ msg.time }}</time>
+                     <time>{{ msg.created_at | formatDateTime }}</time>
                   </div>
                </div>
             </transition-group>
          </div>
          <!-- フォーム -->
-         <form id="" class="p-dm__form" action="">
+         <form
+            class="p-dm__form"
+            :class="{ '-myWork': authId === info.orderer_id }"
+         >
             <textarea
                class="c-form__textarea"
                name="message"
@@ -63,7 +46,7 @@
             <button
                class="c-btn c-msgSendBtn p-dm__sendBtn"
                type="submit"
-               @click.prevent="addMsg"
+               @click.prevent="addMessage"
             >
                <i class="far fa-arrow-alt-circle-up"></i>送信
             </button>
@@ -73,13 +56,15 @@
 </template>
 
 <script>
-const axios = require('axios');
+import axios from 'axios';
+import { getDateTimeNewFormat } from '../modules/getDateTimeNewFormat';
+import { getTemporaryId } from '../modules/getTemporaryId';
 
 export default {
    props: {
       publicPath: String,
       contents: Array,
-      userId: Number,
+      authId: Number,
       info: Object
    },
    data() {
@@ -89,32 +74,30 @@ export default {
       };
    },
    methods: {
-      addMsg() {
+      addMessage() {
+         const date = new Date();
+
          // テキストエリアが空欄の場合
          if (!this.textarea.trim('')) {
             alert('メッセージが空欄です');
             return;
          }
 
-         // 今日の日付
-         var date = new Date();
-         const today =
-            date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
-
          // メッセージの送信
          if (confirm('送信してもよろしいですか？')) {
+            // 画面表示用にメッセージ挿入（DBには保存していない）
             this.conts.push({
-               board_id: this.conts.length + 1,
-               contents_id: this.conts.length + 1,
-               user_id: this.userId,
+               content_id: getTemporaryId(date), // idの重複を防ぐため、一時的にid生成
+               user_id: this.authId,
                content: this.textarea,
-               created_at: today
+               created_at: getDateTimeNewFormat(date)
             });
 
-            axios //store
-               .post(this.publicPath + 'dm', {
+            // DBへ保存
+            axios
+               .post(this.publicPath + 'dm-contents', {
                   board_id: this.info.board_id,
-                  user_id: this.userId,
+                  user_id: this.authId,
                   content: this.textarea
                })
                .then(res => {
@@ -124,6 +107,33 @@ export default {
             // 挿入後に、メッセージを空にする
             this.textarea = '';
          }
+      }
+   },
+   computed: {
+      divideImages() {
+         if (this.authId === this.info.orderer_id) {
+            return (
+               this.publicPath + 'storage/user_img/' + this.info.applicant_image
+            );
+         } else {
+            return (
+               this.publicPath + 'storage/user_img/' + this.info.orderer_image
+            );
+         }
+      },
+      divideNames() {
+         if (this.authId === this.info.orderer_id) {
+            return this.info.applicant_name;
+         } else {
+            return this.info.orderer_name;
+         }
+      }
+   },
+   filters: {
+      formatDateTime(value) {
+         const date = new Date(value);
+         const newFormat = getDateTimeNewFormat(date);
+         return newFormat;
       }
    },
    mounted() {

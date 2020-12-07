@@ -6,17 +6,17 @@
    >
       <img
          class="c-img c-dmMsgCard__userImg"
-         :src="imageDivide"
+         :src="divideImages"
          alt="ユーザーの画像"
       />
       <div class="c-dmMsgCard__mainAreaWrap">
          <div class="c-dmMsgCard__infoWrap">
             <div class="c-dmMsgCard__basicInfo">
-               {{ nameDivide }} / {{ card.w_name }}
+               {{ divideNames }} / {{ card.w_name }}
             </div>
-            <time class="c-dmMsgCard__time">{{
-               card.latest_date | formatDateTime
-            }}</time>
+            <time class="c-dmMsgCard__time">
+               {{ card.latest_date | formatDateTime }}
+            </time>
          </div>
          <div class="c-dmMsgCard__dm">
             {{ card.latest_content }}
@@ -35,7 +35,7 @@ export default {
       authId: Number
    },
    computed: {
-      imageDivide() {
+      divideImages() {
          if (this.authId === this.card.orderer_id) {
             return (
                this.publicPath + 'storage/user_img/' + this.card.applicant_image
@@ -46,7 +46,7 @@ export default {
             );
          }
       },
-      nameDivide() {
+      divideNames() {
          if (this.authId === this.card.orderer_id) {
             return this.card.applicant_name;
          } else {

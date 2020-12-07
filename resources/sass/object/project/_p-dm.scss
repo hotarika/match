@@ -71,6 +71,9 @@
             height: 30px;
          }
       }
+      &.-myWork {
+         background-color: $primary-light;
+      }
    }
    &__h2InfoWrap {
       display: flex;
@@ -138,7 +141,7 @@
       @include border-radius('bottom');
       position: relative;
       flex-basis: 15%;
-      padding: 15px 15px 50px 15px;
+      padding: 15px 15px 45px 15px;
       margin: 0;
       background: $gray-400;
       & > textarea {
@@ -152,14 +155,17 @@
             min-width: 85%;
          }
       }
+      &.-myWork {
+         background-color: $primary-light;
+      }
       /* IE11 対応 */
       @media all and (-ms-high-contrast: none) {
          min-height: 200px;
       }
    }
    &__sendBtn {
-      right: 16px;
-      bottom: 18px;
+      right: 57px;
+      bottom: 11px;
       /* IE11 対応 */
       @media all and (-ms-high-contrast: none) {
          right: 15px;

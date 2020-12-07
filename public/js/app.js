@@ -1908,6 +1908,10 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/getDateTimeNewFormat */ "./resources/js/modules/getDateTimeNewFormat.js");
+/* harmony import */ var _modules_getTemporaryId__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/getTemporaryId */ "./resources/js/modules/getTemporaryId.js");
 //
 //
 //
@@ -1965,30 +1969,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     publicPath: String,
     contents: Array,
-    userId: Number,
+    authId: Number,
     info: Object
   },
   data: function data() {
@@ -1998,29 +1986,28 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     };
   },
   methods: {
-    addMsg: function addMsg() {
-      // テキストエリアが空欄の場合
+    addMessage: function addMessage() {
+      var date = new Date(); // テキストエリアが空欄の場合
+
       if (!this.textarea.trim('')) {
         alert('メッセージが空欄です');
         return;
-      } // 今日の日付
+      } // メッセージの送信
 
-
-      var date = new Date();
-      var today = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate(); // メッセージの送信
 
       if (confirm('送信してもよろしいですか？')) {
+        // 画面表示用にメッセージ挿入（DBには保存していない）
         this.conts.push({
-          board_id: this.conts.length + 1,
-          contents_id: this.conts.length + 1,
-          user_id: this.userId,
+          content_id: Object(_modules_getTemporaryId__WEBPACK_IMPORTED_MODULE_2__["getTemporaryId"])(date),
+          // idの重複を防ぐため、一時的にid生成
+          user_id: this.authId,
           content: this.textarea,
-          created_at: today
-        });
-        axios //store
-        .post(this.publicPath + 'dm', {
+          created_at: Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_1__["getDateTimeNewFormat"])(date)
+        }); // DBへ保存
+
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.publicPath + 'dm-contents', {
           board_id: this.info.board_id,
-          user_id: this.userId,
+          user_id: this.authId,
           content: this.textarea
         }).then(function (res) {
           console.log(res);
@@ -2028,6 +2015,29 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
         this.textarea = '';
       }
+    }
+  },
+  computed: {
+    divideImages: function divideImages() {
+      if (this.authId === this.info.orderer_id) {
+        return this.publicPath + 'storage/user_img/' + this.info.applicant_image;
+      } else {
+        return this.publicPath + 'storage/user_img/' + this.info.orderer_image;
+      }
+    },
+    divideNames: function divideNames() {
+      if (this.authId === this.info.orderer_id) {
+        return this.info.applicant_name;
+      } else {
+        return this.info.orderer_name;
+      }
+    }
+  },
+  filters: {
+    formatDateTime: function formatDateTime(value) {
+      var date = new Date(value);
+      var newFormat = Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_1__["getDateTimeNewFormat"])(date);
+      return newFormat;
     }
   },
   mounted: function mounted() {
@@ -2089,14 +2099,14 @@ __webpack_require__.r(__webpack_exports__);
     authId: Number
   },
   computed: {
-    imageDivide: function imageDivide() {
+    divideImages: function divideImages() {
       if (this.authId === this.card.orderer_id) {
         return this.publicPath + 'storage/user_img/' + this.card.applicant_image;
       } else {
         return this.publicPath + 'storage/user_img/' + this.card.orderer_image;
       }
     },
-    nameDivide: function nameDivide() {
+    divideNames: function divideNames() {
       if (this.authId === this.card.orderer_id) {
         return this.card.applicant_name;
       } else {
@@ -39924,60 +39934,23 @@ var render = function() {
   return _c("section", { staticClass: "c-h2__sec p-dm__h2sec" }, [
     _c(
       "div",
-      { staticClass: "c-h2__head p-dm__h2" },
+      {
+        staticClass: "c-h2__head p-dm__h2",
+        class: { "-myWork": _vm.authId === _vm.info.orderer_id }
+      },
       [
-        _vm.info.owner_user_id === _vm.userId
-          ? [
-              _c("img", {
-                attrs: {
-                  src:
-                    _vm.publicPath + "storage/user_img/" + _vm.info.owner_img,
-                  alt: "ユーザーの画像"
-                }
-              })
-            ]
-          : [
-              _c("img", {
-                attrs: {
-                  src:
-                    _vm.publicPath + "storage/user_img/" + _vm.info.order_img,
-                  alt: "ユーザーの画像"
-                }
-              })
-            ],
+        _c("img", { attrs: { src: _vm.divideImages, alt: "ユーザーの画像" } }),
         _vm._v(" "),
         _c("div", { staticClass: "p-dm__h2InfoWrap" }, [
-          _c(
-            "div",
-            { staticClass: "p-dm__h2InfoName" },
-            [
-              _vm.info.owner_user_id === _vm.userId
-                ? [
-                    _vm._v(
-                      "\n               " +
-                        _vm._s(_vm.info.order_user_name) +
-                        "\n            "
-                    )
-                  ]
-                : [
-                    _vm._v(
-                      "\n               " +
-                        _vm._s(_vm.info.owner_user_name) +
-                        "\n            "
-                    )
-                  ]
-            ],
-            2
-          ),
+          _c("div", { staticClass: "p-dm__h2InfoName" }, [
+            _vm._v(_vm._s(_vm.divideNames))
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "p-dm__h2InfoOrderName" }, [
-            _vm._v(
-              "\n            " + _vm._s(_vm.info.work_name) + "\n         "
-            )
+            _vm._v(_vm._s(_vm.info.w_name))
           ])
         ])
-      ],
-      2
+      ]
     ),
     _vm._v(" "),
     _c("div", { staticClass: "p-dm__msgSec" }, [
@@ -39991,24 +39964,27 @@ var render = function() {
           _c(
             "transition-group",
             _vm._l(_vm.contents, function(msg) {
-              return _c("div", { key: msg.contents_id }, [
-                msg.user_id === _vm.userId
-                  ? _c("div", { key: msg.id, staticClass: "p-dm__msgMe" }, [
-                      _vm._v(
-                        "\n                  " +
-                          _vm._s(msg.content) +
-                          "\n                  "
-                      ),
-                      _c("time", [_vm._v(_vm._s(msg.time))])
+              return _c("div", { key: msg.content_id }, [
+                _c(
+                  "div",
+                  {
+                    key: msg.id,
+                    class: {
+                      "p-dm__msgMe": msg.user_id === _vm.authId,
+                      "p-dm__msgYou": msg.user_id !== _vm.authId
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                  " +
+                        _vm._s(msg.content) +
+                        "\n                  "
+                    ),
+                    _c("time", [
+                      _vm._v(_vm._s(_vm._f("formatDateTime")(msg.created_at)))
                     ])
-                  : _c("div", { key: msg.id, staticClass: "p-dm__msgYou" }, [
-                      _vm._v(
-                        "\n                  " +
-                          _vm._s(msg.content) +
-                          "\n                  "
-                      ),
-                      _c("time", [_vm._v(_vm._s(msg.time))])
-                    ])
+                  ]
+                )
               ])
             }),
             0
@@ -40017,53 +39993,60 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("form", { staticClass: "p-dm__form", attrs: { id: "", action: "" } }, [
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.textarea,
-              expression: "textarea"
-            }
-          ],
-          staticClass: "c-form__textarea",
-          attrs: {
-            name: "message",
-            id: "message",
-            cols: "80",
-            rows: "6",
-            placeholder: "ここにメッセージを入力"
-          },
-          domProps: { value: _vm.textarea },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+      _c(
+        "form",
+        {
+          staticClass: "p-dm__form",
+          class: { "-myWork": _vm.authId === _vm.info.orderer_id }
+        },
+        [
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.textarea,
+                expression: "textarea"
               }
-              _vm.textarea = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "c-btn c-msgSendBtn p-dm__sendBtn",
-            attrs: { type: "submit" },
+            ],
+            staticClass: "c-form__textarea",
+            attrs: {
+              name: "message",
+              id: "message",
+              cols: "80",
+              rows: "6",
+              placeholder: "ここにメッセージを入力"
+            },
+            domProps: { value: _vm.textarea },
             on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.addMsg($event)
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.textarea = $event.target.value
               }
             }
-          },
-          [
-            _c("i", { staticClass: "far fa-arrow-alt-circle-up" }),
-            _vm._v("送信\n         ")
-          ]
-        )
-      ])
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "c-btn c-msgSendBtn p-dm__sendBtn",
+              attrs: { type: "submit" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.addMessage($event)
+                }
+              }
+            },
+            [
+              _c("i", { staticClass: "far fa-arrow-alt-circle-up" }),
+              _vm._v("送信\n         ")
+            ]
+          )
+        ]
+      )
     ])
   ])
 }
@@ -40099,7 +40082,7 @@ var render = function() {
     [
       _c("img", {
         staticClass: "c-img c-dmMsgCard__userImg",
-        attrs: { src: _vm.imageDivide, alt: "ユーザーの画像" }
+        attrs: { src: _vm.divideImages, alt: "ユーザーの画像" }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "c-dmMsgCard__mainAreaWrap" }, [
@@ -40107,7 +40090,7 @@ var render = function() {
           _c("div", { staticClass: "c-dmMsgCard__basicInfo" }, [
             _vm._v(
               "\n            " +
-                _vm._s(_vm.nameDivide) +
+                _vm._s(_vm.divideNames) +
                 " / " +
                 _vm._s(_vm.card.w_name) +
                 "\n         "
@@ -40115,7 +40098,11 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("time", { staticClass: "c-dmMsgCard__time" }, [
-            _vm._v(_vm._s(_vm._f("formatDateTime")(_vm.card.latest_date)))
+            _vm._v(
+              "\n            " +
+                _vm._s(_vm._f("formatDateTime")(_vm.card.latest_date)) +
+                "\n         "
+            )
           ])
         ]),
         _vm._v(" "),
@@ -55210,6 +55197,23 @@ function getDateTimeNewFormat(date) {
   var i = ('0' + date.getMinutes()).slice(-2);
   var newFormat = y + '/' + m + '/' + d + ' ' + h + ':' + i;
   return newFormat;
+}
+
+/***/ }),
+
+/***/ "./resources/js/modules/getTemporaryId.js":
+/*!************************************************!*\
+  !*** ./resources/js/modules/getTemporaryId.js ***!
+  \************************************************/
+/*! exports provided: getTemporaryId */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTemporaryId", function() { return getTemporaryId; });
+function getTemporaryId(date) {
+  var tempId = date.getFullYear() + '' + date.getMonth() + '' + date.getDate() + '' + date.getHours() + '' + date.getMinutes() + '' + date.getSeconds() + '' + date.getMilliseconds();
+  return tempId;
 }
 
 /***/ }),
