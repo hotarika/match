@@ -321,6 +321,9 @@
       @include mq('3xs') {
          padding: 11px 10px 11px 15px;
       }
+      &.-myWork {
+         background-color: $primary-light;
+      }
    }
    &__userImg {
       // 通常のwidth, heightで指定すると、画像読み込み時に形が変形してしまう不具合が出るため(safari)、minとmaxで指定することで読み込み時にも綺麗に表示されるようにしている

@@ -5,6 +5,7 @@
          <direct-messages-card-component
             :public-path="publicPath"
             :card="card"
+            :auth-id="authId"
          ></direct-messages-card-component>
       </span>
    </section>
@@ -15,7 +16,8 @@ import axios from 'axios';
 
 export default {
    props: {
-      publicPath: String
+      publicPath: String,
+      authId: Number
    },
    data() {
       return {

@@ -986,6 +986,10 @@ body {
   }
 }
 
+.c-dmMsgCard__msgItem.-myWork {
+  background-color: #bedcfd;
+}
+
 .c-dmMsgCard__userImg {
   min-width: 50px;
   max-width: 50px;

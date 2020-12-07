@@ -2080,11 +2080,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     publicPath: String,
-    card: Object
+    card: Object,
+    authId: Number
+  },
+  computed: {
+    imageDivide: function imageDivide() {
+      if (this.authId === this.card.orderer_id) {
+        return this.publicPath + 'storage/user_img/' + this.card.applicant_image;
+      } else {
+        return this.publicPath + 'storage/user_img/' + this.card.orderer_image;
+      }
+    },
+    nameDivide: function nameDivide() {
+      if (this.authId === this.card.orderer_id) {
+        return this.card.applicant_name;
+      } else {
+        return this.card.orderer_name;
+      }
+    }
   },
   filters: {
     formatDateTime: function formatDateTime(value) {
@@ -2120,10 +2138,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    publicPath: String
+    publicPath: String,
+    authId: Number
   },
   data: function data() {
     return {
@@ -40073,15 +40093,13 @@ var render = function() {
     "a",
     {
       staticClass: "c-card c-msgCard c-dmMsgCard__msgItem",
-      attrs: { href: _vm.publicPath + "dm-contents/" + _vm.card.id }
+      class: { "-myWork": _vm.authId === _vm.card.orderer_id },
+      attrs: { href: _vm.publicPath + "dm-contents/" + _vm.card.board_id }
     },
     [
       _c("img", {
         staticClass: "c-img c-dmMsgCard__userImg",
-        attrs: {
-          src: _vm.publicPath + "storage/user_img/" + _vm.card.image,
-          alt: "ユーザーの画像"
-        }
+        attrs: { src: _vm.imageDivide, alt: "ユーザーの画像" }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "c-dmMsgCard__mainAreaWrap" }, [
@@ -40089,9 +40107,9 @@ var render = function() {
           _c("div", { staticClass: "c-dmMsgCard__basicInfo" }, [
             _vm._v(
               "\n            " +
-                _vm._s(_vm.card.user_name) +
+                _vm._s(_vm.nameDivide) +
                 " / " +
-                _vm._s(_vm.card.work_name) +
+                _vm._s(_vm.card.w_name) +
                 "\n         "
             )
           ]),
@@ -40139,7 +40157,11 @@ var render = function() {
         { key: card.id },
         [
           _c("direct-messages-card-component", {
-            attrs: { "public-path": _vm.publicPath, card: card }
+            attrs: {
+              "public-path": _vm.publicPath,
+              card: card,
+              "auth-id": _vm.authId
+            }
           })
         ],
         1

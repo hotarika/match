@@ -140,23 +140,30 @@ class AsynchronousController extends Controller
         // 親子結合
         $boards = DB::table('direct_messages_boards as b')
             ->select(
-                'b.id',
-                'b.work_id',
-                'w.name as work_name',
+                'b.id as board_id',
+                'b.work_id as w_id',
+                'w.name as w_name',
+                // 発注者
                 'w.user_id as orderer_id',
-                'u.name as user_name',
-                'u.image',
+                'u1.name as orderer_name',
+                'u1.image as orderer_image',
+                // 応募者
+                'b.applicant_id',
+                'u2.name as applicant_name',
+                'u2.image as applicant_image',
+                // 最新の子メッセージ
                 'c.content as latest_content',
                 'c.created_at as latest_date'
             )
             ->leftJoin('works as w', 'b.work_id', '=', 'w.id')
-            ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
+            ->leftJoin('users as u1', 'w.user_id', '=', 'u1.id') // 発注者
+            ->leftJoin('users as u2', 'b.applicant_id', '=', 'u2.id') // 応募者
             ->leftJoinSub($child, 'c', function ($join) {
                 $join->on('b.id', '=', 'c.board_id');
             })
             ->orWhere('w.user_id', Auth::id())
             ->orWhere('b.applicant_id', Auth::id())
-            ->orderBy('latest_date', 'DESC')
+            ->orderBy('c.created_at', 'DESC')
             ->get();
 
         return $boards->toJson();
