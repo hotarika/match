@@ -33,15 +33,15 @@
             <div
                class="p-workDetail__parentWrap"
                v-for="p in parentMessages"
-               :key="p.id"
+               :key="p.pm_id"
             >
                <time class="p-workDetail__parentDate">{{
-                  p.created_at | formatDateTime
+                  p.pm_created_at | formatDateTime
                }}</time>
                <div class="p-workDetail__parentMsgWrap">
                   <img
                      class="c-img p-workDetail__parentImg"
-                     :src="publicPath + 'storage/user_img/' + p.image"
+                     :src="publicPath + 'storage/user_img/' + p.u_image"
                      alt="ユーザーのアイコン"
                   />
                   <!-- 親掲示板 -->
@@ -49,11 +49,13 @@
                      <a
                         class="c-link p-workDetail__parentName -workOwner"
                         href="profile"
-                        >{{ p.name }}</a
+                        >{{ p.u_name }}</a
                      >
-                     <div class="p-workDetail__parentTitle">{{ p.title }}</div>
+                     <div class="p-workDetail__parentTitle">
+                        {{ p.pm_title }}
+                     </div>
                      <p class="p-workDetail__parentContent">
-                        {{ p.content }}
+                        {{ p.pm_content }}
                      </p>
 
                      <!-- 子掲示板 -->
@@ -91,7 +93,7 @@
                      <!-- 子フォーム -->
                      <public-messages-child-form-component
                         @child-text="addChildMsg"
-                        :parent="p.id"
+                        :parent="p.pm_id"
                      ></public-messages-child-form-component>
                   </div>
                </div>
@@ -135,15 +137,16 @@ export default {
 
          if (confirm('送信してもよろしいですか？')) {
             // メッセージ挿入（表示用のため、このデータはDBには保存されません）
+            // 親要素を投稿した後にリロードせずに連続で子要素に投稿すると不具合が出るため、一番最下部でリロードしており、jsの動きは必要ないかもしれないが、少しだけでも投稿した雰囲気が出るため一応下記の通り定義している
             this.parentMessages.unshift({
-               id: getTemporaryId(date), // keyの重複を避けるため、一時的にidを生成
-               name: this.user.name,
-               work_id: this.workId,
-               user_id: this.user.id,
-               image: this.user.image,
-               title: this.parentTitle,
-               content: this.parentTextarea,
-               created_at: getDateTimeNewFormat(date)
+               pm_id: getTemporaryId(date), // keyの重複を避けるため、一時的にidを生成
+               u_name: this.user.name,
+               w_id: this.workId,
+               u_id: this.user.id,
+               u_image: this.user.image,
+               pm_title: this.parentTitle,
+               pm_content: this.parentTextarea,
+               pm_created_at: getDateTimeNewFormat(date)
             });
 
             // DBへ保存
@@ -162,7 +165,8 @@ export default {
             this.parentTitle = '';
             this.parentTextarea = '';
 
-            // Vueで重複のidを避けるために一時的にidを生成しているが、今回作成した掲示板の性質上、親掲示板を作成した直後にリロードせずに子フォームからメッセージを送信（滅多にないが、そのような場合を想定）すると、子フォームは一時的に作成したidをDBに送ってしまう。
+            // Vueで重複のidを避けるために一時的にidを生成しているが、今回作成した掲示板の性質上、親掲示板を作成した直後にリロードせずに子フォームからメッセージを送信（滅多にないが、そのような場合を想定）すると、子フォームは一時的に作成した親idをDBに送ってしまう
+            // （jsには last insert id のような最後に挿入したidを取得することができず、もしaxiosで強引に最後のidを取得したとしても、他の親ボードがその隙に挿入されてしまえば正確なidを取得することが困難）
             // そのため一度リロードして、DBのデータを反映させた上で、子フォームからメッセージを送信すると正常にうまくいく。
             // そのため、下記の通り一度リロードを挟んでいる。
             location.reload();

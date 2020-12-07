@@ -2782,6 +2782,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2813,16 +2815,17 @@ __webpack_require__.r(__webpack_exports__);
 
       if (confirm('送信してもよろしいですか？')) {
         // メッセージ挿入（表示用のため、このデータはDBには保存されません）
+        // 親要素を投稿した後にリロードせずに連続で子要素に投稿すると不具合が出るため、一番最下部でリロードしており、jsの動きは必要ないかもしれないが、少しだけでも投稿した雰囲気が出るため一応下記の通り定義している
         this.parentMessages.unshift({
-          id: Object(_modules_getTemporaryId__WEBPACK_IMPORTED_MODULE_1__["getTemporaryId"])(date),
+          pm_id: Object(_modules_getTemporaryId__WEBPACK_IMPORTED_MODULE_1__["getTemporaryId"])(date),
           // keyの重複を避けるため、一時的にidを生成
-          name: this.user.name,
-          work_id: this.workId,
-          user_id: this.user.id,
-          image: this.user.image,
-          title: this.parentTitle,
-          content: this.parentTextarea,
-          created_at: Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__["getDateTimeNewFormat"])(date)
+          u_name: this.user.name,
+          w_id: this.workId,
+          u_id: this.user.id,
+          u_image: this.user.image,
+          pm_title: this.parentTitle,
+          pm_content: this.parentTextarea,
+          pm_created_at: Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__["getDateTimeNewFormat"])(date)
         }); // DBへ保存
 
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.publicPath + 'pubmsgs', {
@@ -2835,7 +2838,8 @@ __webpack_require__.r(__webpack_exports__);
         }); // 挿入後に、メッセージを空にする
 
         this.parentTitle = '';
-        this.parentTextarea = ''; // Vueで重複のidを避けるために一時的にidを生成しているが、今回作成した掲示板の性質上、親掲示板を作成した直後にリロードせずに子フォームからメッセージを送信（滅多にないが、そのような場合を想定）すると、子フォームは一時的に作成したidをDBに送ってしまう。
+        this.parentTextarea = ''; // Vueで重複のidを避けるために一時的にidを生成しているが、今回作成した掲示板の性質上、親掲示板を作成した直後にリロードせずに子フォームからメッセージを送信（滅多にないが、そのような場合を想定）すると、子フォームは一時的に作成した親idをDBに送ってしまう
+        // （jsには last insert id のような最後に挿入したidを取得することができず、もしaxiosで強引に最後のidを取得したとしても、他の親ボードがその隙に挿入されてしまえば正確なidを取得することが困難）
         // そのため一度リロードして、DBのデータを反映させた上で、子フォームからメッセージを送信すると正常にうまくいく。
         // そのため、下記の通り一度リロードを挟んでいる。
 
@@ -40761,17 +40765,17 @@ var render = function() {
           _vm._l(_vm.parentMessages, function(p) {
             return _c(
               "div",
-              { key: p.id, staticClass: "p-workDetail__parentWrap" },
+              { key: p.pm_id, staticClass: "p-workDetail__parentWrap" },
               [
                 _c("time", { staticClass: "p-workDetail__parentDate" }, [
-                  _vm._v(_vm._s(_vm._f("formatDateTime")(p.created_at)))
+                  _vm._v(_vm._s(_vm._f("formatDateTime")(p.pm_created_at)))
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "p-workDetail__parentMsgWrap" }, [
                   _c("img", {
                     staticClass: "c-img p-workDetail__parentImg",
                     attrs: {
-                      src: _vm.publicPath + "storage/user_img/" + p.image,
+                      src: _vm.publicPath + "storage/user_img/" + p.u_image,
                       alt: "ユーザーのアイコン"
                     }
                   }),
@@ -40787,17 +40791,21 @@ var render = function() {
                             "c-link p-workDetail__parentName -workOwner",
                           attrs: { href: "profile" }
                         },
-                        [_vm._v(_vm._s(p.name))]
+                        [_vm._v(_vm._s(p.u_name))]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "p-workDetail__parentTitle" }, [
-                        _vm._v(_vm._s(p.title))
+                        _vm._v(
+                          "\n                     " +
+                            _vm._s(p.pm_title) +
+                            "\n                  "
+                        )
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "p-workDetail__parentContent" }, [
                         _vm._v(
                           "\n                     " +
-                            _vm._s(p.content) +
+                            _vm._s(p.pm_content) +
                             "\n                  "
                         )
                       ]),
@@ -40881,7 +40889,7 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("public-messages-child-form-component", {
-                        attrs: { parent: p.id },
+                        attrs: { parent: p.pm_id },
                         on: { "child-text": _vm.addChildMsg }
                       })
                     ],

@@ -72,8 +72,6 @@ class WorksController extends Controller
      */
     public function show($id)
     {
-        $work_id = $id; // Vueに渡すために変数に格納
-
         // **********************************
         // 仕事詳細
         // **********************************
@@ -124,6 +122,7 @@ class WorksController extends Controller
         // **********************************
         // パブリックメッセージ
         // **********************************
+        $work_id = $id; // Vueに渡すために変数に格納
         $user = Auth::user();
 
         // 親掲示板
@@ -131,23 +130,18 @@ class WorksController extends Controller
             'parent_public_messages as pm'
         )
             ->select(
-                'pm.id',
-                'pm.user_id',
-                'u.name',
-                'u.image',
-                'pm.title',
-                'pm.content',
-                'pm.created_at'
+                'pm.id as pm_id',
+                'pm.user_id as u_id',
+                'u.name as u_name',
+                'u.image as u_image',
+                'pm.title as pm_title',
+                'pm.content as pm_content',
+                'pm.created_at as pm_created_at'
             )
             ->leftJoin('users as u', 'pm.user_id', '=', 'u.id')
             ->where('work_id', $id)
-            ->latest()
+            ->orderBy('pm.created_at', 'DESC')
             ->get();
-
-        // 日付の形式を変更
-        // for ($i = 0; $i < count($parent_msg); $i++) {
-        //     $parent_msg[$i]->created_at = date('Y/m/d', strtotime($parent_msg[$i]->created_at));
-        // }
 
         // 子掲示板
         $child_msg = DB::table(
@@ -166,16 +160,16 @@ class WorksController extends Controller
             ->oldest()
             ->get();
 
-        // 日付の形式を変更
-        // for ($i = 0; $i < count($child_msg); $i++) {
-        //     $child_msg[$i]->created_at = date('Y/m/d', strtotime($child_msg[$i]->created_at));
-        // }
-
+        // **********************************
+        // return
+        // **********************************
         return view('works.show', compact(
-            'work_id',
-            'user',
+            // 商品詳細
             'work',
             'applicant',
+            // パブリックメッセージ
+            'user',
+            'work_id',
             'parent_msg',
             'child_msg',
         ));
