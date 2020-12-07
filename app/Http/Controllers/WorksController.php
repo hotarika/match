@@ -95,6 +95,7 @@ class WorksController extends Controller
             ->leftJoin('contracts as c', 'w.contract_id', '=', 'c.id')
             ->where('w.id', $work_id)->first();
 
+        // 日付・金額形式の変換
         $work->end_date =  date("Y/m/d", strtotime($work->end_date));
         $work->hope_date =  date("Y/m/d", strtotime($work->hope_date));
         $work->created_at =  date("Y/m/d", strtotime($work->created_at));
@@ -105,11 +106,15 @@ class WorksController extends Controller
         $from = strtotime($work->end_date);
         $to = strtotime('now');
         $diff = $from - $to;
-        $diff_date = floor($diff / 60 / 60 / 24); /* [差分/60秒/60分/24時間 = 残り日数] */
+        // [差分/60秒/60分/24時間 = 残り日数]
+        // その日付の23:59分終了のため + 1
+        $diff_date = floor($diff / 60 / 60 / 24 + 1);
         if ($diff_date >= 1) {
             $work->remaining_date = 'あと' . $diff_date . '日';
-        } else {
+        } elseif ($diff_date == 0) {
             $work->remaining_date = "本日終了";
+        } else {
+            $work->remaining_date = "終了";
         }
 
         // 応募ボタン
@@ -120,9 +125,8 @@ class WorksController extends Controller
             ->first();
 
         // 応募人数のカウント
-        $countApplicants = DB::table('works as w')
-            ->leftJoin('applicants as a', 'w.id', '=', 'a.work_id')
-            ->where('w.id', $work_id)
+        $countApplicants = DB::table('applicants as a')
+            ->where('work_id', $work_id)
             ->count();
 
         // **********************************

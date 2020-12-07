@@ -11,15 +11,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // 必須
         $this->call(UsersTableSeeder::class);
+        $this->call(ContractsTableSeeder::class);
+        $this->call(ApplicantsStatesSeeder::class);
+        $this->call(WorksStatesSeeder::class);
+
+        // 任意
         // $this->call(WorksTableSeeder::class);
-        // $this->call(ContractsTableSeeder::class);
         // $this->call(ParentPublicMessagesSeeder::class);
         // $this->call(ChildPublicMessagesSeeder::class);
         // $this->call(DirectMessagesBoardsSeeder::class);
         // $this->call(DirectMessagesContentsSeeder::class);
-        // $this->call(WorksStatesSeeder::class);
         // $this->call(ApplicantsSeeder::class);
-        // $this->call(ApplicantsStatesSeeder::class);
     }
 }
