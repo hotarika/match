@@ -26,7 +26,7 @@
          flex-direction: column;
          padding: 0;
       }
-      &.-money {
+      &.-price {
          margin-top: -63px;
          visibility: hidden;
          opacity: 0;
@@ -50,7 +50,7 @@
          margin-bottom: 3px;
          font-size: 13px;
       }
-      &.-money {
+      &.-price {
          &::before {
             position: absolute;
             top: 22px;
@@ -79,7 +79,7 @@
          margin-bottom: 10px;
       }
    }
-   &__moneyWrap {
+   &__priceWrap {
       & > span {
          margin: 0 5px;
          font-size: 14px;
@@ -108,7 +108,7 @@
             width: 100%;
          }
       }
-      &.-money {
+      &.-price {
          width: 30%;
          @include mq('md') {
             & + span {

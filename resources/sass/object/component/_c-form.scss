@@ -27,6 +27,12 @@
          font-size: 12px;
       }
    }
+   &__error {
+      display: inline-block;
+      &.-priceLower {
+         margin-bottom: 5px;
+      }
+   }
    &__textarea {
       @include letter-settings;
       @include border-radius;

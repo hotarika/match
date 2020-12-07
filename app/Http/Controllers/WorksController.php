@@ -44,8 +44,8 @@ class WorksController extends Controller
             'endRecruitment' => 'required | date',
             'hopeDeadline' => 'required | date',
             'contract' => 'required',
-            'moneyLower' => 'required_if:contract,1',
-            'moneyUpper' => 'required_if:contract,1',
+            'priceLower' => 'required_if:contract,1',
+            'priceUpper' => 'required_if:contract,1',
             'content' => 'required',
         ];
         $this->validate($request, $validate_rule);

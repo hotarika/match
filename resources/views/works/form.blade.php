@@ -12,8 +12,11 @@
          <div class="l-main__mainArea -twoColumns">
             <section class="c-h2__sec">
                <div class="c-h2__oneRowBody p-workForm__body">
-                  <form method="POST" class="p-workForm__form"
+                  <form
+                     method="POST"
+                     class="p-workForm__form"
                      action="@if ( request()->is('*edit*') ){{route('works.update',$work->id)}} @else {{route('works.store')}} @endif">
+
                      @if( request()->is('*edit*') ) @method('PUT') @endif
                      @csrf
 
@@ -31,7 +34,7 @@
                               placeholder="仕事名を記入" />
                            @error('name')
                            <span class="c-form__invalid" role="alert">
-                              <strong>入力してください</strong>
+                              <strong>{{ $message }}</strong>
                            </span>
                            @enderror
                         </div>
@@ -52,7 +55,7 @@
 
                            @error('endRecruitment')
                            <span class="c-form__invalid" role="alert">
-                              <strong>入力してください</strong>
+                              <strong>{{ $message }}</strong>
                            </span>
                            @enderror
                         </div>
@@ -73,7 +76,7 @@
 
                            @error('hopeDeadline')
                            <span class="c-form__invalid" role="alert">
-                              <strong>入力してください</strong>
+                              <strong>{{ $message }}</strong>
                            </span>
                            @enderror
                         </div>
@@ -98,38 +101,38 @@
 
                            @error('contract')
                            <span class="c-form__invalid" role="alert">
-                              <strong>入力してください</strong>
+                              <strong>{{ $message }}</strong>
                            </span>
                            @enderror
                         </div>
                      </div>
 
                      <!-- 金額 -->
-                     <div class="p-workForm__wrap -money js-showInput">
-                        <label class="p-workForm__label -money" for="money">金額<span>[必須]</span></label>
+                     <div class="p-workForm__wrap -price js-showInput">
+                        <label class="p-workForm__label -price" for="price">金額<span>[必須]</span></label>
                         <div class="p-workForm__inputWrap">
-                           <div class="p-workForm__moneyWrap">
+                           <div class="p-workForm__priceWrap">
                               <input
-                                 id="money"
-                                 class="c-form__input p-workForm__input -money"
+                                 id="price"
+                                 class="c-form__input p-workForm__input -price"
                                  type="number"
-                                 name="moneyLower"
-                                 value="{{ old('moneyLower',$work->price_lower ?? '') }}"
+                                 name="priceLower"
+                                 value="{{ old('priceLower',$work->price_lower ?? '') }}"
                                  placeholder="例：1000" /><span>千円〜</span>
                               <input
-                                 id="money"
-                                 class="c-form__input p-workForm__input -money"
+                                 id="price"
+                                 class="c-form__input p-workForm__input -price"
                                  type="number"
-                                 name="moneyUpper"
-                                 value="{{ old('moneyUpper',$work->price_upper ?? '') }}"
+                                 name="priceUpper"
+                                 value="{{ old('priceUpper',$work->price_upper ?? '') }}"
                                  placeholder="例：2000" /><span>千円</span>
                            </div>
 
-                           @if($errors->has('moneyLower') || $errors->has('moneyUpper'))
+                           @if($errors->has('priceLower') || $errors->has('priceUpper'))
                            <span class="c-form__invalid" role="alert">
-                              <strong>入力してください</strong>
+                              <strong class="c-form__error -priceLower">{{ $errors->first('priceLower') }}</strong><br>
+                              <strong>{{ $errors->first('priceUpper') }}</strong>
                            </span>
-                           {{-- @enderror --}}
                            @endif
                         </div>
                      </div>
@@ -148,7 +151,7 @@
 
                            @error('content')
                            <span class="c-form__invalid" role="alert">
-                              <strong>入力してください</strong>
+                              <strong>{{ $message }}</strong>
                            </span>
                            @enderror
                         </div>
