@@ -2,7 +2,7 @@
    <section class="c-h2__sec">
       <h2 class="c-h2__head">発注した仕事</h2>
       <div class="c-h2__workCardBody p-mypage__secBody">
-         <span v-for="work of allData" :key="work.id">
+         <span v-for="work of allData.slice(0, showNum)" :key="work.id">
             <works-card-component
                :work="work"
                :public-path="publicPath"
@@ -24,7 +24,8 @@ export default {
    },
    data() {
       return {
-         allData: []
+         allData: [],
+         showNum: 9
       };
    },
    mounted() {

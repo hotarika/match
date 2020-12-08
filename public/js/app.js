@@ -3514,7 +3514,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      allData: []
+      allData: [],
+      showNum: 9
     };
   },
   mounted: function mounted() {
@@ -3567,7 +3568,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      allData: []
+      allData: [],
+      showNum: 9
     };
   },
   mounted: function mounted() {
@@ -41590,7 +41592,7 @@ var render = function() {
       "div",
       { staticClass: "c-h2__workCardBody p-mypage__secBody" },
       [
-        _vm._l(_vm.allData, function(work) {
+        _vm._l(_vm.allData.slice(0, _vm.showNum), function(work) {
           return _c(
             "span",
             { key: work.id },
@@ -41642,7 +41644,7 @@ var render = function() {
       "div",
       { staticClass: "c-h2__workCardBody p-mypage__secBody" },
       [
-        _vm._l(_vm.allData, function(work) {
+        _vm._l(_vm.allData.slice(0, _vm.showNum), function(work) {
           return _c(
             "span",
             { key: work.id },
