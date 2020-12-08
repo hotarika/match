@@ -13,6 +13,7 @@ class ApplicantsSeeder extends Seeder
      */
     public function run()
     {
+        // work_id1に応募
         DB::table('applicants')->insert([
             'work_id' => 1,
             'applicant_id' => 2,
@@ -26,6 +27,14 @@ class ApplicantsSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
         DB::table('applicants')->insert([
+            'work_id' => 1,
+            'applicant_id' => 4,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        // work_id2に応募
+        DB::table('applicants')->insert([
             'work_id' => 2,
             'applicant_id' => 1,
             'created_at' => Carbon::now(),
@@ -33,7 +42,13 @@ class ApplicantsSeeder extends Seeder
         ]);
         DB::table('applicants')->insert([
             'work_id' => 2,
-            'applicant_id' => 3,
+            'applicant_id' => 4,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('applicants')->insert([
+            'work_id' => 2,
+            'applicant_id' => 5,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

@@ -17,21 +17,21 @@ class DirectMessagesContentsSeeder extends Seeder
         DB::table('direct_messages_contents')->insert([
             'board_id' => 1,
             'user_id' => 1,
-            'content' => '1111111111',
+            'content' => 'Board1, user_id1 -> user_id2 へダイレクトメッセージを送りました。',
             'created_at' => '2020-10-3 00:52:49',
             'updated_at' => Carbon::now(),
         ]);
         DB::table('direct_messages_contents')->insert([
             'board_id' => 1,
             'user_id' => 2,
-            'content' => '11111111111111111',
+            'content' => 'Board1, user_id2 -> user_id1 へダイレクトメッセージを送りました。',
             'created_at' => '2020-11-8 00:52:49',
             'updated_at' => Carbon::now(),
         ]);
         DB::table('direct_messages_contents')->insert([
             'board_id' => 1,
-            'user_id' => 2,
-            'content' => '1111111111111',
+            'user_id' => 1,
+            'content' => 'Board1, user_id1 -> user_id2 へダイレクトメッセージを送りました。',
             'created_at' => '2020-12-30 00:52:49',
             'updated_at' => Carbon::now(),
         ]);
@@ -39,46 +39,16 @@ class DirectMessagesContentsSeeder extends Seeder
         // board 2
         DB::table('direct_messages_contents')->insert([
             'board_id' => 2,
-            'user_id' => 2,
-            'content' => '22222222222222222',
+            'user_id' => 1,
+            'content' => 'Board2, user_id1 -> user_id3 へダイレクトメッセージを送りました。',
             'created_at' => '2020-8-30 00:52:49',
             'updated_at' => Carbon::now(),
         ]);
         DB::table('direct_messages_contents')->insert([
             'board_id' => 2,
-            'user_id' => 2,
-            'content' => '22222222222222222',
+            'user_id' => 3,
+            'content' => 'Board2, user_id3 -> user_id1 へダイレクトメッセージを送りました。',
             'created_at' => '2020-9-14 00:52:49',
-            'updated_at' => Carbon::now(),
-        ]);
-
-        // board 3
-        DB::table('direct_messages_contents')->insert([
-            'board_id' => 3,
-            'user_id' => 2,
-            'content' => '333333333333',
-            'created_at' => '2020-7-8 00:42:49',
-            'updated_at' => Carbon::now(),
-        ]);
-        DB::table('direct_messages_contents')->insert([
-            'board_id' => 3,
-            'user_id' => 2,
-            'content' => '333333333333',
-            'created_at' => '2020-8-8 00:50:49',
-            'updated_at' => Carbon::now(),
-        ]);
-        DB::table('direct_messages_contents')->insert([
-            'board_id' => 3,
-            'user_id' => 2,
-            'content' => '333333333333',
-            'created_at' => '2020-8-11 00:52:49',
-            'updated_at' => Carbon::now(),
-        ]);
-        DB::table('direct_messages_contents')->insert([
-            'board_id' => 3,
-            'user_id' => 2,
-            'content' => '3333',
-            'created_at' => '2020-9-30 00:53:49',
             'updated_at' => Carbon::now(),
         ]);
     }

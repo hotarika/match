@@ -13,22 +13,43 @@ class DirectMessagesBoardsSeeder extends Seeder
      */
     public function run()
     {
+        // work_id1
         DB::table('direct_messages_boards')->insert([
             'work_id' => 1,
             'applicant_id' => 2,
-            'created_at' => '2020-11-30 00:52:49',
+            'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
         DB::table('direct_messages_boards')->insert([
             'work_id' => 1,
             'applicant_id' => 3,
-            'created_at' => '2020-12-20 00:52:49',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('direct_messages_boards')->insert([
+            'work_id' => 1,
+            'applicant_id' => 4,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        // work_id2
+        DB::table('direct_messages_boards')->insert([
+            'work_id' => 2,
+            'applicant_id' => 1,
+            'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
         DB::table('direct_messages_boards')->insert([
             'work_id' => 2,
-            'applicant_id' => 1,
-            'created_at' => '2020-12-23 00:52:49',
+            'applicant_id' => 4,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('direct_messages_boards')->insert([
+            'work_id' => 2,
+            'applicant_id' => 5,
+            'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
     }
