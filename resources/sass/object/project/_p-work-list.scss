@@ -33,9 +33,13 @@
       background-color: $primary;
    }
    // 仕事カード
+   &__workCardWrap {
+      min-height: 790px;
+      background-color: $white;
+   }
    &__workCardBody {
-      min-height: 310px;
       padding-top: 60px;
+      background-color: transparent;
       @include mq('xs') {
          min-height: 270px;
          padding-left: calc(50% - 44%);

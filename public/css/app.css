@@ -4066,9 +4066,14 @@ body {
   background-color: #0081ff;
 }
 
+.p-workList__workCardWrap {
+  min-height: 790px;
+  background-color: #fff;
+}
+
 .p-workList__workCardBody {
-  min-height: 310px;
   padding-top: 60px;
+  background-color: transparent;
 }
 
 @media screen and (max-width: 414px) {

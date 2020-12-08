@@ -3329,6 +3329,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -3345,7 +3347,7 @@ __webpack_require__.r(__webpack_exports__);
       share_checkbox: true,
       // レベニューシェアチェックボックス
       page: 1,
-      perPage: 6
+      perPage: 9
     };
   },
   computed: {
@@ -41481,25 +41483,27 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "c-h2__workCardBody p-workList__workCardBody" },
-        _vm._l(_vm.showList.slice(_vm.minCardNum, _vm.maxCardNum), function(
-          work
-        ) {
-          return _c(
-            "span",
-            { key: work.id },
-            [
-              _c("works-card-component", {
-                attrs: { work: work, "public-path": _vm.publicPath }
-              })
-            ],
-            1
-          )
-        }),
-        0
-      ),
+      _c("div", { staticClass: "p-workList__workCardWrap" }, [
+        _c(
+          "div",
+          { staticClass: "c-h2__workCardBody p-workList__workCardBody" },
+          _vm._l(_vm.showList.slice(_vm.minCardNum, _vm.maxCardNum), function(
+            work
+          ) {
+            return _c(
+              "span",
+              { key: work.id },
+              [
+                _c("works-card-component", {
+                  attrs: { work: work, "public-path": _vm.publicPath }
+                })
+              ],
+              1
+            )
+          }),
+          0
+        )
+      ]),
       _vm._v(" "),
       _c("pagination-component", {
         attrs: { page: _vm.page, "total-page": _vm.totalPage },

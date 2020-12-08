@@ -32,17 +32,19 @@
       </form>
 
       <!-- 仕事カード -->
-      <div class="c-h2__workCardBody p-workList__workCardBody">
-         <span
-            v-for="work in showList.slice(minCardNum, maxCardNum)"
-            :key="work.id"
-         >
-            <!-- 仕事カードをコンポーネント化 -->
-            <works-card-component
-               :work="work"
-               :public-path="publicPath"
-            ></works-card-component>
-         </span>
+      <div class="p-workList__workCardWrap">
+         <div class="c-h2__workCardBody p-workList__workCardBody">
+            <span
+               v-for="work in showList.slice(minCardNum, maxCardNum)"
+               :key="work.id"
+            >
+               <!-- 仕事カードをコンポーネント化 -->
+               <works-card-component
+                  :work="work"
+                  :public-path="publicPath"
+               ></works-card-component>
+            </span>
+         </div>
       </div>
       <pagination-component
          :page="page"
@@ -67,7 +69,7 @@ export default {
          oneoff_checkbox: true, // 単発案件チェックボックス
          share_checkbox: true, // レベニューシェアチェックボックス
          page: 1,
-         perPage: 6
+         perPage: 9
       };
    },
    computed: {
