@@ -28,7 +28,6 @@
       {{-- footer --}}
       @include('components/footer')
    </div>
-
 </body>
 
 </html>

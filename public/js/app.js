@@ -55300,33 +55300,36 @@ function getTemporaryId(date) {
 window.addEventListener('DOMContentLoaded', function () {
   var open = document.querySelector('.js-openIcon');
   var close = document.querySelector('.js-closeIcon');
-  var target = document.querySelector('.js-nav'); // ①アイコンクリックでメニューバーを開く
+  var target = document.querySelector('.js-nav');
 
-  open.addEventListener('click', function (e) {
-    // ③番目のコードでdocument.addEventListenerを指定しているため、イベントが伝播してしまう
-    // そのため、stopPropagation()で伝播を停止させている
-    e.stopPropagation(); // .js-navにcalssのis-activeがなければ追加する
+  if (open || close || target) {
+    // ①アイコンクリックでメニューバーを開く
+    open.addEventListener('click', function (e) {
+      // ③番目のコードでdocument.addEventListenerを指定しているため、イベントが伝播してしまう
+      // そのため、stopPropagation()で伝播を停止させている
+      e.stopPropagation(); // .js-navにcalssのis-activeがなければ追加する
 
-    if (!target.classList.contains('is-active')) {
-      target.classList.add('is-active');
-    }
-  }); // ②アイコンクリックでメニューバーを閉じる
+      if (!target.classList.contains('is-active')) {
+        target.classList.add('is-active');
+      }
+    }); // ②アイコンクリックでメニューバーを閉じる
 
-  close.addEventListener('click', function (e) {
-    // ①と同じ
-    e.stopPropagation(); // .js-navにcalssのis-activeがあれば削除する
+    close.addEventListener('click', function (e) {
+      // ①と同じ
+      e.stopPropagation(); // .js-navにcalssのis-activeがあれば削除する
 
-    if (target.classList.contains('is-active')) {
-      target.classList.remove('is-active');
-    }
-  }); // ③ メニューバーの外側をクリックした場合に閉じる（Vueでの実装ができない）
+      if (target.classList.contains('is-active')) {
+        target.classList.remove('is-active');
+      }
+    }); // ③ メニューバーの外側をクリックした場合に閉じる（Vueでの実装ができない）
 
-  document.addEventListener('click', function (e) {
-    // 外側をクリックした場合 && classにis-activeの文字列がない場合
-    if (!e.target.closest('.js-nav') && target.classList.contains('is-active')) {
-      target.classList.remove('is-active');
-    }
-  });
+    document.addEventListener('click', function (e) {
+      // 外側をクリックした場合 && classにis-activeの文字列がない場合
+      if (!e.target.closest('.js-nav') && target.classList.contains('is-active')) {
+        target.classList.remove('is-active');
+      }
+    });
+  }
 });
 
 /***/ }),
