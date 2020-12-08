@@ -3250,10 +3250,12 @@ __webpack_require__.r(__webpack_exports__);
       var formatDate = Object(_modules_getDateNewFormat__WEBPACK_IMPORTED_MODULE_0__["getDateNewFormat"])(today);
       var formatEndDate = Object(_modules_getDateNewFormat__WEBPACK_IMPORTED_MODULE_0__["getDateNewFormat"])(endDate);
 
-      if (formatDate === formatEndDate) {
-        return '本日終了';
-      } else {
+      if (this.work.state === 2 || formatEndDate < formatDate) {
+        return '応募終了';
+      } else if (formatEndDate > formatDate) {
         return this.work.end_date;
+      } else {
+        return '本日終了';
       }
     }
   }

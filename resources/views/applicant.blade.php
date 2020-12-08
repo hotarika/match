@@ -44,7 +44,8 @@
                            <input type="hidden" name="board_id" value="{{$applicant->board_id}}">
                            <input type="hidden" name="w_id" value="{{$applicant->w_id}}">
                            <input type="hidden" name="w_name" value="{{$applicant->w_name}}">
-                           <button class="c-btn p-applicant__decideBtn" type="submit">
+                           <button class="c-btn p-applicant__decideBtn" type="submit"
+                              onclick='return confirm("決定してよろしいですか？");'>
                               決定する
                            </button>
                         </form>
