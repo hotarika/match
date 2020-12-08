@@ -63,8 +63,8 @@
                         <div class="p-workDetail__infoUpperItem -left">
                            <span>依頼者：</span>
                            <div class="p-workDetail__userInfoWrap">
-                              <img class="c-img p-workDetail__infoImg" :src="'../images/home_img.jpg'" alt="ユーザーの画像" />
-                              <a href="{{route('users.show',1)}}" class="c-link p-workDetail__infoName">山田たろう</a>
+                              <img class="c-img p-workDetail__infoImg" src="" alt="ユーザーの画像" />
+                              <a href="{{route('users.show',1)}}" class="c-link p-workDetail__infoName">名前入ります</a>
                            </div>
                         </div>
                         <div class="p-workDetail__infoUpperItem -right">
@@ -107,6 +107,7 @@
                   </div>
 
                   {{-- 応募ボタン --}}
+                  @auth
                   @if ($work->orderer_id !== Auth::id())
                   @if($work->w_state === 1)
                   @if($applicant)
@@ -127,6 +128,7 @@
                   <div class="c-btn p-workDetail__appBtn -end">この仕事の応募は終了しました。</div>
                   @endif {{-- @if($work->w_state === 1) --}}
                   @endif {{-- ($work->orderer_id !== Auth::id() --}}
+                  @endauth
                </div>
             </section>
 

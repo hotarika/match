@@ -3,30 +3,32 @@
       <h2 class="c-h2__head">パブリックメッセージ</h2>
       <div class="c-h2__oneRowBody p-workDetail__pubMsgBody">
          <!-- フォーム -->
-         <form class="p-workDetail__createMsgForm" action="">
-            <input
-               class="c-form__input p-workDetail__createMsgTitle"
-               type="text"
-               placeholder="必須：新規質問内容のタイトルを記述"
-               v-model="parentTitle"
-            />
-            <textarea
-               class="c-form__textarea p-workDetail__createMsgTextarea"
-               name="message"
-               id="message"
-               cols="30"
-               rows="10"
-               placeholder="必須：新規質問の内容を記述"
-               v-model="parentTextarea"
-            ></textarea>
-            <button
-               class="c-btn c-msgSendBtn p-workDetail__parentBtn"
-               type="submit"
-               @click.prevent="addParentMsg"
-            >
-               <i class="far fa-arrow-alt-circle-up"></i>送信
-            </button>
-         </form>
+         <template v-if="authUser !== null">
+            <form class="p-workDetail__createMsgForm" action="">
+               <input
+                  class="c-form__input p-workDetail__createMsgTitle"
+                  type="text"
+                  placeholder="必須：新規質問内容のタイトルを記述"
+                  v-model="parentTitle"
+               />
+               <textarea
+                  class="c-form__textarea p-workDetail__createMsgTextarea"
+                  name="message"
+                  id="message"
+                  cols="30"
+                  rows="10"
+                  placeholder="必須：新規質問の内容を記述"
+                  v-model="parentTextarea"
+               ></textarea>
+               <button
+                  class="c-btn c-msgSendBtn p-workDetail__parentBtn"
+                  type="submit"
+                  @click.prevent="addParentMsg"
+               >
+                  <i class="far fa-arrow-alt-circle-up"></i>送信
+               </button>
+            </form>
+         </template>
 
          <transition-group>
             <!-- メッセージボード -->
@@ -91,10 +93,12 @@
                      </template>
 
                      <!-- 子フォーム -->
-                     <public-messages-child-form-component
-                        @child-text="addChildMsg"
-                        :parent="p.pm_id"
-                     ></public-messages-child-form-component>
+                     <template v-if="authUser !== null">
+                        <public-messages-child-form-component
+                           @child-text="addChildMsg"
+                           :parent="p.pm_id"
+                        ></public-messages-child-form-component>
+                     </template>
                   </div>
                </div>
             </div>

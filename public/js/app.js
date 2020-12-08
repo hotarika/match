@@ -2821,6 +2821,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -40727,82 +40731,90 @@ var render = function() {
       "div",
       { staticClass: "c-h2__oneRowBody p-workDetail__pubMsgBody" },
       [
-        _c(
-          "form",
-          { staticClass: "p-workDetail__createMsgForm", attrs: { action: "" } },
-          [
-            _c("input", {
-              directives: [
+        _vm.authUser !== null
+          ? [
+              _c(
+                "form",
                 {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.parentTitle,
-                  expression: "parentTitle"
-                }
-              ],
-              staticClass: "c-form__input p-workDetail__createMsgTitle",
-              attrs: {
-                type: "text",
-                placeholder: "必須：新規質問内容のタイトルを記述"
-              },
-              domProps: { value: _vm.parentTitle },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.parentTitle = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.parentTextarea,
-                  expression: "parentTextarea"
-                }
-              ],
-              staticClass: "c-form__textarea p-workDetail__createMsgTextarea",
-              attrs: {
-                name: "message",
-                id: "message",
-                cols: "30",
-                rows: "10",
-                placeholder: "必須：新規質問の内容を記述"
-              },
-              domProps: { value: _vm.parentTextarea },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.parentTextarea = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "c-btn c-msgSendBtn p-workDetail__parentBtn",
-                attrs: { type: "submit" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.addParentMsg($event)
-                  }
-                }
-              },
-              [
-                _c("i", { staticClass: "far fa-arrow-alt-circle-up" }),
-                _vm._v("送信\n         ")
-              ]
-            )
-          ]
-        ),
+                  staticClass: "p-workDetail__createMsgForm",
+                  attrs: { action: "" }
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.parentTitle,
+                        expression: "parentTitle"
+                      }
+                    ],
+                    staticClass: "c-form__input p-workDetail__createMsgTitle",
+                    attrs: {
+                      type: "text",
+                      placeholder: "必須：新規質問内容のタイトルを記述"
+                    },
+                    domProps: { value: _vm.parentTitle },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.parentTitle = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.parentTextarea,
+                        expression: "parentTextarea"
+                      }
+                    ],
+                    staticClass:
+                      "c-form__textarea p-workDetail__createMsgTextarea",
+                    attrs: {
+                      name: "message",
+                      id: "message",
+                      cols: "30",
+                      rows: "10",
+                      placeholder: "必須：新規質問の内容を記述"
+                    },
+                    domProps: { value: _vm.parentTextarea },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.parentTextarea = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "c-btn c-msgSendBtn p-workDetail__parentBtn",
+                      attrs: { type: "submit" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.addParentMsg($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "far fa-arrow-alt-circle-up" }),
+                      _vm._v("送信\n            ")
+                    ]
+                  )
+                ]
+              )
+            ]
+          : _vm._e(),
         _vm._v(" "),
         _c(
           "transition-group",
@@ -40932,10 +40944,14 @@ var render = function() {
                         ]
                       }),
                       _vm._v(" "),
-                      _c("public-messages-child-form-component", {
-                        attrs: { parent: p.pm_id },
-                        on: { "child-text": _vm.addChildMsg }
-                      })
+                      _vm.authUser !== null
+                        ? [
+                            _c("public-messages-child-form-component", {
+                              attrs: { parent: p.pm_id },
+                              on: { "child-text": _vm.addChildMsg }
+                            })
+                          ]
+                        : _vm._e()
                     ],
                     2
                   )
@@ -40946,7 +40962,7 @@ var render = function() {
           0
         )
       ],
-      1
+      2
     )
   ])
 }
