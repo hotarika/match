@@ -15,10 +15,6 @@
 // vendor/laravel/framework/src/illuminate/Routing/Router.phpに定義されている
 Auth::routes();
 
-// パブリックルート
-Route::get('/', 'HomeController')->name('home');
-Route::resource('/works', 'WorksPublicController', ['only' => ['show']]);
-
 // 認証ルート（ログイン必須）
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/applicants', 'ApplicantsController');
@@ -31,9 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/dm-boards', 'DirectMessagesBoardsController');
     Route::resource('/dm-contents', 'DirectMessagesContentsController');
     Route::resource('/users', 'UsersController');
-    Route::resource('/works', 'WorksAuthController', [
-        'only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']
-    ]);
+    Route::resource('/works', 'WorksController', ['except' => ['show']]);
 
     // シングルアクションコントローラー（__invoke）
     Route::get('/mypage', 'MyPageController')->name('mypage');
@@ -50,6 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
     )->name('password.change');
 });
 
+// パブリックルート
+Route::get('/', 'HomeController')->name('home');
+Route::resource('/works', 'WorksController', ['only' => ['show']]);
 
 // 非同期処理
 Route::get(
