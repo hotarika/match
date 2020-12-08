@@ -912,6 +912,10 @@ body {
   background-color: #0081ff;
 }
 
+.c-pubMsgCard.-myWork {
+  background-color: #bedcfd;
+}
+
 .c-pubMsgCard__infoWrap {
   display: flex;
   justify-content: space-between;

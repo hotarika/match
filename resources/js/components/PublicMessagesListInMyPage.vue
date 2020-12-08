@@ -13,6 +13,7 @@
             <public-messages-card-component
                :msg-card="msgCard"
                :public-path="publicPath"
+               :auth-id="authId"
             ></public-messages-card-component>
          </span>
          <div class="c-h2__noItems -pubmsg" v-if="allData.length === 0">
@@ -27,7 +28,8 @@ import axios from 'axios';
 
 export default {
    props: {
-      publicPath: String
+      publicPath: String,
+      authId: Number
    },
    data() {
       return {

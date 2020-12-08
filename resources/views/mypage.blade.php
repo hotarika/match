@@ -38,14 +38,16 @@
             {{-- パブリックメッセージ                  --}}
             {{-- --------------------------------- --}}
             <public-messages-list-in-mypage-component
-               :public-path="{{ json_encode(asset('')) }}">
+               :public-path="{{ json_encode(asset('')) }}"
+               :auth-id="{{Auth::id()}}">
             </public-messages-list-in-mypage-component>
 
             {{-- --------------------------------- --}}
             {{-- ダイレクトメッセージ                  --}}
             {{-- --------------------------------- --}}
             <direct-messages-list-in-mypage-component
-               :public-path="{{ json_encode(asset('')) }}">
+               :public-path="{{ json_encode(asset('')) }}"
+               :auth-id="{{Auth::id()}}">
             </direct-messages-list-in-mypage-component>
          </div>
       </div>

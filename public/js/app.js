@@ -2210,10 +2210,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    publicPath: String
+    publicPath: String,
+    authId: Number
   },
   data: function data() {
     return {
@@ -2979,11 +2981,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     msgCard: Object,
-    publicPath: String
+    publicPath: String,
+    authId: Number
   },
   computed: {
     create: function create() {
@@ -3073,10 +3077,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    publicPath: String
+    publicPath: String,
+    authId: Number
   },
   data: function data() {
     return {
@@ -3133,10 +3139,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    publicPath: String
+    publicPath: String,
+    authId: Number
   },
   data: function data() {
     return {
@@ -40233,7 +40241,11 @@ var render = function() {
             { key: card.id },
             [
               _c("direct-messages-card-component", {
-                attrs: { "public-path": _vm.publicPath, card: card }
+                attrs: {
+                  "public-path": _vm.publicPath,
+                  card: card,
+                  "auth-id": _vm.authId
+                }
               })
             ],
             1
@@ -40991,7 +41003,8 @@ var render = function() {
   return _c(
     "a",
     {
-      staticClass: "c-card c-msgCard",
+      staticClass: "c-card c-msgCard c-pubMsgCard",
+      class: { "-myWork": _vm.authId === _vm.msgCard.u_id },
       attrs: { href: _vm.publicPath + "works/" + _vm.msgCard.w_id + "#pub-msg" }
     },
     [
@@ -41120,7 +41133,11 @@ var render = function() {
           { key: msgCard.pm_id },
           [
             _c("public-messages-card-component", {
-              attrs: { "msg-card": msgCard, "public-path": _vm.publicPath }
+              attrs: {
+                "msg-card": msgCard,
+                "public-path": _vm.publicPath,
+                "auth-id": _vm.authId
+              }
             })
           ],
           1
@@ -41180,7 +41197,11 @@ var render = function() {
             { key: msgCard.pm_id },
             [
               _c("public-messages-card-component", {
-                attrs: { "msg-card": msgCard, "public-path": _vm.publicPath }
+                attrs: {
+                  "msg-card": msgCard,
+                  "public-path": _vm.publicPath,
+                  "auth-id": _vm.authId
+                }
               })
             ],
             1

@@ -11,7 +11,9 @@
 
          <div class="l-main__mainArea -twoColumns">
             <public-messages-list-component
-               :public-path="{{json_encode(asset(''))}}"></public-messages-list-component>
+               :public-path="{{json_encode(asset(''))}}"
+               :auth-id="{{Auth::id()}}">
+            </public-messages-list-component>
 
          </div>
       </div>

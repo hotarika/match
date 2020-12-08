@@ -1,6 +1,7 @@
 <template>
    <a
-      class="c-card c-msgCard"
+      class="c-card c-msgCard c-pubMsgCard"
+      :class="{ '-myWork': authId === msgCard.u_id }"
       :href="publicPath + 'works/' + msgCard.w_id + '#pub-msg'"
    >
       <div class=" c-pubMsgCard__infoWrap">
@@ -31,7 +32,8 @@ import { getDateTimeNewFormat } from '../modules/getDateTimeNewFormat';
 export default {
    props: {
       msgCard: Object,
-      publicPath: String
+      publicPath: String,
+      authId: Number
    },
    computed: {
       create() {

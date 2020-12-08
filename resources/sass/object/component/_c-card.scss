@@ -265,6 +265,9 @@
 // パブリックメッセージ
 // ===========================
 .c-pubMsgCard {
+   &.-myWork {
+      background-color: $primary-light;
+   }
    &__infoWrap {
       display: flex;
       justify-content: space-between;
