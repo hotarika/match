@@ -161,8 +161,14 @@ class AsynchronousController extends Controller
             ->leftJoinSub($child, 'c', function ($join) {
                 $join->on('b.id', '=', 'c.board_id');
             })
-            ->orWhere('w.user_id', Auth::id())
-            ->orWhere('b.applicant_id', Auth::id())
+            ->where(function ($query) {
+                // 発注者または応募者に自分が含まれていれば表示する
+                $query->where('w.user_id', Auth::id())
+                    ->orWhere('b.applicant_id', Auth::id());
+            })->where(function ($query) {
+                // メッセージが投稿されていなければ表示しない
+                $query->whereNotNull('c.id');
+            })
             ->orderBy('c.created_at', 'DESC')
             ->get();
 

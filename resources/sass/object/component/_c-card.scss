@@ -226,6 +226,7 @@
 %c-msgCard__basicInfo {
    @include border-radius('all', 50px);
    @include ellipsis;
+   max-width: 80%;
    padding: 5px 15px;
    overflow: hidden;
    font-size: 11px;
@@ -274,7 +275,6 @@
    }
    &__basicInfo {
       @extend %c-msgCard__basicInfo; // 継承
-      max-width: 80%;
       @include mq('xs') {
          max-width: 70%;
          font-size: 10px;
@@ -343,7 +343,7 @@
    }
    &__mainAreaWrap {
       width: 100%;
-      padding-left: 15px;
+      padding-left: 10px;
       overflow: hidden;
       @include mq('xs') {
          padding-left: 10px;
