@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource(
         '/child-pubmsgs',
         'ChildPublicMessagesController',
-        ['only' => ['index', 'store']]
+        ['only' => ['store']]
     );
     Route::resource(
         '/dm-boards',
