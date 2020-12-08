@@ -106,14 +106,12 @@ class ApplicantsController extends Controller
         $toApplicant->notify(new DecisionNotification($fromOrderer, $request));
 
         // 応募者テーブルの更新
-        $applicant = Applicant::find($applicant_id);
-        $applicant->state = 2; // 応募者決定
-        $applicant->save();
+        $applicant = Applicant::find($request->applicant_table_id);
+        $applicant->fill(['state' => 2])->save(); // state:2 = 応募者決定
 
         // 仕事テーブルの更新
         $work = Work::find($request->w_id);
-        $work->state = 2; // 応募終了
-        $work->save();
+        $work->fill(['state' => 2])->save(); // state:2 = 応募終了
 
         return redirect()->route('dm-contents.show', $request->board_id)
             ->with('flash_message', '決定者と詳細について連絡を取りましょう！');;

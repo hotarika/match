@@ -44,6 +44,7 @@
                            class="p-applicant__decideForm -decide -decided -wait">
                            @method('PUT')
                            @csrf
+                           <input type="hidden" name="applicant_table_id" value="{{$applicant->id}}">
                            <input type="hidden" name="board_id" value="{{$applicant->board_id}}">
                            <input type="hidden" name="w_id" value="{{$applicant->w_id}}">
                            <input type="hidden" name="w_name" value="{{$applicant->w_name}}">

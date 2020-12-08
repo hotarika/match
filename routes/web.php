@@ -45,7 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource(
         '/dm-boards',
         'DirectMessagesBoardsController',
-        ['only' => ['index', 'store']]
+        ['only' => ['index']]
     );
     Route::resource(
         '/dm-contents',
