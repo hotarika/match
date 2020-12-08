@@ -29,6 +29,7 @@ class WorksPublicController extends Controller
                 'w.name as w_name',
                 'u.id as orderer_id',
                 'u.name as orderer_name',
+                'u.image as orderer_image',
                 'w.contract_id',
                 'c.type',
                 'w.end_date',

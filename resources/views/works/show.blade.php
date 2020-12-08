@@ -63,8 +63,11 @@
                         <div class="p-workDetail__infoUpperItem -left">
                            <span>依頼者：</span>
                            <div class="p-workDetail__userInfoWrap">
-                              <img class="c-img p-workDetail__infoImg" src="" alt="ユーザーの画像" />
-                              <a href="{{route('users.show',1)}}" class="c-link p-workDetail__infoName">名前入ります</a>
+                              <img class="c-img p-workDetail__infoImg"
+                                 src="{{ asset('storage/user_img/'.$work->orderer_image) }}"
+                                 alt="ユーザーの画像" />
+                              <a href="{{route('users.show',1)}}"
+                                 class="c-link p-workDetail__infoName">{{$work->orderer_name}}</a>
                            </div>
                         </div>
                         <div class="p-workDetail__infoUpperItem -right">
