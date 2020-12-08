@@ -61,14 +61,14 @@ class ChildPublicMessagesSeeder extends Seeder
 
         // public_msg-id3
         DB::table('child_public_messages')->insert([
-            'parent_id' => 2,
+            'parent_id' => 3,
             'user_id' => 2,
             'content' => 'user_id2がparent_id3に返信しました。テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト',
             'created_at' => '2020-11-10 12:43:47',
             'updated_at' => '2020-11-10 12:43:47'
         ]);
         DB::table('child_public_messages')->insert([
-            'parent_id' => 2,
+            'parent_id' => 3,
             'user_id' => 4,
             'content' => 'user_id4がparent_id3に返信しました。テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト',
             'created_at' => '2020-11-20 16:43:47',
