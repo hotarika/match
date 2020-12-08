@@ -23,27 +23,31 @@ class ApplicantsController extends Controller
      */
     public function store(Request $request)
     {
-        // 仕事発注者へ通知
-        $owner_user = User::find($request->owner_id);
-        $order_user = Auth::user();
-        $owner_user->notify(new ApplicantsNotification($order_user, $request));
+        // 仕事発注者へ応募の通知
+        $toOrderer = User::find($request->owner_id);
+        $fromApplicant = Auth::user();
+        $toOrderer->notify(new ApplicantsNotification($fromApplicant, $request));
 
         // 応募キャンセル機能を付けているため、もし一度応募をキャンセルしたが再度応募した場合に、DBにボードが以前作成されているかどうかを判断しそれぞれの処理をする
         if (!DirectMessageBoard::where('work_id', '=', $request->work_id)
             ->where('applicant_id', '=', Auth::id())
             ->count()) {
+
             // ダイレクトメッセージのボードを作成
             $board = new DirectMessageBoard;
-            $board->work_id = $request->work_id;
-            $board->applicant_id = Auth::id();
-            $board->save();
+            $board->fill([
+                'work_id' => $request->work_id,
+                'applicant_id' => Auth::id(),
+            ])->save();
         }
 
         // 応募者情報をDB保存
         $applicant = new Applicant;
-        $applicant->work_id = $request->work_id;
-        $applicant->applicant_id = Auth::id();
-        $applicant->save();
+        $applicant->fill([
+            'work_id' => $request->work_id,
+            'applicant_id' => Auth::id()
+        ])->save();
+
 
         return redirect()->route('works.index')
             ->with('flash_message', '応募しました');
