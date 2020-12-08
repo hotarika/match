@@ -47,9 +47,11 @@
                         class="twitter-share-button"
                         data-show-count="false"
                         data-lang="ja"
-                        data-text="【match】カーナビシステムを作成した後に、業務システムを作成して欲しい"
-                        data-url="http://localhost:8000/work-detail"
-                        data-hashtags="match">Tweet</a>
+                        data-text="【match】{{$work->w_name}}"
+                        data-url="http://localhost:8000/works/{{$work->w_id}}"
+                        data-hashtags="match">
+                        Tweet
+                     </a>
                   </div>
 
                   <!-- 仕事詳細説明 -->
