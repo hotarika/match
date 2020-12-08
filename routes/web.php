@@ -11,23 +11,57 @@
 |
 */
 
+// **********************************************
 // Auth関連のルート
+// **********************************************
 // vendor/laravel/framework/src/illuminate/Routing/Router.phpに定義されている
 Auth::routes();
 
+
+// **********************************************
 // 認証ルート（ログイン必須）
+// **********************************************
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('/applicants', 'ApplicantsController');
+    Route::resource(
+        '/applicants',
+        'ApplicantsController',
+        ['only' => ['store', 'show', 'update', 'destroy']]
+    );
     Route::resource(
         '/applicants-notifications',
-        'ApplicantsNotificationsController'
+        'ApplicantsNotificationsController',
+        ['only' => ['index', 'update',]]
     );
-    Route::resource('/pubmsgs', 'ParentPublicMessagesController'); //親掲示板
-    Route::resource('/child-pubmsgs', 'ChildPublicMessagesController');
-    Route::resource('/dm-boards', 'DirectMessagesBoardsController');
-    Route::resource('/dm-contents', 'DirectMessagesContentsController');
-    Route::resource('/users', 'UsersController');
-    Route::resource('/works', 'WorksController', ['except' => ['show']]);
+    Route::resource(
+        '/pubmsgs',
+        'ParentPublicMessagesController',
+        ['only' => ['index', 'store', 'update']]
+    ); //親掲示板
+    Route::resource(
+        '/child-pubmsgs',
+        'ChildPublicMessagesController',
+        ['only' => ['index', 'store']]
+    );
+    Route::resource(
+        '/dm-boards',
+        'DirectMessagesBoardsController',
+        ['only' => ['index', 'store']]
+    );
+    Route::resource(
+        '/dm-contents',
+        'DirectMessagesContentsController',
+        ['only' => ['store', 'show']]
+    );
+    Route::resource(
+        '/users',
+        'UsersController',
+        ['only' => ['show', 'edit', 'update']]
+    );
+    Route::resource(
+        '/works',
+        'WorksController',
+        ['except' => ['show']]
+    );
 
     // シングルアクションコントローラー（__invoke）
     Route::get('/mypage', 'MyPageController')->name('mypage');
@@ -44,11 +78,17 @@ Route::group(['middleware' => 'auth'], function () {
     )->name('password.change');
 });
 
-// パブリックルート
+
+// **********************************************
+// パブリックルート（ゲスト閲覧可能）
+// **********************************************
 Route::get('/', 'HomeController')->name('home');
 Route::resource('/works', 'WorksController', ['only' => ['show']]);
 
+
+// **********************************************
 // 非同期処理
+// **********************************************
 Route::get(
     '/async/works',
     'AsynchronousController@getWorks'
