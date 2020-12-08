@@ -30,7 +30,6 @@ class ApplicantsNotificationsController extends Controller
     public function update(Request $request, $id)
     {
         $notification = Notification::find($id);
-        $notification->read_at = $request->read_at;
-        $notification->save();
+        $notification->fill($request->all())->save();
     }
 }
