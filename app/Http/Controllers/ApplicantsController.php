@@ -81,10 +81,12 @@ class ApplicantsController extends Controller
             ->select(
                 'a.id',
                 'a.work_id as w_id',
+                'w.state as w_state',
                 'w.name as w_name',
                 'a.applicant_id',
                 'u.name as u_name',
                 'u.image as u_image',
+                'a.state as applicant_state',
                 'b.id as board_id'
             )
             ->leftJoin('users as u', 'a.applicant_id', '=', 'u.id')

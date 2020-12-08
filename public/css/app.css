@@ -1413,6 +1413,10 @@ body {
   padding: 5px 20px;
 }
 
+.p-applicant__userWrap.-decision {
+  background-color: lightpink;
+}
+
 @media screen and (max-width: 414px) {
   .p-applicant__userWrap {
     padding: 5px 15px;

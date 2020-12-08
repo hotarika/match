@@ -20,7 +20,9 @@
 
                      @foreach ($applicants as $applicant)
                      <div class="p-applicant__list">
-                        <div class="p-applicant__userWrap">
+                        <div
+                           class="p-applicant__userWrap
+                        @if($applicant->applicant_state === 2) -decision @endif">
                            <div class="p-applicant__user">
                               <img class="c-img p-applicant__userImg"
                                  src="{{url('/').'/storage/user_img/'.$applicant->u_image}}" alt="ユーザーの画像" />
@@ -37,6 +39,7 @@
                         </div>
 
                         {{-- 決定ボタン --}}
+                        @if($applicant->w_state === 1)
                         <form method="POST" action="{{route('applicants.update',$applicant->applicant_id)}}"
                            class="p-applicant__decideForm -decide -decided -wait">
                            @method('PUT')
@@ -49,6 +52,8 @@
                               決定する
                            </button>
                         </form>
+                        @endif
+
                      </div>
                      @endforeach
 
