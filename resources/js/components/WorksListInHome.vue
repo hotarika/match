@@ -55,8 +55,12 @@ export default {
             console.log(res);
             this.allData = res.data;
 
-            // 上記で指定した画面サイズに応じたカード枚数分、dataに格納
-            for (let i = 0; i < cardNum; i++) {
+            for (
+               let i = 0;
+               i <
+               (cardNum > this.allData.length ? this.allData.length : cardNum);
+               i++
+            ) {
                showCard[i] = this.allData[i];
             }
 

@@ -3448,9 +3448,9 @@ __webpack_require__.r(__webpack_exports__);
 
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.publicPath + 'async/works').then(function (res) {
       console.log(res);
-      _this.allData = res.data; // 上記で指定した画面サイズに応じたカード枚数分、dataに格納
+      _this.allData = res.data;
 
-      for (var i = 0; i < cardNum; i++) {
+      for (var i = 0; i < (cardNum > _this.allData.length ? _this.allData.length : cardNum); i++) {
         showCard[i] = _this.allData[i];
       }
 
