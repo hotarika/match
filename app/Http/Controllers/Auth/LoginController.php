@@ -35,6 +35,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        // Login Controller は、logoutメソッドを除いて権限をguestにする
         $this->middleware('guest')->except('logout');
     }
 }
