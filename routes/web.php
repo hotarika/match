@@ -99,7 +99,7 @@ Route::get(
 );
 Route::get(
     '/async/works-contract-mypage',
-    'AsynchronousController@getWorksListOfContractInMyPage'
+    'AsynchronousController@getWorksListOfApplicationInMyPage'
 );
 Route::get(
     '/async/badge',

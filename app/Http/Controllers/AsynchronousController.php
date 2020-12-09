@@ -52,7 +52,7 @@ class AsynchronousController extends Controller
     }
 
 
-    public function getWorksListOfContractInMyPage()
+    public function getWorksListOfApplicationInMyPage()
     {
         $work = DB::table('works as w')
             ->select(

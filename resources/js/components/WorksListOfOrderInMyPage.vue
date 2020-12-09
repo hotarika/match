@@ -25,7 +25,7 @@ export default {
    data() {
       return {
          allData: [],
-         showNum: 9
+         showNum: 6
       };
    },
    mounted() {
