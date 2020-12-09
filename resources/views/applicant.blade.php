@@ -18,7 +18,7 @@
                   </h2>
                   <div class="p-applicant__lists">
 
-                     @foreach ($applicants as $applicant)
+                     @forelse ($applicants as $applicant)
                      <div class="p-applicant__list">
                         <div
                            class="p-applicant__userWrap
@@ -54,9 +54,11 @@
                            </button>
                         </form>
                         @endif
-
                      </div>
-                     @endforeach
+
+                     @empty
+                     <div class="c-h2__noItems -applicantList">現在、応募者はいません</div>
+                     @endforelse
 
                   </div>
                </div>

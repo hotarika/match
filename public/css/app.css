@@ -1357,6 +1357,10 @@ pre {
   margin-left: -35px;
 }
 
+.c-h2__noItems.-applicantList {
+  padding-top: 10px;
+}
+
 .p-applicant__body {
   border-radius: 2px 0 0 2px;
   min-height: 400px;
