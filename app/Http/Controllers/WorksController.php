@@ -46,7 +46,7 @@ class WorksController extends Controller
             'name' => $request->name,
             'contract_id' => $request->contract,
             'end_date' => $request->end_date,
-            'hope_date' => $request->hopeDeadline,
+            'hope_date' => $request->hope_date,
             'price_lower' => $request->priceLower,
             'price_upper' => $request->priceUpper,
             'content' => $request->content,

@@ -75,7 +75,7 @@
                               <div class="p-workDetail__infoDateHead">募集終了</div>
                               <time>{{$work->end_date}}</time>
                            </div>
-                           <div class="p-workDetail__infoDate -hopeDeadline">
+                           <div class="p-workDetail__infoDate -hopeDate">
                               <div class="p-workDetail__infoDateHead">希望納期</div>
                               <time>{{$work->hope_date}}</time>
                            </div>

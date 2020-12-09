@@ -153,7 +153,7 @@ return [
         'email' => 'メールアドレス',
         'password' => 'パスワード',
         'end_date' => '募集終了',
-        'hopeDeadline' => '希望納期',
+        'hope_date' => '希望納期',
         'contract' => '提携方法',
         'priceLower' => '下限金額',
         'priceUpper' => '上限金額',

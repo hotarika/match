@@ -62,19 +62,19 @@
                      </div>
 
                      <!-- 希望納期 -->
-                     <div class="p-workForm__wrap -hopeDeadline">
-                        <label class="p-workForm__label -hopeDeadline"
-                           for="hope-deadline">希望納期<span>[必須]</span></label>
+                     <div class="p-workForm__wrap -hopeDate">
+                        <label class="p-workForm__label -hopeDate"
+                           for="hope-date">希望納期<span>[必須]</span></label>
                         <div class="p-workForm__inputWrap">
                            <input
-                              id="hope-deadline"
-                              class="c-form__input p-workForm__input -hopeDeadline"
+                              id="hope-date"
+                              class="c-form__input p-workForm__input -hopeDate"
                               type="date"
-                              name="hopeDeadline"
-                              value="{{ old('hopeDeadline',$work->hope_date ??  '') }}"
+                              name="hope_date"
+                              value="{{ old('hope_date',$work->hope_date ??  '') }}"
                               placeholder="例：2021/02/01" />
 
-                           @error('hopeDeadline')
+                           @error('hope_date')
                            <span class="c-form__invalid" role="alert">
                               <strong>{{ $message }}</strong>
                            </span>

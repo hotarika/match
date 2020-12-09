@@ -4014,14 +4014,14 @@ pre {
 }
 
 .p-workForm__input.-endDate,
-.p-workForm__input.-hopeDeadline,
+.p-workForm__input.-hopeDate,
 .p-workForm__input.-contract {
   width: 70%;
 }
 
 @media screen and (max-width: 768px) {
   .p-workForm__input.-endDate,
-  .p-workForm__input.-hopeDeadline,
+  .p-workForm__input.-hopeDate,
   .p-workForm__input.-contract {
     width: 100%;
   }

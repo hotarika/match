@@ -101,7 +101,7 @@
          }
       }
       &.-endDate,
-      &.-hopeDeadline,
+      &.-hopeDate,
       &.-contract {
          width: 70%;
          @include mq('md') {
