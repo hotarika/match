@@ -67,6 +67,7 @@ class DirectMessagesContentsController extends Controller
                 'c.created_at',
             )
             ->where('board_id', $id)
+            ->orderBy('created_at', 'ASC')
             ->get();
 
         return view('dm.show', compact('contents', 'info'));
