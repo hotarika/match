@@ -387,6 +387,10 @@ body {
   background-color: #efefef;
 }
 
+pre {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+}
+
 *,
 *::before,
 *::after {
@@ -1156,7 +1160,7 @@ body {
   border-radius: 2px;
   min-height: 60px;
   padding: 15px;
-  font-size: 14px;
+  font-size: 13px;
   resize: vertical;
   border: 1px solid #ced4da;
 }
@@ -1607,8 +1611,9 @@ body {
   letter-spacing: 0.5px;
   position: relative;
   width: 75%;
-  padding: 15px;
+  padding: 10px 15px;
   font-size: 13px;
+  white-space: pre-wrap;
 }
 
 @media screen and (max-width: 320px) {
@@ -1625,7 +1630,7 @@ body {
 .p-dm__msgMe::before,
 .p-dm__msgYou::before {
   position: absolute;
-  top: 34%;
+  bottom: 8px;
   display: block;
   content: "";
   border-style: solid;
@@ -3098,6 +3103,7 @@ body {
   font-size: 14px;
   line-height: 1.3;
   letter-spacing: 0.5px;
+  white-space: pre-wrap;
   border: 1px solid #adb5bd;
 }
 
@@ -3511,6 +3517,7 @@ body {
   padding: 20px;
   margin: 0;
   font-size: 14px;
+  white-space: pre-wrap;
   border: 1px solid #ced4da;
 }
 
@@ -3723,6 +3730,7 @@ body {
   margin: 0;
   margin-bottom: 13px;
   font-size: 13px;
+  white-space: pre-wrap;
 }
 
 @media screen and (max-width: 414px) {
@@ -3824,6 +3832,7 @@ body {
   letter-spacing: 0.5px;
   margin: 0;
   font-size: 13px;
+  white-space: pre-wrap;
 }
 
 @media screen and (max-width: 414px) {

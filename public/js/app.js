@@ -1965,10 +1965,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -40004,7 +40000,7 @@ var render = function() {
             _vm._l(_vm.contents, function(msg) {
               return _c("div", { key: msg.content_id }, [
                 _c(
-                  "div",
+                  "pre",
                   {
                     key: msg.id,
                     class: {
@@ -40013,11 +40009,7 @@ var render = function() {
                     }
                   },
                   [
-                    _vm._v(
-                      "\n                  " +
-                        _vm._s(msg.content) +
-                        "\n                  "
-                    ),
+                    _vm._v(_vm._s(msg.content)),
                     _c("time", [
                       _vm._v(_vm._s(_vm._f("formatDateTime")(msg.created_at)))
                     ])
@@ -40876,13 +40868,11 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("p", { staticClass: "p-workDetail__parentContent" }, [
-                        _vm._v(
-                          "\n                     " +
-                            _vm._s(p.pm_content) +
-                            "\n                  "
-                        )
-                      ]),
+                      _c(
+                        "pre",
+                        { staticClass: "p-workDetail__parentContent" },
+                        [_vm._v(_vm._s(p.pm_content))]
+                      ),
                       _vm._v(" "),
                       _vm._l(_vm.childMessages, function(c) {
                         return [
@@ -40940,18 +40930,12 @@ var render = function() {
                                         ),
                                         _vm._v(" "),
                                         _c(
-                                          "p",
+                                          "pre",
                                           {
                                             staticClass:
                                               "p-workDetail__childContent"
                                           },
-                                          [
-                                            _vm._v(
-                                              "\n                                 " +
-                                                _vm._s(c.cm_content) +
-                                                "\n                              "
-                                            )
-                                          ]
+                                          [_vm._v(_vm._s(c.cm_content))]
                                         )
                                       ]
                                     )

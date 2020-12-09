@@ -56,9 +56,9 @@
                      <div class="p-workDetail__parentTitle">
                         {{ p.pm_title }}
                      </div>
-                     <p class="p-workDetail__parentContent">
-                        {{ p.pm_content }}
-                     </p>
+                     <pre class="p-workDetail__parentContent">{{
+                        p.pm_content
+                     }}</pre>
 
                      <!-- 子掲示板 -->
                      <template v-for="c in childMessages">
@@ -84,9 +84,9 @@
                                     src="profile"
                                     >{{ c.u_name }}</a
                                  >
-                                 <p class="p-workDetail__childContent">
-                                    {{ c.cm_content }}
-                                 </p>
+                                 <pre class="p-workDetail__childContent">{{
+                                    c.cm_content
+                                 }}</pre>
                               </div>
                            </div>
                         </template>

@@ -16,16 +16,12 @@
             <transition-group>
                <div v-for="msg in contents" :key="msg.content_id">
                   <!-- 自分ののメッセージ -->
-                  <div
+                  <pre
                      :key="msg.id"
                      :class="{
                         'p-dm__msgMe': msg.user_id === authId,
                         'p-dm__msgYou': msg.user_id !== authId
-                     }"
-                  >
-                     {{ msg.content }}
-                     <time>{{ msg.created_at | formatDateTime }}</time>
-                  </div>
+                     }">{{ msg.content }}<time>{{ msg.created_at | formatDateTime }}</time></pre>
                </div>
             </transition-group>
          </div>

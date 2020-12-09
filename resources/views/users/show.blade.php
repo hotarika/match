@@ -36,7 +36,7 @@
                      </div>
                      <div class="p-profile__proIntroduction">
                         <div class="p-profile__proIntroductionHead">自己紹介</div>
-                        <div class="p-profile__proIntroductionBody">{{$user->introduction}}</div>
+                        <pre class="p-profile__proIntroductionBody">{{$user->introduction}}</pre>
                      </div>
                   </div>
                </div>

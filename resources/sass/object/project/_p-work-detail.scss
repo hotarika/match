@@ -261,6 +261,7 @@
       padding: 20px;
       margin: 0;
       font-size: 14px;
+      white-space: pre-wrap;
       border: 1px solid $gray-400;
       @include mq('xs') {
          font-size: 13px;
@@ -412,6 +413,7 @@
       margin: 0;
       margin-bottom: 13px;
       font-size: 13px;
+      white-space: pre-wrap;
       @include mq('xs') {
          font-size: 12px;
       }
@@ -485,6 +487,7 @@
       @include letter-settings;
       margin: 0;
       font-size: 13px;
+      white-space: pre-wrap;
       @include mq('xs') {
          font-size: 12px;
       }

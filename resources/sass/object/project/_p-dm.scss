@@ -7,8 +7,9 @@
    @include letter-settings;
    position: relative;
    width: 75%;
-   padding: 15px;
+   padding: 10px 15px;
    font-size: 13px;
+   white-space: pre-wrap;
    @include mq('3xs') {
       width: 80%;
       padding: 10px;
@@ -18,7 +19,7 @@
    }
    &::before {
       position: absolute;
-      top: 34%;
+      bottom: 8px;
       display: block;
       content: '';
       border-style: solid;

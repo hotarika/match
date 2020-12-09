@@ -106,7 +106,7 @@
                   </div>
                   <div class="p-workDetail__requestWrap">
                      <div class="p-workDetail__requestHead">依頼内容</div>
-                     <p class="p-workDetail__requestBody">{{$work->content}}</p>
+                     <pre class="p-workDetail__requestBody">{{$work->content}}</pre>
                   </div>
 
                   {{-- 応募ボタン --}}
