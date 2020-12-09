@@ -218,8 +218,7 @@
       }
       &.-appNum {
          @include mq('xs') {
-            flex-basis: 50%;
-            border-right: none;
+            flex-basis: 100%;
          }
       }
    }

@@ -153,6 +153,15 @@
          background-color: $primary-light;
       }
    }
+   &__userImg {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      object-fit: cover;
+      @include mq('xs') {
+         margin-right: 17px;
+      }
+   }
    &__navName {
       font-size: 14px;
       @include mq('xs') {

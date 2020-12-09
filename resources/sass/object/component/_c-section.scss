@@ -89,10 +89,6 @@
          padding: 5px 0 10px 0;
          background-color: transparent;
       }
-      /* IE11 対応 */
-      @media all and (-ms-high-contrast: none) {
-         padding-left: calc(50% - 355px);
-      }
    }
    // 「現在、xxxはありません」の表示
    &__noItems {

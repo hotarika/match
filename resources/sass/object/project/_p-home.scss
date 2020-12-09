@@ -52,10 +52,6 @@
       max-height: 80vh;
       vertical-align: top;
       object-fit: cover;
-      /* IE11 対応 */
-      @media all and (-ms-high-contrast: none) {
-         font-family: 'object-fit: cover;', sans-serif;
-      }
    }
    &__topMsg {
       position: absolute;

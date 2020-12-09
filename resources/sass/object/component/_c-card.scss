@@ -40,10 +40,6 @@
       padding: 25px 5px 15px;
       margin: 0 5px 5px 0;
    }
-   /* IE11 対応 */
-   @media all and (-ms-high-contrast: none) {
-      border: 1px solid $gray-200;
-   }
    &::before {
       @include border-radius('top');
       position: absolute;
@@ -102,21 +98,12 @@
          display: none;
       }
       scrollbar-width: none; /* Firefox 対応 */
-      -ms-overflow-style: none; /* IE11, Edge 対応 */
-      /* IE11 対応 */
-      @media all and (-ms-high-contrast: none) {
-         font-size: 14px;
-      }
    }
    &__contract {
       display: flex;
       flex-basis: 50px;
       justify-content: space-between;
       margin-top: 4px;
-      /* IE11 対応 */
-      @media all and (-ms-high-contrast: none) {
-         position: relative;
-      }
    }
    &__contractIconWrap {
       @include flex-center;
@@ -321,12 +308,6 @@
       max-height: 50px;
       @include mq('3xs') {
          display: none;
-      }
-      /* IE11 対応 */
-      @media all and (-ms-high-contrast: none) {
-         // 形が潰れて表示されるので修正
-         width: 50px;
-         height: 50px;
       }
    }
    &__mainAreaWrap {

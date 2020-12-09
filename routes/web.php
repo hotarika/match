@@ -60,7 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource(
         '/works',
         'WorksController',
-        ['except' => ['show']]
+        ['except' => ['show', 'destroy']]
     );
 
     // シングルアクションコントローラー（__invoke）

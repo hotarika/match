@@ -61,7 +61,7 @@
       padding: 10px 50px;
       border-bottom: 1px solid $white;
       @include mq('3xs') {
-         padding: 9px 0 7px;
+         padding: 9px 10px 7px;
       }
       & > img {
          width: 45px;
@@ -100,10 +100,6 @@
       max-height: 500px;
       overflow: scroll;
       overflow-x: hidden;
-      /* IE11 対応 */
-      @media all and (-ms-high-contrast: none) {
-         min-height: 500px;
-      }
    }
    &__msgYou {
       @extend %dm__msg; // 継承
@@ -153,24 +149,15 @@
             padding: 10px;
             font-size: 12px;
          }
-         /* IE11 対応 */
-         @media all and (-ms-high-contrast: none) {
-            min-width: 85%;
-         }
       }
       &.-myWork {
          background-color: $primary-light;
-      }
-      /* IE11 対応 */
-      @media all and (-ms-high-contrast: none) {
-         min-height: 200px;
       }
    }
    &__sendBtn {
       right: 57px;
       bottom: 11px;
-      /* IE11 対応 */
-      @media all and (-ms-high-contrast: none) {
+      @include mq('xs') {
          right: 15px;
       }
    }

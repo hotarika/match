@@ -65,10 +65,6 @@
       @include mq('3xs') {
          padding: 15px 12px 50px;
       }
-      /* IE11 対応 */
-      @media all and (-ms-high-contrast: none) {
-         overflow: hidden; // 高さを認識させる
-      }
    }
    &__parentImg {
       width: 60px;
@@ -77,19 +73,9 @@
       @include mq('md') {
          display: none;
       }
-      /* IE11 対応 */
-      @media all and (-ms-high-contrast: none) {
-         float: left;
-         margin-right: 15px;
-      }
    }
    &__parentRight {
       width: 100%;
-      /* IE11 対応 */
-      @media all and (-ms-high-contrast: none) {
-         float: left;
-         width: 85%;
-      }
    }
    &__parentName {
       margin-bottom: 5px;
@@ -142,10 +128,6 @@
       @include mq('3xs') {
          padding: 15px 12px;
       }
-      /* IE11 対応 */
-      @media all and (-ms-high-contrast: none) {
-         overflow: hidden; // 高さを認識させる
-      }
    }
    &__childDate {
       position: absolute;
@@ -165,18 +147,6 @@
       margin-right: 8px;
       @include mq('md') {
          display: none;
-      }
-      /* IE11 対応 */
-      @media all and (-ms-high-contrast: none) {
-         float: left;
-         margin-right: 10px;
-      }
-   }
-   &__childRight {
-      /* IE11 対応 */
-      @media all and (-ms-high-contrast: none) {
-         float: left;
-         width: 85%;
       }
    }
    &__childName {

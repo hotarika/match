@@ -30,7 +30,7 @@
                </ul>
             </div>
             @else
-            id-{{Auth::user()->id}} / 名前-{{Auth::user()->name}}
+
             {{-- ナビゲーション --}}
             <div class="p-header__rightWrap">
                <!-- ログイン後 -->
@@ -60,17 +60,19 @@
                               <div class="p-header__navName">編集</div>
                            </a>
                         </li>
-
-                        <!-- スマホのみ表示 -->
-                        <li class="p-header__item -sp">
-                           <a class="c-link p-header__navLink" href="mypage">
-                              <i class="fas fa-trash-alt p-header__navIcon"></i>
-                              <div class="p-header__navName u-ml5">削除</div>
-                           </a>
-                        </li>
                         <hr class="p-header__navHr" />
                      </div>
                      @endif
+
+                     <!-- 全ての端末で表示 -->
+                     <li class="p-header__item">
+                        <a class="c-link p-header__navLink" href="{{ route('users.show',Auth::id()) }}">
+                           <img class="p-header__userImg" src="{{asset('storage/user_img/'.Auth::user()->image)}}"
+                              alt="">
+                           <div class="p-header__navName u-ml4">{{Auth::user()->name}}
+                           </div>
+                        </a>
+                     </li>
 
                      <!-- 全ての端末で表示 -->
                      <li class="p-header__item">

@@ -22,15 +22,6 @@
                <a class="c-btn p-side__link" href="{{route('works.edit',$work_id)}}">
                   <li><i class="fas fa-edit"></i><span>編集</span></li>
                </a>
-               <form method="POST" name="workDeleteForm" action="{{route('works.destroy',$work->orderer_id)}}">
-                  <a class="c-btn p-side__link" href="javascript:workDeleteForm.submit()"
-                     onclick='return confirm("削除しますか？");'>
-                     @method('DELETE')
-                     @csrf
-
-                     <li><i class="fas fa-trash-alt"></i><span class="u-ml3">削除</span></li>
-                  </a>
-               </form>
             </ul>
             @endif
          </aside>

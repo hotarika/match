@@ -9,4 +9,7 @@
    text-align: center;
    background: #6da6ff;
    border-radius: 0 0 2px 2px;
+   @include mq('xs') {
+      top: 60px;
+   }
 }
