@@ -26,11 +26,11 @@
                         <table class="p-profile__proResultBody">
                            <tr>
                               <th>発注実績</th>
-                              <td>1件</td>
+                              <td>{{$ordersCount}} 件</td>
                            </tr>
                            <tr>
                               <th>受注実績</th>
-                              <td>1件</td>
+                              <td>{{$ordersReceivedCount}} 件</td>
                            </tr>
                         </table>
                      </div>

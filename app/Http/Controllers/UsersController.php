@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -15,10 +16,21 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($user_id)
     {
-        $user = User::find($id);
-        return view("users.show", compact('user'));
+        $user = User::find($user_id);
+
+        $ordersCount = DB::table('works')
+            ->where('user_id', '=', $user_id)
+            ->where('state', '=', 2)
+            ->count();
+
+        $ordersReceivedCount = DB::table('applicants')
+            ->where('applicant_id', '=', $user_id)
+            ->where('state', '=', 2)
+            ->count();
+
+        return view("users.show", compact('user', 'ordersCount', 'ordersReceivedCount'));
     }
 
     /**
