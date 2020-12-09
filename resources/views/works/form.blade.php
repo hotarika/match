@@ -92,7 +92,8 @@
                               class="c-form__input p-workForm__input -contract js-contract"
                               name="contract">
                               <option value="" selected>選択してください</option>
-                              <option value="1" @if(old('contract',$work->contract_id ?? '')=='1' ) selected @endif>単発案件
+                              <option value="1" @if(old('contract',$work->contract_id ?? '')=='1' ) selected
+                                 @endif>単発案件
                               </option>
                               <option value="2" @if(old('contract',$work->contract_id ?? '')=='2' ) selected
                                  @endif>レベニューシェア
@@ -128,10 +129,14 @@
                                  placeholder="例：2000" /><span>千円</span>
                            </div>
 
-                           @if($errors->has('priceLower') || $errors->has('priceUpper'))
-                           <span class="c-form__invalid" role="alert">
-                              <strong class="c-form__error -priceLower">{{ $errors->first('priceLower') }}</strong><br>
-                              <strong>{{ $errors->first('priceUpper') }}</strong>
+                           @if($errors->has('priceLower'))
+                           <span class="c-form__invalid -priceLower" role="alert">
+                              <strong class="c-form__error">{{ $errors->first('priceLower') }}</strong>
+                           </span>
+                           @endif
+                           @if($errors->has('priceUpper'))
+                           <span class="c-form__invalid -priceUpper" role="alert">
+                              <strong class="c-form__error ">{{ $errors->first('priceUpper') }}</strong>
                            </span>
                            @endif
                         </div>
@@ -156,6 +161,7 @@
                            @enderror
                         </div>
                      </div>
+
                      <button class="c-btn p-workForm__editBtn" type="submit">@if ( request()->is('*edit*') )編集する @else
                         登録する @endif</button>
                   </form>

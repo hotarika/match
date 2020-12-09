@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Applicant;
+use App\Http\Requests\WorkRequest;
 
 class WorksController extends Controller
 {
@@ -37,19 +38,8 @@ class WorksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WorkRequest $request)
     {
-        $validate_rule = [
-            'name' => 'required',
-            'endRecruitment' => 'required | date',
-            'hopeDeadline' => 'required | date',
-            'contract' => 'required',
-            'priceLower' => 'required_if:contract,1',
-            'priceUpper' => 'required_if:contract,1',
-            'content' => 'required',
-        ];
-        $this->validate($request, $validate_rule);
-
         $work = new Work;
         $work->fill([
             'user_id' => Auth::id(),
@@ -206,7 +196,7 @@ class WorksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(WorkRequest $request, $id)
     {
         $work = Work::find($id);
         $work->fill($request->all())->save();

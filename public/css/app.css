@@ -1145,6 +1145,10 @@ pre {
   color: #dc3545;
 }
 
+.c-form__invalid.-priceLower {
+  margin-bottom: 5px;
+}
+
 @media screen and (max-width: 768px) {
   .c-form__invalid {
     font-size: 12px;
@@ -1153,10 +1157,6 @@ pre {
 
 .c-form__error {
   display: inline-block;
-}
-
-.c-form__error.-priceLower {
-  margin-bottom: 5px;
 }
 
 .c-form__textarea {

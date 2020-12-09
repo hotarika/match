@@ -129,8 +129,11 @@ return [
     */
 
     'custom' => [
-        '属性名' => [
-            'ルール名' => 'カスタムメッセージ',
+        'priceLower' => [
+            'required_if' => '提携方法が「単発案件」の場合、下限金額も指定してください。',
+        ],
+        'priceUpper' => [
+            'required_if' => '提携方法が「単発案件」の場合、上限金額も指定してください。',
         ],
     ],
 
@@ -149,6 +152,14 @@ return [
         'name' => '名前',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
+        'endRecruitment' => '募集終了',
+        'hopeDeadline' => '希望納期',
+        'contract' => '提携方法',
+        'priceLower' => '下限金額',
+        'priceUpper' => '上限金額',
+        'oneoff' => '単発案件',
+        'content' => '依頼内容'
+
     ],
 
 ];
