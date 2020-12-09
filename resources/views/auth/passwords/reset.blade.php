@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'パスワード再設定')
 
 @section('content')
 <main class="l-main p-passReset">

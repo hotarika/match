@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'パスワードリセット ')
 
 @section('content')
 <main class="l-main p-passEmail">
