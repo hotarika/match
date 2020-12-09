@@ -14,6 +14,6 @@ class ParentPublicMessage extends Model
      * @var array
      */
     protected $fillable = [
-        'work_id', 'user_id', 'title', 'content', 'delete_flg'
+        'work_id', 'user_id', 'title', 'content', 'delete_flg', 'updated_at'
     ];
 }

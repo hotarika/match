@@ -12,6 +12,6 @@ class Applicant extends Model
      * @var array
      */
     protected $fillable = [
-        'work_id', 'applicant_id', 'state',
+        'work_id', 'applicant_id', 'state', 'delete_flg'
     ];
 }
