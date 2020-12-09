@@ -1,7 +1,7 @@
 <template>
    <a
       class="c-card c-msgCard c-pubMsgCard"
-      :class="{ '-myWork': authId === msgCard.u_id }"
+      :class="{ '-myWork': authId === msgCard.orderer_id }"
       :href="publicPath + 'works/' + msgCard.w_id + '#pub-msg'"
    >
       <div class=" c-pubMsgCard__infoWrap">

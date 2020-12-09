@@ -105,6 +105,7 @@ class AsynchronousController extends Controller
                 'pm.title as pm_title',
                 'pm.content as pm_content',
                 'pm.work_id as w_id',
+                'w.user_id as orderer_id',
                 'w.name as w_name',
                 'pm.user_id as u_id',
                 'u.name as u_name',

@@ -40990,7 +40990,7 @@ var render = function() {
     "a",
     {
       staticClass: "c-card c-msgCard c-pubMsgCard",
-      class: { "-myWork": _vm.authId === _vm.msgCard.u_id },
+      class: { "-myWork": _vm.authId === _vm.msgCard.orderer_id },
       attrs: { href: _vm.publicPath + "works/" + _vm.msgCard.w_id + "#pub-msg" }
     },
     [
