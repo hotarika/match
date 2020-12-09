@@ -51,7 +51,7 @@
                               type="date"
                               name="end_date"
                               value="{{ old('end_date',$work->end_date ?? '') }}"
-                              placeholder="例：2021/01/01" />
+                              placeholder="例：{{$oneMonthLater}}" />
 
                            @error('end_date')
                            <span class="c-form__invalid" role="alert">
@@ -72,7 +72,7 @@
                               type="date"
                               name="hope_date"
                               value="{{ old('hope_date',$work->hope_date ??  '') }}"
-                              placeholder="例：2021/02/01" />
+                              placeholder="例：{{$threeMonthsLater}}" />
 
                            @error('hope_date')
                            <span class="c-form__invalid" role="alert">

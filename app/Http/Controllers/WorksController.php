@@ -29,7 +29,11 @@ class WorksController extends Controller
      */
     public function create()
     {
-        return view('works.form');
+        // 日付フォームのplaceholderに日付の自動更新のため使用（safari対応）
+        $oneMonthLater = date("Y/m/d", strtotime("+1 month"));
+        $threeMonthsLater = date("Y/m/d", strtotime("+3 month"));
+
+        return view('works.form', compact('oneMonthLater', 'threeMonthsLater'));
     }
 
     /**
@@ -42,13 +46,13 @@ class WorksController extends Controller
     {
         $work = new Work;
         $work->fill([
-            'user_id' => Auth::id(),
+            'user_id' => Auth::id(), // fill($request->all())は使用できない
             'name' => $request->name,
-            'contract_id' => $request->contract,
+            'contract_id' => $request->contract_id,
             'end_date' => $request->end_date,
             'hope_date' => $request->hope_date,
-            'price_lower' => $request->priceLower,
-            'price_upper' => $request->priceUpper,
+            'price_lower' => $request->price_lower,
+            'price_upper' => $request->price_upper,
             'content' => $request->content,
         ])->save();
 
