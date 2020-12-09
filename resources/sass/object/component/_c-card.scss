@@ -143,6 +143,7 @@
    }
    &__contractIcon {
       &.-oneoff {
+         margin-left: 15px;
          font-size: 43px;
          @include mq('xs') {
             font-size: 38px;
@@ -163,6 +164,9 @@
       justify-content: center;
       width: 70%;
       font-size: 14px;
+      &.-oneoff {
+         margin-left: 15px;
+      }
       @include mq('xs') {
          font-size: 12px;
       }

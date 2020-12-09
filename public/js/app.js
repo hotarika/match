@@ -3227,6 +3227,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -41253,31 +41265,42 @@ var render = function() {
         _vm._v(_vm._s(_vm.work.w_name))
       ]),
       _vm._v(" "),
-      _vm.work.contract_id === 1
-        ? [
-            _c("div", { staticClass: "c-workCard__contract" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "c-workCard__contractWayWrap" }, [
-                _c("div", { staticClass: "c-workCard__contractWay" }, [
-                  _vm._v("単発案件")
-                ]),
+      _c(
+        "div",
+        { staticClass: "c-workCard__contract" },
+        [
+          _vm.work.contract_id === 1
+            ? [
+                _vm._m(0),
                 _vm._v(" "),
-                _c("div", { staticClass: "c-workCard__contractPrice" }, [
-                  _vm._v(
-                    "\n               " +
-                      _vm._s(_vm._f("addComma")(_vm.work.price_lower)) +
-                      " ~\n               " +
-                      _vm._s(_vm._f("addComma")(_vm.work.price_upper)) +
-                      "千円\n            "
-                  )
-                ])
-              ])
-            ])
-          ]
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.work.contract_id === 2 ? [_vm._m(1)] : _vm._e(),
+                _c(
+                  "div",
+                  { staticClass: "c-workCard__contractWayWrap -oneoff" },
+                  [
+                    _c("div", { staticClass: "c-workCard__contractWay" }, [
+                      _vm._v("単発案件")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "c-workCard__contractPrice" }, [
+                      _vm._v(
+                        "\n               " +
+                          _vm._s(_vm._f("addComma")(_vm.work.price_lower)) +
+                          " ~\n               " +
+                          _vm._s(_vm._f("addComma")(_vm.work.price_upper)) +
+                          "千円\n            "
+                      )
+                    ])
+                  ]
+                )
+              ]
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.work.contract_id === 2
+            ? [_vm._m(1), _vm._v(" "), _vm._m(2)]
+            : _vm._e()
+        ],
+        2
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "c-workCard__infoItem" }, [
         _c("div", { staticClass: "c-workCard__infoItemHead" }, [
@@ -41288,8 +41311,7 @@ var render = function() {
           _vm._v(_vm._s(_vm.showEndDateContents))
         ])
       ])
-    ],
-    2
+    ]
   )
 }
 var staticRenderFns = [
@@ -41305,17 +41327,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "c-workCard__contract" }, [
-      _c("div", { staticClass: "c-workCard__contractIconWrap" }, [
-        _c("i", {
-          staticClass: "fas fa-people-arrows c-workCard__contractIcon -share"
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "c-workCard__contractWayWrap" }, [
-        _c("div", { staticClass: "c-workCard__contractWay -share" }, [
-          _vm._v("\n               レベニューシェア\n            ")
-        ])
+    return _c("div", { staticClass: "c-workCard__contractIconWrap" }, [
+      _c("i", {
+        staticClass: "fas fa-people-arrows c-workCard__contractIcon -share"
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "c-workCard__contractWayWrap -share" }, [
+      _c("div", { staticClass: "c-workCard__contractWay -share" }, [
+        _vm._v("\n               レベニューシェア\n            ")
       ])
     ])
   }

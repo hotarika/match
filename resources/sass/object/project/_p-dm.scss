@@ -58,7 +58,7 @@
    }
    &__h2 {
       @include flex-center;
-      padding: 8px 50px;
+      padding: 10px 50px;
       border-bottom: 1px solid $white;
       @include mq('3xs') {
          padding: 9px 0 7px;

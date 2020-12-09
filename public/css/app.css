@@ -759,6 +759,7 @@ pre {
 }
 
 .c-workCard__contractIcon.-oneoff {
+  margin-left: 15px;
   font-size: 43px;
 }
 
@@ -786,6 +787,10 @@ pre {
   justify-content: center;
   width: 70%;
   font-size: 14px;
+}
+
+.c-workCard__contractWayWrap.-oneoff {
+  margin-left: 15px;
 }
 
 @media screen and (max-width: 414px) {
@@ -1681,7 +1686,7 @@ pre {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 50px;
+  padding: 10px 50px;
   border-bottom: 1px solid #fff;
 }
 
