@@ -40853,7 +40853,7 @@ var render = function() {
                         "a",
                         {
                           staticClass: "c-link p-pubmsg__parentName -workOwner",
-                          attrs: { href: "profile" }
+                          attrs: { href: _vm.publicPath + "users/" + p.u_id }
                         },
                         [_vm._v(_vm._s(p.u_name))]
                       ),
@@ -40915,7 +40915,12 @@ var render = function() {
                                           {
                                             staticClass:
                                               "c-link p-pubmsg__childName -workOwner",
-                                            attrs: { src: "profile" }
+                                            attrs: {
+                                              href:
+                                                _vm.publicPath +
+                                                "users/" +
+                                                c.u_id
+                                            }
                                           },
                                           [_vm._v(_vm._s(c.u_name))]
                                         ),

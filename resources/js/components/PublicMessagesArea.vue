@@ -50,7 +50,7 @@
                   <div class="p-pubmsg__parentRight">
                      <a
                         class="c-link p-pubmsg__parentName -workOwner"
-                        href="profile"
+                        :href="publicPath + 'users/' + p.u_id"
                         >{{ p.u_name }}</a
                      >
                      <div class="p-pubmsg__parentTitle">
@@ -81,7 +81,7 @@
                               <div class="p-pubmsg__childRight">
                                  <a
                                     class="c-link p-pubmsg__childName -workOwner"
-                                    src="profile"
+                                    :href="publicPath + 'users/' + c.u_id"
                                     >{{ c.u_name }}</a
                                  >
                                  <pre class="p-pubmsg__childContent">{{
