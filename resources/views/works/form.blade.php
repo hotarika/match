@@ -90,17 +90,17 @@
                            <select
                               id="contract"
                               class="c-form__input p-workForm__input -contract js-contract"
-                              name="contract">
+                              name="contract_id">
                               <option value="" selected>選択してください</option>
-                              <option value="1" @if(old('contract',$work->contract_id ?? '')=='1' ) selected
+                              <option value="1" @if(old('contract_id',$work->contract_id ?? '')=='1' ) selected
                                  @endif>単発案件
                               </option>
-                              <option value="2" @if(old('contract',$work->contract_id ?? '')=='2' ) selected
+                              <option value="2" @if(old('contract_id',$work->contract_id ?? '')=='2' ) selected
                                  @endif>レベニューシェア
                               </option>
                            </select>
 
-                           @error('contract')
+                           @error('contract_id')
                            <span class="c-form__invalid" role="alert">
                               <strong>{{ $message }}</strong>
                            </span>
@@ -117,26 +117,26 @@
                                  id="price"
                                  class="c-form__input p-workForm__input -price"
                                  type="number"
-                                 name="priceLower"
-                                 value="{{ old('priceLower',$work->price_lower ?? '') }}"
+                                 name="price_lower"
+                                 value="{{ old('price_lower',$work->price_lower ?? '') }}"
                                  placeholder="例：1000" /><span>千円〜</span>
                               <input
                                  id="price"
                                  class="c-form__input p-workForm__input -price"
                                  type="number"
-                                 name="priceUpper"
-                                 value="{{ old('priceUpper',$work->price_upper ?? '') }}"
+                                 name="price_upper"
+                                 value="{{ old('price_upper',$work->price_upper ?? '') }}"
                                  placeholder="例：2000" /><span>千円</span>
                            </div>
 
-                           @if($errors->has('priceLower'))
+                           @if($errors->has('price_lower'))
                            <span class="c-form__invalid -priceLower" role="alert">
-                              <strong class="c-form__error">{{ $errors->first('priceLower') }}</strong>
+                              <strong class="c-form__error">{{ $errors->first('pricel_lower') }}</strong>
                            </span>
                            @endif
-                           @if($errors->has('priceUpper'))
+                           @if($errors->has('price_upper'))
                            <span class="c-form__invalid -priceUpper" role="alert">
-                              <strong class="c-form__error ">{{ $errors->first('priceUpper') }}</strong>
+                              <strong class="c-form__error ">{{ $errors->first('price_upper') }}</strong>
                            </span>
                            @endif
                         </div>

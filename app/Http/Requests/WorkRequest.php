@@ -29,9 +29,9 @@ class WorkRequest extends FormRequest
             'name' => ['required',  'string', 'max:100'],
             'end_date' => ['required', ' date', 'after:' . $today],
             'hope_date' =>  ['required ', ' date', 'after:end_date'],
-            'contract' =>  ['required'],
-            'priceLower' => ['numeric', 'required_if:contract,1', 'gt:0'],
-            'priceUpper' => ['required_if:contract,1', 'gte:priceLower'],
+            'contract_id' =>  ['required'],
+            'price_lower' => ['numeric', 'required_if:contract,1', 'gt:0'],
+            'price_upper' => ['required_if:contract,1', 'gte:price_lower'],
             'content' => ['required ', 'string'],
         ];
     }
