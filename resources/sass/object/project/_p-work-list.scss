@@ -42,10 +42,12 @@
       background-color: transparent;
       @include mq('xs') {
          min-height: 270px;
-         padding-left: calc(50% - 44%);
+         padding-right: 3px;
+         padding-left: 7px;
       }
       @include mq('3xs') {
          padding-top: 50px;
+         padding-right: 0;
          padding-left: 0;
       }
    }

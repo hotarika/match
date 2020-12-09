@@ -606,8 +606,8 @@ pre {
 
 @media screen and (max-width: 414px) {
   .c-workCard {
-    flex-basis: 45%;
-    height: 190px;
+    flex-basis: 48%;
+    height: 210px;
     margin: 0 10px 10px 0;
   }
 
@@ -693,7 +693,7 @@ pre {
 
 @media screen and (max-width: 414px) {
   .c-workCard__head {
-    flex-basis: 60px;
+    flex-basis: 70px;
     width: 100%;
     padding: 6px 7px;
     font-size: 12px;
@@ -2740,7 +2740,7 @@ pre {
 
 @media screen and (max-width: 414px) {
   .p-mypage__secBody {
-    padding: 15px 10px;
+    padding: 15px 3px 15px 7px;
   }
 }
 
@@ -4113,13 +4113,15 @@ pre {
 @media screen and (max-width: 414px) {
   .p-workList__workCardBody {
     min-height: 270px;
-    padding-left: calc(50% - 44%);
+    padding-right: 3px;
+    padding-left: 7px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .p-workList__workCardBody {
     padding-top: 50px;
+    padding-right: 0;
     padding-left: 0;
   }
 }
