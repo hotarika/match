@@ -1,0 +1,28 @@
+.p-errors {
+   &__wrap {
+      @include main-height;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+
+   &__code {
+      @include border-radius('all', 50%);
+      width: 70px;
+      height: 70px;
+      padding: 22px 15px 0 13px;
+      font-size: 26px;
+      color: $base;
+      text-align: center;
+      background-color: $primary;
+      // border-right: 2px solid;
+   }
+
+   &__message {
+      padding: 10px;
+      font-size: 18px;
+      color: $primary;
+      text-align: center;
+   }
+}

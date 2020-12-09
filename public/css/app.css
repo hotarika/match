@@ -1848,6 +1848,38 @@ pre {
   }
 }
 
+.p-errors__wrap {
+  min-height: calc(100vh - 160px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 414px) {
+  .p-errors__wrap {
+    min-height: calc(100vh - 120px);
+  }
+}
+
+.p-errors__code {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  padding: 22px 15px 0 13px;
+  font-size: 26px;
+  color: #efefef;
+  text-align: center;
+  background-color: #0081ff;
+}
+
+.p-errors__message {
+  padding: 10px;
+  font-size: 18px;
+  color: #0081ff;
+  text-align: center;
+}
+
 .p-footer__logo {
   display: flex;
   align-items: center;
