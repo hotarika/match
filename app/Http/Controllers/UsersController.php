@@ -53,18 +53,15 @@ class UsersController extends Controller
                 ->putFile('user_img', $request->file('image'));
         }
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->image = ($request->file()) ? $request->file('image')->hashName() : $user->image;
-        $user->introduction = $request->introduction;
-        $user->save();
-
-        // この方法もある
-        // $user->fill([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'introduce' => $request->introduce
-        // ])->save();
+        // DB保存
+        $user->fill([
+            'name' => $request->name,
+            'email' => $request->email,
+            'image' => ($request->file())
+                ? $request->file('image')->hashName()
+                : $user->image,
+            'introduction' => $request->introduction,
+        ])->save();
 
         return redirect()->route('users.show', $id);
     }
