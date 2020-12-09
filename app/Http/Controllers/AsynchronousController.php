@@ -101,23 +101,25 @@ class AsynchronousController extends Controller
         // 上記のサブクエリを親テーブルと結合
         $pubmsgs = DB::table('parent_public_messages as pm')
             ->select(
+                // パブリックメッセージ情報
                 'pm.id as pm_id',
                 'pm.title as pm_title',
                 'pm.content as pm_content',
+                // 発注者情報
                 'pm.work_id as w_id',
-                'w.user_id as orderer_id',
                 'w.name as w_name',
-                'pm.user_id as u_id',
-                'u.name as u_name',
+                'w.user_id as orderer_id',
+                'u.name as orderer_name',
+                // 最新の情報
                 'cm.id as cm_id',
                 'cm.content as cm_latest_content',
                 'pm.updated_at as pm_updated_at'
             )
-            ->leftJoin('users as u', 'pm.user_id', '=', 'u.id')
             ->leftJoin('works as w', 'pm.work_id', '=', 'w.id')
             ->leftJoinSub($child3, 'cm', function ($join) {
                 $join->on('pm.id', '=', 'cm.parent_id');
             })
+            ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
             ->orWhere('pm.user_id', Auth::id()) // 子にデータがない場合でも抽出
             ->orWhereNotNull('cm.id') // データがNULL以外のレコードを抽出
             ->orderBy('pm.updated_at', 'DESC')

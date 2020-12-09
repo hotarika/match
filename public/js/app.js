@@ -40998,7 +40998,7 @@ var render = function() {
         _c("div", { staticClass: "c-pubMsgCard__basicInfo" }, [
           _vm._v(
             "\n         " +
-              _vm._s(_vm.msgCard.u_name) +
+              _vm._s(_vm.msgCard.orderer_name) +
               " / " +
               _vm._s(_vm.msgCard.w_name) +
               "\n      "

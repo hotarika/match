@@ -6,7 +6,7 @@
    >
       <div class=" c-pubMsgCard__infoWrap">
          <div class="c-pubMsgCard__basicInfo">
-            {{ msgCard.u_name }} / {{ msgCard.w_name }}
+            {{ msgCard.orderer_name }} / {{ msgCard.w_name }}
          </div>
          <time class="c-pubMsgCard__msgTime">
             {{ msgCard.pm_updated_at | formatDateTime }}
