@@ -109,9 +109,15 @@
       }
       &.-order {
          padding-right: 31px;
+         @include mq('xs') {
+            padding-right: 5px;
+         }
       }
       &.-apply {
          padding-right: 31px;
+         @include mq('xs') {
+            padding-right: 5px;
+         }
       }
       &.-pubmsg {
          padding-top: 40px;
@@ -125,6 +131,9 @@
       &.-list {
          padding-top: 40px;
          margin-left: -35px;
+         @include mq('xs') {
+            margin-left: 0;
+         }
       }
       &.-applicantList {
          padding-top: 10px;

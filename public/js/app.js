@@ -40226,7 +40226,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "c-h2__body p-mypage__secBody" },
+      { staticClass: "c-h2__body p-mypage__secBody -message" },
       [
         _vm._l(_vm.allData.slice(0, _vm.showNum), function(card) {
           return [
@@ -41162,7 +41162,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "c-h2__body p-mypage__secBody" },
+      { staticClass: "c-h2__body p-mypage__secBody -message" },
       [
         _vm._l(_vm.allData.slice(0, _vm.showNum), function(msgCard) {
           return [
@@ -41559,7 +41559,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "c-h2__workCardBody p-mypage__secBody" },
+      { staticClass: "c-h2__workCardBody p-mypage__secBody -workCard" },
       [
         _vm._l(_vm.allData.slice(0, _vm.showNum), function(work) {
           return [
@@ -41607,7 +41607,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "c-h2__workCardBody p-mypage__secBody" },
+      { staticClass: "c-h2__workCardBody p-mypage__secBody -workCard" },
       [
         _vm._l(_vm.allData.slice(0, _vm.showNum), function(work) {
           return [

@@ -1322,8 +1322,20 @@ pre {
   padding-right: 31px;
 }
 
+@media screen and (max-width: 414px) {
+  .c-h2__noItems.-order {
+    padding-right: 5px;
+  }
+}
+
 .c-h2__noItems.-apply {
   padding-right: 31px;
+}
+
+@media screen and (max-width: 414px) {
+  .c-h2__noItems.-apply {
+    padding-right: 5px;
+  }
 }
 
 .c-h2__noItems.-pubmsg {
@@ -1339,6 +1351,12 @@ pre {
 .c-h2__noItems.-list {
   padding-top: 40px;
   margin-left: -35px;
+}
+
+@media screen and (max-width: 414px) {
+  .c-h2__noItems.-list {
+    margin-left: 0;
+  }
 }
 
 .c-h2__noItems.-applicantList {
@@ -2741,6 +2759,20 @@ pre {
 @media screen and (max-width: 414px) {
   .p-mypage__secBody {
     padding: 15px 3px 15px 7px;
+  }
+
+  .p-mypage__secBody.-message {
+    padding: 2px 0 15px 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .p-mypage__secBody {
+    padding: 5px 0 15px 0;
+  }
+
+  .p-mypage__secBody.-message {
+    padding: 2px 0 15px 0;
   }
 }
 

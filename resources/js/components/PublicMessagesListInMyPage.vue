@@ -4,7 +4,7 @@
          <i class="fas fa-chevron-right"></i>
       </a>
       <h2 class="c-h2__head">パブリックメッセージ</h2>
-      <div class="c-h2__body p-mypage__secBody">
+      <div class="c-h2__body p-mypage__secBody -message">
          <!-- ダイレクトメッセージ一覧 -->
          <template v-for="msgCard of allData.slice(0, showNum)">
             <public-messages-card-component

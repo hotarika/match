@@ -7,6 +7,15 @@
       min-height: 100px;
       @include mq('xs') {
          padding: 15px 3px 15px 7px;
+         &.-message {
+            padding: 2px 0 15px 0;
+         }
+      }
+      @include mq('3xs') {
+         padding: 5px 0 15px 0;
+         &.-message {
+            padding: 2px 0 15px 0;
+         }
       }
       &.-notification {
          padding: 20px;
