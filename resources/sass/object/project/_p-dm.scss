@@ -58,7 +58,7 @@
    }
    &__h2 {
       @include flex-center;
-      padding: 8px;
+      padding: 8px 50px;
       border-bottom: 1px solid $white;
       @include mq('3xs') {
          padding: 9px 0 7px;
@@ -88,6 +88,8 @@
       font-weight: bold;
    }
    &__h2InfoOrderName {
+      line-height: 1.1;
+      text-align: left;
       @include mq('3xs') {
          font-size: 13px;
       }

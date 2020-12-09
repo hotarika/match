@@ -1681,7 +1681,7 @@ pre {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
+  padding: 8px 50px;
   border-bottom: 1px solid #fff;
 }
 
@@ -1719,6 +1719,11 @@ pre {
 .p-dm__h2InfoName {
   margin-bottom: 2px;
   font-weight: bold;
+}
+
+.p-dm__h2InfoOrderName {
+  line-height: 1.1;
+  text-align: left;
 }
 
 @media screen and (max-width: 320px) {
