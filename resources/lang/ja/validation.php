@@ -155,10 +155,11 @@ return [
         'end_date' => '募集終了',
         'hope_date' => '希望納期',
         'contract_id' => '提携方法',
-        'priceLower' => '下限金額',
-        'priceUpper' => '上限金額',
+        'price_lower' => '下限金額',
+        'priceu_pper' => '上限金額',
         'oneoff' => '単発案件',
-        'content' => '依頼内容'
+        'content' => '依頼内容',
+        'current_password' => '現在のパスワード'
 
     ],
 

@@ -34,11 +34,10 @@ class ChangePasswordRequest extends FormRequest
 
     public function withValidator(Validator $validator)
     {
-        // バリデーションが終了した後の追加のバリデーション($validator->after)
+        // 現在のパスワードと入力したパスワードが合致しているかどうか
         $validator->after(function ($validator) {
-            //現在のパスワードと新しいパスワードが合わなければエラー
             if (!(Hash::check($this->input('current_password'), Auth::user()->password))) {
-                $validator->errors()->add('current_password', __('The current password is incorrect.'));
+                $validator->errors()->add('current_password', '現在のパスワードが間違っています');
             }
         });
     }

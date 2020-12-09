@@ -12,7 +12,7 @@ class ChangePasswordController extends Controller
 
     public function __construct()
     {
-        // $this->middleware('auth');
+        //
     }
 
     public function showChangePasswordForm()
@@ -23,13 +23,12 @@ class ChangePasswordController extends Controller
     public function changePassword(ChangePasswordRequest $request)
     {
         //ValidationはChangePasswordRequestで処理
-        /* ===ここにパスワード変更の処理=== */
         $user = Auth::user();
         $user->password = bcrypt($request->get('password'));
         $user->save();
 
-        // パスワード変更処理後、homeにリダイレクト
+        // パスワード変更処理後、マイページにリダイレクト
         return redirect()->route('mypage')
-            ->with('status', __('Your password has been changed.'));
+            ->with('flash_message', 'パスワードを変更しました');
     }
 }
