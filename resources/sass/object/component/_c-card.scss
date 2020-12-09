@@ -60,25 +60,6 @@
       transition: all 0.5s 0s ease;
       transform: scale(1.01, 1.01);
    }
-   &__decisionTag {
-      @include border-radius('all', 50%);
-      position: absolute;
-      top: -11px;
-      right: -6px;
-      display: none;
-      width: 40px;
-      height: 40px;
-      padding-top: 13px;
-      font-size: 12px;
-      font-weight: bold;
-      color: $white;
-      text-align: center;
-      background-color: $red;
-      opacity: 0.9;
-      &.is-active {
-         display: block;
-      }
-   }
    &__nameWrap {
       position: absolute;
       top: 11px;

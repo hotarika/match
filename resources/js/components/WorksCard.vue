@@ -1,6 +1,5 @@
 <template>
    <a class="c-workCard" :href="publicPath + 'works/' + work.id">
-      <div class="c-workCard__decisionTag">決定</div>
       <div class="c-workCard__nameWrap">
          <img
             class="c-img c-workCard__img"
@@ -39,22 +38,6 @@
             </div>
          </template>
       </div>
-
-      <!-- レベニューシェア -->
-      <!-- <template v-if="work.contract_id === 2">
-         <div class="c-workCard__contract">
-            <div class="c-workCard__contractIconWrap">
-               <i
-                  class="fas fa-people-arrows c-workCard__contractIcon -share"
-               ></i>
-            </div>
-            <div class="c-workCard__contractWayWrap">
-               <div class="c-workCard__contractWay -share">
-                  レベニューシェア
-               </div>
-            </div>
-         </div>
-      </template> -->
 
       <!-- 情報 -->
       <div class="c-workCard__infoItem">
