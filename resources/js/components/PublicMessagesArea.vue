@@ -1,18 +1,18 @@
 <template>
    <section id="pub-msg" class="c-h2__sec">
       <h2 class="c-h2__head">パブリックメッセージ</h2>
-      <div class="c-h2__oneRowBody p-workDetail__pubMsgBody">
+      <div class="c-h2__oneRowBody p-pubmsg__body">
          <!-- フォーム -->
          <template v-if="authUser !== null">
-            <form class="p-workDetail__createMsgForm" action="">
+            <form class="p-pubmsg__createMsgForm" action="">
                <input
-                  class="c-form__input p-workDetail__createMsgTitle"
+                  class="c-form__input p-pubmsg__createMsgTitle"
                   type="text"
                   placeholder="必須：新規質問内容のタイトルを記述"
                   v-model="parentTitle"
                />
                <textarea
-                  class="c-form__textarea p-workDetail__createMsgTextarea"
+                  class="c-form__textarea p-pubmsg__createMsgTextarea"
                   name="message"
                   id="message"
                   cols="30"
@@ -21,7 +21,7 @@
                   v-model="parentTextarea"
                ></textarea>
                <button
-                  class="c-btn c-msgSendBtn p-workDetail__parentBtn"
+                  class="c-btn c-msgSendBtn p-pubmsg__parentBtn"
                   type="submit"
                   @click.prevent="addParentMsg"
                >
@@ -33,30 +33,30 @@
          <transition-group>
             <!-- メッセージボード -->
             <div
-               class="p-workDetail__parentWrap"
+               class="p-pubmsg__parentWrap"
                v-for="p in parentMessages"
                :key="p.pm_id"
             >
-               <time class="p-workDetail__parentDate">{{
+               <time class="p-pubmsg__parentDate">{{
                   p.pm_created_at | formatDateTime
                }}</time>
-               <div class="p-workDetail__parentMsgWrap">
+               <div class="p-pubmsg__parentMsgWrap">
                   <img
-                     class="c-img p-workDetail__parentImg"
+                     class="c-img p-pubmsg__parentImg"
                      :src="publicPath + 'storage/user_img/' + p.u_image"
                      alt="ユーザーのアイコン"
                   />
                   <!-- 親掲示板 -->
-                  <div class="p-workDetail__parentRight">
+                  <div class="p-pubmsg__parentRight">
                      <a
-                        class="c-link p-workDetail__parentName -workOwner"
+                        class="c-link p-pubmsg__parentName -workOwner"
                         href="profile"
                         >{{ p.u_name }}</a
                      >
-                     <div class="p-workDetail__parentTitle">
+                     <div class="p-pubmsg__parentTitle">
                         {{ p.pm_title }}
                      </div>
-                     <pre class="p-workDetail__parentContent">{{
+                     <pre class="p-pubmsg__parentContent">{{
                         p.pm_content
                      }}</pre>
 
@@ -67,24 +67,24 @@
                               p.pm_id === c.parent_id && p.w_id === c.work_id
                            "
                         >
-                           <div class="p-workDetail__childWrap" :key="c.cm_id">
-                              <time class="p-workDetail__childDate">{{
+                           <div class="p-pubmsg__childWrap" :key="c.cm_id">
+                              <time class="p-pubmsg__childDate">{{
                                  c.cm_created_at | formatDateTime
                               }}</time>
                               <img
-                                 class="c-img p-workDetail__childImg"
+                                 class="c-img p-pubmsg__childImg"
                                  :src="
                                     publicPath + 'storage/user_img/' + c.u_image
                                  "
                                  alt="ユーザーのアイコン"
                               />
-                              <div class="p-workDetail__childRight">
+                              <div class="p-pubmsg__childRight">
                                  <a
-                                    class="c-link p-workDetail__childName -workOwner"
+                                    class="c-link p-pubmsg__childName -workOwner"
                                     src="profile"
                                     >{{ c.u_name }}</a
                                  >
-                                 <pre class="p-workDetail__childContent">{{
+                                 <pre class="p-pubmsg__childContent">{{
                                     c.cm_content
                                  }}</pre>
                               </div>

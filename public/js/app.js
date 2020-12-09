@@ -40739,14 +40739,14 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "c-h2__oneRowBody p-workDetail__pubMsgBody" },
+      { staticClass: "c-h2__oneRowBody p-pubmsg__body" },
       [
         _vm.authUser !== null
           ? [
               _c(
                 "form",
                 {
-                  staticClass: "p-workDetail__createMsgForm",
+                  staticClass: "p-pubmsg__createMsgForm",
                   attrs: { action: "" }
                 },
                 [
@@ -40759,7 +40759,7 @@ var render = function() {
                         expression: "parentTitle"
                       }
                     ],
-                    staticClass: "c-form__input p-workDetail__createMsgTitle",
+                    staticClass: "c-form__input p-pubmsg__createMsgTitle",
                     attrs: {
                       type: "text",
                       placeholder: "必須：新規質問内容のタイトルを記述"
@@ -40784,8 +40784,7 @@ var render = function() {
                         expression: "parentTextarea"
                       }
                     ],
-                    staticClass:
-                      "c-form__textarea p-workDetail__createMsgTextarea",
+                    staticClass: "c-form__textarea p-pubmsg__createMsgTextarea",
                     attrs: {
                       name: "message",
                       id: "message",
@@ -40807,7 +40806,7 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "c-btn c-msgSendBtn p-workDetail__parentBtn",
+                      staticClass: "c-btn c-msgSendBtn p-pubmsg__parentBtn",
                       attrs: { type: "submit" },
                       on: {
                         click: function($event) {
@@ -40831,15 +40830,15 @@ var render = function() {
           _vm._l(_vm.parentMessages, function(p) {
             return _c(
               "div",
-              { key: p.pm_id, staticClass: "p-workDetail__parentWrap" },
+              { key: p.pm_id, staticClass: "p-pubmsg__parentWrap" },
               [
-                _c("time", { staticClass: "p-workDetail__parentDate" }, [
+                _c("time", { staticClass: "p-pubmsg__parentDate" }, [
                   _vm._v(_vm._s(_vm._f("formatDateTime")(p.pm_created_at)))
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "p-workDetail__parentMsgWrap" }, [
+                _c("div", { staticClass: "p-pubmsg__parentMsgWrap" }, [
                   _c("img", {
-                    staticClass: "c-img p-workDetail__parentImg",
+                    staticClass: "c-img p-pubmsg__parentImg",
                     attrs: {
                       src: _vm.publicPath + "storage/user_img/" + p.u_image,
                       alt: "ユーザーのアイコン"
@@ -40848,19 +40847,18 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "div",
-                    { staticClass: "p-workDetail__parentRight" },
+                    { staticClass: "p-pubmsg__parentRight" },
                     [
                       _c(
                         "a",
                         {
-                          staticClass:
-                            "c-link p-workDetail__parentName -workOwner",
+                          staticClass: "c-link p-pubmsg__parentName -workOwner",
                           attrs: { href: "profile" }
                         },
                         [_vm._v(_vm._s(p.u_name))]
                       ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "p-workDetail__parentTitle" }, [
+                      _c("div", { staticClass: "p-pubmsg__parentTitle" }, [
                         _vm._v(
                           "\n                     " +
                             _vm._s(p.pm_title) +
@@ -40868,11 +40866,9 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c(
-                        "pre",
-                        { staticClass: "p-workDetail__parentContent" },
-                        [_vm._v(_vm._s(p.pm_content))]
-                      ),
+                      _c("pre", { staticClass: "p-pubmsg__parentContent" }, [
+                        _vm._v(_vm._s(p.pm_content))
+                      ]),
                       _vm._v(" "),
                       _vm._l(_vm.childMessages, function(c) {
                         return [
@@ -40882,14 +40878,12 @@ var render = function() {
                                   "div",
                                   {
                                     key: c.cm_id,
-                                    staticClass: "p-workDetail__childWrap"
+                                    staticClass: "p-pubmsg__childWrap"
                                   },
                                   [
                                     _c(
                                       "time",
-                                      {
-                                        staticClass: "p-workDetail__childDate"
-                                      },
+                                      { staticClass: "p-pubmsg__childDate" },
                                       [
                                         _vm._v(
                                           _vm._s(
@@ -40902,8 +40896,7 @@ var render = function() {
                                     ),
                                     _vm._v(" "),
                                     _c("img", {
-                                      staticClass:
-                                        "c-img p-workDetail__childImg",
+                                      staticClass: "c-img p-pubmsg__childImg",
                                       attrs: {
                                         src:
                                           _vm.publicPath +
@@ -40915,15 +40908,13 @@ var render = function() {
                                     _vm._v(" "),
                                     _c(
                                       "div",
-                                      {
-                                        staticClass: "p-workDetail__childRight"
-                                      },
+                                      { staticClass: "p-pubmsg__childRight" },
                                       [
                                         _c(
                                           "a",
                                           {
                                             staticClass:
-                                              "c-link p-workDetail__childName -workOwner",
+                                              "c-link p-pubmsg__childName -workOwner",
                                             attrs: { src: "profile" }
                                           },
                                           [_vm._v(_vm._s(c.u_name))]
@@ -40933,7 +40924,7 @@ var render = function() {
                                           "pre",
                                           {
                                             staticClass:
-                                              "p-workDetail__childContent"
+                                              "p-pubmsg__childContent"
                                           },
                                           [_vm._v(_vm._s(c.cm_content))]
                                         )
@@ -41056,12 +41047,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "form",
-    { staticClass: "p-workDetail__childForm", attrs: { action: "" } },
+    { staticClass: "p-pubmsg__childForm", attrs: { action: "" } },
     [
       _c("textarea", {
         ref: "childMessage",
         staticClass:
-          "c-form__textarea p-workDetail__childTextarea js-childTextarea",
+          "c-form__textarea p-pubmsg__childTextarea js-childTextarea",
         attrs: {
           name: "message",
           id: "message",
@@ -41074,7 +41065,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "c-btn c-msgSendBtn p-workDetail__childBtn",
+          staticClass: "c-btn c-msgSendBtn p-pubmsg__childBtn",
           attrs: { type: "submit" },
           on: {
             click: function($event) {

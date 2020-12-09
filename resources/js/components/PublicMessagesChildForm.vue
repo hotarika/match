@@ -1,8 +1,8 @@
 <template>
    <!-- 子フォーム -->
-   <form class="p-workDetail__childForm" action="">
+   <form class="p-pubmsg__childForm" action="">
       <textarea
-         class="c-form__textarea p-workDetail__childTextarea js-childTextarea"
+         class="c-form__textarea p-pubmsg__childTextarea js-childTextarea"
          name="message"
          id="message"
          cols="30"
@@ -11,7 +11,7 @@
          ref="childMessage"
       ></textarea>
       <button
-         class="c-btn c-msgSendBtn p-workDetail__childBtn"
+         class="c-btn c-msgSendBtn p-pubmsg__childBtn"
          type="submit"
          @click.prevent="childTextHandler"
       >
