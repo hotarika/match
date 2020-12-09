@@ -21,6 +21,11 @@
                      <!-- 画像 -->
                      <edit-image-component
                         :image-path="{{json_encode(asset('/storage/user_img/'. $user->image))}}"></edit-image-component>
+                     @error('image')
+                     <span class="c-form__invalid" role="alert">
+                        <strong>{{$message}}</strong>
+                     </span>
+                     @enderror
 
                      <!-- 名前 -->
                      <div class="p-profileEdit__wrap -name">
@@ -31,14 +36,14 @@
                               class="c-form__input p-profileEdit__input -name"
                               type="text"
                               name="name"
-                              value="{{$user->name}}"
+                              value="{{$user->name ?? ''}}"
                               required
                               autofocus
                               autocomplete="name"
                               placeholder="名前を記入" />
                            @error('name')
                            <span class="c-form__invalid" role="alert">
-                              <strong>入力してください</strong>
+                              <strong>{{$message}}</strong>
                            </span>
                            @enderror
                         </div>
@@ -53,13 +58,13 @@
                               class="c-form__input p-profileEdit__input -email"
                               type="email"
                               name="email"
-                              value="{{$user->email}}"
+                              value="{{$user->email ?? ''}}"
                               required
                               autocomplete="email"
                               placeholder="メールアドレスを記入" />
                            @error('email')
                            <span class="c-form__invalid is-invalid" role="alert">
-                              <strong>入力してください</strong>
+                              <strong>{{$message}}</strong>
                            </span>
                            @enderror
                         </div>
