@@ -27,8 +27,8 @@ class WorkRequest extends FormRequest
 
         return [
             'name' => ['required',  'string', 'max:100'],
-            'endRecruitment' => ['required', ' date', 'after:' . $today],
-            'hopeDeadline' =>  ['required ', ' date', 'after:endRecruitment'],
+            'end_date' => ['required', ' date', 'after:' . $today],
+            'hopeDeadline' =>  ['required ', ' date', 'after:end_date'],
             'contract' =>  ['required'],
             'priceLower' => ['numeric', 'required_if:contract,1', 'gt:0'],
             'priceUpper' => ['required_if:contract,1', 'gte:priceLower'],

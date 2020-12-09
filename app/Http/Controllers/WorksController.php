@@ -45,7 +45,7 @@ class WorksController extends Controller
             'user_id' => Auth::id(),
             'name' => $request->name,
             'contract_id' => $request->contract,
-            'end_date' => $request->endRecruitment,
+            'end_date' => $request->end_date,
             'hope_date' => $request->hopeDeadline,
             'price_lower' => $request->priceLower,
             'price_upper' => $request->priceUpper,

@@ -41,19 +41,19 @@
                      </div>
 
                      <!-- 募集終了 -->
-                     <div class="p-workForm__wrap -endRecruitment">
-                        <label class="p-workForm__label -endRecruitment"
-                           for="end-recruitment">募集終了<span>[必須]</span></label>
+                     <div class="p-workForm__wrap -endDate">
+                        <label class="p-workForm__label -endDate"
+                           for="end-date">募集終了<span>[必須]</span></label>
                         <div class="p-workForm__inputWrap">
                            <input
-                              id="end-recruitment"
-                              class="c-form__input p-workForm__input -endRecruitment"
+                              id="end-date"
+                              class="c-form__input p-workForm__input -endDate"
                               type="date"
-                              name="endRecruitment"
-                              value="{{ old('endRecruitment',$work->end_date ?? '') }}"
+                              name="end_date"
+                              value="{{ old('end_date',$work->end_date ?? '') }}"
                               placeholder="例：2021/01/01" />
 
-                           @error('endRecruitment')
+                           @error('end_date')
                            <span class="c-form__invalid" role="alert">
                               <strong>{{ $message }}</strong>
                            </span>

@@ -152,7 +152,7 @@ return [
         'name' => '名前',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
-        'endRecruitment' => '募集終了',
+        'end_date' => '募集終了',
         'hopeDeadline' => '希望納期',
         'contract' => '提携方法',
         'priceLower' => '下限金額',

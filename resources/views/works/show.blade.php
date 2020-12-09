@@ -71,7 +71,7 @@
                            </div>
                         </div>
                         <div class="p-workDetail__infoUpperItem -right">
-                           <div class="p-workDetail__infoDate -endRecruitment">
+                           <div class="p-workDetail__infoDate -endDate">
                               <div class="p-workDetail__infoDateHead">募集終了</div>
                               <time>{{$work->end_date}}</time>
                            </div>
