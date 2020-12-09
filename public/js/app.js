@@ -2148,6 +2148,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2185,6 +2186,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
 //
 //
 //
@@ -3074,6 +3076,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -3111,8 +3114,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
 //
 //
 //
@@ -3222,23 +3223,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -3282,8 +3266,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
 //
 //
 //
@@ -3436,6 +3418,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -3515,6 +3498,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -3523,7 +3507,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       allData: [],
-      showNum: 9
+      showNum: 6
     };
   },
   mounted: function mounted() {
@@ -3569,6 +3553,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -3577,7 +3562,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       allData: [],
-      showNum: 9
+      showNum: 6
     };
   },
   mounted: function mounted() {
@@ -40009,27 +39994,29 @@ var render = function() {
         [
           _c(
             "transition-group",
-            _vm._l(_vm.contents, function(msg) {
-              return _c("div", { key: msg.content_id }, [
-                _c(
-                  "pre",
-                  {
-                    key: msg.id,
-                    class: {
-                      "p-dm__msgMe": msg.user_id === _vm.authId,
-                      "p-dm__msgYou": msg.user_id !== _vm.authId
-                    }
-                  },
-                  [
-                    _vm._v(_vm._s(msg.content)),
-                    _c("time", [
-                      _vm._v(_vm._s(_vm._f("formatDateTime")(msg.created_at)))
-                    ])
-                  ]
-                )
-              ])
-            }),
-            0
+            [
+              _vm._l(_vm.contents, function(msg) {
+                return [
+                  _c(
+                    "pre",
+                    {
+                      key: msg.content_id,
+                      class: {
+                        "p-dm__msgMe": msg.user_id === _vm.authId,
+                        "p-dm__msgYou": msg.user_id !== _vm.authId
+                      }
+                    },
+                    [
+                      _vm._v(_vm._s(msg.content)),
+                      _c("time", [
+                        _vm._v(_vm._s(_vm._f("formatDateTime")(msg.created_at)))
+                      ])
+                    ]
+                  )
+                ]
+              })
+            ],
+            2
           )
         ],
         1
@@ -40182,20 +40169,16 @@ var render = function() {
     { staticClass: "c-h2__sec p-dmList__sec" },
     [
       _vm._l(_vm.allData, function(card) {
-        return _c(
-          "span",
-          { key: card.id },
-          [
-            _c("direct-messages-card-component", {
-              attrs: {
-                "public-path": _vm.publicPath,
-                card: card,
-                "auth-id": _vm.authId
-              }
-            })
-          ],
-          1
-        )
+        return [
+          _c("direct-messages-card-component", {
+            key: card.id,
+            attrs: {
+              "public-path": _vm.publicPath,
+              card: card,
+              "auth-id": _vm.authId
+            }
+          })
+        ]
       }),
       _vm._v(" "),
       _vm.allData.length === 0
@@ -40246,20 +40229,16 @@ var render = function() {
       { staticClass: "c-h2__body p-mypage__secBody" },
       [
         _vm._l(_vm.allData.slice(0, _vm.showNum), function(card) {
-          return _c(
-            "span",
-            { key: card.id },
-            [
-              _c("direct-messages-card-component", {
-                attrs: {
-                  "public-path": _vm.publicPath,
-                  card: card,
-                  "auth-id": _vm.authId
-                }
-              })
-            ],
-            1
-          )
+          return [
+            _c("direct-messages-card-component", {
+              key: card.id,
+              attrs: {
+                "public-path": _vm.publicPath,
+                card: card,
+                "auth-id": _vm.authId
+              }
+            })
+          ]
         }),
         _vm._v(" "),
         _vm.allData.length === 0
@@ -41126,20 +41105,16 @@ var render = function() {
     { staticClass: "c-h2__sec p-pubmsgList__sec" },
     [
       _vm._l(_vm.allData, function(msgCard) {
-        return _c(
-          "span",
-          { key: msgCard.pm_id },
-          [
-            _c("public-messages-card-component", {
-              attrs: {
-                "msg-card": msgCard,
-                "public-path": _vm.publicPath,
-                "auth-id": _vm.authId
-              }
-            })
-          ],
-          1
-        )
+        return [
+          _c("public-messages-card-component", {
+            key: msgCard.pm_id,
+            attrs: {
+              "msg-card": msgCard,
+              "public-path": _vm.publicPath,
+              "auth-id": _vm.authId
+            }
+          })
+        ]
       }),
       _vm._v(" "),
       _vm.allData.length === 0
@@ -41190,20 +41165,16 @@ var render = function() {
       { staticClass: "c-h2__body p-mypage__secBody" },
       [
         _vm._l(_vm.allData.slice(0, _vm.showNum), function(msgCard) {
-          return _c(
-            "span",
-            { key: msgCard.pm_id },
-            [
-              _c("public-messages-card-component", {
-                attrs: {
-                  "msg-card": msgCard,
-                  "public-path": _vm.publicPath,
-                  "auth-id": _vm.authId
-                }
-              })
-            ],
-            1
-          )
+          return [
+            _c("public-messages-card-component", {
+              key: msgCard.pm_id,
+              attrs: {
+                "msg-card": msgCard,
+                "public-path": _vm.publicPath,
+                "auth-id": _vm.authId
+              }
+            })
+          ]
         }),
         _vm._v(" "),
         _vm.allData.length === 0
@@ -41245,8 +41216,6 @@ var render = function() {
       attrs: { href: _vm.publicPath + "works/" + _vm.work.id }
     },
     [
-      _c("div", { staticClass: "c-workCard__decisionTag" }, [_vm._v("決定")]),
-      _vm._v(" "),
       _c("div", { staticClass: "c-workCard__nameWrap" }, [
         _c("img", {
           staticClass: "c-img c-workCard__img",
@@ -41493,21 +41462,19 @@ var render = function() {
         _c(
           "div",
           { staticClass: "c-h2__workCardBody p-workList__workCardBody" },
-          _vm._l(_vm.showList.slice(_vm.minCardNum, _vm.maxCardNum), function(
-            work
-          ) {
-            return _c(
-              "span",
-              { key: work.id },
-              [
+          [
+            _vm._l(_vm.showList.slice(_vm.minCardNum, _vm.maxCardNum), function(
+              work
+            ) {
+              return [
                 _c("works-card-component", {
+                  key: work.id,
                   attrs: { work: work, "public-path": _vm.publicPath }
                 })
-              ],
-              1
-            )
-          }),
-          0
+              ]
+            })
+          ],
+          2
         )
       ]),
       _vm._v(" "),
@@ -41550,19 +41517,17 @@ var render = function() {
       _c(
         "div",
         { staticClass: "p-home__workCards" },
-        _vm._l(_vm.showList, function(work) {
-          return _c(
-            "span",
-            { key: work.id },
-            [
+        [
+          _vm._l(_vm.showList, function(work) {
+            return [
               _c("works-card-component", {
+                key: work.id,
                 attrs: { work: work, "public-path": _vm.publicPath }
               })
-            ],
-            1
-          )
-        }),
-        0
+            ]
+          })
+        ],
+        2
       )
     ])
   ])
@@ -41597,16 +41562,12 @@ var render = function() {
       { staticClass: "c-h2__workCardBody p-mypage__secBody" },
       [
         _vm._l(_vm.allData.slice(0, _vm.showNum), function(work) {
-          return _c(
-            "span",
-            { key: work.id },
-            [
-              _c("works-card-component", {
-                attrs: { work: work, "public-path": _vm.publicPath }
-              })
-            ],
-            1
-          )
+          return [
+            _c("works-card-component", {
+              key: work.id,
+              attrs: { work: work, "public-path": _vm.publicPath }
+            })
+          ]
         }),
         _vm._v(" "),
         _vm.allData.length === 0
@@ -41649,16 +41610,12 @@ var render = function() {
       { staticClass: "c-h2__workCardBody p-mypage__secBody" },
       [
         _vm._l(_vm.allData.slice(0, _vm.showNum), function(work) {
-          return _c(
-            "span",
-            { key: work.id },
-            [
-              _c("works-card-component", {
-                attrs: { work: work, "public-path": _vm.publicPath }
-              })
-            ],
-            1
-          )
+          return [
+            _c("works-card-component", {
+              key: work.id,
+              attrs: { work: work, "public-path": _vm.publicPath }
+            })
+          ]
         }),
         _vm._v(" "),
         _vm.allData.length === 0

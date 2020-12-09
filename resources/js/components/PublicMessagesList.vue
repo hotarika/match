@@ -1,13 +1,14 @@
 <template>
    <section class="c-h2__sec p-pubmsgList__sec">
       <!-- ダイレクトメッセージ一覧 -->
-      <span v-for="msgCard of allData" :key="msgCard.pm_id">
+      <template v-for="msgCard of allData">
          <public-messages-card-component
             :msg-card="msgCard"
             :public-path="publicPath"
             :auth-id="authId"
+            :key="msgCard.pm_id"
          ></public-messages-card-component>
-      </span>
+      </template>
       <div class="c-h2__noItems -list" v-if="allData.length === 0">
          パブリックメッセージはありません
       </div>

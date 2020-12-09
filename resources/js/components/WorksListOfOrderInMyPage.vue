@@ -2,12 +2,13 @@
    <section class="c-h2__sec">
       <h2 class="c-h2__head">発注した仕事</h2>
       <div class="c-h2__workCardBody p-mypage__secBody">
-         <span v-for="work of allData.slice(0, showNum)" :key="work.id">
+         <template v-for="work of allData.slice(0, showNum)">
             <works-card-component
                :work="work"
                :public-path="publicPath"
+               :key="work.id"
             ></works-card-component>
-         </span>
+         </template>
          <div class="c-h2__noItems -order" v-if="allData.length === 0">
             発注した仕事はありません
          </div>

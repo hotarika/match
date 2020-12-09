@@ -34,16 +34,14 @@
       <!-- 仕事カード -->
       <div class="p-workList__workCardWrap">
          <div class="c-h2__workCardBody p-workList__workCardBody">
-            <span
-               v-for="work in showList.slice(minCardNum, maxCardNum)"
-               :key="work.id"
-            >
+            <template v-for="work in showList.slice(minCardNum, maxCardNum)">
                <!-- 仕事カードをコンポーネント化 -->
                <works-card-component
                   :work="work"
                   :public-path="publicPath"
+                  :key="work.id"
                ></works-card-component>
-            </span>
+            </template>
          </div>
       </div>
       <pagination-component

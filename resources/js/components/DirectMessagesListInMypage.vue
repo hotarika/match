@@ -6,13 +6,14 @@
       <h2 class="c-h2__head">ダイレクトメッセージ</h2>
       <div class="c-h2__body p-mypage__secBody">
          <!-- ダイレクトメッセージ一覧 -->
-         <span v-for="card in allData.slice(0, showNum)" :key="card.id">
+         <template v-for="card in allData.slice(0, showNum)">
             <direct-messages-card-component
                :public-path="publicPath"
                :card="card"
                :auth-id="authId"
+               :key="card.id"
             ></direct-messages-card-component>
-         </span>
+         </template>
          <div class="c-h2__noItems -dm" v-if="allData.length === 0">
             ダイレクトメッセージはありません
          </div>

@@ -6,16 +6,14 @@
       <h2 class="c-h2__head">パブリックメッセージ</h2>
       <div class="c-h2__body p-mypage__secBody">
          <!-- ダイレクトメッセージ一覧 -->
-         <span
-            v-for="msgCard of allData.slice(0, showNum)"
-            :key="msgCard.pm_id"
-         >
+         <template v-for="msgCard of allData.slice(0, showNum)">
             <public-messages-card-component
                :msg-card="msgCard"
                :public-path="publicPath"
                :auth-id="authId"
+               :key="msgCard.pm_id"
             ></public-messages-card-component>
-         </span>
+         </template>
          <div class="c-h2__noItems -pubmsg" v-if="allData.length === 0">
             パブリックメッセージはありません
          </div>

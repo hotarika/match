@@ -14,15 +14,15 @@
       <div class="p-dm__msgSec">
          <div class="p-dm__msgArea js-scroll" data-scroll>
             <transition-group>
-               <div v-for="msg in contents" :key="msg.content_id">
+               <template v-for="msg in contents">
                   <!-- 自分ののメッセージ -->
                   <pre
-                     :key="msg.id"
+                     :key="msg.content_id"
                      :class="{
                         'p-dm__msgMe': msg.user_id === authId,
                         'p-dm__msgYou': msg.user_id !== authId
                      }">{{ msg.content }}<time>{{ msg.created_at | formatDateTime }}</time></pre>
-               </div>
+               </template>
             </transition-group>
          </div>
          <!-- フォーム -->

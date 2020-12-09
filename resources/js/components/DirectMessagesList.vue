@@ -1,13 +1,14 @@
 <template>
    <section class="c-h2__sec p-dmList__sec">
       <!-- ダイレクトメッセージ一覧 -->
-      <span v-for="card in allData" :key="card.id">
+      <template v-for="card in allData">
          <direct-messages-card-component
             :public-path="publicPath"
             :card="card"
             :auth-id="authId"
+            :key="card.id"
          ></direct-messages-card-component>
-      </span>
+      </template>
       <div class="c-h2__noItems -list" v-if="allData.length === 0">
          ダイレクトメッセージはありません
       </div>

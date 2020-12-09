@@ -5,12 +5,13 @@
          <div class="p-home__workCardSecHead">新着の案件</div>
          <div class="p-home__workCards">
             <!-- 仕事カードコンポーネント -->
-            <span v-for="work in showList" :key="work.id">
+            <template v-for="work in showList">
                <works-card-component
                   :work="work"
                   :public-path="publicPath"
+                  :key="work.id"
                ></works-card-component>
-            </span>
+            </template>
          </div>
       </div>
    </section>
