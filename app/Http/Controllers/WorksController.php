@@ -51,15 +51,16 @@ class WorksController extends Controller
         $this->validate($request, $validate_rule);
 
         $work = new Work;
-        $work->user_id = Auth::id();
-        $work->name = $request->name;
-        $work->contract_id = $request->contract;
-        $work->end_date = $request->endRecruitment;
-        $work->hope_date = $request->hopeDeadline;
-        $work->price_lower = $request->priceLower;
-        $work->price_upper = $request->priceUpper;
-        $work->content = $request->content;
-        $work->save();
+        $work->fill([
+            'user_id' => Auth::id(),
+            'name' => $request->name,
+            'contract_id' => $request->contract,
+            'end_date' => $request->endRecruitment,
+            'hope_date' => $request->hopeDeadline,
+            'price_lower' => $request->priceLower,
+            'price_upper' => $request->priceUpper,
+            'content' => $request->content,
+        ])->save();
 
         return redirect()->route('works.index');
     }
@@ -208,14 +209,7 @@ class WorksController extends Controller
     public function update(Request $request, $id)
     {
         $work = Work::find($id);
-        $work->name = $request->name;
-        $work->contract_id = $request->contract;
-        $work->end_date = $request->endRecruitment;
-        $work->hope_date = $request->hopeDeadline;
-        $work->price_lower = $request->priceLower;
-        $work->price_upper = $request->priceUpper;
-        $work->content = $request->content;
-        $work->save();
+        $work->fill($request->all())->save();
 
         return redirect()->route('works.show', $work->id);
     }
