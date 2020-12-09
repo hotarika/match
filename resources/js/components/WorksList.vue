@@ -67,7 +67,7 @@ export default {
          oneoff_checkbox: true, // 単発案件チェックボックス
          share_checkbox: true, // レベニューシェアチェックボックス
          page: 1,
-         perPage: 9
+         perPage: 6
       };
    },
    computed: {

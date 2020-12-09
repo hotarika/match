@@ -3337,7 +3337,7 @@ __webpack_require__.r(__webpack_exports__);
       share_checkbox: true,
       // レベニューシェアチェックボックス
       page: 1,
-      perPage: 9
+      perPage: 6
     };
   },
   computed: {
