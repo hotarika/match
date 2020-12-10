@@ -1965,6 +1965,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2014,6 +2015,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   computed: {
+    // 相手のユーザー情報を表示
     divideImages: function divideImages() {
       if (this.authId === this.info.orderer_id) {
         return this.publicPath + 'storage/user_img/' + this.info.applicant_image;
@@ -2021,6 +2023,7 @@ __webpack_require__.r(__webpack_exports__);
         return this.publicPath + 'storage/user_img/' + this.info.orderer_image;
       }
     },
+    // 相手のユーザー情報を表示
     divideNames: function divideNames() {
       if (this.authId === this.info.orderer_id) {
         return this.info.applicant_name;
@@ -2030,6 +2033,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   filters: {
+    // 日付のフォーマット
     formatDateTime: function formatDateTime(value) {
       var date = new Date(value);
       var newFormat = Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_1__["getDateTimeNewFormat"])(date);

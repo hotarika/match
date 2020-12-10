@@ -15,7 +15,7 @@
          <div class="p-dm__msgArea js-scroll" data-scroll>
             <transition-group>
                <template v-for="msg in contents">
-                  <!-- 自分ののメッセージ -->
+                  <!-- メッセージ -->
                   <pre
                      :key="msg.content_id"
                      :class="{
@@ -25,6 +25,7 @@
                </template>
             </transition-group>
          </div>
+
          <!-- フォーム -->
          <form
             class="p-dm__form"
@@ -106,6 +107,7 @@ export default {
       }
    },
    computed: {
+      // 相手のユーザー情報を表示
       divideImages() {
          if (this.authId === this.info.orderer_id) {
             return (
@@ -117,6 +119,7 @@ export default {
             );
          }
       },
+      // 相手のユーザー情報を表示
       divideNames() {
          if (this.authId === this.info.orderer_id) {
             return this.info.applicant_name;
@@ -126,6 +129,7 @@ export default {
       }
    },
    filters: {
+      // 日付のフォーマット
       formatDateTime(value) {
          const date = new Date(value);
          const newFormat = getDateTimeNewFormat(date);
