@@ -3337,7 +3337,9 @@ __webpack_require__.r(__webpack_exports__);
       share_checkbox: true,
       // レベニューシェアチェックボックス
       page: 1,
-      perPage: 6
+      // 初期ページ
+      perPage: 6 // 1ページに表示するカード数
+
     };
   },
   computed: {

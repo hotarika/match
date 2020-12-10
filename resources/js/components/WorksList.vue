@@ -66,8 +66,8 @@ export default {
          showList: [], // 並び替えするための空の配列
          oneoff_checkbox: true, // 単発案件チェックボックス
          share_checkbox: true, // レベニューシェアチェックボックス
-         page: 1,
-         perPage: 6
+         page: 1, // 初期ページ
+         perPage: 6 // 1ページに表示するカード数
       };
    },
    computed: {
