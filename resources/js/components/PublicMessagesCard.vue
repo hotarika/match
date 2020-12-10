@@ -35,15 +35,6 @@ export default {
       publicPath: String,
       authId: Number
    },
-   computed: {
-      create() {
-         if (this.msgCard.cm_latest_content) {
-            return this.msgCard.cm_latest_content;
-         } else {
-            return this.msgCard.pm_content;
-         }
-      }
-   },
    filters: {
       formatDateTime(value) {
          const date = new Date(value);

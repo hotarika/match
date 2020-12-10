@@ -2096,6 +2096,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     divideImages: function divideImages() {
+      // 相手側の情報を表示
       if (this.authId === this.card.orderer_id) {
         return this.publicPath + 'storage/user_img/' + this.card.applicant_image;
       } else {
@@ -2103,6 +2104,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     divideNames: function divideNames() {
+      // 相手側の情報を表示
       if (this.authId === this.card.orderer_id) {
         return this.card.applicant_name;
       } else {
@@ -2986,15 +2988,6 @@ __webpack_require__.r(__webpack_exports__);
     msgCard: Object,
     publicPath: String,
     authId: Number
-  },
-  computed: {
-    create: function create() {
-      if (this.msgCard.cm_latest_content) {
-        return this.msgCard.cm_latest_content;
-      } else {
-        return this.msgCard.pm_content;
-      }
-    }
   },
   filters: {
     formatDateTime: function formatDateTime(value) {

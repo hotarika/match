@@ -28,6 +28,7 @@ class AsynchronousController extends Controller
     // ======================================
     // マイページ
     // ======================================
+    // 発注した仕事
     public function getWorksListOfOrderInMyPage()
     {
         $work = DB::table('works as w')
@@ -51,7 +52,7 @@ class AsynchronousController extends Controller
         return $work->toJson();
     }
 
-
+    // 応募した仕事
     public function getWorksListOfApplicationInMyPage()
     {
         $work = DB::table('works as w')
@@ -76,7 +77,7 @@ class AsynchronousController extends Controller
         return $work->toJson();
     }
 
-
+    // パブリックメッセージ
     public function getPublicMessagesList()
     {
         // [サブクエリ1]
@@ -128,10 +129,10 @@ class AsynchronousController extends Controller
         return $pubmsgs->toJson();
     }
 
-
+    // ダイレクトメッセージ
     public function getDirectMessagesList()
     {
-        // 子
+        // [サブクエリ]
         $child = DB::table('direct_messages_contents as c')
             ->whereIn(
                 DB::raw('c.created_at'),
@@ -142,7 +143,7 @@ class AsynchronousController extends Controller
                 }
             );
 
-        // 親子結合
+        // 上記のテーブルと結合
         $boards = DB::table('direct_messages_boards as b')
             ->select(
                 'b.id as board_id',

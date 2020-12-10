@@ -36,6 +36,7 @@ export default {
    },
    computed: {
       divideImages() {
+         // 相手側の情報を表示
          if (this.authId === this.card.orderer_id) {
             return (
                this.publicPath + 'storage/user_img/' + this.card.applicant_image
@@ -47,6 +48,7 @@ export default {
          }
       },
       divideNames() {
+         // 相手側の情報を表示
          if (this.authId === this.card.orderer_id) {
             return this.card.applicant_name;
          } else {
