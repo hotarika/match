@@ -12,6 +12,23 @@ use App\Http\Requests\WorkRequest;
 
 class WorksController extends Controller
 {
+    static function dateFormat($beforeDate)
+    {
+        // 日付のフォーマット
+        $afterDate = date("Y/m/d", strtotime($beforeDate));
+        return $afterDate;
+    }
+
+    static function diffDate($from, $to)
+    {
+        // 日付の差分から仕事の締め切り日数を算出
+        $diff = $from - $to;
+        // [差分/60秒/60分/24時間 = 残り日数]
+        // その日付の23:59分終了のため + 1
+        $diff_date = floor($diff / 60 / 60 / 24 + 1);
+        return $diff_date;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -92,25 +109,21 @@ class WorksController extends Controller
             ->where('w.id', $work_id)->first();
 
         // 日付・金額形式の変換
-        $work->end_date =  date("Y/m/d", strtotime($work->end_date));
-        $work->hope_date =  date("Y/m/d", strtotime($work->hope_date));
-        $work->created_at =  date("Y/m/d", strtotime($work->created_at));
+        $work->end_date =  self::dateFormat($work->end_date);
+        $work->hope_date =  self::dateFormat($work->hope_date);
+        $work->created_at =  self::dateFormat($work->created_at);
         $work->price_lower =  number_format($work->price_lower);
         $work->price_upper =  number_format($work->price_upper);
 
         // 残り日数
-        $from = strtotime($work->end_date);
-        $to = strtotime('now');
-        $diff = $from - $to;
-        // [差分/60秒/60分/24時間 = 残り日数]
-        // その日付の23:59分終了のため + 1
-        $diff_date = floor($diff / 60 / 60 / 24 + 1);
-        if ($diff_date >= 1) {
+        $diff_date =
+            self::diffDate(strtotime($work->end_date), strtotime('now'));
+        if ($diff_date < 0 || $work->w_state == 2) {
+            $work->remaining_date = "応募終了";
+        } elseif ($diff_date >= 1) {
             $work->remaining_date = 'あと' . $diff_date . '日';
-        } elseif ($diff_date == 0) {
-            $work->remaining_date = "本日終了";
         } else {
-            $work->remaining_date = "終了";
+            $work->remaining_date = "本日終了";
         }
 
         // 応募ボタン

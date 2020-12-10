@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class AsynchronousController extends Controller
 {
     // ======================================
-    // 通知
+    // 通知バッジ
     // ======================================
     public function getNotificationsBadgeNumber()
     {

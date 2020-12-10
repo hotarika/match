@@ -126,6 +126,7 @@ class ApplicantsController extends Controller
      */
     public function destroy($id)
     {
+        // 応募を取り消し
         Applicant::find($id)->delete();
         return redirect()->route('works.index');
     }
