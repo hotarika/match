@@ -36,7 +36,7 @@
                               class="c-form__input p-profileEdit__input -name"
                               type="text"
                               name="name"
-                              value="{{$user->name ?? ''}}"
+                              value="{{old('name',$user->name ?? '')}}"
                               required
                               autofocus
                               autocomplete="name"
@@ -58,7 +58,7 @@
                               class="c-form__input p-profileEdit__input -email"
                               type="email"
                               name="email"
-                              value="{{$user->email ?? ''}}"
+                              value="{{old('email',$user->email ?? '')}}"
                               required
                               autocomplete="email"
                               placeholder="メールアドレスを記入" />
@@ -80,7 +80,7 @@
                               name="introduction"
                               cols="30"
                               rows="10"
-                              placeholder="自己紹介文を記入">{{$user->introduction}}</textarea>
+                              placeholder="自己紹介文を記入">{{old('introduction',$user->introduction ?? '')}}</textarea>
                         </div>
                      </div>
                      <button class="c-btn p-profileEdit__editBtn" type="submit">編集する</button>
