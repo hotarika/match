@@ -129,10 +129,10 @@ return [
     */
 
     'custom' => [
-        'priceLower' => [
+        'price_lower' => [
             'required_if' => '提携方法が「単発案件」の場合、下限金額も指定してください。',
         ],
-        'priceUpper' => [
+        'price_upper' => [
             'required_if' => '提携方法が「単発案件」の場合、上限金額も指定してください。',
         ],
     ],
@@ -156,11 +156,9 @@ return [
         'hope_date' => '希望納期',
         'contract_id' => '提携方法',
         'price_lower' => '下限金額',
-        'priceu_pper' => '上限金額',
-        'oneoff' => '単発案件',
+        'price_upper' => '上限金額',
         'content' => '依頼内容',
-        'current_password' => '現在のパスワード'
-
+        'current_password' => '現在のパスワード',
     ],
 
 ];

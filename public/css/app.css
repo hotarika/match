@@ -1099,10 +1099,6 @@ pre {
   color: #dc3545;
 }
 
-.c-form__invalid.-priceLower {
-  margin-bottom: 5px;
-}
-
 @media screen and (max-width: 768px) {
   .c-form__invalid {
     font-size: 12px;
@@ -1111,6 +1107,10 @@ pre {
 
 .c-form__error {
   display: inline-block;
+}
+
+.c-form__error.-priceLower {
+  margin-bottom: 5px;
 }
 
 .c-form__textarea {
@@ -2048,6 +2048,13 @@ pre {
   background-color: #bedcfd;
 }
 
+@media screen and (max-width: 414px) {
+  .p-header__navLink.-beforeLogin {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+}
+
 .p-header__userImg {
   width: 15px;
   height: 15px;
@@ -2729,6 +2736,12 @@ pre {
 
 .p-mypage__secBody.-notification {
   padding: 20px;
+}
+
+@media screen and (max-width: 375px) {
+  .p-mypage__secBody.-notification {
+    padding: 15px 10px;
+  }
 }
 
 .p-mypage__notificationItem {

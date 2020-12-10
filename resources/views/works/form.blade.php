@@ -129,14 +129,10 @@
                                  placeholder="例：2000" /><span>千円</span>
                            </div>
 
-                           @if($errors->has('price_lower'))
-                           <span class="c-form__invalid -priceLower" role="alert">
-                              <strong class="c-form__error">{{ $errors->first('pricel_lower') }}</strong>
-                           </span>
-                           @endif
-                           @if($errors->has('price_upper'))
-                           <span class="c-form__invalid -priceUpper" role="alert">
-                              <strong class="c-form__error ">{{ $errors->first('price_upper') }}</strong>
+                           @if($errors->has('price_lower') || $errors->has('price_upper'))
+                           <span class="c-form__invalid" role="alert">
+                              <strong class="c-form__error -priceLower">{{ $errors->first('price_lower') }}</strong>
+                              <strong class="c-form__error -priceUpper">{{ $errors->first('price_upper') }}</strong>
                            </span>
                            @endif
                         </div>
