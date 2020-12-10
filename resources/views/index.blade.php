@@ -153,7 +153,8 @@
 
    <!-- 新着の仕事一覧 -->
    <works-list-in-home
-      :public-path="{{ json_encode(asset('')) }}"></works-list-in-home>
+      :public-path="{{ json_encode(asset('')) }}">
+   </works-list-in-home>
 
 
    <!-- 会員登録ボタン -->

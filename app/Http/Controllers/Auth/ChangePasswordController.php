@@ -22,7 +22,7 @@ class ChangePasswordController extends Controller
 
     public function changePassword(ChangePasswordRequest $request)
     {
-        //ValidationはChangePasswordRequestで処理
+        // バリデーションはChangePasswordRequestで処理
         $user = Auth::user();
         $user->password = bcrypt($request->get('password'));
         $user->save();

@@ -1,8 +1,7 @@
 // **********************************
 // 全体のSCSSファイルの取り込み
 // **********************************
-// 下記に定義されているファイルの順番を入れ替えるとCSSデザインが壊れますので、
-// 変更する場合などは、ご注意ください
+// 下記に定義されているファイルの順番を入れ替えるとCSSデザインが壊れますので、変更する場合は、ご注意ください
 
 // Foundation
 @import 'foundation/_f-reset';
@@ -20,10 +19,3 @@
 @import 'object/project/auth/*.scss';
 // Object > Utility
 @import 'object/utility/*.scss';
-
-// Laravel初期設定
-// Fonts
-// @import url("https://fonts.googleapis.com/css?family=Nunito");
-
-// Bootstrap
-// @import "~bootstrap/scss/bootstrap";

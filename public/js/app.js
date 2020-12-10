@@ -55313,7 +55313,7 @@ window.addEventListener('DOMContentLoaded', function () {
     open.addEventListener('click', function (e) {
       // ③番目のコードでdocument.addEventListenerを指定しているため、イベントが伝播してしまう
       // そのため、stopPropagation()で伝播を停止させている
-      e.stopPropagation(); // .js-navにcalssのis-activeがなければ追加する
+      e.stopPropagation(); // .js-navにclassのis-activeがなければ追加する
 
       if (!target.classList.contains('is-active')) {
         target.classList.add('is-active');
@@ -55327,7 +55327,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (target.classList.contains('is-active')) {
         target.classList.remove('is-active');
       }
-    }); // ③ メニューバーの外側をクリックした場合に閉じる（Vueでの実装ができない）
+    }); // ③ メニューバーの外側をクリックした場合に閉じる（Vueでの実装ができない部分）
 
     document.addEventListener('click', function (e) {
       // 外側をクリックした場合 && classにis-activeの文字列がない場合

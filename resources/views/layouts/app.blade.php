@@ -19,9 +19,6 @@
       <div class="c-flash" role="alert">{{ session('flash_message') }}
       </div>
       @endif
-      @if(session('error_message'))
-      <div class="error" role="alert">{{ session('error_message') }}</div>
-      @endif
 
       @yield('content')
 
