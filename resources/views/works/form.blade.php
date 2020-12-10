@@ -4,7 +4,9 @@
 @section('content')
 <main class="l-main p-workForm">
    <div class="container">
-      <h1 class="c-h1__head">@if ( request()->is('*edit*') )仕事編集 @else 仕事登録 @endif</h1>
+      <h1 class="c-h1__head">
+         @if (request()->is('*edit*')) 仕事編集 @else 仕事登録 @endif
+      </h1>
       <div class="l-main__mainAreaWrap">
          <!-- サイドバー -->
          @include('components/sidebar')
@@ -158,8 +160,9 @@
                         </div>
                      </div>
 
-                     <button class="c-btn p-workForm__editBtn" type="submit">@if ( request()->is('*edit*') )編集する @else
-                        登録する @endif</button>
+                     <button class="c-btn p-workForm__editBtn" type="submit">
+                        @if ( request()->is('*edit*') )編集する @else 登録する @endif
+                     </button>
                   </form>
                </div>
             </section>

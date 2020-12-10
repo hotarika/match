@@ -78,7 +78,7 @@
                      <li class="p-header__item">
                         <a class="c-link p-header__navLink" href="{{ route('works.index') }}">
                            <i class="fas fa-list p-header__navIcon"></i>
-                           <div class="p-header__navName u-ml4">案件一覧</div>
+                           <div class="p-header__navName u-ml4">仕事一覧</div>
                         </a>
                      </li>
 

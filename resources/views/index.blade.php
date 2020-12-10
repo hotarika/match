@@ -151,7 +151,7 @@
       </div>
    </section>
 
-   <!-- 新着の案件一覧 -->
+   <!-- 新着の仕事一覧 -->
    <works-list-in-home
       :public-path="{{ json_encode(asset('')) }}"></works-list-in-home>
 
