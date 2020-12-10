@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource(
         '/applicants-notifications',
         'ApplicantsNotificationsController',
-        ['only' => ['index', 'update',]]
+        ['only' => ['update',]]
     );
     Route::resource(
         '/pubmsgs',

@@ -9,18 +9,6 @@ use App\Notification;
 class ApplicantsNotificationsController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $notifications = DB::table('notifications')->select('*')->get();
-
-        return $notifications->toJson();
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -29,6 +17,7 @@ class ApplicantsNotificationsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // notificationsテーブルのread_atカラムを更新
         $notification = Notification::find($id);
         $notification->fill($request->all())->save();
     }
