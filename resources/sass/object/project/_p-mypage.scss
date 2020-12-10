@@ -19,6 +19,9 @@
       }
       &.-notification {
          padding: 20px;
+         @include mq('2xs') {
+            padding: 15px 10px;
+         }
       }
    }
    &__notificationItem {

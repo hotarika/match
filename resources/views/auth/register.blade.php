@@ -19,7 +19,7 @@
                         class="c-form__input @error('name') is-invalid @enderror"
                         name="name"
                         value="{{ old('name') }}"
-                        required
+                        {{-- required --}}
                         autocomplete="name"
                         autofocus
                         placeholder="名前" />

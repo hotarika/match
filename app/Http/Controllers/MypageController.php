@@ -1,5 +1,4 @@
 <?php
-// チェック済み
 
 namespace App\Http\Controllers;
 
