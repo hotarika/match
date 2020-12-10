@@ -81,6 +81,7 @@ class ApplicantsController extends Controller
                 $join->on('a.applicant_id', '=', 'b.applicant_id');
             })
             ->where('a.work_id', $id)
+            ->orderBy('a.created_at', 'ASC')
             ->get();
 
         $work = DB::table('works')
