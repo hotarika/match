@@ -32,7 +32,7 @@ class DirectMessagesContentsSeeder extends Seeder
             'board_id' => 1,
             'user_id' => 1,
             'content' => 'Board1, user_id1 -> user_id2 へダイレクトメッセージを送りました。',
-            'created_at' => '2020-12-30 00:52:49',
+            'created_at' => '2020-11-30 00:52:49',
             'updated_at' => Carbon::now(),
         ]);
 

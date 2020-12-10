@@ -30,11 +30,7 @@ class DirectMessagesContentsController extends Controller
      */
     public function show($id)
     {
-        // DM情報
-        // select * from dm_contents as c
-        // left join direct_messages_boards as b on c.`board_id` = b.id
-        // left join works as w on b.`work_id` = w.id
-        // left join users as u on w.user_id = u.id
+        // DM情報（DMの氏名などが記述されているヘッダー部分のデータ）
         $info = DB::table(
             'direct_messages_boards as b'
         )
