@@ -3514,7 +3514,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     // 非同期取得
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.publicPath + 'async/works-contract-mypage').then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.publicPath + 'async/works-application-mypage').then(function (res) {
       console.log(res);
       _this.allData = res.data; // 全データを格納
     })["catch"](function (err) {

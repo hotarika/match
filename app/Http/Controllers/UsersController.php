@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -20,17 +21,21 @@ class UsersController extends Controller
     {
         $user = User::find($user_id);
 
-        $ordersCount = DB::table('works')
-            ->where('user_id', '=', $user_id)
-            ->where('state', '=', 2)
-            ->count();
+        if ($user !== null) {
+            $ordersCount = DB::table('works')
+                ->where('user_id', '=', $user_id)
+                ->where('state', '=', 2)
+                ->count();
 
-        $ordersReceivedCount = DB::table('applicants')
-            ->where('applicant_id', '=', $user_id)
-            ->where('state', '=', 2)
-            ->count();
+            $ordersReceivedCount = DB::table('applicants')
+                ->where('applicant_id', '=', $user_id)
+                ->where('state', '=', 2)
+                ->count();
 
-        return view("users.show", compact('user', 'ordersCount', 'ordersReceivedCount'));
+            return view("users.show", compact('user', 'ordersCount', 'ordersReceivedCount'));
+        } else {
+            return redirect()->route('users.show', Auth::id());
+        }
     }
 
     /**
@@ -41,8 +46,13 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::where('id', $id)->first();
-        return view('users.edit', compact('user'));
+        $user = User::where('id', Auth::id())->first();
+
+        if ($id == Auth::id()) {
+            return view('users.edit', compact('user'));
+        } else {
+            return redirect()->route('users.edit', Auth::id());
+        }
     }
 
     /**

@@ -32,7 +32,7 @@ export default {
    mounted() {
       // 非同期取得
       axios
-         .get(this.publicPath + 'async/works-contract-mypage')
+         .get(this.publicPath + 'async/works-application-mypage')
          .then(res => {
             console.log(res);
             this.allData = res.data; // 全データを格納

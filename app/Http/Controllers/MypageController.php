@@ -30,7 +30,7 @@ class MyPageController extends Controller
             $notification = null;
         }
 
-        // マイページの通知以外のデータは非同期（axios）により取得している
+        // マイページの通知以外のデータは非同期（axios）により取得
         return view('mypage', compact('notification'));
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\DirectMessageContent;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class DirectMessagesContentsController extends Controller
 {
@@ -52,19 +53,27 @@ class DirectMessagesContentsController extends Controller
             ->where('b.id', $id)
             ->first();
 
-        // メッセージの出力
-        $contents = DB::table('direct_messages_contents as c')
-            ->select(
-                'c.id as content_id',
-                'c.board_id',
-                'c.user_id',
-                'c.content',
-                'c.created_at',
-            )
-            ->where('board_id', $id)
-            ->orderBy('created_at', 'ASC')
-            ->get();
+        if ($info !== null) {
+            if ($info->orderer_id == Auth::id() || $info->applicant_id == Auth::id()) {
+                // メッセージの出力
+                $contents = DB::table('direct_messages_contents as c')
+                    ->select(
+                        'c.id as content_id',
+                        'c.board_id',
+                        'c.user_id',
+                        'c.content',
+                        'c.created_at',
+                    )
+                    ->where('board_id', $id)
+                    ->orderBy('created_at', 'ASC')
+                    ->get();
 
-        return view('dm.show', compact('contents', 'info'));
+                return view('dm.show', compact('contents', 'info'));
+            } else {
+                return redirect()->route('dm-boards.index');
+            }
+        } else {
+            return redirect()->route('dm-boards.index');
+        }
     }
 }

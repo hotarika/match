@@ -98,7 +98,7 @@ Route::get(
     'AsynchronousController@getWorksListOfOrderInMyPage'
 );
 Route::get(
-    '/async/works-contract-mypage',
+    '/async/works-application-mypage',
     'AsynchronousController@getWorksListOfApplicationInMyPage'
 );
 Route::get(

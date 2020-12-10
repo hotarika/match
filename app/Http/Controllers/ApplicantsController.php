@@ -48,7 +48,6 @@ class ApplicantsController extends Controller
             'applicant_id' => Auth::id()
         ])->save();
 
-
         return redirect()->route('works.index')
             ->with('flash_message', '応募しました');
     }
@@ -61,35 +60,44 @@ class ApplicantsController extends Controller
      */
     public function show($id)
     {
-        $applicants = DB::table('applicants as a')
-            ->select(
-                'a.id',
-                'a.work_id as w_id',
-                'w.state as w_state',
-                'w.name as w_name',
-                'a.applicant_id',
-                'u.name as u_name',
-                'u.image as u_image',
-                'a.state as applicant_state',
-                'b.id as board_id'
-            )
-            ->leftJoin('users as u', 'a.applicant_id', '=', 'u.id')
-            ->leftJoin('works as w', 'a.work_id', '=', 'w.id')
-            ->leftJoin('direct_messages_boards as b', function ($join) {
-                // 複合キーでの結合
-                $join->on('a.work_id', '=', 'b.work_id');
-                $join->on('a.applicant_id', '=', 'b.applicant_id');
-            })
-            ->where('a.work_id', $id)
-            ->orderBy('a.created_at', 'ASC')
-            ->get();
-
         $work = DB::table('works')
-            ->select('id', 'name')
+            ->select('id', 'user_id', 'name')
             ->where('id', $id)
             ->first();
 
-        return view('applicant', compact('applicants', 'work'));
+        if ($work !== null) {
+            if ($work->user_id == Auth::id()) {
+                $applicants = DB::table('applicants as a')
+                    ->select(
+                        'a.id',
+                        'a.work_id as w_id',
+                        'w.state as w_state',
+                        'w.name as w_name',
+                        'a.applicant_id',
+                        'u.name as u_name',
+                        'u.image as u_image',
+                        'a.state as applicant_state',
+                        'b.id as board_id'
+                    )
+                    ->leftJoin('users as u', 'a.applicant_id', '=', 'u.id')
+                    ->leftJoin('works as w', 'a.work_id', '=', 'w.id')
+                    ->leftJoin('direct_messages_boards as b', function ($join) {
+                        // 複合キーでの結合
+                        $join->on('a.work_id', '=', 'b.work_id');
+                        $join->on('a.applicant_id', '=', 'b.applicant_id');
+                    })
+                    ->where('a.work_id', $id)
+                    ->orderBy('a.created_at', 'ASC')
+                    ->get();
+
+                return view('applicant', compact('applicants', 'work'));
+            } else {
+                return redirect()->route('works.show', $id);
+            }
+        } else {
+            // 登録されていない仕事idが入力された場合は仕事一覧にリダイレクト
+            return redirect()->route('works.index');
+        }
     }
 
     /**

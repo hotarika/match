@@ -108,90 +108,95 @@ class WorksController extends Controller
             ->leftJoin('contracts as c', 'w.contract_id', '=', 'c.id')
             ->where('w.id', $work_id)->first();
 
-        // 日付・金額形式の変換
-        $work->end_date =  self::dateFormat($work->end_date);
-        $work->hope_date =  self::dateFormat($work->hope_date);
-        $work->created_at =  self::dateFormat($work->created_at);
-        $work->price_lower =  number_format($work->price_lower);
-        $work->price_upper =  number_format($work->price_upper);
+        if ($work !== null) {
+            // 日付・金額形式の変換
+            $work->end_date =  self::dateFormat($work->end_date);
+            $work->hope_date =  self::dateFormat($work->hope_date);
+            $work->created_at =  self::dateFormat($work->created_at);
+            $work->price_lower =  number_format($work->price_lower);
+            $work->price_upper =  number_format($work->price_upper);
 
-        // 残り日数
-        $diff_date =
-            self::diffDate(strtotime($work->end_date), strtotime('now'));
-        if ($diff_date < 0 || $work->w_state == 2) {
-            $work->remaining_date = "応募終了";
-        } elseif ($diff_date >= 1) {
-            $work->remaining_date = 'あと' . $diff_date . '日';
-        } else {
-            $work->remaining_date = "本日終了";
-        }
+            // 残り日数
+            $diff_date =
+                self::diffDate(strtotime($work->end_date), strtotime('now'));
+            if ($diff_date < 0 || $work->w_state == 2) {
+                $work->remaining_date = "応募終了";
+            } elseif ($diff_date >= 1) {
+                $work->remaining_date = 'あと' . $diff_date . '日';
+            } else {
+                $work->remaining_date = "本日終了";
+            }
 
-        // 応募ボタン
-        $applicant = DB::table('applicants as a')
-            ->select('*')
-            ->where('applicant_id', Auth::id())
-            ->where('work_id', $work->w_id)
-            ->first();
+            // 応募ボタン
+            $applicant = DB::table('applicants as a')
+                ->select('*')
+                ->where('applicant_id', Auth::id())
+                ->where('work_id', $work->w_id)
+                ->first();
 
-        // 応募人数のカウント
-        $countApplicants = DB::table('applicants as a')
-            ->where('work_id', $work_id)
-            ->count();
+            // 応募人数のカウント
+            $countApplicants = DB::table('applicants as a')
+                ->where('work_id', $work_id)
+                ->count();
 
-        // **********************************
-        // パブリックメッセージ
-        // **********************************
-        $authUser = Auth::user();
-
-        // 親掲示板
-        $parent_msg = DB::table(
-            'parent_public_messages as pm'
-        )
-            ->select(
-                'pm.id as pm_id',
-                'pm.user_id as u_id',
-                'u.name as u_name',
-                'u.image as u_image',
-                'pm.title as pm_title',
-                'pm.content as pm_content',
-                'pm.created_at as pm_created_at'
-            )
-            ->leftJoin('users as u', 'pm.user_id', '=', 'u.id')
-            ->where('work_id', $work_id)
-            ->orderBy('pm.updated_at', 'DESC')
-            ->get();
-
-        // 子掲示板
-        $child_msg = DB::table(
-            'child_public_messages as cm'
-        )
-            ->select(
-                'cm.id as cm_id',
-                'cm.parent_id',
-                'cm.user_id as u_id',
-                'u.name as u_name',
-                'u.image as u_image',
-                'cm.content as cm_content',
-                'cm.created_at as cm_created_at'
-            )
-            ->leftJoin('users as u', 'cm.user_id', '=', 'u.id')
-            ->orderBy('cm.created_at', 'ASC')
-            ->get();
-
-        // **********************************
-        // return
-        // **********************************
-        return view('works.show', compact(
-            // 商品詳細
-            'work',
-            'applicant',
-            'countApplicants',
+            // **********************************
             // パブリックメッセージ
-            'authUser',
-            'work_id',
-            'parent_msg',
-            'child_msg',
-        ));
+            // **********************************
+            $authUser = Auth::user();
+
+            // 親掲示板
+            $parent_msg = DB::table(
+                'parent_public_messages as pm'
+            )
+                ->select(
+                    'pm.id as pm_id',
+                    'pm.user_id as u_id',
+                    'u.name as u_name',
+                    'u.image as u_image',
+                    'pm.title as pm_title',
+                    'pm.content as pm_content',
+                    'pm.created_at as pm_created_at'
+                )
+                ->leftJoin('users as u', 'pm.user_id', '=', 'u.id')
+                ->where('work_id', $work_id)
+                ->orderBy('pm.updated_at', 'DESC')
+                ->get();
+
+            // 子掲示板
+            $child_msg = DB::table(
+                'child_public_messages as cm'
+            )
+                ->select(
+                    'cm.id as cm_id',
+                    'cm.parent_id',
+                    'cm.user_id as u_id',
+                    'u.name as u_name',
+                    'u.image as u_image',
+                    'cm.content as cm_content',
+                    'cm.created_at as cm_created_at'
+                )
+                ->leftJoin('users as u', 'cm.user_id', '=', 'u.id')
+                ->orderBy('cm.created_at', 'ASC')
+                ->get();
+
+            // **********************************
+            // return
+            // **********************************
+            return view('works.show', compact(
+                // 商品詳細
+                'work',
+                'applicant',
+                'countApplicants',
+                // パブリックメッセージ
+                'authUser',
+                'work_id',
+                'parent_msg',
+                'child_msg',
+            ));
+        } else {
+            // 登録されていない仕事idが入力された場合は仕事一覧にリダイレクト
+            return redirect()->route('works.index');
+        }
     }
 
     /**
@@ -204,11 +209,15 @@ class WorksController extends Controller
     {
         $work = Work::find($id);
 
-        // 日付フォームのplaceholderに日付の自動更新のため使用（safari対応）
-        $oneMonthLater = date("Y/m/d", strtotime("+1 month"));
-        $threeMonthsLater = date("Y/m/d", strtotime("+3 month"));
+        if ($work->user_id == Auth::id()) {
+            // 日付フォームのplaceholderに日付の自動更新のため使用（safari対応）
+            $oneMonthLater = date("Y/m/d", strtotime("+1 month"));
+            $threeMonthsLater = date("Y/m/d", strtotime("+3 month"));
 
-        return view('works.form', compact('work', 'oneMonthLater', 'threeMonthsLater'));
+            return view('works.form', compact('work', 'oneMonthLater', 'threeMonthsLater'));
+        } else {
+            return redirect()->route('works.show', $id);
+        }
     }
 
     /**
