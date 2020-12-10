@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ChildPublicMessage;
-use Illuminate\Support\Facades\DB;
 
 class ChildPublicMessagesController extends Controller
 {

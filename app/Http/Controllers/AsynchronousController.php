@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Work;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Carbon;
-
 
 class AsynchronousController extends Controller
 {
