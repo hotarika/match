@@ -225,6 +225,7 @@ export default {
       }
    },
    filters: {
+      // 日付のフォーマット
       formatDateTime(value) {
          const date = new Date(value);
          const newFormat = getDateTimeNewFormat(date);

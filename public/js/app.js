@@ -2938,6 +2938,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   filters: {
+    // 日付のフォーマット
     formatDateTime: function formatDateTime(value) {
       var date = new Date(value);
       var newFormat = Object(_modules_getDateTimeNewFormat__WEBPACK_IMPORTED_MODULE_2__["getDateTimeNewFormat"])(date);
