@@ -40050,7 +40050,7 @@ var render = function() {
                 expression: "textarea"
               }
             ],
-            staticClass: "c-form__textarea",
+            staticClass: "c-form__textarea p-dm__textarea",
             attrs: {
               name: "message",
               id: "message",

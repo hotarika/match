@@ -32,7 +32,7 @@
             :class="{ '-myWork': authId === info.orderer_id }"
          >
             <textarea
-               class="c-form__textarea"
+               class="c-form__textarea p-dm__textarea"
                name="message"
                id="message"
                cols="80"

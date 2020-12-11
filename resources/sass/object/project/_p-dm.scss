@@ -112,6 +112,9 @@
          left: -12px;
          border-color: transparent $gray-200 transparent transparent;
          border-width: 10px 15px 10px 0;
+         @-moz-document url-prefix() {
+            display: none;
+         }
       }
       & > time {
          right: 0;
@@ -129,6 +132,9 @@
          right: -12px;
          border-color: transparent transparent transparent #2991d2;
          border-width: 10px 0 10px 15px;
+         @-moz-document url-prefix() {
+            display: none;
+         }
       }
       & > time {
          left: 0;
@@ -138,27 +144,28 @@
    &__form {
       @include flex-center;
       @include border-radius('bottom');
-      position: relative;
       flex-basis: 15%;
-      padding: 15px 15px 45px 15px;
+      flex-direction: column;
+      padding: 15px 30px;
       margin: 0;
       background: $gray-400;
-      & > textarea {
-         border: none;
-         @include mq('3xs') {
-            padding: 10px;
-            font-size: 12px;
-         }
+      @include mq('xs') {
+         padding: 10px 15px;
       }
       &.-myWork {
          background-color: $primary-light;
       }
    }
-   &__sendBtn {
-      right: 57px;
-      bottom: 11px;
-      @include mq('xs') {
-         right: 15px;
+   &__textarea {
+      width: 100%;
+      border: none;
+      @include mq('3xs') {
+         padding: 10px;
+         font-size: 12px;
       }
+   }
+   &__sendBtn {
+      position: initial;
+      margin: 10px 0 0 auto;
    }
 }

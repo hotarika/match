@@ -73,7 +73,8 @@ class WorksController extends Controller
             'content' => $request->content,
         ])->save();
 
-        return redirect()->route('works.index');
+        return redirect()->route('works.index')
+            ->with('flash_message', '仕事を登録しました');
     }
 
     /**
@@ -232,6 +233,7 @@ class WorksController extends Controller
         $work = Work::find($id);
         $work->fill($request->all())->save();
 
-        return redirect()->route('works.show', $work->id);
+        return redirect()->route('works.show', $work->id)
+            ->with('flash_message', '仕事を編集しました');
     }
 }
