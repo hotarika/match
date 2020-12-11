@@ -3,7 +3,7 @@
       <div class="c-workCard__nameWrap">
          <img
             class="c-img c-workCard__img"
-            :src="publicPath + 'storage/user_img/' + work.u_image"
+            :src="showImage"
             alt="ユーザーのアイコン"
          />
          <span class="c-workCard__name">{{ work.u_name }}</span>
@@ -73,6 +73,14 @@ export default {
             return this.work.end_date;
          } else {
             return '本日終了';
+         }
+      },
+      showImage() {
+         // 画像が設定されていない場合デフォルトの画像を設定
+         if (this.work.u_image === null) {
+            return this.publicPath + 'images/no-image.png';
+         } else {
+            return this.publicPath + 'storage/user_img/' + this.work.u_image;
          }
       }
    }
