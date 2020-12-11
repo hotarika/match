@@ -2103,9 +2103,17 @@ __webpack_require__.r(__webpack_exports__);
     divideImages: function divideImages() {
       // 相手側の情報を表示
       if (this.authId === this.card.orderer_id) {
-        return this.publicPath + 'storage/user_img/' + this.card.applicant_image;
+        if (this.card.applicant_image === null) {
+          return this.publicPath + 'images/no-image.png';
+        } else {
+          return this.publicPath + 'storage/user_img/' + this.card.applicant_image;
+        }
       } else {
-        return this.publicPath + 'storage/user_img/' + this.card.orderer_image;
+        if (this.card.orderer_image === null) {
+          return this.publicPath + 'images/no-image.png';
+        } else {
+          return this.publicPath + 'storage/user_img/' + this.card.orderer_image;
+        }
       }
     },
     divideNames: function divideNames() {
@@ -2294,7 +2302,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    imagePath: String
+    publicPath: String,
+    userImage: String
   },
   data: function data() {
     return {
@@ -2349,6 +2358,16 @@ __webpack_require__.r(__webpack_exports__);
         this.style_over = false;
         this.style_learve = true;
         console.log('leave');
+      }
+    }
+  },
+  computed: {
+    showImage: function showImage() {
+      // 画像が設定されていない場合デフォルトの画像を設定
+      if (this.userImage === null) {
+        return this.publicPath + 'images/no-image.png';
+      } else {
+        return this.publicPath + 'storage/user_img/' + this.userImage;
       }
     }
   },
@@ -3251,6 +3270,14 @@ __webpack_require__.r(__webpack_exports__);
         return this.work.end_date;
       } else {
         return '本日終了';
+      }
+    },
+    showImage: function showImage() {
+      // 画像が設定されていない場合デフォルトの画像を設定
+      if (this.work.u_image === null) {
+        return this.publicPath + 'images/no-image.png';
+      } else {
+        return this.publicPath + 'storage/user_img/' + this.work.u_image;
       }
     }
   }
@@ -8051,7 +8078,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* スマホ対応時に下記のスタイルを消したいため、<sytle scoped>で指定せず、グローバルスコープにしている */\n.js-img-over {\n   border: 3px dotted rgba(0, 200, 0, 0.7);\n}\n.js-img-leave {\n   border: 3px dotted gray;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* スマホ対応時に下記のスタイルを消したいため、<sytle scoped>で指定せず、グローバルスコープにしている */\n.js-img-over {\n   border: 3px dotted rgba(0, 200, 0, 0.7);\n}\n.js-img-leave {\n   border: 3px dotted gray;\n}\n", ""]);
 
 // exports
 
@@ -40337,7 +40364,7 @@ var render = function() {
             _vm.preview === ""
               ? _c("img", {
                   staticClass: "c-img p-profileEdit__img",
-                  attrs: { src: _vm.imagePath }
+                  attrs: { src: _vm.showImage }
                 })
               : _c("img", {
                   staticClass: "c-img p-profileEdit__img",
@@ -41231,10 +41258,7 @@ var render = function() {
       _c("div", { staticClass: "c-workCard__nameWrap" }, [
         _c("img", {
           staticClass: "c-img c-workCard__img",
-          attrs: {
-            src: _vm.publicPath + "storage/user_img/" + _vm.work.u_image,
-            alt: "ユーザーのアイコン"
-          }
+          attrs: { src: _vm.showImage, alt: "ユーザーのアイコン" }
         }),
         _vm._v(" "),
         _c("span", { staticClass: "c-workCard__name" }, [

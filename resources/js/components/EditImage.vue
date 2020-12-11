@@ -20,7 +20,7 @@
             <!-- 画像の切り替え -->
             <img
                class="c-img p-profileEdit__img"
-               :src="imagePath"
+               :src="showImage"
                v-if="preview === ''"
             />
             <img class="c-img p-profileEdit__img" :src="preview" v-else />
@@ -40,7 +40,8 @@
 <script>
 export default {
    props: {
-      imagePath: String
+      publicPath: String,
+      userImage: String
    },
    data() {
       return {
@@ -90,6 +91,16 @@ export default {
             this.style_over = false;
             this.style_learve = true;
             console.log('leave');
+         }
+      }
+   },
+   computed: {
+      showImage() {
+         // 画像が設定されていない場合デフォルトの画像を設定
+         if (this.userImage === null) {
+            return this.publicPath + 'images/no-image.png';
+         } else {
+            return this.publicPath + 'storage/user_img/' + this.userImage;
          }
       }
    },

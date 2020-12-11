@@ -20,7 +20,9 @@
 
                      <!-- 画像 -->
                      <edit-image-component
-                        :image-path="{{json_encode(asset('/storage/user_img/'. $user->image))}}"></edit-image-component>
+                        :public-path="{{ json_encode(asset('')) }}"
+                        :user-image="{{json_encode($user->image)}}">
+                     </edit-image-component>
                      @error('image')
                      <span class="c-form__invalid" role="alert">
                         <strong>{{$message}}</strong>
