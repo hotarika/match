@@ -23,6 +23,9 @@
       color: $base;
       text-align: center;
       background-color: $primary;
+      @include mq('xs') {
+         margin-bottom: 5px;
+      }
    }
 
    &__message {

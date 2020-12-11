@@ -1057,7 +1057,7 @@ pre {
 .c-flash {
   position: absolute;
   top: 80px;
-  z-index: 10;
+  z-index: 3;
   width: 100%;
   padding: 10px 0;
   font-size: 14px;
@@ -1820,6 +1820,12 @@ pre {
   background-color: #0081ff;
 }
 
+@media screen and (max-width: 414px) {
+  .p-errors__code {
+    margin-bottom: 5px;
+  }
+}
+
 .p-errors__message {
   padding: 10px;
   margin-bottom: 50px;
@@ -1886,7 +1892,7 @@ pre {
     position: fixed;
     top: 0;
     right: -80vw;
-    z-index: 3;
+    z-index: 4;
     width: 80vw;
     height: 110vh;
     margin: 0;
@@ -1897,18 +1903,6 @@ pre {
   .p-header__nav.is-active {
     transition: 0.2s;
     transform: translateX(-80vw);
-  }
-}
-
-@media screen and (max-width: 414px) {
-  .p-header__over {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    width: 100vw;
-    height: 110vh;
-    margin: 0;
   }
 }
 
@@ -2446,20 +2440,20 @@ pre {
   background-color: #efefef;
 }
 
-.p-home__skillSecHead > br {
-  display: none;
-}
-
-@media screen and (max-width: 414px) {
-  .p-home__skillSecHead > br {
-    display: block;
-  }
-}
-
 @media screen and (max-width: 414px) {
   .p-home__skillSecHead {
     font-size: 17px;
     line-height: 1.2;
+  }
+}
+
+.p-home__skillSecHead > br {
+  display: none;
+}
+
+@media screen and (max-width: 375px) {
+  .p-home__skillSecHead > br {
+    display: block;
   }
 }
 
@@ -2765,7 +2759,7 @@ pre {
   padding: 20px;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 414px) {
   .p-mypage__secBody.-notification {
     padding: 15px 10px;
   }
@@ -3047,7 +3041,7 @@ pre {
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    padding: 10px;
+    padding: 10px 20px;
     background-color: #59adff;
   }
 }
@@ -3071,7 +3065,7 @@ pre {
     width: 50px;
     height: 50px;
     margin: 0;
-    margin-right: 10px;
+    margin-right: 5px;
   }
 }
 

@@ -31,7 +31,7 @@
          position: fixed;
          top: 0;
          right: -80vw;
-         z-index: 3;
+         z-index: $z-sp-menu;
          width: 80vw;
          height: 110vh;
          margin: 0;
@@ -41,17 +41,6 @@
             transition: 0.2s;
             transform: translateX(-80vw);
          }
-      }
-   }
-   &__over {
-      @include mq('xs') {
-         position: fixed;
-         top: 0;
-         left: 0;
-         z-index: 3;
-         width: 100vw;
-         height: 110vh;
-         margin: 0;
       }
    }
    &__orderMenuWrap {

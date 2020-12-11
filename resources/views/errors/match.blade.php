@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="p-errors__wrap">
-   <div class="p-errors__code code">
+   <div class="p-errors__code">
       @yield('code')
    </div>
 

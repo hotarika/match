@@ -171,11 +171,11 @@
    // 見出し
    &__skillSecHead {
       @extend %home__secHead; // 継承
-      @include responsive-br('xs');
       @include mq('xs') {
          font-size: 17px;
          line-height: 1.2;
       }
+      @include responsive-br('2xs');
       & > span {
          margin: 0 5px;
          font-size: 30px;

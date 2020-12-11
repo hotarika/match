@@ -19,7 +19,7 @@
       }
       &.-notification {
          padding: 20px;
-         @include mq('2xs') {
+         @include mq('xs') {
             padding: 15px 10px;
          }
       }
