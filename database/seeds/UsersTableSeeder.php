@@ -21,7 +21,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'test1@example.com',
             'password' => Hash::make('rootroot'),
             'introduction' => '自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。',
-            'image' => 'no-image.png',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -31,7 +30,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'test2@example.com',
             'password' => Hash::make('rootroot'),
             'introduction' => '自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。',
-            'image' => 'no-image.png',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -41,7 +39,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'test3@example.com',
             'password' => Hash::make('rootroot'),
             'introduction' => '自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。',
-            'image' => 'no-image.png',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -51,7 +48,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'test4@example.com',
             'password' => Hash::make('rootroot'),
             'introduction' => '自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。',
-            'image' => 'no-image.png',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -61,7 +57,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'test5@example.com',
             'password' => Hash::make('rootroot'),
             'introduction' => '自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。',
-            'image' => 'no-image.png',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
