@@ -227,7 +227,7 @@ export default {
    filters: {
       // 日付のフォーマット
       formatDateTime(value) {
-         const date = new Date(value);
+         const date = new Date(value.replace(/-/g, '/')); // safari対策の正規表現
          const newFormat = getDateTimeNewFormat(date);
          return newFormat;
       }
