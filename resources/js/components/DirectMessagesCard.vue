@@ -38,13 +38,25 @@ export default {
       divideImages() {
          // 相手側の情報を表示
          if (this.authId === this.card.orderer_id) {
-            return (
-               this.publicPath + 'storage/user_img/' + this.card.applicant_image
-            );
+            if (this.card.applicant_image === null) {
+               return this.publicPath + 'images/no-image.png';
+            } else {
+               return (
+                  this.publicPath +
+                  'storage/user_img/' +
+                  this.card.applicant_image
+               );
+            }
          } else {
-            return (
-               this.publicPath + 'storage/user_img/' + this.card.orderer_image
-            );
+            if (this.card.orderer_image === null) {
+               return this.publicPath + 'images/no-image.png';
+            } else {
+               return (
+                  this.publicPath +
+                  'storage/user_img/' +
+                  this.card.orderer_image
+               );
+            }
          }
       },
       divideNames() {
