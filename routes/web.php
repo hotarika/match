@@ -65,7 +65,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // シングルアクションコントローラー（__invoke）
     Route::get('/mypage', 'MyPageController')->name('mypage');
-    Route::get('/settings-menu', 'SettingsMenuController')->name('settings-menu');
+    Route::get('/sp-settings-menu', 'SettingsMenuController')
+        ->name('sp-settings-menu'); // スマホ用のアカウント設定メニュー
 
     // パスワード変更
     Route::get(

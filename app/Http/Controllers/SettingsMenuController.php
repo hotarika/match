@@ -14,6 +14,6 @@ class SettingsMenuController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('settings-menu');
+        return view('sp-settings-menu');
     }
 }
