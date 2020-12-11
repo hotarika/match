@@ -642,9 +642,13 @@ pre {
 }
 
 .c-workCard__nameWrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   position: absolute;
   top: 11px;
   left: 11px;
+  width: 80%;
 }
 
 @media screen and (max-width: 320px) {
@@ -1550,7 +1554,7 @@ pre {
   padding: 10px;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 768px) {
   .p-changePass__inputWrap {
     width: 100%;
   }
@@ -1697,8 +1701,8 @@ pre {
 
 .p-dm__msgArea {
   flex-basis: 85%;
-  min-height: 500px;
-  max-height: 500px;
+  min-height: 55vh;
+  max-height: 55vh;
   overflow: scroll;
   overflow-x: hidden;
 }
@@ -1809,6 +1813,7 @@ pre {
   width: 70px;
   height: 70px;
   padding: 22px 15px 0 13px;
+  margin-bottom: 50px;
   font-size: 26px;
   color: #efefef;
   text-align: center;
@@ -1817,6 +1822,7 @@ pre {
 
 .p-errors__message {
   padding: 10px;
+  margin-bottom: 50px;
   font-size: 18px;
   color: #0081ff;
   text-align: center;
@@ -1958,6 +1964,20 @@ pre {
   margin-right: 18px;
 }
 
+@media screen and (max-width: 768px) {
+  .p-header__item {
+    margin-right: 13px;
+  }
+
+  .p-header__item.-user {
+    margin-right: 7px;
+  }
+
+  .p-header__item.-orderBtn {
+    margin-right: 0;
+  }
+}
+
 .p-header__item.-sp {
   display: none;
 }
@@ -2070,6 +2090,13 @@ pre {
 
 .p-header__navName {
   font-size: 14px;
+}
+
+.p-header__navName.-user {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 80px;
 }
 
 @media screen and (max-width: 414px) {
@@ -3049,6 +3076,7 @@ pre {
 }
 
 .p-profile__proName {
+  padding: 0 10px;
   font-size: 14px;
 }
 
@@ -4047,8 +4075,14 @@ pre {
 }
 
 .p-workList__workCardWrap {
-  min-height: 550px;
+  min-height: 790px;
   background-color: #fff;
+}
+
+@media screen and (max-width: 414px) {
+  .p-workList__workCardWrap {
+    min-height: 550px;
+  }
 }
 
 .p-workList__workCardBody {

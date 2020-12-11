@@ -136,6 +136,7 @@ class ApplicantsController extends Controller
     {
         // 応募を取り消し
         Applicant::find($id)->delete();
-        return redirect()->route('works.index');
+        return redirect()->route('works.index')
+            ->with('flash_message', '応募を取り消しました');;
     }
 }

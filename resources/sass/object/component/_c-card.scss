@@ -57,9 +57,11 @@
       transform: scale(1.01, 1.01);
    }
    &__nameWrap {
+      @include ellipsis;
       position: absolute;
       top: 11px;
       left: 11px;
+      width: 80%;
       @include mq('3xs') {
          left: 6px;
       }

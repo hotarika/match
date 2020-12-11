@@ -65,11 +65,11 @@
                   @endif
 
                   <!-- 全ての端末で表示 -->
-                  <li class="p-header__item">
+                  <li class="p-header__item -user">
                      <a class="c-link p-header__navLink" href="{{ route('users.show',Auth::id()) }}">
                         <img class="p-header__userImg" src="{{asset('storage/user_img/'.Auth::user()->image)}}"
                            alt="">
-                        <div class="p-header__navName u-ml4">{{Auth::user()->name}}
+                        <div class="p-header__navName -user u-ml4">{{Auth::user()->name}}
                         </div>
                      </a>
                   </li>

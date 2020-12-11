@@ -89,6 +89,15 @@
    }
    &__item {
       margin-right: 18px;
+      @include mq('md') {
+         margin-right: 13px;
+         &.-user {
+            margin-right: 7px;
+         }
+         &.-orderBtn {
+            margin-right: 0;
+         }
+      }
       &.-sp {
          display: none;
          @include mq('xs') {
@@ -167,6 +176,10 @@
       }
    }
    &__navName {
+      &.-user {
+         @include ellipsis;
+         width: 80px;
+      }
       font-size: 14px;
       @include mq('xs') {
          color: $white;

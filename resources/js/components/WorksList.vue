@@ -102,6 +102,13 @@ export default {
       }
    },
    mounted() {
+      // レスポンシブのカード枚数の指定（ホーム画面の「新着の仕事」の枚数）
+      if (window.innerWidth > 1000) {
+         this.perPage = 9;
+      } else {
+         this.perPage = 6;
+      }
+
       // 非同期取得
       axios
          .get(this.publicPath + 'async/works')

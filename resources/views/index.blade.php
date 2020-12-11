@@ -22,7 +22,7 @@
       <div class="container">
          <!-- 見出し -->
          <div class="p-home__skillSecHead">
-            あなたの<span>スキル</span>を<br />生かせる場所がここにあります
+            あなたの<span>スキル</span>を<br />求めている人がいます
          </div>
          <div class="p-home__skillCards">
             <!-- 左カード -->

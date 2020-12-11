@@ -3375,7 +3375,14 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    // 非同期取得
+    // レスポンシブのカード枚数の指定（ホーム画面の「新着の仕事」の枚数）
+    if (window.innerWidth > 1000) {
+      this.perPage = 9;
+    } else {
+      this.perPage = 6;
+    } // 非同期取得
+
+
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.publicPath + 'async/works').then(function (res) {
       console.log(res);
       _this2.allData = res.data; // 全データを格納

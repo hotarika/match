@@ -102,7 +102,8 @@
 
                   {{-- 応募ボタン --}}
                   @auth
-                  @if ($work->orderer_id !== Auth::id() && $work->w_state === 1)
+                  @if ($work->orderer_id !== Auth::id())
+                  @if($work->w_state === 1)
 
                   @if($applicant)
                   <form method="POST" action="{{route('applicants.destroy',$applicant->id)}}">
@@ -119,9 +120,10 @@
                   </form>
                   @endif {{-- @if($applicant) --}}
 
-                  @else
+                  @else {{-- @if($work->w_state === 1) --}}
                   <div class="c-btn p-workDetail__appBtn -end">この仕事の応募は終了しました。</div>
-                  @endif
+                  @endif {{-- @if($work->w_state === 1) --}}
+                  @endif {{-- @if ($work->orderer_id !== Auth::id()) --}}
                   @endauth
                </div>
             </section>
