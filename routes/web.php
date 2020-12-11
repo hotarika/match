@@ -64,8 +64,8 @@ Route::group(['middleware' => 'auth'], function () {
     );
 
     // シングルアクションコントローラー（__invoke）
-    Route::get('/mypage', 'MyPageController')->name('mypage');
-    Route::get('/sp-settings-menu', 'SettingsMenuController')
+    Route::get('/mypage', MyPageController::class)->name('mypage');
+    Route::get('/sp-settings-menu', SettingsMenuController::class)
         ->name('sp-settings-menu'); // スマホ用のアカウント設定メニュー
 
     // パスワード変更
@@ -83,7 +83,7 @@ Route::group(['middleware' => 'auth'], function () {
 // **********************************************
 // パブリックルート（ゲスト閲覧可能）
 // **********************************************
-Route::get('/', 'HomeController')->name('home');
+Route::get('/', HomeController::class)->name('home');
 Route::resource('/works', 'WorksController', ['only' => ['show']]);
 
 
