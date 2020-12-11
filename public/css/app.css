@@ -4076,6 +4076,7 @@ pre {
 @media screen and (max-width: 414px) {
   .p-workList__workCardWrap {
     min-height: 550px;
+    background-color: transparent;
   }
 }
 
