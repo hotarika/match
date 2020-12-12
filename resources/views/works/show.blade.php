@@ -55,8 +55,12 @@
                            <span>依頼者：</span>
                            <div class="p-workDetail__userInfoWrap">
                               <img class="c-img p-workDetail__infoImg"
-                                 src="{{ asset('storage/user_img/'.$work->orderer_image) }}"
-                                 alt="ユーザーの画像" />
+                                 @if($work->orderer_image === null)
+                              src="{{asset('images/no-image.png')}}"
+                              @else
+                              src="{{ asset('storage/user_img/'.$work->orderer_image) }}"
+                              @endif
+                              alt="ユーザーの画像" />
                               <a href="{{route('users.show',1)}}"
                                  class="c-link p-workDetail__infoName">{{$work->orderer_name}}</a>
                            </div>
