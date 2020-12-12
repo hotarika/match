@@ -3292,11 +3292,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     showImage: function showImage() {
       // 画像が設定されていない場合デフォルトの画像を設定
-      if (this.work.u_image === null) {
-        return this.publicPath + 'images/no-image.png';
-      } else {
-        return this.publicPath + 'storage/user_img/' + this.work.u_image;
-      }
+      return function (image) {
+        if (image === null) {
+          return this.publicPath + 'images/no-image.png';
+        } else {
+          return this.publicPath + 'storage/user_img/' + image;
+        }
+      };
     }
   }
 });
@@ -41273,7 +41275,10 @@ var render = function() {
       _c("div", { staticClass: "c-workCard__nameWrap" }, [
         _c("img", {
           staticClass: "c-img c-workCard__img",
-          attrs: { src: _vm.showImage, alt: "ユーザーのアイコン" }
+          attrs: {
+            src: _vm.showImage(_vm.work.u_image),
+            alt: "ユーザーのアイコン"
+          }
         }),
         _vm._v(" "),
         _c("span", { staticClass: "c-workCard__name" }, [
