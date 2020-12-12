@@ -43,7 +43,7 @@
                <div class="p-pubmsg__parentMsgWrap">
                   <img
                      class="c-img p-pubmsg__parentImg"
-                     :src="publicPath + 'storage/user_img/' + p.u_image"
+                     :src="showImage(p.u_image)"
                      alt="ユーザーのアイコン"
                   />
                   <!-- 親掲示板 -->
@@ -73,9 +73,7 @@
                               }}</time>
                               <img
                                  class="c-img p-pubmsg__childImg"
-                                 :src="
-                                    publicPath + 'storage/user_img/' + c.u_image
-                                 "
+                                 :src="showImage(c.u_image)"
                                  alt="ユーザーのアイコン"
                               />
                               <div class="p-pubmsg__childRight">
@@ -222,6 +220,18 @@ export default {
                el.value = '';
             });
          }
+      }
+   },
+   computed: {
+      showImage() {
+         // 画像が設定されていない場合デフォルトの画像を設定
+         return function(image) {
+            if (image) {
+               return this.publicPath + 'storage/user_img/' + image;
+            } else {
+               return this.publicPath + 'images/no-image.png';
+            }
+         };
       }
    },
    filters: {

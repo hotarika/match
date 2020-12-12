@@ -2851,8 +2851,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -2957,6 +2955,18 @@ __webpack_require__.r(__webpack_exports__);
           el.value = '';
         });
       }
+    }
+  },
+  computed: {
+    showImage: function showImage() {
+      // 画像が設定されていない場合デフォルトの画像を設定
+      return function (image) {
+        if (image) {
+          return this.publicPath + 'storage/user_img/' + image;
+        } else {
+          return this.publicPath + 'images/no-image.png';
+        }
+      };
     }
   },
   filters: {
@@ -40870,7 +40880,7 @@ var render = function() {
                   _c("img", {
                     staticClass: "c-img p-pubmsg__parentImg",
                     attrs: {
-                      src: _vm.publicPath + "storage/user_img/" + p.u_image,
+                      src: _vm.showImage(p.u_image),
                       alt: "ユーザーのアイコン"
                     }
                   }),
@@ -40928,10 +40938,7 @@ var render = function() {
                                     _c("img", {
                                       staticClass: "c-img p-pubmsg__childImg",
                                       attrs: {
-                                        src:
-                                          _vm.publicPath +
-                                          "storage/user_img/" +
-                                          c.u_image,
+                                        src: _vm.showImage(c.u_image),
                                         alt: "ユーザーのアイコン"
                                       }
                                     }),
