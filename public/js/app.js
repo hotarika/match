@@ -2018,9 +2018,17 @@ __webpack_require__.r(__webpack_exports__);
     // 相手のユーザー情報を表示
     divideImages: function divideImages() {
       if (this.authId === this.info.orderer_id) {
-        return this.publicPath + 'storage/user_img/' + this.info.applicant_image;
+        if (this.info.applicant_image === null) {
+          return this.publicPath + 'images/no-image.png';
+        } else {
+          return this.publicPath + 'storage/user_img/' + this.info.applicant_image;
+        }
       } else {
-        return this.publicPath + 'storage/user_img/' + this.info.orderer_image;
+        if (this.info.orderer_image) {
+          return this.publicPath + 'images/no-image.png';
+        } else {
+          return this.publicPath + 'storage/user_img/' + this.info.orderer_image;
+        }
       }
     },
     // 相手のユーザー情報を表示
