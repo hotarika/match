@@ -120,7 +120,7 @@ export default {
                );
             }
          } else {
-            if (this.info.orderer_image) {
+            if (this.info.orderer_image === null) {
                return this.publicPath + 'images/no-image.png';
             } else {
                return (

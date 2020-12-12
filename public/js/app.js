@@ -2024,7 +2024,7 @@ __webpack_require__.r(__webpack_exports__);
           return this.publicPath + 'storage/user_img/' + this.info.applicant_image;
         }
       } else {
-        if (this.info.orderer_image) {
+        if (this.info.orderer_image === null) {
           return this.publicPath + 'images/no-image.png';
         } else {
           return this.publicPath + 'storage/user_img/' + this.info.orderer_image;
