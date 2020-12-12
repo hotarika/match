@@ -38,7 +38,6 @@
       background-color: $white;
       @include mq('xs') {
          min-height: 550px;
-         background-color: transparent;
       }
    }
    &__workCardBody {
