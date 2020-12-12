@@ -16,8 +16,6 @@ class MyPageController extends Controller
      */
     public function __invoke(Request $request)
     {
-        // abort(500);
-
         // *******************************
         // 通知機能
         // *******************************
