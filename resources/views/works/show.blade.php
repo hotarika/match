@@ -39,7 +39,7 @@
                         data-show-count="false"
                         data-lang="ja"
                         data-text="【match】{{$work->w_name}}"
-                        data-url="http://localhost:8000/works/{{$work->w_id}}"
+                        data-url="{{route('works.show',$work->w_id)}}"
                         data-hashtags="match">
                         Tweet
                      </a>
