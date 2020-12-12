@@ -16,8 +16,12 @@
                   <div class="p-profile__proFirst">
                      <img
                         class="c-img p-profile__proImg"
-                        src="{{ asset('storage/user_img/'.$user->image) }}"
-                        alt="ユーザーの画像" />
+                        @if($user->image === null)
+                     src="{{asset('images/no-image.png')}}"
+                     @else
+                     src="{{ asset('storage/user_img/'.$user->image) }}"
+                     @endif
+                     alt="ユーザーの画像" />
                      <div class="p-profile__proName">{{$user->name}}</div>
                   </div>
                   <div class="p-profile__proSecond">
