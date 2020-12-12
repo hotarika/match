@@ -159,6 +159,7 @@ return [
         'price_upper' => '上限金額',
         'content' => '依頼内容',
         'current_password' => '現在のパスワード',
+        'image' => '画像'
     ],
 
 ];
