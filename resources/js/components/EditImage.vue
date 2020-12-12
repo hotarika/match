@@ -20,7 +20,7 @@
             <!-- 画像の切り替え -->
             <img
                class="c-img p-profileEdit__img"
-               :src="showImage"
+               :src="showImage(userImage)"
                v-if="preview === ''"
             />
             <img class="c-img p-profileEdit__img" :src="preview" v-else />
@@ -97,11 +97,13 @@ export default {
    computed: {
       showImage() {
          // 画像が設定されていない場合デフォルトの画像を設定
-         if (this.userImage === null) {
-            return this.publicPath + 'images/no-image.png';
-         } else {
-            return this.publicPath + 'storage/user_img/' + this.userImage;
-         }
+         return function(image) {
+            if (image === null) {
+               return this.publicPath + 'images/no-image.png';
+            } else {
+               return this.publicPath + 'storage/user_img/' + image;
+            }
+         };
       }
    },
    mounted() {
