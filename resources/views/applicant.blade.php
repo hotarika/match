@@ -25,7 +25,12 @@
                         @if($applicant->applicant_state === 2) -decision @endif">
                            <div class="p-applicant__user">
                               <img class="c-img p-applicant__userImg"
-                                 src="{{url('/').'/storage/user_img/'.$applicant->u_image}}" alt="ユーザーの画像" />
+                                 @if($applicant->u_image === null)
+                              src="{{asset('images/no-image.png')}}"
+                              @else
+                              src="{{asset('/storage/user_img/'.$applicant->u_image)}}"
+                              @endif
+                              alt="ユーザーの画像" />
                               <a class="c-link p-applicant__userName"
                                  href="{{route('users.show',$applicant->applicant_id)}}">
                                  {{$applicant->u_name}}
