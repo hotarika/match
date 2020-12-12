@@ -19,15 +19,15 @@
                      @csrf
 
                      <!-- 画像 -->
+                     @error('image')
+                     <div class="c-form__invalid -image" role="alert">
+                        <strong>{{$message}}</strong>
+                     </div>
+                     @enderror
                      <edit-image-component
                         :public-path="{{ json_encode(asset('')) }}"
                         :user-image="{{json_encode($user->image)}}">
                      </edit-image-component>
-                     @error('image')
-                     <span class="c-form__invalid" role="alert">
-                        <strong>{{$message}}</strong>
-                     </span>
-                     @enderror
 
                      <!-- 名前 -->
                      <div class="p-profileEdit__wrap -name">
