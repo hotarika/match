@@ -22,6 +22,9 @@
    }
    &__imgLabel {
       @include border-radius('all', 50%);
+      @-moz-document url-prefix() {
+         pointer-events: none;
+      }
    }
    &__img {
       width: 130px;
@@ -40,6 +43,15 @@
       margin-top: 7px;
       color: $gray-600;
       text-align: center;
+      @-moz-document url-prefix() {
+         display: none;
+      }
+      &.-firefox {
+         display: none;
+         @-moz-document url-prefix() {
+            display: block;
+         }
+      }
       @include mq('3xs') {
          margin-top: 5px;
          font-size: 11px;

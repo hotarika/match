@@ -2920,6 +2920,12 @@ pre {
   border-radius: 50%;
 }
 
+@-moz-document url-prefix()  {
+  .p-profileEdit__imgLabel {
+    pointer-events: none;
+  }
+}
+
 .p-profileEdit__img {
   width: 130px;
   height: 130px;
@@ -2942,6 +2948,22 @@ pre {
   margin-top: 7px;
   color: #6c757d;
   text-align: center;
+}
+
+@-moz-document url-prefix()  {
+  .p-profileEdit__imgEditCaption {
+    display: none;
+  }
+}
+
+.p-profileEdit__imgEditCaption.-firefox {
+  display: none;
+}
+
+@-moz-document url-prefix()  {
+  .p-profileEdit__imgEditCaption.-firefox {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 320px) {

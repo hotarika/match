@@ -26,9 +26,17 @@
             <img class="c-img p-profileEdit__img" :src="preview" v-else />
          </label>
       </div>
+      <!-- PC用 -->
       <small class="p-profileEdit__imgEditCaption" v-if="device === 'PC'"
          >ドラッグ&amp;ドロップ<br />またはクリックで変更</small
       >
+      <!-- firefox用 -->
+      <small
+         class="p-profileEdit__imgEditCaption -firefox"
+         v-if="device === 'PC'"
+         >ドラッグ&amp;ドロップで変更</small
+      >
+      <!-- スマートフォン用 -->
       <small
          class="p-profileEdit__imgEditCaption -sp"
          v-if="device === 'Mobile'"
