@@ -32,6 +32,18 @@ class ApplicantsSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+        DB::table('applicants')->insert([
+            'work_id' => 1,
+            'applicant_id' => 6,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('applicants')->insert([
+            'work_id' => 1,
+            'applicant_id' => 7,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
 
         // work_id2に応募
         DB::table('applicants')->insert([
