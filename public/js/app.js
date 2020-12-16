@@ -2483,8 +2483,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2500,7 +2498,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     // 取得
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.publicPath + 'async/badge').then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.publicPath + 'async/notification-badge').then(function (res) {
       console.log(res);
       _this.count = res.data[0].count;
     })["catch"](function (err) {
@@ -40602,9 +40600,7 @@ var render = function() {
       },
       [
         _vm.count > 0
-          ? _c("span", { staticClass: "p-header__notificationNum" }, [
-              _vm._v(_vm._s(_vm.count))
-            ])
+          ? _c("span", { staticClass: "c-badge__mark -notification" })
           : _vm._e(),
         _vm._v(" "),
         _c("i", { staticClass: "fas fa-bell p-header__navIcon" }),

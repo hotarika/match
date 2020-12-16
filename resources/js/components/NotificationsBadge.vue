@@ -1,9 +1,7 @@
 <template>
    <li class="p-header__item">
       <a class="c-link p-header__navLink" :href="mypageUrl">
-         <span class="p-header__notificationNum" v-if="count > 0">{{
-            count
-         }}</span>
+         <span class="c-badge__mark -notification" v-if="count > 0"></span>
          <i class="fas fa-bell p-header__navIcon"></i>
          <div class="p-header__navName u-ml6">新着通知</div>
       </a>
@@ -26,7 +24,7 @@ export default {
    mounted() {
       // 取得
       axios
-         .get(this.publicPath + 'async/badge')
+         .get(this.publicPath + 'async/notification-badge')
          .then(res => {
             console.log(res);
             this.count = res.data[0].count;

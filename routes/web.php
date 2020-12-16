@@ -105,7 +105,7 @@ Route::get(
 
 // バッジ
 Route::get(
-    '/async/badge',
+    '/async/notification-badge',
     'AsynchronousController@getNotificationsBadgeInHeader'
 );
 Route::get(
