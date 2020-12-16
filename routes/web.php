@@ -106,15 +106,15 @@ Route::get(
 // バッジ
 Route::get(
     '/async/badge',
-    'AsynchronousController@getNotificationsBadgeNumber'
+    'AsynchronousController@getNotificationsBadgeInHeader'
 );
 Route::get(
     '/async/pubmsgs-badge',
-    'AsynchronousController@getPublicMessagesBadgeNumber'
+    'AsynchronousController@getPublicMessagesBadgeInSidebar'
 );
 Route::get(
     '/async/dm-badge',
-    'AsynchronousController@getDirectMessagesBadgeNumber'
+    'AsynchronousController@getDirectMessagesBadgeInSidebar'
 );
 
 // メッセージリスト

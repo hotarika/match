@@ -12,7 +12,8 @@ class AsynchronousController extends Controller
     // ======================================
     // 通知バッジ
     // ======================================
-    public function getNotificationsBadgeNumber()
+    // 新着通知
+    public function getNotificationsBadgeInHeader()
     {
         $count = DB::table('notifications')
             ->select(DB::raw('count(*) as count'))
@@ -23,7 +24,8 @@ class AsynchronousController extends Controller
         return $count->toJson();
     }
 
-    public function getPublicMessagesBadgeNumber()
+    // パブリックメッセージ
+    public function getPublicMessagesBadgeInSidebar()
     {
         $count = DB::table('public_messages_badges')
             ->select(DB::raw('count(*) as count'))
@@ -33,7 +35,8 @@ class AsynchronousController extends Controller
         return $count->toJson();
     }
 
-    public function getDirectMessagesBadgeNumber()
+    // ダイレクトメッセージ
+    public function getDirectMessagesBadgeInSidebar()
     {
         $count = DB::table('direct_messages_badges')
             ->select(DB::raw('count(*) as count'))

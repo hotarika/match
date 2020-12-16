@@ -182,9 +182,9 @@ class WorksController extends Controller
                 ->get();
 
             // パブリックリストのバッジ削除
-            // $badge = PublicMessageBadge::where('work_id', $work_id)
-            //     ->where('user_id', Auth::id())
-            //     ->delete();
+            $badge = PublicMessageBadge::where('work_id', $work_id)
+                ->where('user_id', Auth::id())
+                ->delete();
 
 
             // **********************************

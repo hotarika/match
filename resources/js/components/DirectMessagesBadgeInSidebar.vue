@@ -17,7 +17,7 @@ export default {
    mounted() {
       // 取得
       axios
-         .get(this.publicPath + 'async/pubmsgs-badge')
+         .get(this.publicPath + 'async/dm-badge')
          .then(res => {
             console.log(res);
             this.count = res.data[0].count;

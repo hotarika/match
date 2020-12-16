@@ -2092,7 +2092,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     // 取得
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.publicPath + 'async/pubmsgs-badge').then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.publicPath + 'async/dm-badge').then(function (res) {
       console.log(res);
       _this.count = res.data[0].count;
     })["catch"](function (err) {

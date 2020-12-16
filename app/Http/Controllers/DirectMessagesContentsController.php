@@ -43,6 +43,10 @@ class DirectMessagesContentsController extends Controller
      */
     public function show($id)
     {
+        // バッジの削除
+        $badge = DirectMessageBadge::where('board_id', $id)
+            ->where('user_id', Auth::id())->delete();
+
         // DM情報（DMの氏名などが記述されているヘッダー部分のデータ）
         $info = DB::table(
             'direct_messages_boards as b'
