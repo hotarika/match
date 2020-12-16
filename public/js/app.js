@@ -3001,6 +3001,46 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PublicMessagesBadgeInSidebar.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PublicMessagesBadgeInSidebar.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    publicPath: String
+  },
+  data: function data() {
+    return {
+      count: 0
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    // 取得
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.publicPath + 'async/pubmsgs-badge').then(function (res) {
+      console.log(res);
+      _this.count = res.data[0].count;
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PublicMessagesCard.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PublicMessagesCard.vue?vue&type=script&lang=js& ***!
@@ -41051,6 +41091,32 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PublicMessagesBadgeInSidebar.vue?vue&type=template&id=77fdd1b4&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PublicMessagesBadgeInSidebar.vue?vue&type=template&id=77fdd1b4& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.count > 0
+    ? _c("span", { staticClass: "c-badge__mark -public" })
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PublicMessagesCard.vue?vue&type=template&id=2637bab0&":
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PublicMessagesCard.vue?vue&type=template&id=2637bab0& ***!
@@ -53953,7 +54019,8 @@ Vue.component('public-messages-area-component', __webpack_require__(/*! ./compon
 Vue.component('public-messages-card-component', __webpack_require__(/*! ./components/PublicMessagesCard.vue */ "./resources/js/components/PublicMessagesCard.vue")["default"]);
 Vue.component('public-messages-child-form-component', __webpack_require__(/*! ./components/PublicMessagesChildForm.vue */ "./resources/js/components/PublicMessagesChildForm.vue")["default"]);
 Vue.component('public-messages-list-component', __webpack_require__(/*! ./components/PublicMessagesList.vue */ "./resources/js/components/PublicMessagesList.vue")["default"]);
-Vue.component('public-messages-list-in-mypage-component', __webpack_require__(/*! ./components/PublicMessagesListInMyPage.vue */ "./resources/js/components/PublicMessagesListInMyPage.vue")["default"]); // 仕事カード
+Vue.component('public-messages-list-in-mypage-component', __webpack_require__(/*! ./components/PublicMessagesListInMyPage.vue */ "./resources/js/components/PublicMessagesListInMyPage.vue")["default"]);
+Vue.component('public-messages-badge-in-sidebar-component', __webpack_require__(/*! ./components/PublicMessagesBadgeInSidebar.vue */ "./resources/js/components/PublicMessagesBadgeInSidebar.vue")["default"]); // 仕事カード
 
 Vue.component('works-card-component', __webpack_require__(/*! ./components/WorksCard.vue */ "./resources/js/components/WorksCard.vue")["default"]);
 Vue.component('works-list-component', __webpack_require__(/*! ./components/WorksList.vue */ "./resources/js/components/WorksList.vue")["default"]);
@@ -54705,6 +54772,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PublicMessagesArea_vue_vue_type_template_id_7933eca6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PublicMessagesArea_vue_vue_type_template_id_7933eca6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PublicMessagesBadgeInSidebar.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/PublicMessagesBadgeInSidebar.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PublicMessagesBadgeInSidebar_vue_vue_type_template_id_77fdd1b4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PublicMessagesBadgeInSidebar.vue?vue&type=template&id=77fdd1b4& */ "./resources/js/components/PublicMessagesBadgeInSidebar.vue?vue&type=template&id=77fdd1b4&");
+/* harmony import */ var _PublicMessagesBadgeInSidebar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PublicMessagesBadgeInSidebar.vue?vue&type=script&lang=js& */ "./resources/js/components/PublicMessagesBadgeInSidebar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PublicMessagesBadgeInSidebar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PublicMessagesBadgeInSidebar_vue_vue_type_template_id_77fdd1b4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PublicMessagesBadgeInSidebar_vue_vue_type_template_id_77fdd1b4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PublicMessagesBadgeInSidebar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PublicMessagesBadgeInSidebar.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/PublicMessagesBadgeInSidebar.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PublicMessagesBadgeInSidebar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PublicMessagesBadgeInSidebar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PublicMessagesBadgeInSidebar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PublicMessagesBadgeInSidebar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PublicMessagesBadgeInSidebar.vue?vue&type=template&id=77fdd1b4&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/PublicMessagesBadgeInSidebar.vue?vue&type=template&id=77fdd1b4& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PublicMessagesBadgeInSidebar_vue_vue_type_template_id_77fdd1b4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PublicMessagesBadgeInSidebar.vue?vue&type=template&id=77fdd1b4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PublicMessagesBadgeInSidebar.vue?vue&type=template&id=77fdd1b4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PublicMessagesBadgeInSidebar_vue_vue_type_template_id_77fdd1b4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PublicMessagesBadgeInSidebar_vue_vue_type_template_id_77fdd1b4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

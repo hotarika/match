@@ -23,6 +23,17 @@ class AsynchronousController extends Controller
         return $count->toJson();
     }
 
+    public function getPublicMessagesBadgeNumber()
+    {
+        $count = DB::table('public_messages_badges')
+            ->select(DB::raw('count(*) as count'))
+            ->where('user_id', '=', Auth::id())
+            ->get();
+
+        return $count->toJson();
+    }
+
+
     // ======================================
     // マイページ
     // ======================================

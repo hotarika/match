@@ -86,6 +86,10 @@ Vue.component(
    'public-messages-list-in-mypage-component',
    require('./components/PublicMessagesListInMyPage.vue').default
 );
+Vue.component(
+   'public-messages-badge-in-sidebar-component',
+   require('./components/PublicMessagesBadgeInSidebar.vue').default
+);
 
 // 仕事カード
 Vue.component(

@@ -16,6 +16,7 @@
    }
    &__link {
       @include border-radius;
+      position: relative;
       display: flex;
       align-items: center;
       width: 100%;

@@ -14,6 +14,9 @@ Request::is('works/create'))
       <a class="c-btn p-side__link @if(Request::is('pubmsgs')) is-active @endif"
          href="{{route('pubmsgs.index')}}">
          <li><i class="fas fa-users"></i><span>パブリックメッセージ</span></li>
+         <public-messages-badge-in-sidebar-component
+            :public-path="{{json_encode(asset(''))}}">
+         </public-messages-badge-in-sidebar-component>
       </a>
       <a class="c-btn p-side__link @if(Request::is('dm-boards')) is-active @endif" href="{{route('dm-boards.index')}}">
          <li><i class="fas fa-comments"></i><span>ダイレクトメッセージ</span></li>

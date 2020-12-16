@@ -549,6 +549,20 @@ pre {
   border-radius: 20%;
 }
 
+.c-badge__mark {
+  border-radius: 50%;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #dc3545;
+  opacity: 0.95;
+}
+
+.c-badge__mark.-public {
+  top: 9px;
+  left: 30px;
+}
+
 .c-btn {
   border-radius: 2px;
   display: inline-block;
@@ -3498,6 +3512,7 @@ pre {
 
 .p-side__link {
   border-radius: 2px;
+  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
