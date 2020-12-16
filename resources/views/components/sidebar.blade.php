@@ -20,6 +20,9 @@ Request::is('works/create'))
       </a>
       <a class="c-btn p-side__link @if(Request::is('dm-boards')) is-active @endif" href="{{route('dm-boards.index')}}">
          <li><i class="fas fa-comments"></i><span>ダイレクトメッセージ</span></li>
+         <direct-messages-badge-in-sidebar-component
+            :public-path="{{json_encode(asset(''))}}">
+         </direct-messages-badge-in-sidebar-component>
       </a>
       <a class="c-btn p-side__link" href="{{route('users.edit', (Auth::id())?? '')}}">
          <li><i class="fas fa-cog"></i><span class="u-ml2">アカウント設定</span></li>

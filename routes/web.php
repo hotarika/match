@@ -112,6 +112,10 @@ Route::get(
     '/async/pubmsgs-badge',
     'AsynchronousController@getPublicMessagesBadgeNumber'
 );
+Route::get(
+    '/async/dm-badge',
+    'AsynchronousController@getDirectMessagesBadgeNumber'
+);
 
 // メッセージリスト
 Route::get(

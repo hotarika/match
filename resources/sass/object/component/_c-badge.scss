@@ -30,8 +30,11 @@
       height: 10px;
       background-color: $red;
       opacity: 0.95;
-
       &.-public {
+         top: 9px;
+         left: 30px;
+      }
+      &.-direct {
          top: 9px;
          left: 30px;
       }

@@ -573,6 +573,11 @@ pre {
   left: 30px;
 }
 
+.c-badge__mark.-direct {
+  top: 9px;
+  left: 30px;
+}
+
 .c-btn {
   border-radius: 2px;
   display: inline-block;

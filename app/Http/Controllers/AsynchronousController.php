@@ -33,6 +33,17 @@ class AsynchronousController extends Controller
         return $count->toJson();
     }
 
+    public function getDirectMessagesBadgeNumber()
+    {
+        $count = DB::table('direct_messages_badges')
+            ->select(DB::raw('count(*) as count'))
+            ->where('user_id', '=', Auth::id())
+            ->get();
+
+        return $count->toJson();
+    }
+
+
 
     // ======================================
     // 発注した仕事

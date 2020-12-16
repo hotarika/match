@@ -42,6 +42,10 @@ Vue.component(
    'direct-messages-list-in-mypage-component',
    require('./components/DirectMessagesListInMyPage.vue').default
 );
+Vue.component(
+   'direct-messages-badge-in-sidebar-component',
+   require('./components/DirectMessagesBadgeInSidebar.vue').default
+);
 
 // 画像編集
 Vue.component(

@@ -12,7 +12,7 @@
       </div>
 
       <div class="p-dm__msgSec">
-         <div class="p-dm__msgArea js-scroll" data-scroll>
+         <div class="p-dm__msgArea js-scroll">
             <transition-group>
                <template v-for="msg in contents">
                   <!-- メッセージ -->
