@@ -23,6 +23,13 @@
       <div class="c-pubMsgCard__pubMsg" v-else>
          {{ msgCard.pm_content }}
       </div>
+
+      <span
+         class="c-badge c-pubMsgCard__badge"
+         :class="{ '-over': msgCard.badge >= 100 }"
+         v-if="msgCard.badge > 0"
+         >{{ showBadge }}</span
+      >
    </a>
 </template>
 
@@ -34,6 +41,15 @@ export default {
       msgCard: Object,
       publicPath: String,
       authId: Number
+   },
+   computed: {
+      showBadge() {
+         if (this.msgCard.badge >= 100) {
+            return '99+';
+         } else {
+            return this.msgCard.badge;
+         }
+      }
    },
    filters: {
       formatDateTime(value) {

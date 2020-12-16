@@ -14,6 +14,7 @@ class ParentPublicMessagesController extends Controller
      */
     public function index()
     {
+        // メッセージのリスト
         return view('pubmsg.index');
     }
 

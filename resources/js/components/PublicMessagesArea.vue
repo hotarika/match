@@ -200,7 +200,8 @@ export default {
                .post(this.publicPath + 'child-pubmsgs', {
                   parent_id: refs[1],
                   user_id: this.authUser.id,
-                  content: text
+                  content: text,
+                  work_id: this.workId
                })
                .then(res => {
                   console.log(res);

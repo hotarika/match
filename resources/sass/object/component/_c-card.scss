@@ -242,13 +242,14 @@
    &.-myWork {
       background-color: $primary-light;
    }
+   &__badge {
+      top: 36px;
+      right: 21px;
+   }
    &__infoWrap {
       display: flex;
       justify-content: space-between;
       font-size: 13px;
-      @include mq('xs') {
-         // flex-direction: column;
-      }
    }
    &__basicInfo {
       @extend %c-msgCard__basicInfo; // 継承

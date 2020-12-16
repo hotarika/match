@@ -102,10 +102,18 @@ Route::get(
     '/async/works-application-mypage',
     'AsynchronousController@getWorksListOfApplicationInMyPage'
 );
+
+// バッジ
 Route::get(
     '/async/badge',
     'AsynchronousController@getNotificationsBadgeNumber'
 );
+Route::get(
+    '/async/pubmsgs-badge',
+    'AsynchronousController@getPublicMessagesBadgeNumber'
+);
+
+// メッセージリスト
 Route::get(
     '/async/pubmsgs-list',
     'AsynchronousController@getPublicMessagesList'

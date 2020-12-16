@@ -1,0 +1,19 @@
+.c-badge {
+   @include border-radius('all', 50%);
+   position: absolute;
+   min-width: 20px;
+   min-height: 20px;
+   // padding-top: 3px;
+   // padding-right: 1px;
+   padding: 4px 3px 3px;
+   margin-left: 2px;
+   font-size: 11px;
+   font-weight: bold;
+   color: $white;
+   text-align: center;
+   background-color: $red;
+   opacity: 0.95;
+   &.-over {
+      @include border-radius('all', 20%);
+   }
+}

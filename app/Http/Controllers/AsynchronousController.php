@@ -87,7 +87,7 @@ class AsynchronousController extends Controller
         // [サブクエリ2]
         // 上記の結果から、最新の日時を持つレコードを親ボードIDでグループ化
         $child2 = DB::table('child_public_messages as c2')
-            ->select(DB::raw('max(c2.created_at) as latest_date'))
+            ->select(DB::raw('c2.parent_id, max(c2.created_at) as latest_date'))
             ->whereIn('c2.parent_id', $child1)
             ->groupBy('c2.parent_id');
 
@@ -95,7 +95,14 @@ class AsynchronousController extends Controller
         // 上記の最新の日時を持つ子レコードを全て取得
         $child3 = DB::table('child_public_messages as c3')
             ->select('*')
-            ->whereIn('c3.created_at', $child2);
+            ->whereIn(DB::raw('(c3.parent_id, c3.created_at)'), $child2);
+
+        // メッセージのバッジ表示
+        $countBadges = DB::table('public_messages_badges')
+            ->select('parent_id', 'user_id', DB::raw('count(*) as count'))
+            ->from('public_messages_badges')
+            ->where('user_id', Auth::id())
+            ->groupBy('parent_id', 'user_id');
 
         // 上記のサブクエリを親テーブルと結合
         $pubmsgs = DB::table('parent_public_messages as pm')
@@ -112,11 +119,16 @@ class AsynchronousController extends Controller
                 // 最新の情報
                 'cm.id as cm_id',
                 'cm.content as cm_latest_content',
-                'pm.updated_at as pm_updated_at'
+                'pm.updated_at as pm_updated_at',
+                // バッジカウント
+                'cnt.count as badge'
             )
             ->leftJoin('works as w', 'pm.work_id', '=', 'w.id')
             ->leftJoinSub($child3, 'cm', function ($join) {
                 $join->on('pm.id', '=', 'cm.parent_id');
+            })
+            ->leftJoinSub($countBadges, 'cnt', function ($join) {
+                $join->on('pm.id', '=', 'cnt.parent_id');
             })
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
             ->orWhere('pm.user_id', Auth::id()) // 子にデータがない場合でも抽出

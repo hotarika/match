@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Applicant;
 use App\Http\Requests\WorkRequest;
+use App\PublicMessageBadge;
 
 class WorksController extends Controller
 {
@@ -179,6 +180,12 @@ class WorksController extends Controller
                 ->leftJoin('users as u', 'cm.user_id', '=', 'u.id')
                 ->orderBy('cm.created_at', 'ASC')
                 ->get();
+
+            // パブリックリストのバッジ削除
+            // $badge = PublicMessageBadge::where('work_id', $work_id)
+            //     ->where('user_id', Auth::id())
+            //     ->delete();
+
 
             // **********************************
             // return
