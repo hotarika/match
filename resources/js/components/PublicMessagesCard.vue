@@ -25,7 +25,7 @@
       </div>
 
       <span
-         class="c-badge c-pubMsgCard__badge"
+         class="c-badge -public"
          :class="{ '-over': msgCard.badge >= 100 }"
          v-if="msgCard.badge > 0"
          >{{ showBadge }}</span

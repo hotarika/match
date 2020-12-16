@@ -35,9 +35,8 @@ class AsynchronousController extends Controller
 
 
     // ======================================
-    // マイページ
-    // ======================================
     // 発注した仕事
+    // ======================================
     public function getWorksListOfOrderInMyPage()
     {
         $work = DB::table('works as w')
@@ -61,7 +60,10 @@ class AsynchronousController extends Controller
         return $work->toJson();
     }
 
+    // ======================================
     // 応募した仕事
+    // ======================================
+
     public function getWorksListOfApplicationInMyPage()
     {
         $work = DB::table('works as w')
@@ -86,7 +88,9 @@ class AsynchronousController extends Controller
         return $work->toJson();
     }
 
+    // ======================================
     // パブリックメッセージ
+    // ======================================
     public function getPublicMessagesList()
     {
         // [サブクエリ1]
@@ -111,7 +115,6 @@ class AsynchronousController extends Controller
         // メッセージのバッジ表示
         $countBadges = DB::table('public_messages_badges')
             ->select('parent_id', 'user_id', DB::raw('count(*) as count'))
-            ->from('public_messages_badges')
             ->where('user_id', Auth::id())
             ->groupBy('parent_id', 'user_id');
 
@@ -150,19 +153,26 @@ class AsynchronousController extends Controller
         return $pubmsgs->toJson();
     }
 
+    // ======================================
     // ダイレクトメッセージ
+    // ======================================
     public function getDirectMessagesList()
     {
-        // [サブクエリ]
-        $child = DB::table('direct_messages_contents as c')
-            ->whereIn(
-                DB::raw('c.created_at'),
-                function ($query) {
-                    return $query->select(DB::raw('max(cc.created_at) as max'))
-                        ->from('direct_messages_contents as cc')
-                        ->groupBy('cc.board_id');
-                }
-            );
+        // [サブクエリ1] 最新のメッセージを取得するために、最新の日時とボードIDを取得
+        $getLatestContentsData = DB::table('direct_messages_contents as c')
+            ->select('c.board_id', DB::raw('max(c.created_at) as latest_date'))
+            ->groupBy('c.board_id');
+
+        // [サブクエリ2] 上記の結果を利用して、最新メッセージのカラムを全て取得
+        $getAllColumnsOfLatestContents = DB::table('direct_messages_contents as c')
+            ->select('*')
+            ->whereIn(DB::raw('(c.board_id, c.created_at)'), $getLatestContentsData);
+
+        // メッセージのバッジ表示
+        $countBadges = DB::table('direct_messages_badges')
+            ->select('board_id', 'user_id', DB::raw('count(*) as count'))
+            ->where('user_id', Auth::id())
+            ->groupBy('board_id', 'user_id');
 
         // 上記のテーブルと結合
         $boards = DB::table('direct_messages_boards as b')
@@ -180,13 +190,18 @@ class AsynchronousController extends Controller
                 'u2.image as applicant_image',
                 // 最新の子メッセージ
                 'c.content as latest_content',
-                'c.created_at as latest_date'
+                'c.created_at as latest_date',
+                // バッジカウント
+                'cnt.count as badge'
             )
             ->leftJoin('works as w', 'b.work_id', '=', 'w.id')
             ->leftJoin('users as u1', 'w.user_id', '=', 'u1.id') // 発注者
             ->leftJoin('users as u2', 'b.applicant_id', '=', 'u2.id') // 応募者
-            ->leftJoinSub($child, 'c', function ($join) {
+            ->leftJoinSub($getAllColumnsOfLatestContents, 'c', function ($join) {
                 $join->on('b.id', '=', 'c.board_id');
+            })
+            ->leftJoinSub($countBadges, 'cnt', function ($join) {
+                $join->on('c.board_id', '=', 'cnt.board_id');
             })
             ->where(function ($query) {
                 // 発注者または応募者に自分が含まれていれば表示する
@@ -194,6 +209,7 @@ class AsynchronousController extends Controller
                     ->orWhere('b.applicant_id', Auth::id());
             })->where(function ($query) {
                 // メッセージが投稿されていなければ表示しない
+                // （ボードは応募時に作成しているので、メッセージのないボードが存在する）
                 $query->whereNotNull('c.id');
             })
             ->orderBy('c.created_at', 'DESC')

@@ -22,6 +22,13 @@
             {{ card.latest_content }}
          </div>
       </div>
+
+      <span
+         class="c-badge -direct"
+         :class="{ '-over': card.badge >= 100 }"
+         v-if="card.badge > 0"
+         >{{ showBadge }}</span
+      >
    </a>
 </template>
 
@@ -65,6 +72,13 @@ export default {
             return this.card.applicant_name;
          } else {
             return this.card.orderer_name;
+         }
+      },
+      showBadge() {
+         if (this.card.badge >= 100) {
+            return '99+';
+         } else {
+            return this.card.badge;
          }
       }
    },

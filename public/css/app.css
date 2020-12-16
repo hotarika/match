@@ -549,6 +549,16 @@ pre {
   border-radius: 20%;
 }
 
+.c-badge.-public {
+  top: 36px;
+  right: 21px;
+}
+
+.c-badge.-direct {
+  top: 30px;
+  right: 21px;
+}
+
 .c-badge__mark {
   border-radius: 50%;
   position: absolute;
@@ -916,11 +926,6 @@ pre {
 
 .c-pubMsgCard.-myWork {
   background-color: #bedcfd;
-}
-
-.c-pubMsgCard__badge {
-  top: 36px;
-  right: 21px;
 }
 
 .c-pubMsgCard__infoWrap {

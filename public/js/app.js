@@ -2100,6 +2100,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2130,6 +2137,13 @@ __webpack_require__.r(__webpack_exports__);
         return this.card.applicant_name;
       } else {
         return this.card.orderer_name;
+      }
+    },
+    showBadge: function showBadge() {
+      if (this.card.badge >= 100) {
+        return '99+';
+      } else {
+        return this.card.badge;
       }
     }
   },
@@ -40264,7 +40278,18 @@ var render = function() {
         _c("div", { staticClass: "c-dmMsgCard__dm" }, [
           _vm._v("\n         " + _vm._s(_vm.card.latest_content) + "\n      ")
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _vm.card.badge > 0
+        ? _c(
+            "span",
+            {
+              staticClass: "c-badge -direct",
+              class: { "-over": _vm.card.badge >= 100 }
+            },
+            [_vm._v(_vm._s(_vm.showBadge))]
+          )
+        : _vm._e()
     ]
   )
 }
@@ -41176,7 +41201,7 @@ var render = function() {
         ? _c(
             "span",
             {
-              staticClass: "c-badge c-pubMsgCard__badge",
+              staticClass: "c-badge -public",
               class: { "-over": _vm.msgCard.badge >= 100 }
             },
             [_vm._v(_vm._s(_vm.showBadge))]

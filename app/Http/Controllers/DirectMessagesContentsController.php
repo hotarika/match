@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DirectMessageBadge;
 use Illuminate\Http\Request;
 use App\DirectMessageContent;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,18 @@ class DirectMessagesContentsController extends Controller
      */
     public function store(Request $request)
     {
+        $toUser = DB::table('direct_messages_boards as dm')
+            ->select('w.user_id as orderer_id', 'dm.applicant_id')
+            ->where('dm.id', "=", $request->board_id)
+            ->leftJoin('works as w', 'dm.work_id', '=', 'w.id')
+            ->first();
+
+        $badge = new DirectMessageBadge;
+        $badge->fill([
+            'board_id' => $request->board_id,
+            'user_id' => (Auth::id() === $toUser->orderer_id) ? $toUser->applicant_id : $toUser->orderer_id,
+        ])->save();
+
         // axiosからデータを受け取り
         $dm = new DirectMessageContent;
         $dm->fill($request->all())->save();
