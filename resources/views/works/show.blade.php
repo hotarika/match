@@ -113,14 +113,16 @@
                   <form method="POST" action="{{route('applicants.destroy',$applicant->id)}}">
                      @method('DELETE')
                      @csrf
-                     <button class="c-btn p-workDetail__appBtn -stop" type="submit">応募を取りやめる</button>
+                     <button class="c-btn p-workDetail__appBtn -stop" type="submit"
+                        onclick='return confirm("応募を取りやめてもよろしいですか？");'>応募を取りやめる</button>
                   </form>
                   @else {{-- @if($applicant) --}}
                   <form method="POST" action="{{route('applicants.store')}}">
                      @csrf
                      <input type="hidden" name="work_id" value="{{$work->w_id}}">
                      <input type="hidden" name="owner_id" value="{{$work->orderer_id}}">
-                     <button class="c-btn p-workDetail__appBtn -app" type="submit">応募する</button>
+                     <button class="c-btn p-workDetail__appBtn -app" type="submit"
+                        onclick='return confirm("応募してもよろしいですか？");'>応募する</button>
                   </form>
                   @endif {{-- @if($applicant) --}}
 
