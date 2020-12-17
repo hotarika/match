@@ -19,10 +19,9 @@
                         class="c-form__input @error('email') is-invalid @enderror"
                         name="email"
                         value="{{ old('email') }}"
-                        required
                         autocomplete="email"
                         autofocus
-                        placeholder="メールアドレス" />
+                        placeholder="メールアドレス [必須]" />
 
                      @error('email')
                      <span class="c-form__invalid" role="alert">
@@ -38,9 +37,8 @@
                         type="password"
                         class="c-form__input @error('password') is-invalid @enderror"
                         name="password"
-                        required
                         autocomplete="current-password"
-                        placeholder="パスワード" />
+                        placeholder="パスワード [必須]" />
 
                      @error('password')
                      <span class="c-form__invalid" role="alert">
