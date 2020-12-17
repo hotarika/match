@@ -13,16 +13,16 @@
 
                   <!-- 名前 -->
                   <div class="p-register__inputWrap -name ">
+                     <span class="c-form__description">※ 20文字以内</span>
                      <input
                         id="name"
                         type="text"
                         class="c-form__input @error('name') is-invalid @enderror"
                         name="name"
                         value="{{ old('name') }}"
-                        {{-- required --}}
                         autocomplete="name"
                         autofocus
-                        placeholder="名前" />
+                        placeholder="名前 [必須]" />
 
                      @error('name')
                      <span class="c-form__invalid" role="alert">
@@ -39,9 +39,8 @@
                         class="c-form__input @error('email') is-invalid @enderror"
                         name="email"
                         value="{{ old('email') }}"
-                        required
                         autocomplete="email"
-                        placeholder="メールアドレス" />
+                        placeholder="メールアドレス [必須]" />
 
                      @error('email')
                      <span class="c-form__invalid" role="alert">
@@ -52,13 +51,13 @@
 
                   <!-- パスワード -->
                   <div class="p-register__inputWrap -pass ">
+                     <span class="c-form__description">※ 8文字~20文字以内・半角英数字のみ（記号は使用できません）</span>
                      <input
                         id="password"
                         type="password"
                         class="c-form__input @error('password') is-invalid @enderror"
                         name="password"
-                        required
-                        placeholder="パスワード" />
+                        placeholder="パスワード [必須]" />
 
                      @error('password')
                      <span class="c-form__invalid" role="alert">
@@ -69,13 +68,13 @@
 
                   <!-- パスワード再入力 -->
                   <div class="p-register__inputWrap -passConfirm">
+                     <span class="c-form__description">※ パスワード確認のため、再入力</span>
                      <input
                         id="password-confirm"
                         type="password"
                         class="c-form__input"
                         name="password_confirmation"
-                        required
-                        placeholder="パスワード再入力" />
+                        placeholder="パスワード再入力 [必須]" />
                   </div>
 
                   <!-- 登録ボタン -->
