@@ -12,16 +12,18 @@
             {{ msgCard.pm_updated_at | formatDateTime }}
          </time>
       </div>
-      <div class="c-pubMsgCard__msgTitle">
-         {{ msgCard.pm_title }}
-      </div>
 
-      <!-- メッセージ / 子メッセージに最新のものがあれば、子メッセージを表示 -->
-      <div class="c-pubMsgCard__pubMsg" v-if="msgCard.cm_latest_content">
-         {{ msgCard.cm_latest_content }}
-      </div>
-      <div class="c-pubMsgCard__pubMsg" v-else>
-         {{ msgCard.pm_content }}
+      <div class="c-pubMsgCard__msgWrap">
+         <div class="c-pubMsgCard__msgTitle">
+            {{ msgCard.pm_title }}
+         </div>
+         <!-- メッセージ / 子メッセージに最新のものがあれば、子メッセージを表示 -->
+         <div class="c-pubMsgCard__pubMsg" v-if="msgCard.cm_latest_content">
+            {{ msgCard.cm_latest_content }}
+         </div>
+         <div class="c-pubMsgCard__pubMsg" v-else>
+            {{ msgCard.pm_content }}
+         </div>
       </div>
 
       <span

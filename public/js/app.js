@@ -3138,6 +3138,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -41244,17 +41246,25 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "c-pubMsgCard__msgTitle" }, [
-        _vm._v("\n      " + _vm._s(_vm.msgCard.pm_title) + "\n   ")
+      _c("div", { staticClass: "c-pubMsgCard__msgWrap" }, [
+        _c("div", { staticClass: "c-pubMsgCard__msgTitle" }, [
+          _vm._v("\n         " + _vm._s(_vm.msgCard.pm_title) + "\n      ")
+        ]),
+        _vm._v(" "),
+        _vm.msgCard.cm_latest_content
+          ? _c("div", { staticClass: "c-pubMsgCard__pubMsg" }, [
+              _vm._v(
+                "\n         " +
+                  _vm._s(_vm.msgCard.cm_latest_content) +
+                  "\n      "
+              )
+            ])
+          : _c("div", { staticClass: "c-pubMsgCard__pubMsg" }, [
+              _vm._v(
+                "\n         " + _vm._s(_vm.msgCard.pm_content) + "\n      "
+              )
+            ])
       ]),
-      _vm._v(" "),
-      _vm.msgCard.cm_latest_content
-        ? _c("div", { staticClass: "c-pubMsgCard__pubMsg" }, [
-            _vm._v("\n      " + _vm._s(_vm.msgCard.cm_latest_content) + "\n   ")
-          ])
-        : _c("div", { staticClass: "c-pubMsgCard__pubMsg" }, [
-            _vm._v("\n      " + _vm._s(_vm.msgCard.pm_content) + "\n   ")
-          ]),
       _vm._v(" "),
       _vm.msgCard.badge > 0
         ? _c(

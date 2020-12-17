@@ -64,7 +64,7 @@ mix.browserSync({
       target: 'dev.match',
       ws: true // web socket
    },
-   open: false,
+   open: true,
    notify: {
       styles: {
          top: 'auto',

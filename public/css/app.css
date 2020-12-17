@@ -969,6 +969,10 @@ pre {
   }
 }
 
+.c-pubMsgCard__msgWrap {
+  width: 95%;
+}
+
 .c-pubMsgCard__msgTitle {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1097,6 +1101,7 @@ pre {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  width: 95%;
   padding-top: 2px;
   font-size: 12px;
 }
