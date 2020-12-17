@@ -22,9 +22,15 @@
                      src="{{ asset('storage/user_img/'.$user->image) }}"
                      @endif
                      alt="ユーザーの画像" />
-                     <div class="p-profile__proName">{{$user->name}}</div>
                   </div>
                   <div class="p-profile__proSecond">
+                     {{-- 名前 --}}
+                     <div class="p-profile__proNameWrap">
+                        <div class="p-profile__proNameHead">名前</div>
+                        <div class="p-profile__proName">{{$user->name}}</div>
+                     </div>
+
+                     {{-- 実績 --}}
                      <div class="p-profile__proResult">
                         <div class="p-profile__proResultHead">実績</div>
                         <table class="p-profile__proResultBody">
@@ -38,6 +44,8 @@
                            </tr>
                         </table>
                      </div>
+
+                     {{-- 自己紹介 --}}
                      <div class="p-profile__proIntroduction">
                         <div class="p-profile__proIntroductionHead">自己紹介</div>
                         <pre class="p-profile__proIntroductionBody">{{$user->introduction}}</pre>

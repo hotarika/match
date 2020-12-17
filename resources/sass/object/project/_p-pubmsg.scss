@@ -75,7 +75,7 @@
       }
    }
    &__parentRight {
-      width: 100%;
+      width: 90%;
    }
    &__parentName {
       margin-bottom: 5px;
@@ -97,6 +97,7 @@
    &__parentTitle {
       margin-bottom: 7px;
       font-weight: bold;
+      overflow-wrap: break-word;
       @include mq('xs') {
          font-size: 15px;
       }
@@ -106,6 +107,7 @@
       margin: 0;
       margin-bottom: 13px;
       font-size: 13px;
+      overflow-wrap: break-word;
       white-space: pre-wrap;
       @include mq('xs') {
          font-size: 12px;
@@ -149,6 +151,9 @@
          display: none;
       }
    }
+   &__childRight {
+      width: 88%;
+   }
    &__childName {
       margin-bottom: 5px;
       font-size: 11px;
@@ -164,6 +169,7 @@
       @include letter-settings;
       margin: 0;
       font-size: 13px;
+      overflow-wrap: break-word;
       white-space: pre-wrap;
       @include mq('xs') {
          font-size: 12px;

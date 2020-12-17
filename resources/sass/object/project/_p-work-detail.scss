@@ -47,6 +47,7 @@
       margin-bottom: 60px;
       font-size: 18px;
       text-align: left;
+      overflow-wrap: break-word;
       background-color: $primary-light;
       border-left: 7px solid $primary;
       @include mq('3xs') {
@@ -95,6 +96,7 @@
          font-size: 14px;
          & > span {
             font-size: 12px;
+            white-space: nowrap;
             @include mq('xs') {
                margin-bottom: 3px;
             }
@@ -129,6 +131,8 @@
       }
    }
    &__infoName {
+      width: 25%;
+      overflow-wrap: break-word;
       @include mq('xs') {
          font-size: 13px;
       }
@@ -260,6 +264,7 @@
       padding: 20px;
       margin: 0;
       font-size: 14px;
+      overflow-wrap: break-word;
       white-space: pre-wrap;
       border: 1px solid $gray-400;
       @include mq('xs') {

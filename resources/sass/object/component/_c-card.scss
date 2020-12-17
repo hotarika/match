@@ -85,7 +85,9 @@
       overflow: scroll;
       font-size: 14px;
       font-weight: bold;
+      overflow-wrap: break-word;
       border: 1px solid $gray-400;
+      scrollbar-width: none; /* Firefox 対応 */
       @include mq('xs') {
          flex-basis: 70px;
          width: 100%;
@@ -99,7 +101,6 @@
       &::-webkit-scrollbar {
          display: none;
       }
-      scrollbar-width: none; /* Firefox 対応 */
    }
    &__contract {
       display: flex;
