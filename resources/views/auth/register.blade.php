@@ -33,6 +33,7 @@
 
                   <!-- メール -->
                   <div class="p-register__inputWrap -email">
+                     <span class="c-form__description -empty"></span>
                      <input
                         id="email"
                         type="email"

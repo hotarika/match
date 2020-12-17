@@ -1164,6 +1164,10 @@ pre {
   text-align: right;
 }
 
+.c-form__description.-empty {
+  margin-top: 12px;
+}
+
 .c-form__invalid {
   font-size: 13px;
   color: #dc3545;
