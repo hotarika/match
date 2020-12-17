@@ -150,12 +150,12 @@ export default {
    },
    mounted() {
       // マウント時に、スクロールバーを一番下に移動させる
-      var obj = document.querySelector('.js-scroll');
+      const obj = document.querySelector('.js-scroll');
       obj.scrollTop = obj.scrollHeight;
    },
    updated() {
       // メッセージ送信時に、スクロールバーを一番下に移動させる
-      var obj = document.querySelector('.js-scroll');
+      const obj = document.querySelector('.js-scroll');
       obj.scrollTop = obj.scrollHeight;
    }
 };
