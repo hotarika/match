@@ -72,8 +72,8 @@ class RegisterFormTest extends TestCase
             'name' => str_repeat('a', 20)
         ]);
 
-        $error_name = session('errors')->first('name');
-        $this->assertEmpty($error_name);
+        $error = session('errors')->first('name');
+        $this->assertEmpty($error);
     }
     /**
      * @test
@@ -85,8 +85,8 @@ class RegisterFormTest extends TestCase
             'name' => str_repeat('a', 21)
         ]);
 
-        $error_name = session('errors')->first('name');
-        $this->assertEquals('名前は、20文字以下で指定してください。', $error_name);
+        $error = session('errors')->first('name');
+        $this->assertEquals('名前は、20文字以下で指定してください。', $error);
     }
     /**
      * @test
@@ -98,8 +98,8 @@ class RegisterFormTest extends TestCase
             'name' => str_repeat('あ', 20)
         ]);
 
-        $error_name = session('errors')->first('name');
-        $this->assertEmpty($error_name);
+        $error = session('errors')->first('name');
+        $this->assertEmpty($error);
     }
     /**
      * @test
@@ -111,8 +111,8 @@ class RegisterFormTest extends TestCase
             'name' => str_repeat('あ', 21)
         ]);
 
-        $error_name = session('errors')->first('name');
-        $this->assertEquals('名前は、20文字以下で指定してください。', $error_name);
+        $error = session('errors')->first('name');
+        $this->assertEquals('名前は、20文字以下で指定してください。', $error);
     }
 
     // *******************************************
@@ -128,8 +128,8 @@ class RegisterFormTest extends TestCase
             'email' => 'test@example.com',
         ]);
 
-        $error_name = session('errors')->first('email');
-        $this->assertEmpty($error_name);
+        $error = session('errors')->first('email');
+        $this->assertEmpty($error);
     }
     /**
      * @test
@@ -141,8 +141,8 @@ class RegisterFormTest extends TestCase
             'email' => 'testexample.com',
         ]);
 
-        $error_name = session('errors')->first('email');
-        $this->assertEquals('メールアドレスには、有効なメールアドレスを指定してください。', $error_name);
+        $error = session('errors')->first('email');
+        $this->assertEquals('メールアドレスには、有効なメールアドレスを指定してください。', $error);
     }
     /**
      * @test
@@ -154,8 +154,8 @@ class RegisterFormTest extends TestCase
             'email' => 'あいうえお@example.com',
         ]);
 
-        $error_name = session('errors')->first('email');
-        $this->assertEquals('メールアドレスに正しい形式を指定してください。', $error_name);
+        $error = session('errors')->first('email');
+        $this->assertEquals('メールアドレスに正しい形式を指定してください。', $error);
     }
     /**
      * @test
@@ -167,8 +167,8 @@ class RegisterFormTest extends TestCase
             'email' => str_repeat('a', 243) . '@example.com' // 255文字
         ]);
 
-        $error_name = session('errors')->first('email');
-        $this->assertEmpty($error_name);
+        $error = session('errors')->first('email');
+        $this->assertEmpty($error);
     }
     /**
      * @test
@@ -180,8 +180,8 @@ class RegisterFormTest extends TestCase
             'email' => str_repeat('a', 244) . '@example.com' // 256文字
         ]);
 
-        $error_name = session('errors')->first('email');
-        $this->assertEquals('メールアドレスは、255文字以下で指定してください。', $error_name);
+        $error = session('errors')->first('email');
+        $this->assertEquals('メールアドレスは、255文字以下で指定してください。', $error);
     }
     /**
      * @test
@@ -203,8 +203,8 @@ class RegisterFormTest extends TestCase
             'password_confirmation' => 'rootroot'
         ]);
 
-        $error_name = session('errors')->first('email');
-        $this->assertEquals('このメールアドレスは利用することができません。', $error_name);
+        $error = session('errors')->first('email');
+        $this->assertEquals('このメールアドレスは利用することができません。', $error);
     }
 
     // *******************************************
@@ -221,8 +221,8 @@ class RegisterFormTest extends TestCase
             'password_confirmation' => str_repeat('a', 8)
         ]);
 
-        $error_name = session('errors')->first('password');
-        $this->assertEmpty($error_name);
+        $error = session('errors')->first('password');
+        $this->assertEmpty($error);
     }
     /**
      * @test
@@ -234,8 +234,8 @@ class RegisterFormTest extends TestCase
             'password' => str_repeat('a', 7),
         ]);
 
-        $error_name = session('errors')->first('password');
-        $this->assertEquals('パスワードは、8文字以上で指定してください。', $error_name);
+        $error = session('errors')->first('password');
+        $this->assertEquals('パスワードは、8文字以上で指定してください。', $error);
     }
     /**
      * @test
@@ -248,8 +248,8 @@ class RegisterFormTest extends TestCase
             'password_confirmation' => str_repeat('a', 20)
         ]);
 
-        $error_name = session('errors')->first('password');
-        $this->assertEmpty($error_name);
+        $error = session('errors')->first('password');
+        $this->assertEmpty($error);
     }
     /**
      * @test
@@ -262,8 +262,8 @@ class RegisterFormTest extends TestCase
             'password_confirmation' => str_repeat('a', 21)
         ]);
 
-        $error_name = session('errors')->first('password');
-        $this->assertEquals('パスワードは、20文字以下で指定してください。', $error_name);
+        $error = session('errors')->first('password');
+        $this->assertEquals('パスワードは、20文字以下で指定してください。', $error);
     }
     /**
      * @test
@@ -276,8 +276,8 @@ class RegisterFormTest extends TestCase
             'password_confirmation' => str_repeat('b', 8) // b
         ]);
 
-        $error_name = session('errors')->first('password');
-        $this->assertEquals('パスワードと、確認フィールドとが、一致していません。', $error_name);
+        $error = session('errors')->first('password');
+        $this->assertEquals('パスワードと、確認フィールドとが、一致していません。', $error);
     }
     /**
      * @test
@@ -290,8 +290,8 @@ class RegisterFormTest extends TestCase
             'password_confirmation' => '0123456789abcABC'
         ]);
 
-        $error_name = session('errors')->first('password');
-        $this->assertEmpty($error_name);
+        $error = session('errors')->first('password');
+        $this->assertEmpty($error);
     }
     /**
      * @test
@@ -304,8 +304,8 @@ class RegisterFormTest extends TestCase
             'password_confirmation' => str_repeat('あ', 8)
         ]);
 
-        $error_name = session('errors')->first('password');
-        $this->assertEquals('パスワードに正しい形式を指定してください。', $error_name);
+        $error = session('errors')->first('password');
+        $this->assertEquals('パスワードに正しい形式を指定してください。', $error);
     }
     /**
      * @test
@@ -318,8 +318,8 @@ class RegisterFormTest extends TestCase
             'password_confirmation' => str_repeat('*', 8)
         ]);
 
-        $error_name = session('errors')->first('password');
-        $this->assertEquals('パスワードに正しい形式を指定してください。', $error_name);
+        $error = session('errors')->first('password');
+        $this->assertEquals('パスワードに正しい形式を指定してください。', $error);
     }
     /**
      * @test
@@ -332,8 +332,8 @@ class RegisterFormTest extends TestCase
             'password_confirmation' => str_repeat('-', 8)
         ]);
 
-        $error_name = session('errors')->first('password');
-        $this->assertEquals('パスワードに正しい形式を指定してください。', $error_name);
+        $error = session('errors')->first('password');
+        $this->assertEquals('パスワードに正しい形式を指定してください。', $error);
     }
     /**
      * @test
@@ -346,7 +346,7 @@ class RegisterFormTest extends TestCase
             'password_confirmation' => str_repeat('?', 8)
         ]);
 
-        $error_name = session('errors')->first('password');
-        $this->assertEquals('パスワードに正しい形式を指定してください。', $error_name);
+        $error = session('errors')->first('password');
+        $this->assertEquals('パスワードに正しい形式を指定してください。', $error);
     }
 }

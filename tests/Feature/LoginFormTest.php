@@ -80,8 +80,8 @@ class LoginFormTest extends TestCase
 
         // メールアドレスだけ入力している場合はそのメールが合っていても間違っていてもエラーは出さない
         // パスワードを入力した段階でエラーを出力する
-        $error_email = session('errors')->first('email');
-        $this->assertEmpty($error_email);
+        $error = session('errors')->first('email');
+        $this->assertEmpty($error);
     }
 
     /**
@@ -101,8 +101,8 @@ class LoginFormTest extends TestCase
             'password' => 'rootrootaaa'
         ]);
 
-        $error_email = session('errors')->first('email');
-        $this->assertEquals('ログイン情報が登録されていません。', $error_email);
+        $error = session('errors')->first('email');
+        $this->assertEquals('ログイン情報が登録されていません。', $error);
     }
 
     /**
@@ -122,7 +122,7 @@ class LoginFormTest extends TestCase
             'password' => 'rootroot'
         ]);
 
-        $error_email = session('errors')->first('email');
-        $this->assertEquals('ログイン情報が登録されていません。', $error_email);
+        $error = session('errors')->first('email');
+        $this->assertEquals('ログイン情報が登録されていません。', $error);
     }
 }
