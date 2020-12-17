@@ -8,7 +8,7 @@ use Tests\TestCase;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
-class LoginTest extends TestCase
+class LoginFormTest extends TestCase
 {
     use RefreshDatabase;
 
