@@ -4,7 +4,6 @@ npm-debug.log
 yarn-error.log
 .vscode
 *.dio
-/public/.htaccess
 
 # Laravel 4 specific
 bootstrap/compiled.php
