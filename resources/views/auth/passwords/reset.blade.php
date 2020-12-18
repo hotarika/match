@@ -36,12 +36,12 @@
 
                   {{-- パスワード --}}
                   <div class="p-login__inputWrap -pass">
+                     <span class="c-form__description">※ 8文字~20文字以内・半角英数字のみ（記号は使用できません）</span>
                      <input
                         id="password"
                         type="password"
                         class="c-form__input @error('password') is-invalid @enderror"
                         name="password"
-                        required
                         autocomplete="current-password"
                         placeholder="パスワード" />
 
@@ -59,7 +59,6 @@
                         type="password"
                         class="c-form__input"
                         name="password_confirmation"
-                        required
                         placeholder="パスワード再入力" />
                   </div>
                   <button type="submit" class="c-btn c-authSendBtn">パスワード再設定</button>

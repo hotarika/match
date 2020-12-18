@@ -27,4 +27,18 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = '/mypage';
+
+    /**
+     * Get the password reset validation rules.
+     *
+     * @return array
+     */
+    protected function rules()
+    {
+        return [
+            'token' => ['required'],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'string', 'min:8', 'max:20', 'regex:/^[a-zA-Z0-9]+$/', 'confirmed']
+        ];
+    }
 }

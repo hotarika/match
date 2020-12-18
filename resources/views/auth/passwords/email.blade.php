@@ -23,7 +23,6 @@
                            class="c-form__input @error('email') is-invalid @enderror"
                            name="email"
                            value="{{ old('email') }}"
-                           required
                            autocomplete="email"
                            autofocus
                            placeholder="メールアドレス" />
