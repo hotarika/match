@@ -311,42 +311,18 @@ class RegisterFormTest extends TestCase
      * @test
      * [異常値] パスワード / 記号入力（*）
      * */
-    public function register_password_invalid_signs1_false()
+    public function register_password_invalid_signs_false()
     {
-        $response = $this->post('register', [
-            'password' => str_repeat('*', 8),
-            'password_confirmation' => str_repeat('*', 8)
-        ]);
+        $signs = ['!', '"', '#', '$', '%', '&', '\'', '(', ')', '=', '~', '|', '{', '}', '`', '*', '_', '?', '>', '<', '-', '^', '¥', '[', ']', '@', ':', '_', '/', '.', ',', '<', '>'];
 
-        $error = session('errors')->first('password');
-        $this->assertEquals('パスワードに正しい形式を指定してください。', $error);
-    }
-    /**
-     * @test
-     * [異常値] パスワード / 記号入力（-）
-     * */
-    public function register_password_invalid_signs2_false()
-    {
-        $response = $this->post('register', [
-            'password' => str_repeat('-', 8),
-            'password_confirmation' => str_repeat('-', 8)
-        ]);
+        foreach ($signs as $sign) {
+            $response = $this->post('register', [
+                'password' => str_repeat($sign, 8),
+                'password_confirmation' => str_repeat($sign, 8)
+            ]);
 
-        $error = session('errors')->first('password');
-        $this->assertEquals('パスワードに正しい形式を指定してください。', $error);
-    }
-    /**
-     * @test
-     * [異常値] パスワード / 記号入力（?）
-     * */
-    public function register_password_invalid_signs3_false()
-    {
-        $response = $this->post('register', [
-            'password' => str_repeat('?', 8),
-            'password_confirmation' => str_repeat('?', 8)
-        ]);
-
-        $error = session('errors')->first('password');
-        $this->assertEquals('パスワードに正しい形式を指定してください。', $error);
+            $error = session('errors')->first('password');
+            $this->assertEquals('パスワードに正しい形式を指定してください。', $error);
+        }
     }
 }
