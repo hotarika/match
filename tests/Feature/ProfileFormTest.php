@@ -28,9 +28,6 @@ class ProfileFormTest extends TestCase
         $this->actingAs($user);
         // --------------------------------------
 
-        // Storage::fake('user_img');
-        // $file = UploadedFile::fake()->image('avatar.jpg');
-
         $data = [
             'name' => 'test',
             'email' => 'test@example.com',
