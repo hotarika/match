@@ -11,8 +11,12 @@
          ref="childMessage"
          v-model="textarea"
       ></textarea>
-      <span class="c-form__invalid" v-if="textarea.length > 3000" role="alert">
-         <strong>3000文字以内で入力してください。</strong>
+      <span
+         class="c-form__invalid"
+         v-if="textarea.length > textareaLimitNumber"
+         role="alert"
+      >
+         <strong>{{ textareaLimitNumber }}文字以内で入力してください。</strong>
       </span>
 
       <button
@@ -31,7 +35,8 @@ export default {
    props: ['parent'],
    data() {
       return {
-         textarea: ''
+         textarea: '',
+         textareaLimitNumber: 3000
       };
    },
    computed: {

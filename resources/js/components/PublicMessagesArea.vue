@@ -8,22 +8,47 @@
                <input
                   class="c-form__input p-pubmsg__createMsgTitle"
                   type="text"
-                  placeholder="必須：新規質問内容のタイトルを記述"
+                  :placeholder="parentTitlePlaceholder"
                   v-model="parentTitle"
                />
+               <span
+                  class="c-form__invalid"
+                  v-if="parentTitle.length > parentTitleLimitNumber"
+                  role="alert"
+               >
+                  <strong
+                     >{{
+                        parentTitleLimitNumber
+                     }}文字以内で入力してください。</strong
+                  >
+               </span>
+
                <textarea
                   class="c-form__textarea p-pubmsg__createMsgTextarea"
                   name="message"
                   id="message"
                   cols="30"
                   rows="10"
-                  placeholder="必須：新規質問の内容を記述"
+                  :placeholder="parentTextareaPlaceholder"
                   v-model="parentTextarea"
                ></textarea>
+               <span
+                  class="c-form__invalid"
+                  v-if="parentTextarea.length > parentTextareaLimitNumber"
+                  role="alert"
+               >
+                  <strong
+                     >{{
+                        parentTextareaLimitNumber
+                     }}文字以内で入力してください。</strong
+                  >
+               </span>
+
                <button
                   class="c-btn c-msgSendBtn p-pubmsg__parentBtn"
                   type="submit"
                   @click.prevent="addParentMsg"
+                  :disabled="disabledBtn"
                >
                   <i class="far fa-arrow-alt-circle-up"></i>送信
                </button>
@@ -124,7 +149,9 @@ export default {
          childMessages: this.childMsg,
          parentTitle: '',
          parentTextarea: '',
-         childTextarea: ''
+         childTextarea: '',
+         parentTitleLimitNumber: 40,
+         parentTextareaLimitNumber: 3000
       };
    },
    methods: {
@@ -233,6 +260,30 @@ export default {
                return this.publicPath + 'images/no-image.png';
             }
          };
+      },
+      disabledBtn() {
+         if (
+            this.parentTitle.length > this.parentTitleLimitNumber ||
+            this.parentTextarea.length > this.parentTextareaLimitNumber
+         ) {
+            return true;
+         } else {
+            return false;
+         }
+      },
+      parentTitlePlaceholder() {
+         return (
+            '必須：新規質問内容のタイトルを記述（' +
+            this.parentTitleLimitNumber +
+            '文字以内）'
+         );
+      },
+      parentTextareaPlaceholder() {
+         return (
+            '必須：新規質問の内容を記述（' +
+            this.parentTextareaLimitNumber +
+            '文字以内）'
+         );
       }
    },
    filters: {

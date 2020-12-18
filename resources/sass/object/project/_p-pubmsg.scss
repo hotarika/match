@@ -15,15 +15,17 @@
    // 掲示板の作成
    &__createMsgForm {
       position: relative;
+      margin-bottom: 50px;
       & > input {
          width: 100%;
          padding: 10px 15px;
+         margin-bottom: 0;
       }
       & > textarea {
          width: 100%;
          min-height: 200px;
          padding: 15px;
-         margin-bottom: 50px;
+         margin-top: 10px;
          font-size: 13px;
          @include mq('xs') {
             font-size: 12px;
@@ -114,8 +116,11 @@
       }
    }
    &__parentBtn {
-      right: 0;
-      bottom: 23px;
+      // right: 0;
+      // bottom: -9px;
+      position: initial;
+      display: block;
+      margin: 0 0 0 auto;
    }
 
    // 子_掲示板

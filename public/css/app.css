@@ -3281,18 +3281,20 @@ pre {
 
 .p-pubmsg__createMsgForm {
   position: relative;
+  margin-bottom: 50px;
 }
 
 .p-pubmsg__createMsgForm > input {
   width: 100%;
   padding: 10px 15px;
+  margin-bottom: 0;
 }
 
 .p-pubmsg__createMsgForm > textarea {
   width: 100%;
   min-height: 200px;
   padding: 15px;
-  margin-bottom: 50px;
+  margin-top: 10px;
   font-size: 13px;
 }
 
@@ -3424,8 +3426,9 @@ pre {
 }
 
 .p-pubmsg__parentBtn {
-  right: 0;
-  bottom: 23px;
+  position: initial;
+  display: block;
+  margin: 0 0 0 auto;
 }
 
 .p-pubmsg__childWrap {

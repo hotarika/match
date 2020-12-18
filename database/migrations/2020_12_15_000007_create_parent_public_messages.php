@@ -17,7 +17,7 @@ class CreateParentPublicMessages extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('work_id');
             $table->bigInteger('user_id');
-            $table->string('title');
+            $table->string('title', 60);
             $table->string('content', 3000);
             $table->boolean('delete_flg')->default(false);
             $table->timestamps();

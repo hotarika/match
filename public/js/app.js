@@ -2929,6 +2929,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2946,7 +2971,9 @@ __webpack_require__.r(__webpack_exports__);
       childMessages: this.childMsg,
       parentTitle: '',
       parentTextarea: '',
-      childTextarea: ''
+      childTextarea: '',
+      parentTitleLimitNumber: 40,
+      parentTextareaLimitNumber: 3000
     };
   },
   methods: {
@@ -3046,6 +3073,19 @@ __webpack_require__.r(__webpack_exports__);
           return this.publicPath + 'images/no-image.png';
         }
       };
+    },
+    disabledBtn: function disabledBtn() {
+      if (this.parentTitle.length > this.parentTitleLimitNumber || this.parentTextarea.length > this.parentTextareaLimitNumber) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    parentTitlePlaceholder: function parentTitlePlaceholder() {
+      return '必須：新規質問内容のタイトルを記述（' + this.parentTitleLimitNumber + '文字以内）';
+    },
+    parentTextareaPlaceholder: function parentTextareaPlaceholder() {
+      return '必須：新規質問の内容を記述（' + this.parentTextareaLimitNumber + '文字以内）';
     }
   },
   filters: {
@@ -3213,11 +3253,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['parent'],
   data: function data() {
     return {
-      textarea: ''
+      textarea: '',
+      textareaLimitNumber: 3000
     };
   },
   computed: {
@@ -41001,7 +41046,7 @@ var render = function() {
                     staticClass: "c-form__input p-pubmsg__createMsgTitle",
                     attrs: {
                       type: "text",
-                      placeholder: "必須：新規質問内容のタイトルを記述"
+                      placeholder: _vm.parentTitlePlaceholder
                     },
                     domProps: { value: _vm.parentTitle },
                     on: {
@@ -41013,6 +41058,24 @@ var render = function() {
                       }
                     }
                   }),
+                  _vm._v(" "),
+                  _vm.parentTitle.length > _vm.parentTitleLimitNumber
+                    ? _c(
+                        "span",
+                        {
+                          staticClass: "c-form__invalid",
+                          attrs: { role: "alert" }
+                        },
+                        [
+                          _c("strong", [
+                            _vm._v(
+                              _vm._s(_vm.parentTitleLimitNumber) +
+                                "文字以内で入力してください。"
+                            )
+                          ])
+                        ]
+                      )
+                    : _vm._e(),
                   _vm._v(" "),
                   _c("textarea", {
                     directives: [
@@ -41029,7 +41092,7 @@ var render = function() {
                       id: "message",
                       cols: "30",
                       rows: "10",
-                      placeholder: "必須：新規質問の内容を記述"
+                      placeholder: _vm.parentTextareaPlaceholder
                     },
                     domProps: { value: _vm.parentTextarea },
                     on: {
@@ -41042,11 +41105,29 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
+                  _vm.parentTextarea.length > _vm.parentTextareaLimitNumber
+                    ? _c(
+                        "span",
+                        {
+                          staticClass: "c-form__invalid",
+                          attrs: { role: "alert" }
+                        },
+                        [
+                          _c("strong", [
+                            _vm._v(
+                              _vm._s(_vm.parentTextareaLimitNumber) +
+                                "文字以内で入力してください。"
+                            )
+                          ])
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
                   _c(
                     "button",
                     {
                       staticClass: "c-btn c-msgSendBtn p-pubmsg__parentBtn",
-                      attrs: { type: "submit" },
+                      attrs: { type: "submit", disabled: _vm.disabledBtn },
                       on: {
                         click: function($event) {
                           $event.preventDefault()
@@ -41365,11 +41446,18 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _vm.textarea.length > 3000
+      _vm.textarea.length > _vm.textareaLimitNumber
         ? _c(
             "span",
             { staticClass: "c-form__invalid", attrs: { role: "alert" } },
-            [_c("strong", [_vm._v("3000文字以内で入力してください。")])]
+            [
+              _c("strong", [
+                _vm._v(
+                  _vm._s(_vm.textareaLimitNumber) +
+                    "文字以内で入力してください。"
+                )
+              ])
+            ]
           )
         : _vm._e(),
       _vm._v(" "),
