@@ -28,7 +28,7 @@
       </div>
       <!-- PC用 -->
       <small class="p-profileEdit__imgEditCaption" v-if="device === 'PC'"
-         >ドラッグ&amp;ドロップ<br />またはクリックで変更</small
+         >ドラッグ&amp;ドロップまたはクリックで変更</small
       >
       <!-- firefox用 -->
       <small
@@ -41,6 +41,9 @@
          class="p-profileEdit__imgEditCaption -sp"
          v-if="device === 'Mobile'"
          >クリックで変更</small
+      >
+      <small class="p-profileEdit__imgEditCaption -mimes"
+         >画像の形式は、jpeg, png, gif, svg のいずれかを指定してください</small
       >
    </div>
 </template>
@@ -72,6 +75,12 @@ export default {
 
          if (!file.type.includes('image/')) {
             alert('画像ファイルを選択してください');
+            return;
+         }
+         if (file.type.includes('image/heic')) {
+            alert(
+               'HEICファイルはアップロードできません。\n jpeg,png,gif,svgのいずれかのファイルを選択してください。'
+            );
             return;
          }
 

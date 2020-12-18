@@ -26,7 +26,7 @@
                            placeholder="現在のパスワード" />
 
                         @error('current_password')
-                        <span class="c-form__invalid is-invalid" role="alert">
+                        <span class="c-form__invalid" role="alert">
                            <strong>{{ $message }}</strong>
                         </span>
                         @enderror
@@ -42,7 +42,7 @@
                            placeholder="新しいパスワード" />
 
                         @error('password')
-                        <span class="c-form__invalid is-invalid" role="alert">
+                        <span class="c-form__invalid" role="alert">
                            <strong>{{ $message }}</strong>
                         </span>
                         @enderror

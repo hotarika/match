@@ -33,13 +33,13 @@
                      <div class="p-profileEdit__wrap -name">
                         <label class="p-profileEdit__label -name" for="name">名前<span>[必須]</span></label>
                         <div class="p-profileEdit__inputWrap">
+                           <span class="c-form__description">※ 20文字以内</span>
                            <input
                               id="name"
-                              class="c-form__input p-profileEdit__input -name"
+                              class="c-form__input @error('name') is-invalid @enderror"
                               type="text"
                               name="name"
                               value="{{old('name',$user->name ?? '')}}"
-                              required
                               autofocus
                               autocomplete="name"
                               placeholder="名前を記入" />
@@ -55,17 +55,17 @@
                      <div class="p-profileEdit__wrap -email">
                         <label class="p-profileEdit__label -email" for="email">メールアドレス<span>[必須]</span></label>
                         <div class="p-profileEdit__inputWrap">
+                           <span class="c-form__description -empty"></span>
                            <input
                               id="email"
-                              class="c-form__input p-profileEdit__input -email"
+                              class="c-form__input @error('email') is-invalid @enderror"
                               type="email"
                               name="email"
                               value="{{old('email',$user->email ?? '')}}"
-                              required
                               autocomplete="email"
                               placeholder="メールアドレスを記入" />
                            @error('email')
-                           <span class="c-form__invalid is-invalid" role="alert">
+                           <span class="c-form__invalid" role="alert">
                               <strong>{{$message}}</strong>
                            </span>
                            @enderror
@@ -74,15 +74,22 @@
 
                      <!-- 自己紹介 -->
                      <div class="p-profileEdit__wrap -introduction">
-                        <label class="p-profileEdit__label -introduction" for="introduction">自己紹介文</label>
+                        <label class="p-profileEdit__label -introduction"
+                           for="introduction">自己紹介文<span>[任意]</span></label>
                         <div class="p-profileEdit__inputWrap">
+                           <span class="c-form__description">※ 3000文字以内</span>
                            <textarea
                               id="introduction"
-                              class="c-form__textarea p-profileEdit__textarea"
+                              class="c-form__textarea p-profileEdit__textarea @error('introduction') is-invalid @enderror"
                               name="introduction"
                               cols="30"
                               rows="10"
                               placeholder="自己紹介文を記入">{{old('introduction',$user->introduction ?? '')}}</textarea>
+                           @error('introduction')
+                           <span class="c-form__invalid" role="alert">
+                              <strong>{{$message}}</strong>
+                           </span>
+                           @enderror
                         </div>
                      </div>
                      <button class="c-btn p-profileEdit__editBtn" type="submit">編集する</button>

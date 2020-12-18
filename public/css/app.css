@@ -1198,6 +1198,7 @@ pre {
   border-radius: 2px;
   min-height: 60px;
   padding: 15px;
+  margin-bottom: 5px;
   font-size: 13px;
   resize: vertical;
   border: 1px solid #ced4da;
@@ -3019,6 +3020,10 @@ pre {
   }
 }
 
+.p-profileEdit__imgEditCaption.-mimes {
+  margin-top: 4px;
+}
+
 @media screen and (max-width: 320px) {
   .p-profileEdit__imgEditCaption {
     margin-top: 5px;
@@ -3028,7 +3033,7 @@ pre {
 
 .p-profileEdit__wrap {
   display: flex;
-  padding: 10px;
+  padding: 5px 10px;
 }
 
 @media screen and (max-width: 768px) {
@@ -3042,7 +3047,7 @@ pre {
 .p-profileEdit__label {
   display: block;
   width: 25%;
-  margin-top: 10px;
+  margin-top: 25px;
   font-size: 14px;
 }
 
@@ -3054,10 +3059,17 @@ pre {
   }
 }
 
-.p-profileEdit__label > span {
+.p-profileEdit__label.-name > span,
+.p-profileEdit__label.-email > span {
   margin-left: 5px;
   font-size: 12px;
   color: #dc3545;
+}
+
+.p-profileEdit__label.-introduction > span {
+  margin-left: 5px;
+  font-size: 12px;
+  color: #0081ff;
 }
 
 .p-profileEdit__inputWrap {
@@ -3068,26 +3080,6 @@ pre {
 
 @media screen and (max-width: 768px) {
   .p-profileEdit__inputWrap {
-    width: 100%;
-  }
-}
-
-.p-profileEdit__input.-name {
-  width: 70%;
-}
-
-@media screen and (max-width: 768px) {
-  .p-profileEdit__input.-name {
-    width: 100%;
-  }
-}
-
-.p-profileEdit__input.-email {
-  width: 70%;
-}
-
-@media screen and (max-width: 768px) {
-  .p-profileEdit__input.-email {
     width: 100%;
   }
 }

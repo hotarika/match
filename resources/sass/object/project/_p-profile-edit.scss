@@ -52,6 +52,9 @@
             display: block;
          }
       }
+      &.-mimes {
+         margin-top: 4px;
+      }
       @include mq('3xs') {
          margin-top: 5px;
          font-size: 11px;
@@ -59,7 +62,7 @@
    }
    &__wrap {
       display: flex;
-      padding: 10px;
+      padding: 5px 10px;
       @include mq('md') {
          flex-direction: column;
          padding: 0;
@@ -69,17 +72,23 @@
    &__label {
       display: block;
       width: 25%;
-      margin-top: 10px;
+      margin-top: 25px;
       font-size: 14px;
       @include mq('md') {
          width: 100%;
          margin-bottom: 3px;
          font-size: 13px;
       }
-      & > span {
+      &.-name > span,
+      &.-email > span {
          margin-left: 5px;
          font-size: 12px;
          color: $red;
+      }
+      &.-introduction > span {
+         margin-left: 5px;
+         font-size: 12px;
+         color: $blue;
       }
    }
    &__inputWrap {
@@ -88,20 +97,6 @@
       width: 75%;
       @include mq('md') {
          width: 100%;
-      }
-   }
-   &__input {
-      &.-name {
-         width: 70%;
-         @include mq('md') {
-            width: 100%;
-         }
-      }
-      &.-email {
-         width: 70%;
-         @include mq('md') {
-            width: 100%;
-         }
       }
    }
    &__textarea {

@@ -2370,6 +2370,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     publicPath: String,
@@ -2401,6 +2404,11 @@ __webpack_require__.r(__webpack_exports__);
 
       if (!file.type.includes('image/')) {
         alert('画像ファイルを選択してください');
+        return;
+      }
+
+      if (file.type.includes('image/heic')) {
+        alert('HEICファイルはアップロードできません。\n jpeg,png,gif,svgのいずれかのファイルを選択してください。');
         return;
       }
 
@@ -8219,7 +8227,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* スマホ対応時に下記のスタイルを消したいため、<sytle scoped>で指定せず、グローバルスコープにしている */\n.js-img-over {\n   border: 3px dotted rgba(0, 200, 0, 0.7);\n}\n.js-img-leave {\n   border: 3px dotted gray;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* スマホ対応時に下記のスタイルを消したいため、<sytle scoped>で指定せず、グローバルスコープにしている */\n.js-img-over {\n   border: 3px dotted rgba(0, 200, 0, 0.7);\n}\n.js-img-leave {\n   border: 3px dotted gray;\n}\n", ""]);
 
 // exports
 
@@ -40552,9 +40560,7 @@ var render = function() {
     _vm._v(" "),
     _vm.device === "PC"
       ? _c("small", { staticClass: "p-profileEdit__imgEditCaption" }, [
-          _vm._v("ドラッグ&ドロップ"),
-          _c("br"),
-          _vm._v("またはクリックで変更")
+          _vm._v("ドラッグ&ドロップまたはクリックで変更")
         ])
       : _vm._e(),
     _vm._v(" "),
@@ -40568,7 +40574,11 @@ var render = function() {
       ? _c("small", { staticClass: "p-profileEdit__imgEditCaption -sp" }, [
           _vm._v("クリックで変更")
         ])
-      : _vm._e()
+      : _vm._e(),
+    _vm._v(" "),
+    _c("small", { staticClass: "p-profileEdit__imgEditCaption -mimes" }, [
+      _vm._v("画像の形式は、jpeg, png, gif, svg のいずれかを指定してください")
+    ])
   ])
 }
 var staticRenderFns = []

@@ -86,7 +86,7 @@ class RegisterFormTest extends TestCase
         ]);
 
         $error = session('errors')->first('name');
-        $this->assertEquals('名前は、20文字以下で指定してください。', $error);
+        $this->assertEquals('名前は、20文字以内で指定してください。', $error);
     }
     /**
      * @test
@@ -112,7 +112,7 @@ class RegisterFormTest extends TestCase
         ]);
 
         $error = session('errors')->first('name');
-        $this->assertEquals('名前は、20文字以下で指定してください。', $error);
+        $this->assertEquals('名前は、20文字以内で指定してください。', $error);
     }
 
     // *******************************************
@@ -181,7 +181,7 @@ class RegisterFormTest extends TestCase
         ]);
 
         $error = session('errors')->first('email');
-        $this->assertEquals('メールアドレスは、255文字以下で指定してください。', $error);
+        $this->assertEquals('メールアドレスは、255文字以内で指定してください。', $error);
     }
     /**
      * @test
@@ -263,7 +263,7 @@ class RegisterFormTest extends TestCase
         ]);
 
         $error = session('errors')->first('password');
-        $this->assertEquals('パスワードは、20文字以下で指定してください。', $error);
+        $this->assertEquals('パスワードは、20文字以内で指定してください。', $error);
     }
     /**
      * @test
