@@ -3267,11 +3267,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     disabledBtn: function disabledBtn() {
-      if (this.textarea.length > 3000) {
+      if (this.textarea.length > this.textareaLimitNumber) {
         return true;
       } else {
         return false;
       }
+    },
+    textareaPlaceholder: function textareaPlaceholder() {
+      return '必須：メッセージの内容を入力（' + this.textareaLimitNumber + '文字以内）';
     }
   },
   methods: {
@@ -41433,7 +41436,7 @@ var render = function() {
           id: "message",
           cols: "30",
           rows: "2",
-          placeholder: "必須：メッセージの内容を入力（3000文字以内）"
+          placeholder: _vm.textareaPlaceholder
         },
         domProps: { value: _vm.textarea },
         on: {
