@@ -17,7 +17,7 @@ class CreateDirectMessagesContents extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('board_id');
             $table->bigInteger('user_id');
-            $table->string('content', 10000);
+            $table->string('content', 3000);
             $table->boolean('delete_flg')->default(false);
             $table->timestamps();
         });
