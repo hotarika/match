@@ -27,25 +27,40 @@ class WorkRequest extends FormRequest
         $today = date("Y/m/d");
 
         return [
-            'name' => ['required',  'string', 'max:100'],
+            'work' => ['required',  'string', 'max:60'],
             'end_date' => ['required', ' date', 'after:' . $today],
             'hope_date' =>  ['required ', ' date', 'after:end_date'],
             'contract_id' =>  ['required'],
             'price_lower' => ['required_if:contract_id,1'],
-            'price_upper' => ['required_if:contract_id,1',],
-            'content' => ['required ', 'string'],
+            'price_upper' => ['required_if:contract_id,1'],
+            'order_content' => ['required ', 'string', 'max:3000'],
         ];
     }
 
     public function withValidator(Validator $validator)
     {
-        // 下限金額が1未満であれば、バリデーション発火
-        $validator->sometimes('price_lower', 'gt:0', function ($input) {
+        // **************************
+        // 下限金額設定
+        // **************************
+        // 下限金額が0以上かどうか
+        $validator->sometimes('price_lower', 'integer|gt:0', function ($input) {
             if ($input->contract_id == 1) return $input->price_lower < 1;
         });
-        // 下限金額が上限金額より多ければ、バリデーション発火
-        $validator->sometimes('price_upper', 'gte:price_lower', function ($input) {
+        // 下限金額が1000千円以下かどうか
+        $validator->sometimes('price_lower', 'integer|max:1000', function ($input) {
+            if ($input->contract_id == 1) return $input->price_lower >= 1000;
+        });
+
+        // **************************
+        // 上限金額設定
+        // **************************
+        // 下限金額が上限金額より多いかどうかのバリデーション
+        $validator->sometimes('price_upper', 'integer|gte:price_lower', function ($input) {
             if ($input->contract_id == 1) return $input->price_lower > $input->price_upper;
+        });
+        // 上限金額が1000千円以下かどうか
+        $validator->sometimes('price_upper', 'integer|max:1000', function ($input) {
+            if ($input->contract_id == 1) return $input->price_upper >= 1000;
         });
     }
 }

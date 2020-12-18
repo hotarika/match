@@ -23,18 +23,19 @@
                      @csrf
 
                      <!-- 案件名 -->
-                     <div class="p-workForm__wrap -name">
-                        <label class="p-workForm__label -name" for="name">仕事名<span>[必須]</span></label>
+                     <div class="p-workForm__wrap -work">
+                        <label class="p-workForm__label -work" for="work">仕事名<span>[必須]</span></label>
                         <div class="p-workForm__inputWrap">
+                           <span class="c-form__description">※ 60文字以内</span>
                            <input
-                              id="name"
-                              class="c-form__input p-workForm__input -name"
+                              id="work"
+                              class="c-form__input p-workForm__input -work"
                               type="text"
-                              name="name"
-                              value="{{ old('name',$work->name ?? '') }}"
+                              name="work"
+                              value="{{ old('work',$work->name ?? '') }}"
                               autofocus
                               placeholder="仕事名を記入" />
-                           @error('name')
+                           @error('work')
                            <span class="c-form__invalid" role="alert">
                               <strong>{{ $message }}</strong>
                            </span>
@@ -121,14 +122,14 @@
                                  type="number"
                                  name="price_lower"
                                  value="{{ old('price_lower',$work->price_lower ?? '') }}"
-                                 placeholder="例：1000" /><span>千円〜</span>
+                                 placeholder="例：500" /><span>千円〜</span>
                               <input
                                  id="price"
                                  class="c-form__input p-workForm__input -price"
                                  type="number"
                                  name="price_upper"
                                  value="{{ old('price_upper',$work->price_upper ?? '') }}"
-                                 placeholder="例：2000" /><span>千円</span>
+                                 placeholder="例：1000" /><span>千円</span>
                            </div>
 
                            @if($errors->has('price_lower') || $errors->has('price_upper'))
@@ -141,18 +142,19 @@
                      </div>
 
                      <!-- 依頼内容 -->
-                     <div class="p-workForm__wrap -content">
-                        <label class="p-workForm__label -content" for="content">依頼内容<span>[必須]</span></label>
+                     <div class="p-workForm__wrap -orderContent">
+                        <label class="p-workForm__label -orderContent" for="order-content">依頼内容<span>[必須]</span></label>
                         <div class="p-workForm__inputWrap">
+                           <span class="c-form__description">※ 3000文字以内</span>
                            <textarea
-                              id="content"
+                              id="order-content"
                               class="c-form__textarea p-workForm__textarea u-mb5"
-                              name="content"
+                              name="order_content"
                               cols="30"
                               rows="10"
-                              placeholder="具体的に依頼内容を記入&#10;（例：どのような仕事を依頼したいのか・期待する効果は何か・仕事の規模はどれくらいか などご自由にご記入ください）">{{ old('content',$work->content ?? '') }}</textarea>
+                              placeholder="具体的に依頼内容を記入&#10;（例：どのような仕事を依頼したいのか・期待する効果は何か・仕事の規模はどれくらいか などご自由にご記入ください）">{{ old('order_content',$work->content ?? '') }}</textarea>
 
-                           @error('content')
+                           @error('order_content')
                            <span class="c-form__invalid" role="alert">
                               <strong>{{ $message }}</strong>
                            </span>

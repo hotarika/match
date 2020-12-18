@@ -27,10 +27,10 @@
          padding: 0;
       }
       &.-price {
-         margin-top: -63px;
-         visibility: hidden;
-         opacity: 0;
-         transition: 0.2s;
+         // margin-top: -63px;
+         // visibility: hidden;
+         // opacity: 0;
+         // transition: 0.2s;
          &.is-active {
             margin-top: 0;
             visibility: visible;
@@ -45,6 +45,9 @@
       width: 25%;
       margin-top: 10px;
       font-size: 14px;
+      &.-work {
+         margin-top: 24px;
+      }
       @include mq('md') {
          width: 100%;
          margin-bottom: 3px;
@@ -91,7 +94,7 @@
       @include mq('md') {
          font-size: 13px;
       }
-      &.-name {
+      &.-work {
          width: 100%;
       }
       &.-email {

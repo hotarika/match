@@ -65,13 +65,13 @@ class WorksController extends Controller
         $work = new Work;
         $work->fill([
             'user_id' => Auth::id(), // fill($request->all())は使用できない
-            'name' => $request->name,
+            'name' => $request->work,
             'contract_id' => $request->contract_id,
             'end_date' => $request->end_date,
             'hope_date' => $request->hope_date,
             'price_lower' => $request->price_lower,
             'price_upper' => $request->price_upper,
-            'content' => $request->content,
+            'content' => $request->order_content,
         ])->save();
 
         return redirect()->route('works.index')

@@ -160,10 +160,11 @@ return [
         'contract_id' => '提携方法',
         'price_lower' => '下限金額',
         'price_upper' => '上限金額',
-        'content' => '依頼内容',
+        'order_content' => '依頼内容',
         'current_password' => '現在のパスワード',
         'image' => '画像',
-        'introduction' => '自己紹介文'
+        'introduction' => '自己紹介文',
+        'work' => '仕事名'
     ],
 
 ];

@@ -4014,13 +4014,6 @@ pre {
   }
 }
 
-.p-workForm__wrap.-price {
-  margin-top: -63px;
-  visibility: hidden;
-  opacity: 0;
-  transition: 0.2s;
-}
-
 .p-workForm__wrap.-price.is-active {
   margin-top: 0;
   visibility: visible;
@@ -4034,6 +4027,10 @@ pre {
   width: 25%;
   margin-top: 10px;
   font-size: 14px;
+}
+
+.p-workForm__label.-work {
+  margin-top: 24px;
 }
 
 @media screen and (max-width: 768px) {
@@ -4095,7 +4092,7 @@ pre {
   }
 }
 
-.p-workForm__input.-name {
+.p-workForm__input.-work {
   width: 100%;
 }
 
