@@ -3207,8 +3207,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['parent'],
+  data: function data() {
+    return {
+      textarea: ''
+    };
+  },
+  computed: {
+    disabledBtn: function disabledBtn() {
+      if (this.textarea.length > 3000) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
   methods: {
     childTextHandler: function childTextHandler() {
       this.$emit('child-text', this.$refs, this.parent);
@@ -41316,6 +41336,14 @@ var render = function() {
     { staticClass: "p-pubmsg__childForm", attrs: { action: "" } },
     [
       _c("textarea", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.textarea,
+            expression: "textarea"
+          }
+        ],
         ref: "childMessage",
         staticClass:
           "c-form__textarea p-pubmsg__childTextarea js-childTextarea",
@@ -41324,15 +41352,32 @@ var render = function() {
           id: "message",
           cols: "30",
           rows: "2",
-          placeholder: "必須：メッセージの内容を入力"
+          placeholder: "必須：メッセージの内容を入力（3000文字以内）"
+        },
+        domProps: { value: _vm.textarea },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.textarea = $event.target.value
+          }
         }
       }),
+      _vm._v(" "),
+      _vm.textarea.length > 3000
+        ? _c(
+            "span",
+            { staticClass: "c-form__invalid", attrs: { role: "alert" } },
+            [_c("strong", [_vm._v("3000文字以内で入力してください。")])]
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "button",
         {
           staticClass: "c-btn c-msgSendBtn p-pubmsg__childBtn",
-          attrs: { type: "submit" },
+          attrs: { type: "submit", disabled: _vm.disabledBtn },
           on: {
             click: function($event) {
               $event.preventDefault()

@@ -27,10 +27,10 @@
          padding: 0;
       }
       &.-price {
-         // margin-top: -63px;
-         // visibility: hidden;
-         // opacity: 0;
-         // transition: 0.2s;
+         margin-top: -63px;
+         visibility: hidden;
+         opacity: 0;
+         transition: 0.2s;
          &.is-active {
             margin-top: 0;
             visibility: visible;
