@@ -103,28 +103,33 @@ class AsynchronousController extends Controller
     }
 
     // ======================================
-    // パブリックメッセージ
+    // パブリックメッセージリスト
     // ======================================
     public function getPublicMessagesList()
     {
         // [サブクエリ1]
-        // 子メッセージに自分のIDが含まれている親ボードのデータを全て取得
-        $child1 = DB::table('child_public_messages as c1')
+        // 親メッセージ・子メッセージ・依頼者に自分のIDが含まれている親ボードのデータを全て取得
+        $parentIdContainsMyMessages = DB::table('parent_public_messages as p1')
             ->select('c1.parent_id')
-            ->where('c1.user_id', '=', Auth::id());
+            ->rightJoin('child_public_messages as c1', 'p1.id', '=', 'c1.parent_id')
+            ->leftJoin('works as w', 'p1.work_id', '=', 'w.id')
+            ->orWhere('p1.user_id', '=', Auth::id()) // 親掲示板のuser_id
+            ->orWhere('c1.user_id', '=', Auth::id()) // 子掲示板のuser_id
+            ->orWhere('w.user_id', '=', Auth::id()) // 仕事発注者のuser_id
+            ->groupBy('c1.parent_id');
 
         // [サブクエリ2]
         // 上記の結果から、最新の日時を持つレコードを親ボードIDでグループ化
-        $child2 = DB::table('child_public_messages as c2')
+        $parentIdLatestDate = DB::table('child_public_messages as c2')
             ->select(DB::raw('c2.parent_id, max(c2.created_at) as latest_date'))
-            ->whereIn('c2.parent_id', $child1)
+            ->whereIn('c2.parent_id', $parentIdContainsMyMessages)
             ->groupBy('c2.parent_id');
 
         // [サブクエリ3]
         // 上記の最新の日時を持つ子レコードを全て取得
-        $child3 = DB::table('child_public_messages as c3')
+        $childAllColumns = DB::table('child_public_messages as c3')
             ->select('*')
-            ->whereIn(DB::raw('(c3.parent_id, c3.created_at)'), $child2);
+            ->whereIn(DB::raw('(c3.parent_id, c3.created_at)'), $parentIdLatestDate);
 
         // メッセージのバッジ表示
         $countBadges = DB::table('public_messages_badges')
@@ -152,15 +157,18 @@ class AsynchronousController extends Controller
                 'cnt.count as badge'
             )
             ->leftJoin('works as w', 'pm.work_id', '=', 'w.id')
-            ->leftJoinSub($child3, 'cm', function ($join) {
+            ->leftJoinSub($childAllColumns, 'cm', function ($join) {
                 $join->on('pm.id', '=', 'cm.parent_id');
             })
             ->leftJoinSub($countBadges, 'cnt', function ($join) {
                 $join->on('pm.id', '=', 'cnt.parent_id');
             })
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
-            ->orWhere('pm.user_id', Auth::id()) // 子にデータがない場合でも抽出
-            ->orWhereNotNull('cm.id') // データがNULL以外のレコードを抽出
+            ->orWhere('pm.user_id', Auth::id()) // 親メッセージ作成者の場合リスト表示
+            ->orWhere('w.user_id', Auth::id()) // または自分が依頼者の場合リスト表示
+            // または子どもデータがNULL以外のレコードをリスト表示
+            //（notNullは、サブクエリから子どもの最新情報を取得して、親と結合したときにleftJoin（子掲示板がnullであっても自分が作成した親掲示板情報を取得したいため）で結合しているため、不要な情報が一緒にくっついてくるので、notNullをしてあげることで、それを全て削除することができる）
+            ->orWhereNotNull('cm.id')
             ->orderBy('pm.updated_at', 'DESC')
             ->get();
 
@@ -168,7 +176,7 @@ class AsynchronousController extends Controller
     }
 
     // ======================================
-    // ダイレクトメッセージ
+    // ダイレクトメッセージリスト
     // ======================================
     public function getDirectMessagesList()
     {

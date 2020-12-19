@@ -2961,6 +2961,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     publicPath: String,
     workId: Number,
+    ordererId: Number,
     authUser: Object,
     parentMsg: Array,
     childMsg: Array
@@ -2977,7 +2978,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    addParentMsg: function addParentMsg() {
+    addParentMsg: function addParentMsg(e) {
+      console.log(e);
       var date = new Date(); // 親テキストエリアが空欄の場合
 
       if (!this.parentTitle.trim('') || !this.parentTextarea.trim('')) {
@@ -3004,7 +3006,8 @@ __webpack_require__.r(__webpack_exports__);
           work_id: this.workId,
           user_id: this.authUser.id,
           title: this.parentTitle,
-          content: this.parentTextarea
+          content: this.parentTextarea,
+          parnet_id: this.parentMessages
         }).then(function (res) {
           console.log(res);
         }); // 挿入後に、メッセージを空にする
@@ -3046,7 +3049,8 @@ __webpack_require__.r(__webpack_exports__);
           parent_id: refs[1],
           user_id: this.authUser.id,
           content: text,
-          work_id: this.workId
+          work_id: this.workId,
+          orderer_id: this.ordererId
         }).then(function (res) {
           console.log(res);
         }); // 親テーブルの更新日時（updated_at）を更新

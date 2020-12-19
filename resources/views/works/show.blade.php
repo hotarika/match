@@ -140,7 +140,8 @@
                :work-id="{{json_encode((integer)$work_id)}}"
                :auth-user="{{json_encode($authUser)}}"
                :parent-msg="{{json_encode($parent_msg)}}"
-               :child-msg="{{json_encode($child_msg)}}">
+               :child-msg="{{json_encode($child_msg)}}"
+               :orderer-id="{{json_encode($work->orderer_id)}}">
             </public-messages-area-component>
          </div>
       </div>

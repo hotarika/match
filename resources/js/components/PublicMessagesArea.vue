@@ -139,6 +139,7 @@ export default {
    props: {
       publicPath: String,
       workId: Number,
+      ordererId: Number,
       authUser: Object,
       parentMsg: Array,
       childMsg: Array
@@ -228,7 +229,8 @@ export default {
                   parent_id: refs[1],
                   user_id: this.authUser.id,
                   content: text,
-                  work_id: this.workId
+                  work_id: this.workId,
+                  orderer_id: this.ordererId
                })
                .then(res => {
                   console.log(res);
