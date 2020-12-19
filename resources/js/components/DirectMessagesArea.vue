@@ -33,15 +33,27 @@
          >
             <textarea
                class="c-form__textarea p-dm__textarea"
+               :class="{ 'is-error': textarea.length > textareaLimitNumber }"
                name="message"
                id="message"
                cols="80"
                rows="6"
-               placeholder="ここにメッセージを入力"
+               :placeholder="textareaPlaceholder"
                v-model="textarea"
             />
+            <span
+               class="c-form__invalid"
+               v-if="textarea.length > textareaLimitNumber"
+               role="alert"
+            >
+               <strong
+                  >{{ textareaLimitNumber }}文字以内で入力してください。</strong
+               >
+            </span>
+
             <button
                class="c-btn c-msgSendBtn p-dm__sendBtn"
+               :class="{ 'is-error': textarea.length > textareaLimitNumber }"
                type="submit"
                @click.prevent="addMessage"
             >
@@ -67,7 +79,8 @@ export default {
    data() {
       return {
          textarea: '',
-         conts: this.contents
+         conts: this.contents,
+         textareaLimitNumber: 3000
       };
    },
    methods: {
@@ -77,6 +90,12 @@ export default {
          // テキストエリアが空欄の場合
          if (!this.textarea.trim('')) {
             alert('メッセージが空欄です');
+            return;
+         }
+
+         // 文字数制限以上だった場合
+         if (this.textarea.length > this.textareaLimitNumber) {
+            alert(this.textareaLimitNumber + '文字以内で入力してください。');
             return;
          }
 
@@ -138,6 +157,11 @@ export default {
          } else {
             return this.info.orderer_name;
          }
+      },
+      textareaPlaceholder() {
+         return (
+            'ここにメッセージを入力（' + this.textareaLimitNumber + '文字以内）'
+         );
       }
    },
    filters: {
