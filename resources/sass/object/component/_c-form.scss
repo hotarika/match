@@ -7,7 +7,7 @@
       @include border-radius;
       padding: 10px;
       margin-bottom: 5px;
-      font-size: 14px;
+      font-size: 13px;
       border: 1px solid $gray-400;
       @include mq('xs') {
          font-size: 13px;
@@ -18,6 +18,11 @@
       }
       &:focus {
          outline-color: $primary;
+      }
+      &.is-error {
+         &:focus {
+            outline-color: $red;
+         }
       }
    }
    &__description {
@@ -60,6 +65,11 @@
       }
       &:focus {
          outline-color: $primary;
+      }
+      &.is-error {
+         &:focus {
+            outline-color: $red;
+         }
       }
    }
 }

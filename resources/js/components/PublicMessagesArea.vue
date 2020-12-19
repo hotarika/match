@@ -7,6 +7,9 @@
             <form class="p-pubmsg__createMsgForm" action="">
                <input
                   class="c-form__input p-pubmsg__createMsgTitle"
+                  :class="{
+                     'is-error': parentTitle.length > parentTitleLimitNumber
+                  }"
                   type="text"
                   :placeholder="parentTitlePlaceholder"
                   v-model="parentTitle"
@@ -25,6 +28,10 @@
 
                <textarea
                   class="c-form__textarea p-pubmsg__createMsgTextarea"
+                  :class="{
+                     'is-error':
+                        parentTextarea.length > parentTextareaLimitNumber
+                  }"
                   name="message"
                   id="message"
                   cols="30"
@@ -46,9 +53,12 @@
 
                <button
                   class="c-btn c-msgSendBtn p-pubmsg__parentBtn"
+                  :class="{
+                     'is-error':
+                        parentTextarea.length > parentTextareaLimitNumber
+                  }"
                   type="submit"
                   @click.prevent="addParentMsg"
-                  :disabled="disabledBtn"
                >
                   <i class="far fa-arrow-alt-circle-up"></i>送信
                </button>
@@ -151,8 +161,8 @@ export default {
          parentTitle: '',
          parentTextarea: '',
          childTextarea: '',
-         parentTitleLimitNumber: 40,
-         parentTextareaLimitNumber: 3000
+         parentTitleLimitNumber: 40, // 40文字以内
+         parentTextareaLimitNumber: 3000 // 3000文字以内
       };
    },
    methods: {
@@ -162,6 +172,25 @@ export default {
          // 親テキストエリアが空欄の場合
          if (!this.parentTitle.trim('') || !this.parentTextarea.trim('')) {
             alert('タイトルまたはメッセージが空欄です');
+            return;
+         }
+         // 親メッセージタイトルの文字数制限
+         if (this.parentTitle.length > this.parentTitleLimitNumber) {
+            alert(
+               'タイトルは、' +
+                  this.parentTitleLimitNumber +
+                  '文字以内で入力してください。'
+            );
+            return;
+         }
+
+         // 親テキストエリアの文字数制限
+         if (this.parentTextarea.length > this.parentTextareaLimitNumber) {
+            alert(
+               'テキストエリアは、' +
+                  this.parentTextareaLimitNumber +
+                  '文字以内で入力してください。'
+            );
             return;
          }
 
@@ -262,16 +291,6 @@ export default {
                return this.publicPath + 'images/no-image.png';
             }
          };
-      },
-      disabledBtn() {
-         if (
-            this.parentTitle.length > this.parentTitleLimitNumber ||
-            this.parentTextarea.length > this.parentTextareaLimitNumber
-         ) {
-            return true;
-         } else {
-            return false;
-         }
       },
       parentTitlePlaceholder() {
          return (
