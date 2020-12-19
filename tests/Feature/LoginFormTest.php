@@ -102,7 +102,7 @@ class LoginFormTest extends TestCase
         ]);
 
         $error = session('errors')->first('email');
-        $this->assertEquals('ログイン情報が登録されていません。', $error);
+        $this->assertEquals('メールアドレスまたはパスワードが間違っています。', $error);
     }
 
     /**
@@ -123,6 +123,6 @@ class LoginFormTest extends TestCase
         ]);
 
         $error = session('errors')->first('email');
-        $this->assertEquals('ログイン情報が登録されていません。', $error);
+        $this->assertEquals('メールアドレスまたはパスワードが間違っています。', $error);
     }
 }
