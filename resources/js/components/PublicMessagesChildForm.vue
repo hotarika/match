@@ -23,7 +23,6 @@
          class="c-btn c-msgSendBtn p-pubmsg__childBtn"
          type="submit"
          @click.prevent="childTextHandler"
-         :disabled="disabledBtn"
       >
          <i class="far fa-arrow-alt-circle-up"></i>送信
       </button>
@@ -40,13 +39,6 @@ export default {
       };
    },
    computed: {
-      disabledBtn() {
-         if (this.textarea.length > this.textareaLimitNumber) {
-            return true;
-         } else {
-            return false;
-         }
-      },
       textareaPlaceholder() {
          return (
             '必須：メッセージの内容を入力（' +
@@ -57,6 +49,16 @@ export default {
    },
    methods: {
       childTextHandler() {
+         // 親テキストエリアの文字数制限
+         if (this.textarea.length > this.textareaLimitNumber) {
+            alert(
+               'メッセージは、' +
+                  this.textareaLimitNumber +
+                  '文字以内で入力してください。'
+            );
+            return;
+         }
+
          this.$emit('child-text', this.$refs, this.parent);
       }
    }

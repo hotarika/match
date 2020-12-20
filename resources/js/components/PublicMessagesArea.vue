@@ -187,7 +187,7 @@ export default {
          // 親テキストエリアの文字数制限
          if (this.parentTextarea.length > this.parentTextareaLimitNumber) {
             alert(
-               'テキストエリアは、' +
+               '新規質問内容は、' +
                   this.parentTextareaLimitNumber +
                   '文字以内で入力してください。'
             );
