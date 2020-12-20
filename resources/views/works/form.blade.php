@@ -27,14 +27,8 @@
                         <label class="p-workForm__label -work" for="work">仕事名<span>[必須]</span></label>
                         <div class="p-workForm__inputWrap">
                            <span class="c-form__description">※ 60文字以内</span>
-                           <input
-                              id="work"
-                              class="c-form__input p-workForm__input -work"
-                              type="text"
-                              name="work"
-                              value="{{ old('work',$work->name ?? '') }}"
-                              autofocus
-                              placeholder="仕事名を記入" />
+                           <textarea name="work" class="c-form__textarea p-workForm__textarea" id="work" cols="30"
+                              rows="2" placeholder="仕事名を記入" autofocus>{{ old('work',$work->name ?? '') }}</textarea>
                            @error('work')
                            <span class="c-form__invalid" role="alert">
                               <strong>{{ $message }}</strong>
