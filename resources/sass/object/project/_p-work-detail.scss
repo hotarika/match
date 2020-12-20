@@ -198,16 +198,13 @@
       }
    }
    &__infoLowerItem {
+      @include flex-center;
       position: relative;
-      display: flex;
       flex: 1 1;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
       padding: 40px 0 25px;
       border: 1px solid $gray-400;
       @include mq('xs') {
-         flex: 0 0;
          padding: 35px 0 15px;
          margin-bottom: -1px;
       }
