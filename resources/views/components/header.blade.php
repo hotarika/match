@@ -55,7 +55,7 @@
 
                      <!-- スマホのみ表示 -->
                      <li class="p-header__item -sp">
-                        <a class="c-link p-header__navLink" href="{{ route('works.edit', 1) }}">
+                        <a class="c-link p-header__navLink" href="{{ route('works.edit', $work->w_id) }}">
                            <i class="fas fa-edit p-header__navIcon"></i>
                            <div class="p-header__navName">編集</div>
                         </a>

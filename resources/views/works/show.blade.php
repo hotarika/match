@@ -61,7 +61,7 @@
                               src="{{ asset('storage/user_img/'.$work->orderer_image) }}"
                               @endif
                               alt="ユーザーの画像" />
-                              <a href="{{route('users.show',1)}}"
+                              <a href="{{route('users.show',$work->orderer_id)}}"
                                  class="c-link p-workDetail__infoName">{{$work->orderer_name}}</a>
                            </div>
                         </div>
