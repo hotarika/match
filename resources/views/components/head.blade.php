@@ -6,7 +6,7 @@
    <title>@yield('title') | match</title>
    <meta name="description"
       content="気軽に簡単にITの受注・発注ができるサービスmatch。 WEB制作、デザイン、SNSマーケティングなどあなたのスキルを生かしてみませんか？ また、もしITに関するお仕事を頼みたい場合もmatchで解決することができます。 さあ、あなたも始めてみましょう！" />
-   <meta name="keywords" content="IT,仕事,受注,発注,気軽に,簡単に,スキル," />
+   <meta name="keywords" content="IT,仕事,受注,発注,気軽に,簡単に,スキル" />
    <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"

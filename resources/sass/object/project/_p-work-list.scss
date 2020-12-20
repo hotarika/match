@@ -36,7 +36,7 @@
    }
    // 仕事カード
    &__workCardWrap {
-      min-height: 790px;
+      min-height: 840px;
       background-color: $white;
       @include mq('xs') {
          min-height: 550px;

@@ -9,7 +9,7 @@
    width: 75%;
    padding: 10px 15px;
    font-size: 13px;
-   overflow-wrap: break-word;
+   word-break: break-all;
    white-space: pre-wrap;
    @include mq('3xs') {
       width: 80%;
@@ -65,6 +65,16 @@
       @include mq('3xs') {
          padding: 9px 10px 7px;
       }
+      &.-myWork {
+         background-color: $primary-light;
+      }
+   }
+   &__h2AllInfoWrap {
+      width: 70%;
+      @include mq('xs') {
+         width: 100%;
+      }
+      @include flex-center;
       & > img {
          width: 45px;
          height: 45px;
@@ -73,9 +83,6 @@
             width: 30px;
             height: 30px;
          }
-      }
-      &.-myWork {
-         background-color: $primary-light;
       }
    }
    &__h2InfoWrap {
@@ -92,6 +99,7 @@
    &__h2InfoOrderName {
       line-height: 1.1;
       text-align: left;
+      word-break: break-all;
       @include mq('3xs') {
          font-size: 13px;
       }

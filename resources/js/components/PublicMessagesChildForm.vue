@@ -3,6 +3,9 @@
    <form class="p-pubmsg__childForm" action="">
       <textarea
          class="c-form__textarea p-pubmsg__childTextarea js-childTextarea"
+         :class="{
+            'is-error': textarea.length > textareaLimitNumber
+         }"
          name="message"
          id="message"
          cols="30"
@@ -21,6 +24,9 @@
 
       <button
          class="c-btn c-msgSendBtn p-pubmsg__childBtn"
+         :class="{
+            'is-error': textarea.length > textareaLimitNumber
+         }"
          type="submit"
          @click.prevent="childTextHandler"
       >

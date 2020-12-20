@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Support\Str;
 
 class RegisterFormTest extends TestCase
 {
@@ -216,9 +217,10 @@ class RegisterFormTest extends TestCase
      * */
     public function register_password_min_and_confirmation_true()
     {
+        $password = Str::random(8);
         $response = $this->post('register', [
-            'password' => str_repeat('a', 8),
-            'password_confirmation' => str_repeat('a', 8)
+            'password' => $password,
+            'password_confirmation' => $password
         ]);
 
         $error = session('errors')->first('password');
@@ -230,8 +232,9 @@ class RegisterFormTest extends TestCase
      * */
     public function register_password_min_false()
     {
+        $password = Str::random(7);
         $response = $this->post('register', [
-            'password' => str_repeat('a', 7),
+            'password' => $password,
         ]);
 
         $error = session('errors')->first('password');
@@ -243,9 +246,10 @@ class RegisterFormTest extends TestCase
      * */
     public function register_password_max_and_confirmation_true()
     {
+        $password = Str::random(20);
         $response = $this->post('register', [
-            'password' => str_repeat('a', 20),
-            'password_confirmation' => str_repeat('a', 20)
+            'password' => $password,
+            'password_confirmation' => $password
         ]);
 
         $error = session('errors')->first('password');
@@ -257,9 +261,10 @@ class RegisterFormTest extends TestCase
      * */
     public function register_password_max_false()
     {
+        $password = Str::random(21);
         $response = $this->post('register', [
-            'password' => str_repeat('a', 21),
-            'password_confirmation' => str_repeat('a', 21)
+            'password' => $password,
+            'password_confirmation' => $password
         ]);
 
         $error = session('errors')->first('password');
@@ -278,20 +283,6 @@ class RegisterFormTest extends TestCase
 
         $error = session('errors')->first('password');
         $this->assertEquals('パスワードと、確認フィールドとが、一致していません。', $error);
-    }
-    /**
-     * @test
-     * [正常値] パスワード / 半角英数字入力
-     * */
-    public function register_password_halfWidth_characters_true()
-    {
-        $response = $this->post('register', [
-            'password' => '0123456789abcABC',
-            'password_confirmation' => '0123456789abcABC'
-        ]);
-
-        $error = session('errors')->first('password');
-        $this->assertEmpty($error);
     }
     /**
      * @test

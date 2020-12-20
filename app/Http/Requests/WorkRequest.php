@@ -42,7 +42,7 @@ class WorkRequest extends FormRequest
         // **************************
         // 下限金額設定
         // **************************
-        // 下限金額が0以上かどうか
+        // 下限金額が0より大きいかどうか
         $validator->sometimes('price_lower', 'integer|gt:0', function ($input) {
             if ($input->contract_id == 1) return $input->price_lower < 1;
         });
@@ -54,13 +54,19 @@ class WorkRequest extends FormRequest
         // **************************
         // 上限金額設定
         // **************************
-        // 下限金額が上限金額より多いかどうかのバリデーション
-        $validator->sometimes('price_upper', 'integer|gte:price_lower', function ($input) {
-            if ($input->contract_id == 1) return $input->price_lower > $input->price_upper;
+        // 下限金額が0より大きいかどうか
+        $validator->sometimes('price_upper', 'integer|gt:0', function ($input) {
+            if ($input->contract_id == 1) return $input->price_upper < 1;
         });
         // 上限金額が1000千円以下かどうか
         $validator->sometimes('price_upper', 'integer|max:1000', function ($input) {
             if ($input->contract_id == 1) return $input->price_upper >= 1000;
+        });
+        // 上限金額が下限金額以上かどうかのバリデーション
+        $validator->sometimes('price_upper', 'integer|gte:price_lower', function ($input) {
+            // 下限金額が1000より大きい場合は、下限金額でエラーが出るので、上限金額ではエラーを出さない
+            if ($input->price_lower > 1000) return false;
+            if ($input->contract_id == 1) return $input->price_lower > $input->price_upper;
         });
     }
 }

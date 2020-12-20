@@ -1966,6 +1966,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1979,7 +1993,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       textarea: '',
-      conts: this.contents
+      conts: this.contents,
+      textareaLimitNumber: 3000
     };
   },
   methods: {
@@ -1988,6 +2003,12 @@ __webpack_require__.r(__webpack_exports__);
 
       if (!this.textarea.trim('')) {
         alert('メッセージが空欄です');
+        return;
+      } // 文字数制限以上だった場合
+
+
+      if (this.textarea.length > this.textareaLimitNumber) {
+        alert(this.textareaLimitNumber + '文字以内で入力してください。');
         return;
       } // メッセージの送信
 
@@ -2038,6 +2059,9 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         return this.info.orderer_name;
       }
+    },
+    textareaPlaceholder: function textareaPlaceholder() {
+      return 'ここにメッセージを入力（' + this.textareaLimitNumber + '文字以内）';
     }
   },
   filters: {
@@ -2954,6 +2978,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2974,16 +3008,29 @@ __webpack_require__.r(__webpack_exports__);
       parentTextarea: '',
       childTextarea: '',
       parentTitleLimitNumber: 40,
-      parentTextareaLimitNumber: 3000
+      // 40文字以内
+      parentTextareaLimitNumber: 3000 // 3000文字以内
+
     };
   },
   methods: {
-    addParentMsg: function addParentMsg(e) {
-      console.log(e);
+    addParentMsg: function addParentMsg() {
       var date = new Date(); // 親テキストエリアが空欄の場合
 
       if (!this.parentTitle.trim('') || !this.parentTextarea.trim('')) {
         alert('タイトルまたはメッセージが空欄です');
+        return;
+      } // 親メッセージタイトルの文字数制限
+
+
+      if (this.parentTitle.length > this.parentTitleLimitNumber) {
+        alert('タイトルは、' + this.parentTitleLimitNumber + '文字以内で入力してください。');
+        return;
+      } // 親テキストエリアの文字数制限
+
+
+      if (this.parentTextarea.length > this.parentTextareaLimitNumber) {
+        alert('新規質問内容は、' + this.parentTextareaLimitNumber + '文字以内で入力してください。');
         return;
       }
 
@@ -3006,8 +3053,7 @@ __webpack_require__.r(__webpack_exports__);
           work_id: this.workId,
           user_id: this.authUser.id,
           title: this.parentTitle,
-          content: this.parentTextarea,
-          parnet_id: this.parentMessages
+          content: this.parentTextarea
         }).then(function (res) {
           console.log(res);
         }); // 挿入後に、メッセージを空にする
@@ -3077,13 +3123,6 @@ __webpack_require__.r(__webpack_exports__);
           return this.publicPath + 'images/no-image.png';
         }
       };
-    },
-    disabledBtn: function disabledBtn() {
-      if (this.parentTitle.length > this.parentTitleLimitNumber || this.parentTextarea.length > this.parentTextareaLimitNumber) {
-        return true;
-      } else {
-        return false;
-      }
     },
     parentTitlePlaceholder: function parentTitlePlaceholder() {
       return '必須：新規質問内容のタイトルを記述（' + this.parentTitleLimitNumber + '文字以内）';
@@ -3261,6 +3300,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['parent'],
   data: function data() {
@@ -3270,19 +3314,18 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   computed: {
-    disabledBtn: function disabledBtn() {
-      if (this.textarea.length > this.textareaLimitNumber) {
-        return true;
-      } else {
-        return false;
-      }
-    },
     textareaPlaceholder: function textareaPlaceholder() {
       return '必須：メッセージの内容を入力（' + this.textareaLimitNumber + '文字以内）';
     }
   },
   methods: {
     childTextHandler: function childTextHandler() {
+      // 親テキストエリアの文字数制限
+      if (this.textarea.length > this.textareaLimitNumber) {
+        alert('メッセージは、' + this.textareaLimitNumber + '文字以内で入力してください。');
+        return;
+      }
+
       this.$emit('child-text', this.$refs, this.parent);
     }
   }
@@ -40230,15 +40273,19 @@ var render = function() {
         class: { "-myWork": _vm.authId === _vm.info.orderer_id }
       },
       [
-        _c("img", { attrs: { src: _vm.divideImages, alt: "ユーザーの画像" } }),
-        _vm._v(" "),
-        _c("div", { staticClass: "p-dm__h2InfoWrap" }, [
-          _c("div", { staticClass: "p-dm__h2InfoName" }, [
-            _vm._v(_vm._s(_vm.divideNames))
-          ]),
+        _c("div", { staticClass: "p-dm__h2AllInfoWrap" }, [
+          _c("img", {
+            attrs: { src: _vm.divideImages, alt: "ユーザーの画像" }
+          }),
           _vm._v(" "),
-          _c("div", { staticClass: "p-dm__h2InfoOrderName" }, [
-            _vm._v(_vm._s(_vm.info.w_name))
+          _c("div", { staticClass: "p-dm__h2InfoWrap" }, [
+            _c("div", { staticClass: "p-dm__h2InfoName" }, [
+              _vm._v(_vm._s(_vm.divideNames))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-dm__h2InfoOrderName" }, [
+              _vm._v(_vm._s(_vm.info.w_name))
+            ])
           ])
         ])
       ]
@@ -40296,12 +40343,15 @@ var render = function() {
               }
             ],
             staticClass: "c-form__textarea p-dm__textarea",
+            class: {
+              "is-error": _vm.textarea.length > _vm.textareaLimitNumber
+            },
             attrs: {
               name: "message",
               id: "message",
               cols: "80",
               rows: "6",
-              placeholder: "ここにメッセージを入力"
+              placeholder: _vm.textareaPlaceholder
             },
             domProps: { value: _vm.textarea },
             on: {
@@ -40314,10 +40364,28 @@ var render = function() {
             }
           }),
           _vm._v(" "),
+          _vm.textarea.length > _vm.textareaLimitNumber
+            ? _c(
+                "span",
+                { staticClass: "c-form__invalid", attrs: { role: "alert" } },
+                [
+                  _c("strong", [
+                    _vm._v(
+                      _vm._s(_vm.textareaLimitNumber) +
+                        "文字以内で入力してください。"
+                    )
+                  ])
+                ]
+              )
+            : _vm._e(),
+          _vm._v(" "),
           _c(
             "button",
             {
               staticClass: "c-btn c-msgSendBtn p-dm__sendBtn",
+              class: {
+                "is-error": _vm.textarea.length > _vm.textareaLimitNumber
+              },
               attrs: { type: "submit" },
               on: {
                 click: function($event) {
@@ -40648,12 +40716,25 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _c("small", { staticClass: "p-profileEdit__imgEditCaption -mimes" }, [
-      _vm._v("画像の形式は、jpeg, png, gif, svg のいずれかを指定してください")
-    ])
+    _vm._m(0)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "small",
+      { staticClass: "p-profileEdit__imgEditCaption -mimes" },
+      [
+        _vm._v("画像の形式は、jpeg, png, gif, svg の"),
+        _c("br"),
+        _vm._v("いずれかを指定してください")
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -41051,6 +41132,10 @@ var render = function() {
                       }
                     ],
                     staticClass: "c-form__input p-pubmsg__createMsgTitle",
+                    class: {
+                      "is-error":
+                        _vm.parentTitle.length > _vm.parentTitleLimitNumber
+                    },
                     attrs: {
                       type: "text",
                       placeholder: _vm.parentTitlePlaceholder
@@ -41094,6 +41179,11 @@ var render = function() {
                       }
                     ],
                     staticClass: "c-form__textarea p-pubmsg__createMsgTextarea",
+                    class: {
+                      "is-error":
+                        _vm.parentTextarea.length >
+                        _vm.parentTextareaLimitNumber
+                    },
                     attrs: {
                       name: "message",
                       id: "message",
@@ -41134,7 +41224,12 @@ var render = function() {
                     "button",
                     {
                       staticClass: "c-btn c-msgSendBtn p-pubmsg__parentBtn",
-                      attrs: { type: "submit", disabled: _vm.disabledBtn },
+                      class: {
+                        "is-error":
+                          _vm.parentTextarea.length >
+                          _vm.parentTextareaLimitNumber
+                      },
+                      attrs: { type: "submit" },
                       on: {
                         click: function($event) {
                           $event.preventDefault()
@@ -41435,6 +41530,9 @@ var render = function() {
         ref: "childMessage",
         staticClass:
           "c-form__textarea p-pubmsg__childTextarea js-childTextarea",
+        class: {
+          "is-error": _vm.textarea.length > _vm.textareaLimitNumber
+        },
         attrs: {
           name: "message",
           id: "message",
@@ -41472,7 +41570,10 @@ var render = function() {
         "button",
         {
           staticClass: "c-btn c-msgSendBtn p-pubmsg__childBtn",
-          attrs: { type: "submit", disabled: _vm.disabledBtn },
+          class: {
+            "is-error": _vm.textarea.length > _vm.textareaLimitNumber
+          },
+          attrs: { type: "submit" },
           on: {
             click: function($event) {
               $event.preventDefault()
@@ -55945,8 +56046,8 @@ window.addEventListener('DOMContentLoaded', function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/tatata/code/match/match_dev/03_Laravel/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/tatata/code/match/match_dev/03_Laravel/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/03_Laravel/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/03_Laravel/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

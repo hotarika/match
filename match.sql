@@ -8,54 +8,123 @@
 -- select c1.parent_id from child_public_messages as c1
 -- where c1.user_id = 1 group by parent_id
 #新しい
-select c1.parent_id from parent_public_messages as p1
+select p1.id from parent_public_messages as p1
 right join child_public_messages as c1 on p1.id = c1.parent_id
 left join works as w on p1.work_id = w.id
-where p1.user_id = 1 or w.user_id = 1 or c1.user_id = 1
+where p1.user_id = 2 or w.user_id = 2 or c1.user_id = 2
 group by c1.parent_id
 
 
-
-# ②上記の結果のparent_idの子要素を全て取得
-  select * from child_public_messages as c2
-  where c2.parent_id in (select c1.parent_id from child_public_messages as c1
-  where c1.user_id = 1 group by parent_id)
-
-# ③最新日付をグループ化（この段階では日付のみしか取得できない）
-  select max(c2.created_at) as max from child_public_messages as c2
-  where c2.parent_id in (select c1.parent_id from child_public_messages as c1
-  where c1.user_id = 1 group by parent_id)
-  group by c2.parent_id
-
-# ④上記の日付から、全てのカラムを取得
-select * from child_public_messages as c3 where (c3.parent_id, c3.created_at) in (
-select c2.parent_id, max(c2.created_at) as latest_date from child_public_messages as c2
-where c2.parent_id in ( select c1.parent_id from child_public_messages as c1
-where c1.user_id = 1
-) group by c2.parent_id
+# ②上記の結果のparent_idの子要素を全て取得（この過程は本来不要・ただの参考）
+#古い
+--   select * from child_public_messages as c2
+--   where c2.parent_id in (select c1.parent_id from child_public_messages as c1
+--   where c1.user_id = 1 group by parent_id)
+  #新しい
+select * from child_public_messages as c2 where c2.parent_id in (
+   select p1.id from parent_public_messages as p1
+   right join child_public_messages as c1 on p1.id = c1.parent_id
+   left join works as w on p1.work_id = w.id
+   where p1.user_id = 2 or w.user_id = 2 or c1.user_id = 2
+   group by c1.parent_id
 )
 
-  # ⑤上記と親を結合
-    select * from parent_public_messages as p1 left join (
-select * from child_public_messages as c3 where (c3.parent_id, c3.created_at) in (
-select c2.parent_id, max(c2.created_at) as latest_date from child_public_messages as c2
-where c2.parent_id in ( select c1.parent_id from child_public_messages as c1
-where c1.user_id = 1
-) group by c2.parent_id
+# ③最新日付をグループ化（この段階では日付のみしか取得できない / ①を結合）
+#古い
+--   select max(c2.created_at) as max from child_public_messages as c2
+--   where c2.parent_id in (select c1.parent_id from child_public_messages as c1
+--   where c1.user_id = 1 group by parent_id)
+--   group by c2.parent_id
+#新しい
+select c3.parent_id,max(c3.created_at) as max from child_public_messages as c3
+where c3.parent_id in (
+   select p1.id from parent_public_messages as p1
+   right join child_public_messages as c1 on p1.id = c1.parent_id
+   left join works as w on p1.work_id = w.id
+   where p1.user_id = 2 or w.user_id = 2 or c1.user_id = 2
+   group by c1.parent_id
+) group by c3.parent_id
+
+# ④上記の親id, 日付から、全てのカラムを取得
+# 古い
+-- select * from child_public_messages as c3 where (c3.parent_id, c3.created_at) in (
+-- select c2.parent_id, max(c2.created_at) as latest_date from child_public_messages as c2
+-- where c2.parent_id in ( select c1.parent_id from child_public_messages as c1
+-- where c1.user_id = 1
+-- ) group by c2.parent_id
+-- )
+#新しい
+select * from child_public_messages as c4
+where (c4.parent_id, c4.created_at) in (
+   select c3.parent_id,max(c3.created_at) as max from child_public_messages as c3
+   where c3.parent_id in (
+      select p1.id from parent_public_messages as p1
+      right join child_public_messages as c1 on p1.id = c1.parent_id
+      left join works as w on p1.work_id = w.id
+      where p1.user_id = 2 or w.user_id = 2 or c1.user_id = 2
+      group by c1.parent_id
+   ) group by c3.parent_id
 )
-  ) as c4 on p1.id = c4.parent_id
+
+  # ⑤上記と親を結合（親のLEFTJOINのため不要なものも入る）
+  #古い
+--     select * from parent_public_messages as p1 left join (
+-- select * from child_public_messages as c3 where (c3.parent_id, c3.created_at) in (
+-- select c2.parent_id, max(c2.created_at) as latest_date from child_public_messages as c2
+-- where c2.parent_id in ( select c1.parent_id from child_public_messages as c1
+-- where c1.user_id = 1
+-- ) group by c2.parent_id
+-- )
+--   ) as c4 on p1.id = c4.parent_id
+  #新しい
+select * from parent_public_messages as p1
+left join (
+   select * from child_public_messages as c4
+   where (c4.parent_id, c4.created_at) in (
+      select c3.parent_id,max(c3.created_at) as max from child_public_messages as c3
+      where c3.parent_id in (
+         select p1.id from parent_public_messages as p1
+         right join child_public_messages as c1 on p1.id = c1.parent_id
+         left join works as w on p1.work_id = w.id
+         where p1.user_id = 2 or w.user_id = 2 or c1.user_id = 2
+         group by c1.parent_id
+      ) group by c3.parent_id
+   )
+) as c4 on p1.id = c4.parent_id
 
 # ⑥whereで条件を指定
-    select * from parent_public_messages as p1 left join (
-select * from child_public_messages as c3 where (c3.parent_id, c3.created_at) in (
-select c2.parent_id, max(c2.created_at) as latest_date from child_public_messages as c2
-where c2.parent_id in ( select c1.parent_id from child_public_messages as c1
-where c1.user_id = 1
-) group by c2.parent_id
-)
-  ) as c4 on p1.id = c4.parent_id
-  left join works as w on p1.work_id = w.id
-where p1.user_id = 1 or w.user_id = 1 or c4.id is not null
+#古い
+--     select * from parent_public_messages as p1 left join (
+-- select * from child_public_messages as c3 where (c3.parent_id, c3.created_at) in (
+-- select c2.parent_id, max(c2.created_at) as latest_date from child_public_messages as c2
+-- where c2.parent_id in ( select c1.parent_id from child_public_messages as c1
+-- where c1.user_id = 1
+-- ) group by c2.parent_id
+-- )
+--   ) as c4 on p1.id = c4.parent_id
+--   left join works as w on p1.work_id = w.id
+-- where p1.user_id = 1 or w.user_id = 1 or c4.id is not null
+#新しい
+select * from parent_public_messages as p1
+left join (
+   select * from child_public_messages as c4
+   where (c4.parent_id, c4.created_at) in (
+      select c3.parent_id,max(c3.created_at) as max from child_public_messages as c3
+      where c3.parent_id in (
+         select p1.id from parent_public_messages as p1
+         right join child_public_messages as c1 on p1.id = c1.parent_id
+         left join works as w on p1.work_id = w.id
+         where p1.user_id = 2 or w.user_id = 2 or c1.user_id = 2
+         group by c1.parent_id
+      ) group by c3.parent_id
+   )
+) as c4 on p1.id = c4.parent_id
+left join works as w on p1.work_id = w.id
+where p1.user_id = 2 or w.user_id = 2 or c4.id is not null
+
+
+
+
 #⑤で結合したときに自分が発言した掲示板を抽出して親要素と結合しており、それをLEFT JOINしているため、null値が入る。なぜleft joinかというと、親掲示板に自分の投稿したものをリストに含めたいので、inner joinだとそれが消えてしまう。そのためleftjoin
 
 ######################################################################

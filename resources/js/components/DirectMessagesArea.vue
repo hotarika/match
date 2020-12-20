@@ -4,10 +4,12 @@
          class="c-h2__head p-dm__h2"
          :class="{ '-myWork': authId === info.orderer_id }"
       >
-         <img :src="divideImages" alt="ユーザーの画像" />
-         <div class="p-dm__h2InfoWrap">
-            <div class="p-dm__h2InfoName">{{ divideNames }}</div>
-            <div class="p-dm__h2InfoOrderName">{{ info.w_name }}</div>
+         <div class="p-dm__h2AllInfoWrap">
+            <img :src="divideImages" alt="ユーザーの画像" />
+            <div class="p-dm__h2InfoWrap">
+               <div class="p-dm__h2InfoName">{{ divideNames }}</div>
+               <div class="p-dm__h2InfoOrderName">{{ info.w_name }}</div>
+            </div>
          </div>
       </div>
 

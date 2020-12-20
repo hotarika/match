@@ -74,8 +74,7 @@
                         src="{{asset('storage/user_img/'.Auth::user()->image)}}"
                         @endif
                         alt="">
-                        <div class="p-header__navName -user u-ml4">{{Auth::user()->name}}
-                        </div>
+                        <div class="p-header__navName -user u-ml4">{{Auth::user()->name}}</div>
                      </a>
                   </li>
 

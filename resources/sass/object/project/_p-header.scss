@@ -167,7 +167,7 @@
    &__navName {
       &.-user {
          @include ellipsis;
-         width: 80px;
+         max-width: 75px;
       }
       font-size: 14px;
       @include mq('xs') {

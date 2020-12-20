@@ -33,7 +33,6 @@
 
                   <!-- メール -->
                   <div class="p-register__inputWrap -email">
-                     <span class="c-form__description -empty"></span>
                      <input
                         id="email"
                         type="email"
@@ -69,7 +68,6 @@
 
                   <!-- パスワード再入力 -->
                   <div class="p-register__inputWrap -passConfirm">
-                     <span class="c-form__description">※ パスワード確認のため、再入力</span>
                      <input
                         id="password-confirm"
                         type="password"

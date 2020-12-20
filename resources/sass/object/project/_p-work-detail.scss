@@ -47,7 +47,7 @@
       margin-bottom: 60px;
       font-size: 18px;
       text-align: left;
-      overflow-wrap: break-word;
+      word-break: break-all;
       background-color: $primary-light;
       border-left: 7px solid $primary;
       @include mq('3xs') {
@@ -136,7 +136,7 @@
    }
    &__infoName {
       width: 160px;
-      overflow-wrap: break-word;
+      word-break: break-all;
       @include mq('xs') {
          font-size: 13px;
       }
@@ -269,7 +269,7 @@
       padding: 20px;
       margin: 0;
       font-size: 14px;
-      overflow-wrap: break-word;
+      word-break: break-all;
       white-space: pre-wrap;
       border: 1px solid $gray-400;
       @include mq('xs') {
