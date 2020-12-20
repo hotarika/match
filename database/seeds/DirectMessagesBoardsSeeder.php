@@ -32,18 +32,6 @@ class DirectMessagesBoardsSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-        DB::table('direct_messages_boards')->insert([
-            'work_id' => 1,
-            'applicant_id' => 6,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
-        DB::table('direct_messages_boards')->insert([
-            'work_id' => 1,
-            'applicant_id' => 7,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
 
         // work_id2
         DB::table('direct_messages_boards')->insert([

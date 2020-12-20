@@ -61,8 +61,8 @@ class ParentPublicMessagesSeeder extends Seeder
             'user_id' => 1,
             'title' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
             'content' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-            'created_at' => '2020-12-02 11:40:57',
-            'updated_at' => '2020-12-02 11:40:57',
+            'created_at' => '2020-12-03 11:40:57',
+            'updated_at' => '2020-12-03 11:40:57',
         ]);
     }
 }
