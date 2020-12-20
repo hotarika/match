@@ -108,12 +108,14 @@
                      <!-- 金額 -->
                      <div class="p-workForm__wrap -price js-showInput">
                         <label class="p-workForm__label -price" for="price">金額<span>[必須]</span></label>
-                        <div class="p-workForm__inputWrap">
+                        <div class="p-workForm__inputWrap -price">
                            <div class="p-workForm__priceWrap">
                               <input
                                  id="price"
                                  class="c-form__input p-workForm__input -price"
                                  type="number"
+                                 min="1"
+                                 max="1000"
                                  name="price_lower"
                                  value="{{ old('price_lower',$work->price_lower ?? '') }}"
                                  placeholder="例：500" /><span>千円〜</span>
@@ -121,6 +123,8 @@
                                  id="price"
                                  class="c-form__input p-workForm__input -price"
                                  type="number"
+                                 min="1"
+                                 max="1000"
                                  name="price_upper"
                                  value="{{ old('price_upper',$work->price_upper ?? '') }}"
                                  placeholder="例：1000" /><span>千円</span>

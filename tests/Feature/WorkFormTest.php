@@ -375,7 +375,7 @@ class WorkFormTest extends TestCase
 
     /**
      * @test
-     * [異常値] 最大値・最小値テスト
+     * [異常値] 最小値テスト
      * */
     public function work_price_false()
     {
@@ -388,15 +388,15 @@ class WorkFormTest extends TestCase
         $data = [
             'contract_id' => 1,
             'price_lower' => 0,
-            'price_upper' => 1001
+            'price_upper' => 0
         ];
         $response = $this->post(route('works.store'), $data);
 
         $error_lower = session('errors')->first('price_lower');
-        $this->assertEquals('下限金額には、0より大きな値を指定してください。', $error_lower);
+        $this->assertEquals('下限金額には、0 千円より大きな金額を指定してください。', $error_lower);
 
         $error_upper = session('errors')->first('price_upper');
-        $this->assertEquals('上限金額には、1000以下の数字を指定してください。', $error_upper);
+        $this->assertEquals('上限金額には、0 千円より大きな金額を指定してください。', $error_upper);
     }
     /**
      * @test
@@ -425,9 +425,9 @@ class WorkFormTest extends TestCase
     }
     /**
      * @test
-     * [異常値] 最小値の最大値が1000を超える場合
+     * [異常値] 最大値テスト
      * */
-    public function work_price_max_of_min_false()
+    public function work_price_max_false()
     {
         // Auth ---------------------------------
         $user = factory(User::class)->create();
@@ -438,12 +438,15 @@ class WorkFormTest extends TestCase
         $data = [
             'contract_id' => 1,
             'price_lower' => 1001,
-
+            'price_upper' => 1001
         ];
         $response = $this->post(route('works.store'), $data);
 
-        $error = session('errors')->first('price_lower');
-        $this->assertEquals('下限金額には、1000以下の数字を指定してください。', $error);
+        $error_lower = session('errors')->first('price_lower');
+        $this->assertEquals('下限金額には、1000 千円以内の金額を指定してください。', $error_lower);
+
+        $error_upper = session('errors')->first('price_upper');
+        $this->assertEquals('上限金額には、1000 千円以内の金額を指定してください。', $error_upper);
     }
     /**
      * @test
@@ -465,8 +468,36 @@ class WorkFormTest extends TestCase
         $response = $this->post(route('works.store'), $data);
 
         $error = session('errors')->first('price_upper');
-        $this->assertEquals('上限金額には、600以上の値を指定してください。', $error);
+        $this->assertEquals('上限金額には、下限金額と同じかそれ以上の金額を指定してください。', $error);
     }
+    /**
+     * @test
+     * [異常値] 最大値より最小値の方が大きい場合
+     * */
+    public function work_price_min_greater_than_max_limit_false()
+    {
+        // Auth ---------------------------------
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
+        // --------------------------------------
+
+        // DB挿入
+        $data = [
+            'contract_id' => 1,
+            'price_lower' => 1001,
+            'price_upper' => 500
+        ];
+        $response = $this->post(route('works.store'), $data);
+
+
+        $error_lower = session('errors')->first('price_lower');
+        $this->assertEquals('下限金額には、1000 千円以内の金額を指定してください。', $error_lower);
+
+        // 下限金額が1000より大きい場合は、下限金額でエラーが出るので、上限金額ではエラーを出さない
+        $error_upper = session('errors')->first('price_upper');
+        $this->assertEquals('', $error_upper);
+    }
+
 
     // *******************************************
     // 依頼内容

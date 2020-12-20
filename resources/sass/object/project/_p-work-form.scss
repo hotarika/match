@@ -32,7 +32,7 @@
          opacity: 0;
          transition: 0.2s;
          &.is-active {
-            margin-top: 0;
+            margin-top: 10px;
             visibility: visible;
             opacity: 1;
             transition: 0.2s;
@@ -53,20 +53,6 @@
          margin-bottom: 3px;
          font-size: 13px;
       }
-      &.-price {
-         &::before {
-            position: absolute;
-            top: 22px;
-            left: 2px;
-            font-size: 12px;
-            color: $gray-600;
-            content: '※「千円」単位';
-            @include mq('md') {
-               top: 1px;
-               left: 78px;
-            }
-         }
-      }
       & > span {
          margin-left: 5px;
          font-size: 12px;
@@ -74,12 +60,23 @@
       }
    }
    &__inputWrap {
+      position: relative;
       display: flex;
       flex-direction: column;
       width: 75%;
       @include mq('md') {
          width: 100%;
          margin-bottom: 10px;
+      }
+      &.-price {
+         &::before {
+            position: absolute;
+            top: -15px;
+            left: 2px;
+            font-size: 12px;
+            color: $gray-600;
+            content: '※ 最大設定金額は1000千円まで（単位は「千円」）';
+         }
       }
    }
    &__priceWrap {
