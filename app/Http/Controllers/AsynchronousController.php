@@ -107,10 +107,17 @@ class AsynchronousController extends Controller
     // ======================================
     public function getPublicMessagesList()
     {
+        // メッセージのバッジ表示
+        $countBadges = DB::table('public_messages_badges')
+            ->select('parent_id', 'user_id', DB::raw('count(*) as count'))
+            ->where('user_id', Auth::id())
+            ->groupBy('parent_id', 'user_id');
+
+
         // [サブクエリ1]
         // 親メッセージ・子メッセージ・依頼者に自分のIDが含まれている親ボードのデータを全て取得
         $parentIdContainsMyMessages = DB::table('parent_public_messages as p1')
-            ->select('c1.parent_id')
+            ->select('p1.id')
             ->rightJoin('child_public_messages as c1', 'p1.id', '=', 'c1.parent_id')
             ->leftJoin('works as w', 'p1.work_id', '=', 'w.id')
             ->orWhere('p1.user_id', '=', Auth::id()) // 親掲示板のuser_id
@@ -120,7 +127,7 @@ class AsynchronousController extends Controller
 
         // [サブクエリ2]
         // 上記の結果から、最新の日時を持つレコードを親ボードIDでグループ化
-        $parentIdLatestDate = DB::table('child_public_messages as c2')
+        $parentIdOfLatestDate = DB::table('child_public_messages as c2')
             ->select(DB::raw('c2.parent_id, max(c2.created_at) as latest_date'))
             ->whereIn('c2.parent_id', $parentIdContainsMyMessages)
             ->groupBy('c2.parent_id');
@@ -129,13 +136,7 @@ class AsynchronousController extends Controller
         // 上記の最新の日時を持つ子レコードを全て取得
         $childAllColumns = DB::table('child_public_messages as c3')
             ->select('*')
-            ->whereIn(DB::raw('(c3.parent_id, c3.created_at)'), $parentIdLatestDate);
-
-        // メッセージのバッジ表示
-        $countBadges = DB::table('public_messages_badges')
-            ->select('parent_id', 'user_id', DB::raw('count(*) as count'))
-            ->where('user_id', Auth::id())
-            ->groupBy('parent_id', 'user_id');
+            ->whereIn(DB::raw('(c3.parent_id, c3.created_at)'), $parentIdOfLatestDate);
 
         // 上記のサブクエリを親テーブルと結合
         $pubmsgs = DB::table('parent_public_messages as pm')
@@ -180,6 +181,13 @@ class AsynchronousController extends Controller
     // ======================================
     public function getDirectMessagesList()
     {
+        // メッセージのバッジ表示
+        $countBadges = DB::table('direct_messages_badges')
+            ->select('board_id', 'user_id', DB::raw('count(*) as count'))
+            ->where('user_id', Auth::id())
+            ->groupBy('board_id', 'user_id');
+
+
         // [サブクエリ1] 最新のメッセージを取得するために、最新の日時とボードIDを取得
         $getLatestContentsData = DB::table('direct_messages_contents as c')
             ->select('c.board_id', DB::raw('max(c.created_at) as latest_date'))
@@ -189,12 +197,6 @@ class AsynchronousController extends Controller
         $getAllColumnsOfLatestContents = DB::table('direct_messages_contents as c')
             ->select('*')
             ->whereIn(DB::raw('(c.board_id, c.created_at)'), $getLatestContentsData);
-
-        // メッセージのバッジ表示
-        $countBadges = DB::table('direct_messages_badges')
-            ->select('board_id', 'user_id', DB::raw('count(*) as count'))
-            ->where('user_id', Auth::id())
-            ->groupBy('board_id', 'user_id');
 
         // 上記のテーブルと結合
         $boards = DB::table('direct_messages_boards as b')
@@ -231,7 +233,7 @@ class AsynchronousController extends Controller
                     ->orWhere('b.applicant_id', Auth::id());
             })->where(function ($query) {
                 // メッセージが投稿されていなければ表示しない
-                // （ボードは応募時に作成しているので、メッセージのないボードが存在する）
+                // （ボードは応募時に作成しているので、メッセージのないボードが存在するため、依頼者・応募者がメッセージ投稿をしていなければ削除する）
                 $query->whereNotNull('c.id');
             })
             ->orderBy('c.created_at', 'DESC')
