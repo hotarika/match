@@ -70,6 +70,10 @@
       right: 0;
       font-size: 13px;
       color: $gray-600;
+      white-space: nowrap;
+      & > time {
+         white-space: nowrap;
+      }
       @include mq('3xs') {
          font-size: 12px;
       }
@@ -141,6 +145,10 @@
       display: flex;
       align-items: center;
       margin-right: 20px;
+      &.-endDate > time,
+      &.-hopeDate > time {
+         white-space: nowrap;
+      }
       @include mq('md') {
          flex-direction: column;
          justify-content: center;

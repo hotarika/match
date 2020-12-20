@@ -19,7 +19,9 @@
    &__checkbox {
       margin-right: 15px;
       font-size: 14px;
+      white-space: nowrap;
       & > label {
+         white-space: nowrap;
          @include mq('3xs') {
             font-size: 13px;
          }

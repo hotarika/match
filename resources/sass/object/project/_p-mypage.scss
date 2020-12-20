@@ -61,6 +61,7 @@
    &__notificationTime {
       font-size: 11px;
       color: $gray-700;
+      white-space: nowrap;
    }
    &__notificationMsg {
       @include letter-settings;
