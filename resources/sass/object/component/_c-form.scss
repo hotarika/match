@@ -44,7 +44,7 @@
    &__invalid {
       font-size: 13px;
       color: $red;
-      @include mq('md') {
+      @include mq('lg-md') {
          font-size: 12px;
       }
       &.-image {

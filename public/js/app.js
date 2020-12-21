@@ -3791,7 +3791,7 @@ __webpack_require__.r(__webpack_exports__);
     var cardNum;
     var showCard = []; // レスポンシブのカード枚数の指定（ホーム画面の「新着の仕事」の枚数）
 
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 810) {
       cardNum = 8; // PC用
     } else if (window.innerWidth > 576) {
       cardNum = 6; // タブレット用

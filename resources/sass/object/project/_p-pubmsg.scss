@@ -59,9 +59,6 @@
       @include border-radius;
       display: flex;
       padding: 20px 20px 30px;
-      @include mq('md') {
-         padding: 20px 20px 30px;
-      }
       @include mq('xs') {
          padding: 15px 15px 30px;
       }
@@ -73,13 +70,13 @@
       width: 60px;
       height: 60px;
       margin-right: 8px;
-      @include mq('md') {
+      @include mq('lg-md') {
          display: none;
       }
    }
    &__parentRight {
       width: 90%;
-      @include mq('md') {
+      @include mq('lg-md') {
          width: 100%;
       }
    }
@@ -161,13 +158,13 @@
       width: 45px;
       height: 45px;
       margin-right: 8px;
-      @include mq('md') {
+      @include mq('lg-md') {
          display: none;
       }
    }
    &__childRight {
       width: 88%;
-      @include mq('md') {
+      @include mq('lg-md') {
          width: 100%;
       }
    }

@@ -76,7 +76,7 @@
       padding: 20px 0 10px 0;
       padding-left: calc(50% - 323px);
       background-color: $white;
-      @include mq('md') {
+      @include mq('lg-md') {
          padding-left: calc(50% - 215px);
       }
       @include mq('xs') {

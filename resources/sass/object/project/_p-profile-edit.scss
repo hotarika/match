@@ -72,7 +72,7 @@
    &__wrap {
       display: flex;
       padding: 5px 10px;
-      @include mq('md') {
+      @include mq('lg-md') {
          flex-direction: column;
          padding: 0;
          margin-bottom: 10px;
@@ -83,7 +83,7 @@
       width: 25%;
       margin-top: 25px;
       font-size: 14px;
-      @include mq('md') {
+      @include mq('lg-md') {
          width: 100%;
          margin-top: 10px;
          margin-bottom: -12px; // ラベルと説明書きの位置調整
@@ -105,7 +105,7 @@
       display: flex;
       flex-direction: column;
       width: 75%;
-      @include mq('md') {
+      @include mq('lg-md') {
          width: 100%;
       }
    }

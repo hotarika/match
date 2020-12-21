@@ -46,6 +46,9 @@
       &.-direct {
          top: 8px;
          left: 30px;
+         @include mq('lg-md') {
+            left: 25px;
+         }
          @include mq('md') {
             left: 20px;
          }

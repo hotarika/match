@@ -71,6 +71,9 @@
    }
    &__h2AllInfoWrap {
       width: 70%;
+      @include mq('lg-md') {
+         width: 80%;
+      }
       @include mq('md') {
          width: 90%;
       }

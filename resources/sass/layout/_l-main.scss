@@ -23,6 +23,9 @@
       &.-oneColumn_auth {
          width: 50%;
          margin: 0 auto;
+         @include mq('lg') {
+            width: 60%;
+         }
          @include mq('md') {
             width: 70%;
          }

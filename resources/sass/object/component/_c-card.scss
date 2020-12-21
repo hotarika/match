@@ -311,7 +311,7 @@
    }
    &__msgWrap {
       width: 95%;
-      @include mq('md') {
+      @include mq('lg-md') {
          width: 90%;
       }
       @include mq('xs') {
@@ -406,7 +406,7 @@
       width: 95%;
       padding-top: 2px;
       font-size: 12px;
-      @include mq('md') {
+      @include mq('lg-md') {
          width: 90%;
       }
       @include mq('xs') {

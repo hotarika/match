@@ -20,7 +20,7 @@
       flex-direction: column;
       width: 75%;
       padding: 10px;
-      @include mq('md') {
+      @include mq('lg-md') {
          width: 100%;
       }
    }

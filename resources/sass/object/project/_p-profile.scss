@@ -34,7 +34,7 @@
       height: 100px;
       margin-bottom: 15px;
       border: 2px solid $gray-200;
-      @include mq('md') {
+      @include mq('lg-md') {
          width: 85px;
          height: 85px;
       }
@@ -51,7 +51,7 @@
       @include border-radius('right');
       width: 80%;
       padding: 30px;
-      @include mq('md') {
+      @include mq('lg-md') {
          padding: 30px 20px;
       }
       @include mq('xs') {

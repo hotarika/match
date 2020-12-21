@@ -6,7 +6,7 @@
       @include border-radius('left');
       min-height: 400px;
       padding: 50px;
-      @include mq('md') {
+      @include mq('lg-md') {
          padding: 50px 30px;
       }
       @include mq('xs') {
@@ -27,7 +27,7 @@
       word-break: break-all;
       background-color: $primary-light;
       border-left: 7px solid $primary;
-      @include mq('md') {
+      @include mq('lg-md') {
          font-size: 16px;
       }
       @include mq('xs') {

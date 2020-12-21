@@ -8,7 +8,7 @@
       padding: 0;
       margin: 0;
       list-style: none;
-      @include mq('md') {
+      @include mq('xs') {
          &.-settings {
             width: 100%;
          }
@@ -25,9 +25,12 @@
       font-size: 13px;
       text-align: left;
       background-color: $white;
+      @include mq('lg-md') {
+         padding-left: 15px;
+         font-size: 12px;
+      }
       @include mq('md') {
          padding-left: 11px;
-         font-size: 12px;
          &.-settings {
             padding: 20px;
             padding-left: 30px;

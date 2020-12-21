@@ -31,6 +31,9 @@ pre {
    height: 100%;
    padding: 0 15px;
    margin: 0 auto;
+   @include mq('lg-md') {
+      max-width: $site-width-lg-md;
+   }
    @include mq('md') {
       max-width: $site-width-md;
    }

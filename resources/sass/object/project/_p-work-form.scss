@@ -22,7 +22,7 @@
    &__wrap {
       display: flex;
       padding: 10px;
-      @include mq('md') {
+      @include mq('lg-md') {
          flex-direction: column;
          padding: 0;
       }
@@ -39,7 +39,7 @@
             visibility: visible;
             opacity: 1;
             transition: 0.2s;
-            @include mq('xs') {
+            @include mq('lg-md') {
                margin-top: 0;
             }
          }
@@ -53,7 +53,7 @@
       font-size: 14px;
       &.-work {
          margin-top: 37px;
-         @include mq('md') {
+         @include mq('lg-md') {
             margin-top: 0;
             margin-bottom: -11px; // ラベルと説明書きの位置調整
          }
@@ -65,12 +65,12 @@
       }
       &.-orderContent {
          margin-top: 27px;
-         @include mq('md') {
+         @include mq('lg-md') {
             margin-top: 10px;
             margin-bottom: -10px; // ラベルと説明書きの位置調整
          }
       }
-      @include mq('md') {
+      @include mq('lg-md') {
          width: 100%;
          margin-bottom: 3px;
          font-size: 13px;
@@ -86,7 +86,7 @@
       display: flex;
       flex-direction: column;
       width: 75%;
-      @include mq('md') {
+      @include mq('lg-md') {
          width: 100%;
          margin-bottom: 10px;
       }
@@ -98,7 +98,7 @@
             font-size: 12px;
             color: $gray-600;
             content: '※ 最大設定金額は1000千円まで（単位は「千円」）';
-            @include mq('md') {
+            @include mq('lg-md') {
                left: 80px;
             }
             @include mq('xs') {
@@ -116,7 +116,7 @@
    }
    &__input {
       background-color: $white;
-      @include mq('md') {
+      @include mq('lg-md') {
          font-size: 13px;
       }
       &.-work {
@@ -124,7 +124,7 @@
       }
       &.-email {
          width: 70%;
-         @include mq('md') {
+         @include mq('lg-md') {
             width: 100%;
          }
       }
@@ -132,13 +132,13 @@
       &.-hopeDate,
       &.-contract {
          width: 70%;
-         @include mq('md') {
+         @include mq('lg-md') {
             width: 100%;
          }
       }
       &.-price {
          width: 30%;
-         @include mq('md') {
+         @include mq('lg-md') {
             & + span {
                font-size: 13px;
             }
@@ -146,7 +146,7 @@
       }
    }
    &__textarea {
-      @include mq('md') {
+      @include mq('lg-md') {
          font-size: 13px;
       }
    }

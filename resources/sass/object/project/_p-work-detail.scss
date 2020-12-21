@@ -9,7 +9,7 @@
    &__workBody {
       @include border-radius('left');
       padding: 30px 50px 50px;
-      @include mq('md') {
+      @include mq('lg-md') {
          padding: 30px 20px 50px;
       }
       @include mq('2xs') {
@@ -50,7 +50,7 @@
       word-break: break-all;
       background-color: $primary-light;
       border-left: 7px solid $primary;
-      @include mq('md') {
+      @include mq('lg-md') {
          font-size: 16px;
       }
       @include mq('xs') {

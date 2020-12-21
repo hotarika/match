@@ -11,7 +11,7 @@
 
    &__logo {
       width: 110px;
-      @include mq('md') {
+      @include mq('lg-md') {
          margin-left: 5px;
       }
       @include mq('xs') {
@@ -78,6 +78,12 @@
    }
    &__item {
       margin-right: 18px;
+      @include mq('lg-md') {
+         margin-right: 14px;
+         &.-orderBtn {
+            margin-right: 0;
+         }
+      }
       @include mq('md') {
          margin-right: 13px;
          &.-user {
@@ -166,7 +172,7 @@
    &__navName {
       &.-user {
          @include ellipsis;
-         max-width: 75px;
+         max-width: 70px;
       }
       font-size: 14px;
       @include mq('xs') {
