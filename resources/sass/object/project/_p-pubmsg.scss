@@ -79,13 +79,18 @@
    }
    &__parentRight {
       width: 90%;
+      @include mq('md') {
+         width: 100%;
+      }
    }
    &__parentName {
+      @include border-radius('all', 10px);
+      @include ellipsis;
       display: inline-block;
+      max-width: 60%;
       padding: 5px 10px;
       margin-bottom: 5px;
       font-size: 12px;
-      @include border-radius('all', 10px);
       @include mq('xs') {
          padding: 4px 8px;
          font-size: 11px;
@@ -162,6 +167,9 @@
    }
    &__childRight {
       width: 88%;
+      @include mq('md') {
+         width: 100%;
+      }
    }
    &__childName {
       @include border-radius('all', 10px);
