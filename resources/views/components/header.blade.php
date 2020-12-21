@@ -67,7 +67,7 @@
                   <!-- 全ての端末で表示 -->
                   <li class="p-header__item -user">
                      <a class="c-link p-header__navLink" href="{{ route('users.show',Auth::id()) }}">
-                        <img class="p-header__userImg"
+                        <img class="c-img p-header__userImg"
                            @if(Auth::user()->image === null)
                         src="{{asset('images/no-image.png')}}"
                         @else

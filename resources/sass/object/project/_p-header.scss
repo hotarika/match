@@ -158,8 +158,6 @@
    &__userImg {
       width: 15px;
       height: 15px;
-      border-radius: 50%;
-      object-fit: cover;
       @include mq('xs') {
          margin-right: 17px;
       }

@@ -78,7 +78,6 @@
       & > img {
          width: 45px;
          height: 45px;
-         @include border-radius('all', 50%);
          @include mq('3xs') {
             width: 30px;
             height: 30px;
@@ -97,6 +96,7 @@
       font-weight: bold;
    }
    &__h2InfoOrderName {
+      font-size: 13px;
       line-height: 1.1;
       text-align: left;
       word-break: break-all;
