@@ -81,20 +81,22 @@
       width: 90%;
    }
    &__parentName {
+      display: inline-block;
+      padding: 5px 10px;
       margin-bottom: 5px;
       font-size: 12px;
+      @include border-radius('all', 10px);
       @include mq('xs') {
+         padding: 4px 8px;
          font-size: 11px;
       }
-      &.-workOwner {
-         @include border-radius('all', 10px);
-         display: inline-block;
-         padding: 5px 10px;
+      &.-workOrderer {
          color: $white;
          background-color: $primary;
-         @include mq('xs') {
-            padding: 4px 8px;
-         }
+      }
+      &.-workApplicant {
+         color: $black;
+         background-color: $primary-light;
       }
    }
    &__parentTitle {
@@ -162,14 +164,18 @@
       width: 88%;
    }
    &__childName {
+      @include border-radius('all', 10px);
+      display: inline-block;
+      padding: 5px 10px;
       margin-bottom: 5px;
       font-size: 11px;
-      &.-workOwner {
-         @include border-radius('all', 10px);
-         display: inline-block;
-         padding: 5px 10px;
+      &.-workOrderer {
          color: $white;
          background-color: $primary;
+      }
+      &.-workApplicant {
+         color: $black;
+         background-color: $primary-light;
       }
    }
    &__childContent {
