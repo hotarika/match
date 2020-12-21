@@ -1980,6 +1980,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2059,6 +2068,14 @@ __webpack_require__.r(__webpack_exports__);
         return this.info.applicant_name;
       } else {
         return this.info.orderer_name;
+      }
+    },
+    // プロフィールリンクに使用
+    divideUserId: function divideUserId() {
+      if (this.authId === this.info.orderer_id) {
+        return this.info.applicant_id;
+      } else {
+        return this.info.orderer_id;
       }
     },
     textareaPlaceholder: function textareaPlaceholder() {
@@ -2989,6 +3006,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -3130,6 +3149,16 @@ __webpack_require__.r(__webpack_exports__);
     },
     parentTextareaPlaceholder: function parentTextareaPlaceholder() {
       return '必須：新規質問の内容を記述（' + this.parentTextareaLimitNumber + '文字以内）';
+    },
+    divideMessagesNameColor: function divideMessagesNameColor() {
+      // 名前の色を変更
+      return function (u_id) {
+        if (this.ordererId === u_id) {
+          return '-workOrderer';
+        } else {
+          return '-workApplicant';
+        }
+      };
     }
   },
   filters: {
@@ -3509,6 +3538,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -3528,7 +3569,7 @@ __webpack_require__.r(__webpack_exports__);
       var formatDate = Object(_modules_getDateNewFormat__WEBPACK_IMPORTED_MODULE_0__["getDateNewFormat"])(today);
       var formatEndDate = Object(_modules_getDateNewFormat__WEBPACK_IMPORTED_MODULE_0__["getDateNewFormat"])(endDate);
 
-      if (this.work.state === 2 || formatEndDate < formatDate) {
+      if (this.work.w_state === 2 || formatEndDate < formatDate) {
         return '応募終了';
       } else if (formatEndDate > formatDate) {
         return this.work.end_date;
@@ -3674,7 +3715,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this2 = this;
 
     // レスポンシブのカード枚数の指定（ホーム画面の「新着の仕事」の枚数）
-    if (window.innerWidth > 1000) {
+    if (window.innerWidth >= 960) {
       this.perPage = 9;
     } else {
       this.perPage = 6;
@@ -40277,17 +40318,34 @@ var render = function() {
       [
         _c("div", { staticClass: "p-dm__h2AllInfoWrap" }, [
           _c("img", {
+            staticClass: "c-img",
             attrs: { src: _vm.divideImages, alt: "ユーザーの画像" }
           }),
           _vm._v(" "),
           _c("div", { staticClass: "p-dm__h2InfoWrap" }, [
-            _c("div", { staticClass: "p-dm__h2InfoName" }, [
-              _vm._v(_vm._s(_vm.divideNames))
-            ]),
+            _c(
+              "a",
+              {
+                staticClass: "c-link p-dm__h2InfoName",
+                attrs: { href: _vm.publicPath + "users/" + _vm.divideUserId }
+              },
+              [
+                _vm._v(
+                  "\n               " +
+                    _vm._s(_vm.divideNames) +
+                    "\n            "
+                )
+              ]
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "p-dm__h2InfoOrderName" }, [
-              _vm._v(_vm._s(_vm.info.w_name))
-            ])
+            _c(
+              "a",
+              {
+                staticClass: "c-link p-dm__h2InfoOrderName",
+                attrs: { href: _vm.publicPath + "works/" + _vm.info.w_id }
+              },
+              [_vm._v(_vm._s(_vm.info.w_name))]
+            )
           ])
         ])
       ]
@@ -41276,7 +41334,8 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          staticClass: "c-link p-pubmsg__parentName -workOwner",
+                          staticClass: "c-link p-pubmsg__parentName",
+                          class: _vm.divideMessagesNameColor(p.u_id),
                           attrs: { href: _vm.publicPath + "users/" + p.u_id }
                         },
                         [_vm._v(_vm._s(p.u_name))]
@@ -41335,7 +41394,10 @@ var render = function() {
                                           "a",
                                           {
                                             staticClass:
-                                              "c-link p-pubmsg__childName -workOwner",
+                                              "c-link p-pubmsg__childName",
+                                            class: _vm.divideMessagesNameColor(
+                                              c.u_id
+                                            ),
                                             attrs: {
                                               href:
                                                 _vm.publicPath +
@@ -41729,6 +41791,18 @@ var render = function() {
       attrs: { href: _vm.publicPath + "works/" + _vm.work.id }
     },
     [
+      _vm.work.applicant_state === 2
+        ? _c("div", { staticClass: "c-workCard__decisionBadge -decision" }, [
+            _vm._v("\n      決定\n   ")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.work.applicant_state === 1 && _vm.work.w_state === 2
+        ? _c("div", { staticClass: "c-workCard__decisionBadge -end" }, [
+            _vm._v("\n      終了\n   ")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
       _c("div", { staticClass: "c-workCard__nameWrap" }, [
         _c("img", {
           staticClass: "c-img c-workCard__img",

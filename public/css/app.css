@@ -555,7 +555,7 @@ pre {
 }
 
 .c-badge.-direct {
-  top: 30px;
+  top: 34px;
   right: 21px;
 }
 
@@ -691,6 +691,30 @@ pre {
   box-shadow: rgba(0, 0, 0, 0.18) 3px 3px 10px;
   transition: all 0.5s 0s ease;
   transform: scale(1.01, 1.01);
+}
+
+.c-workCard__decisionBadge {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 40px;
+  height: 40px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.c-workCard__decisionBadge.-decision {
+  background-color: #dc3545;
+}
+
+.c-workCard__decisionBadge.-end {
+  background-color: #6c757d;
 }
 
 .c-workCard__nameWrap {
@@ -1776,7 +1800,6 @@ pre {
 .p-dm__h2AllInfoWrap > img {
   width: 45px;
   height: 45px;
-  border-radius: 50%;
 }
 
 @media screen and (max-width: 320px) {
@@ -1800,6 +1823,7 @@ pre {
 }
 
 .p-dm__h2InfoOrderName {
+  font-size: 13px;
   line-height: 1.1;
   text-align: left;
   word-break: break-all;
@@ -2199,8 +2223,6 @@ pre {
 .p-header__userImg {
   width: 15px;
   height: 15px;
-  border-radius: 50%;
-  object-fit: cover;
 }
 
 @media screen and (max-width: 414px) {
@@ -3425,28 +3447,28 @@ pre {
 }
 
 .p-pubmsg__parentName {
+  display: inline-block;
+  padding: 5px 10px;
   margin-bottom: 5px;
   font-size: 12px;
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 414px) {
   .p-pubmsg__parentName {
+    padding: 4px 8px;
     font-size: 11px;
   }
 }
 
-.p-pubmsg__parentName.-workOwner {
-  border-radius: 10px;
-  display: inline-block;
-  padding: 5px 10px;
+.p-pubmsg__parentName.-workOrderer {
   color: #fff;
   background-color: #0081ff;
 }
 
-@media screen and (max-width: 414px) {
-  .p-pubmsg__parentName.-workOwner {
-    padding: 4px 8px;
-  }
+.p-pubmsg__parentName.-workApplicant {
+  color: #000;
+  background-color: #bedcfd;
 }
 
 .p-pubmsg__parentTitle {
@@ -3536,16 +3558,21 @@ pre {
 }
 
 .p-pubmsg__childName {
+  border-radius: 10px;
+  display: inline-block;
+  padding: 5px 10px;
   margin-bottom: 5px;
   font-size: 11px;
 }
 
-.p-pubmsg__childName.-workOwner {
-  border-radius: 10px;
-  display: inline-block;
-  padding: 5px 10px;
+.p-pubmsg__childName.-workOrderer {
   color: #fff;
   background-color: #0081ff;
+}
+
+.p-pubmsg__childName.-workApplicant {
+  color: #000;
+  background-color: #bedcfd;
 }
 
 .p-pubmsg__childContent {

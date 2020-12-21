@@ -91,7 +91,8 @@ class AsynchronousController extends Controller
                 'w.end_date',
                 'w.price_lower',
                 'w.price_upper',
-                'w.state',
+                'w.state as w_state',
+                'a.state as applicant_state'
             )
             ->rightJoin('applicants as a', 'w.id', '=', 'a.work_id')
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
