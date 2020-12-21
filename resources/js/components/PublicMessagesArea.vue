@@ -84,7 +84,8 @@
                   <!-- 親掲示板 -->
                   <div class="p-pubmsg__parentRight">
                      <a
-                        class="c-link p-pubmsg__parentName -workOwner"
+                        class="c-link p-pubmsg__parentName"
+                        :class="divideMessagesNameColor(p.u_id)"
                         :href="publicPath + 'users/' + p.u_id"
                         >{{ p.u_name }}</a
                      >
@@ -113,7 +114,8 @@
                               />
                               <div class="p-pubmsg__childRight">
                                  <a
-                                    class="c-link p-pubmsg__childName -workOwner"
+                                    class="c-link p-pubmsg__childName"
+                                    :class="divideMessagesNameColor(c.u_id)"
                                     :href="publicPath + 'users/' + c.u_id"
                                     >{{ c.u_name }}</a
                                  >
@@ -305,6 +307,16 @@ export default {
             this.parentTextareaLimitNumber +
             '文字以内）'
          );
+      },
+      divideMessagesNameColor() {
+         // 名前の色を変更
+         return function(u_id) {
+            if (this.ordererId === u_id) {
+               return '-workOrderer';
+            } else {
+               return '-workApplicant';
+            }
+         };
       }
    },
    filters: {
