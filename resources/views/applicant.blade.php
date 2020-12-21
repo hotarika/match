@@ -13,9 +13,9 @@
          <div class="l-main__mainArea -twoColumns">
             <section class="c-h2__sec">
                <div class="c-h2__oneRowBody p-applicant__body">
-                  <h2 class="c-h2__head p-applicant__head">
+                  <a class="c-link c-h2__head p-applicant__head" href="{{route('works.show',$work->id)}}">
                      {{$work->name}}
-                  </h2>
+                  </a>
                   <div class="p-applicant__lists">
 
                      @forelse ($applicants as $applicant)

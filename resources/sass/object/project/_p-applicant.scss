@@ -19,6 +19,7 @@
    }
    &__head {
       @include letter-settings;
+      display: block;
       padding: 10px;
       margin-bottom: 30px;
       font-size: 18px;
