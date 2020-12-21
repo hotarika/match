@@ -5,10 +5,19 @@
          :class="{ '-myWork': authId === info.orderer_id }"
       >
          <div class="p-dm__h2AllInfoWrap">
-            <img :src="divideImages" alt="ユーザーの画像" />
+            <img class="c-img" :src="divideImages" alt="ユーザーの画像" />
             <div class="p-dm__h2InfoWrap">
-               <div class="p-dm__h2InfoName">{{ divideNames }}</div>
-               <div class="p-dm__h2InfoOrderName">{{ info.w_name }}</div>
+               <a
+                  class="c-link p-dm__h2InfoName"
+                  :href="publicPath + 'users/' + divideUserId"
+               >
+                  {{ divideNames }}
+               </a>
+               <a
+                  class="c-link p-dm__h2InfoOrderName"
+                  :href="publicPath + 'works/' + info.w_id"
+                  >{{ info.w_name }}</a
+               >
             </div>
          </div>
       </div>
@@ -158,6 +167,14 @@ export default {
             return this.info.applicant_name;
          } else {
             return this.info.orderer_name;
+         }
+      },
+      // プロフィールリンクに使用
+      divideUserId() {
+         if (this.authId === this.info.orderer_id) {
+            return this.info.applicant_id;
+         } else {
+            return this.info.orderer_id;
          }
       },
       textareaPlaceholder() {
