@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             'id' => 3,
-            'name' => 'test3-aaaaaaaaaaaaaa',
+            'name' => 'test3',
             'email' => 'test3@example.com',
             'password' => Hash::make('rootroot'),
             'introduction' => '自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。',
@@ -44,7 +44,7 @@ class UsersTableSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             'id' => 4,
-            'name' => 'test4-ああああああああああああああ',
+            'name' => 'test4',
             'email' => 'test4@example.com',
             'password' => Hash::make('rootroot'),
             'introduction' => '自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。',
