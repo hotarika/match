@@ -1994,7 +1994,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       textarea: '',
       conts: this.contents,
-      textareaLimitNumber: 3000
+      textareaLimitNumber: 3000 // 3000文字以内
+
     };
   },
   methods: {
@@ -3310,7 +3311,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       textarea: '',
-      textareaLimitNumber: 3000
+      textareaLimitNumber: 3000 // 3000文字以内
+
     };
   },
   computed: {
@@ -40344,7 +40346,7 @@ var render = function() {
             ],
             staticClass: "c-form__textarea p-dm__textarea",
             class: {
-              "is-error": _vm.textarea.length > _vm.textareaLimitNumber
+              "is-invalid": _vm.textarea.length > _vm.textareaLimitNumber
             },
             attrs: {
               name: "message",
@@ -40384,7 +40386,7 @@ var render = function() {
             {
               staticClass: "c-btn c-msgSendBtn p-dm__sendBtn",
               class: {
-                "is-error": _vm.textarea.length > _vm.textareaLimitNumber
+                "is-invalid": _vm.textarea.length > _vm.textareaLimitNumber
               },
               attrs: { type: "submit" },
               on: {
@@ -41133,7 +41135,7 @@ var render = function() {
                     ],
                     staticClass: "c-form__input p-pubmsg__createMsgTitle",
                     class: {
-                      "is-error":
+                      "is-invalid":
                         _vm.parentTitle.length > _vm.parentTitleLimitNumber
                     },
                     attrs: {
@@ -41180,7 +41182,7 @@ var render = function() {
                     ],
                     staticClass: "c-form__textarea p-pubmsg__createMsgTextarea",
                     class: {
-                      "is-error":
+                      "is-invalid":
                         _vm.parentTextarea.length >
                         _vm.parentTextareaLimitNumber
                     },
@@ -41225,7 +41227,7 @@ var render = function() {
                     {
                       staticClass: "c-btn c-msgSendBtn p-pubmsg__parentBtn",
                       class: {
-                        "is-error":
+                        "is-invalid":
                           _vm.parentTextarea.length >
                           _vm.parentTextareaLimitNumber
                       },
@@ -41531,7 +41533,7 @@ var render = function() {
         staticClass:
           "c-form__textarea p-pubmsg__childTextarea js-childTextarea",
         class: {
-          "is-error": _vm.textarea.length > _vm.textareaLimitNumber
+          "is-invalid": _vm.textarea.length > _vm.textareaLimitNumber
         },
         attrs: {
           name: "message",
@@ -41571,7 +41573,7 @@ var render = function() {
         {
           staticClass: "c-btn c-msgSendBtn p-pubmsg__childBtn",
           class: {
-            "is-error": _vm.textarea.length > _vm.textareaLimitNumber
+            "is-invalid": _vm.textarea.length > _vm.textareaLimitNumber
           },
           attrs: { type: "submit" },
           on: {

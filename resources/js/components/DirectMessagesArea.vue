@@ -35,7 +35,7 @@
          >
             <textarea
                class="c-form__textarea p-dm__textarea"
-               :class="{ 'is-error': textarea.length > textareaLimitNumber }"
+               :class="{ 'is-invalid': textarea.length > textareaLimitNumber }"
                name="message"
                id="message"
                cols="80"
@@ -55,7 +55,7 @@
 
             <button
                class="c-btn c-msgSendBtn p-dm__sendBtn"
-               :class="{ 'is-error': textarea.length > textareaLimitNumber }"
+               :class="{ 'is-invalid': textarea.length > textareaLimitNumber }"
                type="submit"
                @click.prevent="addMessage"
             >
@@ -82,7 +82,7 @@ export default {
       return {
          textarea: '',
          conts: this.contents,
-         textareaLimitNumber: 3000
+         textareaLimitNumber: 3000 // 3000文字以内
       };
    },
    methods: {

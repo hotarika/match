@@ -178,8 +178,8 @@
       position: initial;
       display: block;
       margin: 0 0 0 auto;
-      &.is-error {
-         margin-top: -16px;
+      &.is-invalid {
+         margin-top: -18px;
       }
    }
 }

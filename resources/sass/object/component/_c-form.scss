@@ -13,16 +13,13 @@
          font-size: 13px;
       }
       &.is-invalid {
-         display: block;
          border: 1px solid $red;
-      }
-      &:focus {
-         outline-color: $primary;
-      }
-      &.is-error {
          &:focus {
             outline-color: $red;
          }
+      }
+      &:focus {
+         outline-color: $primary;
       }
    }
    &__description {
@@ -66,10 +63,9 @@
       &:focus {
          outline-color: $primary;
       }
-      &.is-error {
-         &:focus {
-            outline-color: $red;
-         }
+      &.is-invalid {
+         border: 1px solid $red;
+         outline-color: $red;
       }
    }
 }

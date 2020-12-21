@@ -18,7 +18,7 @@
                      <div class="p-changePass__inputWrap -currentPass">
                         <input
                            id="current_password"
-                           class="c-form__input p-changePass__input -currentPass"
+                           class="c-form__input p-changePass__input -currentPass @error('current_password') is-invalid @enderror"
                            type="password"
                            name="current_password"
                            autofocus
@@ -37,7 +37,7 @@
                         <span class="c-form__description">※ 8文字~20文字以内・半角英数字のみ（記号は使用できません）</span>
                         <input
                            id="password"
-                           class="c-form__input p-changePass__input -newPass"
+                           class="c-form__input p-changePass__input -newPass @error('password') is-invalid @enderror"
                            type="password"
                            name="password"
                            placeholder="新しいパスワード" />

@@ -27,7 +27,9 @@
                         <label class="p-workForm__label -work" for="work">仕事名<span>[必須]</span></label>
                         <div class="p-workForm__inputWrap">
                            <span class="c-form__description">※ 60文字以内</span>
-                           <textarea name="work" class="c-form__textarea p-workForm__textarea" id="work" cols="30"
+                           <textarea name="work"
+                              class="c-form__textarea p-workForm__textarea @error('work') is-invalid @enderror"
+                              id="work" cols="30"
                               rows="2" placeholder="仕事名を記入" autofocus>{{ old('work',$work->name ?? '') }}</textarea>
                            @error('work')
                            <span class="c-form__invalid" role="alert">
@@ -44,7 +46,7 @@
                         <div class="p-workForm__inputWrap">
                            <input
                               id="end-date"
-                              class="c-form__input p-workForm__input -endDate"
+                              class="c-form__input p-workForm__input -endDate @error('end_date') is-invalid @enderror"
                               type="date"
                               name="end_date"
                               value="{{ old('end_date',$work->end_date ?? '') }}"
@@ -65,7 +67,7 @@
                         <div class="p-workForm__inputWrap">
                            <input
                               id="hope-date"
-                              class="c-form__input p-workForm__input -hopeDate"
+                              class="c-form__input p-workForm__input -hopeDate @error('hope_date') is-invalid @enderror"
                               type="date"
                               name="hope_date"
                               value="{{ old('hope_date',$work->hope_date ??  '') }}"
@@ -86,7 +88,7 @@
                         <div class="p-workForm__inputWrap">
                            <select
                               id="contract"
-                              class="c-form__input p-workForm__input -contract js-contract"
+                              class="c-form__input p-workForm__input -contract js-contract @error('contract_id') is-invalid @enderror"
                               name="contract_id">
                               <option value="" selected>選択してください</option>
                               <option value="1" @if(old('contract_id',$work->contract_id ?? '')=='1' ) selected
@@ -112,7 +114,7 @@
                            <div class="p-workForm__priceWrap">
                               <input
                                  id="price"
-                                 class="c-form__input p-workForm__input -price"
+                                 class="c-form__input p-workForm__input -price @error('price_lower') is-invalid @enderror"
                                  type="number"
                                  min="1"
                                  max="1000"
@@ -121,7 +123,7 @@
                                  placeholder="例：500" /><span>千円〜</span>
                               <input
                                  id="price"
-                                 class="c-form__input p-workForm__input -price"
+                                 class="c-form__input p-workForm__input -price @error('price_upper') is-invalid @enderror"
                                  type="number"
                                  min="1"
                                  max="1000"
@@ -146,7 +148,7 @@
                            <span class="c-form__description">※ 3000文字以内</span>
                            <textarea
                               id="order-content"
-                              class="c-form__textarea p-workForm__textarea u-mb5"
+                              class="c-form__textarea p-workForm__textarea u-mb5 @error('order_content') is-invalid @enderror"
                               name="order_content"
                               cols="30"
                               rows="10"

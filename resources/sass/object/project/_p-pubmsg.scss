@@ -120,7 +120,7 @@
       position: initial;
       display: block;
       margin: 0 0 0 auto;
-      &.is-error {
+      &.is-invalid {
          margin-top: -16px;
       }
    }
@@ -200,7 +200,7 @@
       position: initial;
       display: block;
       margin: 2px 0 0 auto;
-      &.is-error {
+      &.is-invalid {
          margin-top: -14px;
       }
    }

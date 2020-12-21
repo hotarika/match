@@ -4,7 +4,7 @@
       <textarea
          class="c-form__textarea p-pubmsg__childTextarea js-childTextarea"
          :class="{
-            'is-error': textarea.length > textareaLimitNumber
+            'is-invalid': textarea.length > textareaLimitNumber
          }"
          name="message"
          id="message"
@@ -25,7 +25,7 @@
       <button
          class="c-btn c-msgSendBtn p-pubmsg__childBtn"
          :class="{
-            'is-error': textarea.length > textareaLimitNumber
+            'is-invalid': textarea.length > textareaLimitNumber
          }"
          type="submit"
          @click.prevent="childTextHandler"
@@ -41,7 +41,7 @@ export default {
    data() {
       return {
          textarea: '',
-         textareaLimitNumber: 3000
+         textareaLimitNumber: 3000 // 3000文字以内
       };
    },
    computed: {

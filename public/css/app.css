@@ -1161,16 +1161,15 @@ pre {
 }
 
 .c-form__input.is-invalid {
-  display: block;
   border: 1px solid #dc3545;
+}
+
+.c-form__input.is-invalid:focus {
+  outline-color: #dc3545;
 }
 
 .c-form__input:focus {
   outline-color: #0081ff;
-}
-
-.c-form__input.is-error:focus {
-  outline-color: #dc3545;
 }
 
 .c-form__description {
@@ -1230,7 +1229,8 @@ pre {
   outline-color: #0081ff;
 }
 
-.c-form__textarea.is-error:focus {
+.c-form__textarea.is-invalid {
+  border: 1px solid #dc3545;
   outline-color: #dc3545;
 }
 
@@ -1911,8 +1911,8 @@ pre {
   margin: 0 0 0 auto;
 }
 
-.p-dm__sendBtn.is-error {
-  margin-top: -16px;
+.p-dm__sendBtn.is-invalid {
+  margin-top: -18px;
 }
 
 .p-errors__wrap {
@@ -3483,7 +3483,7 @@ pre {
   margin: 0 0 0 auto;
 }
 
-.p-pubmsg__parentBtn.is-error {
+.p-pubmsg__parentBtn.is-invalid {
   margin-top: -16px;
 }
 
@@ -3588,7 +3588,7 @@ pre {
   margin: 2px 0 0 auto;
 }
 
-.p-pubmsg__childBtn.is-error {
+.p-pubmsg__childBtn.is-invalid {
   margin-top: -14px;
 }
 

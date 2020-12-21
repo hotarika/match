@@ -8,7 +8,7 @@
                <input
                   class="c-form__input p-pubmsg__createMsgTitle"
                   :class="{
-                     'is-error': parentTitle.length > parentTitleLimitNumber
+                     'is-invalid': parentTitle.length > parentTitleLimitNumber
                   }"
                   type="text"
                   :placeholder="parentTitlePlaceholder"
@@ -29,7 +29,7 @@
                <textarea
                   class="c-form__textarea p-pubmsg__createMsgTextarea"
                   :class="{
-                     'is-error':
+                     'is-invalid':
                         parentTextarea.length > parentTextareaLimitNumber
                   }"
                   name="message"
@@ -54,7 +54,7 @@
                <button
                   class="c-btn c-msgSendBtn p-pubmsg__parentBtn"
                   :class="{
-                     'is-error':
+                     'is-invalid':
                         parentTextarea.length > parentTextareaLimitNumber
                   }"
                   type="submit"
