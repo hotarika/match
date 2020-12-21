@@ -12,8 +12,9 @@
       width: 100%;
       padding: 10px 36px;
       background-color: $gray-400;
-      @include mq('3xs') {
-         padding: 10px 15px;
+      @include mq('xs') {
+         justify-content: center;
+         padding: 10px 0;
       }
    }
    &__checkbox {
@@ -22,7 +23,7 @@
       white-space: nowrap;
       & > label {
          white-space: nowrap;
-         @include mq('3xs') {
+         @include mq('xs') {
             font-size: 13px;
          }
       }

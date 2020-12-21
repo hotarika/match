@@ -40,7 +40,7 @@
       <small
          class="p-profileEdit__imgEditCaption -sp"
          v-if="device === 'Mobile'"
-         >クリックで変更</small
+         >タッチで変更</small
       >
       <small class="p-profileEdit__imgEditCaption -mimes"
          >画像の形式は、jpeg, png, gif, svg の<br />いずれかを指定してください</small

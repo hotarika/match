@@ -3103,6 +3103,7 @@ __webpack_require__.r(__webpack_exports__);
       if (confirm('送信してもよろしいですか？')) {
         // メッセージ挿入（表示用のため、このデータはDBには保存されません）
         this.childMessages.push({
+          u_id: this.authUser.id,
           cm_id: this.childMessages.length + 1,
           parent_id: refs[1],
           cm_content: text,
@@ -40772,7 +40773,7 @@ var render = function() {
     _vm._v(" "),
     _vm.device === "Mobile"
       ? _c("small", { staticClass: "p-profileEdit__imgEditCaption -sp" }, [
-          _vm._v("クリックで変更")
+          _vm._v("タッチで変更")
         ])
       : _vm._e(),
     _vm._v(" "),
@@ -40828,9 +40829,9 @@ var render = function() {
           ? _c("span", { staticClass: "c-badge__mark -notification" })
           : _vm._e(),
         _vm._v(" "),
-        _c("i", { staticClass: "fas fa-bell p-header__navIcon" }),
+        _c("i", { staticClass: "fas fa-bell p-header__navIcon -notification" }),
         _vm._v(" "),
-        _c("div", { staticClass: "p-header__navName u-ml6" }, [
+        _c("div", { staticClass: "p-header__navName u-ml4" }, [
           _vm._v("新着通知")
         ])
       ]

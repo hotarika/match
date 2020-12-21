@@ -54,6 +54,9 @@
       @include mq('md') {
          padding: 30px 20px;
       }
+      @include mq('xs') {
+         width: 100%;
+      }
       @include mq('2xs') {
          padding: 25px 15px;
       }
@@ -113,7 +116,7 @@
    &__proIntroductionBody {
       @include border-radius('all');
       min-height: 275px;
-      padding: 15px;
+      padding: 15px 15px 15px 20px;
       font-size: 14px;
       line-height: 1.3;
       letter-spacing: 0.5px;

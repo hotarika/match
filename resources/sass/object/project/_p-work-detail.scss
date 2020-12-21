@@ -23,7 +23,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
    }
    &__tweetBtn {
       @include border-radius;
@@ -53,9 +53,12 @@
       @include mq('md') {
          font-size: 16px;
       }
+      @include mq('xs') {
+         font-size: 14px;
+      }
       @include mq('3xs') {
          margin-bottom: 40px;
-         font-size: 15px;
+         font-size: 13px;
       }
    }
    &__infoWrap {
@@ -138,10 +141,15 @@
       }
    }
    &__infoName {
-      width: 160px;
+      width: 70%;
       word-break: break-all;
       @include mq('xs') {
-         font-size: 13px;
+         width: 80%;
+         font-size: 12px;
+      }
+      @include mq('3xs') {
+         width: 70%;
+         font-size: 11;
       }
    }
    &__infoDate {
@@ -182,10 +190,10 @@
          white-space: nowrap;
       }
       @include mq('xs') {
-         margin-right: 10px;
+         margin-right: 15px;
+         font-size: 11px;
       }
       @include mq('3xs') {
-         margin-right: 15px;
          font-size: 10px;
       }
    }

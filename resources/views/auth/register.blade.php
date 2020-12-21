@@ -51,7 +51,7 @@
 
                   <!-- パスワード -->
                   <div class="p-register__inputWrap -pass ">
-                     <span class="c-form__description">※ 8文字~20文字以内・半角英数字のみ（記号は使用できません）</span>
+                     <span class="c-form__description">※ 8文字~20文字以内・半角英数字のみ<br>（記号は使用できません）</span>
                      <input
                         id="password"
                         type="password"

@@ -31,11 +31,17 @@
          visibility: hidden;
          opacity: 0;
          transition: 0.2s;
+         @include mq('xs') {
+            margin-top: -100px;
+         }
          &.is-active {
-            margin-top: 10px;
+            margin-top: 10px; // margin:100px;から0pxにすることで表示している
             visibility: visible;
             opacity: 1;
             transition: 0.2s;
+            @include mq('xs') {
+               margin-top: 0;
+            }
          }
       }
    }
@@ -46,7 +52,23 @@
       margin-top: 10px;
       font-size: 14px;
       &.-work {
-         margin-top: 24px;
+         margin-top: 37px;
+         @include mq('md') {
+            margin-top: 0;
+            margin-bottom: -11px; // ラベルと説明書きの位置調整
+         }
+      }
+      &.-price {
+         @include mq('xs') {
+            margin-bottom: 23px;
+         }
+      }
+      &.-orderContent {
+         margin-top: 27px;
+         @include mq('md') {
+            margin-top: 10px;
+            margin-bottom: -10px; // ラベルと説明書きの位置調整
+         }
       }
       @include mq('md') {
          width: 100%;
@@ -76,6 +98,12 @@
             font-size: 12px;
             color: $gray-600;
             content: '※ 最大設定金額は1000千円まで（単位は「千円」）';
+            @include mq('md') {
+               left: 80px;
+            }
+            @include mq('xs') {
+               left: 3px;
+            }
          }
       }
    }

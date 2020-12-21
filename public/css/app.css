@@ -489,7 +489,7 @@ pre {
 
 @media screen and (max-width: 768px) {
   .l-main__mainArea.-oneColumn_auth {
-    width: 60%;
+    width: 70%;
   }
 }
 
@@ -533,6 +533,7 @@ pre {
 .c-badge {
   border-radius: 50%;
   position: absolute;
+  right: 21px;
   min-width: 20px;
   min-height: 20px;
   padding: 4px 3px 3px;
@@ -545,18 +546,41 @@ pre {
   opacity: 0.95;
 }
 
+@media screen and (max-width: 414px) {
+  .c-badge {
+    right: 18px;
+  }
+}
+
 .c-badge.-over {
   border-radius: 20%;
 }
 
 .c-badge.-public {
   top: 36px;
-  right: 21px;
+}
+
+@media screen and (max-width: 414px) {
+  .c-badge.-public {
+    top: 34px;
+  }
+}
+
+@media screen and (max-width: 414px) and (max-width: 320px) {
+  .c-badge.-public {
+    right: 12px;
+  }
 }
 
 .c-badge.-direct {
   top: 34px;
-  right: 21px;
+}
+
+@media screen and (max-width: 320px) {
+  .c-badge.-direct {
+    top: 31px;
+    right: 12px;
+  }
 }
 
 .c-badge__mark {
@@ -568,19 +592,37 @@ pre {
   opacity: 0.95;
 }
 
-.c-badge__mark.-public {
-  top: 9px;
+.c-badge__mark.-public,
+.c-badge__mark.-direct {
+  top: 8px;
   left: 30px;
 }
 
-.c-badge__mark.-direct {
-  top: 9px;
-  left: 30px;
+@media screen and (max-width: 768px) {
+  .c-badge__mark.-public,
+  .c-badge__mark.-direct {
+    left: 20px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .c-badge__mark.-public,
+  .c-badge__mark.-direct {
+    top: -4px;
+    left: 14px;
+  }
 }
 
 .c-badge__mark.-notification {
   top: -4px;
-  left: 7px;
+  left: 11px;
+}
+
+@media screen and (max-width: 414px) {
+  .c-badge__mark.-notification {
+    top: -4px;
+    left: 14px;
+  }
 }
 
 .c-btn {
@@ -658,7 +700,7 @@ pre {
 @media screen and (max-width: 414px) {
   .c-workCard {
     width: 48%;
-    height: 210px;
+    height: 220px;
     margin: 0 10px 10px 0;
   }
 
@@ -717,6 +759,21 @@ pre {
   background-color: #6c757d;
 }
 
+@media screen and (max-width: 414px) {
+  .c-workCard__decisionBadge {
+    width: 35px;
+    height: 35px;
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .c-workCard__decisionBadge {
+    top: 0;
+    right: 0;
+  }
+}
+
 .c-workCard__nameWrap {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -725,6 +782,12 @@ pre {
   top: 11px;
   left: 11px;
   width: 80%;
+}
+
+@media screen and (max-width: 375px) {
+  .c-workCard__nameWrap {
+    width: 65%;
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -764,9 +827,15 @@ pre {
 @media screen and (max-width: 414px) {
   .c-workCard__head {
     width: 100%;
-    height: 70px;
+    height: 90px;
     padding: 6px 7px;
     font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .c-workCard__head {
+    font-size: 11px;
   }
 }
 
@@ -811,6 +880,12 @@ pre {
   }
 }
 
+@media screen and (max-width: 320px) {
+  .c-workCard__contractIcon.-oneoff {
+    font-size: 33px;
+  }
+}
+
 .c-workCard__contractIcon.-share {
   margin-left: 5px;
   font-size: 40px;
@@ -825,6 +900,12 @@ pre {
 @media screen and (max-width: 375px) {
   .c-workCard__contractIcon.-share {
     font-size: 35px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .c-workCard__contractIcon.-share {
+    font-size: 33px;
   }
 }
 
@@ -920,13 +1001,19 @@ pre {
   font-weight: bold;
 }
 
+@media screen and (max-width: 320px) {
+  .c-workCard__endDate {
+    font-size: 13px;
+  }
+}
+
 .c-dmMsgCard__basicInfo,
 .c-pubMsgCard__basicInfo {
   border-radius: 50px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 80%;
+  max-width: 70%;
   padding: 5px 15px;
   overflow: hidden;
   font-size: 11px;
@@ -937,7 +1024,9 @@ pre {
 @media screen and (max-width: 414px) {
   .c-dmMsgCard__basicInfo,
   .c-pubMsgCard__basicInfo {
+    max-width: 65%;
     padding: 5px 10px;
+    font-size: 10px;
   }
 }
 
@@ -979,19 +1068,6 @@ pre {
   font-size: 13px;
 }
 
-@media screen and (max-width: 414px) {
-  .c-pubMsgCard__basicInfo {
-    max-width: 70%;
-    font-size: 10px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .c-pubMsgCard__basicInfo {
-    max-width: 65%;
-  }
-}
-
 .c-pubMsgCard__msgTime {
   margin-top: 4px;
   font-size: 12px;
@@ -1007,6 +1083,18 @@ pre {
 
 .c-pubMsgCard__msgWrap {
   width: 95%;
+}
+
+@media screen and (max-width: 768px) {
+  .c-pubMsgCard__msgWrap {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .c-pubMsgCard__msgWrap {
+    width: 85%;
+  }
 }
 
 .c-pubMsgCard__msgTitle {
@@ -1109,15 +1197,7 @@ pre {
 
 @media screen and (max-width: 414px) {
   .c-dmMsgCard__basicInfo {
-    max-width: 70%;
     margin-top: 0;
-    font-size: 10px;
-  }
-}
-
-@media screen and (max-width: 375px) {
-  .c-dmMsgCard__basicInfo {
-    max-width: 65%;
   }
 }
 
@@ -1143,8 +1223,15 @@ pre {
   font-size: 12px;
 }
 
+@media screen and (max-width: 768px) {
+  .c-dmMsgCard__dm {
+    width: 90%;
+  }
+}
+
 @media screen and (max-width: 414px) {
   .c-dmMsgCard__dm {
+    width: 85%;
     font-size: 11px;
   }
 }
@@ -1205,6 +1292,21 @@ pre {
 
 .c-form__description.-empty {
   margin-top: 12px;
+}
+
+.c-form__description > br {
+  display: none;
+}
+
+@media screen and (max-width: 414px) {
+  .c-form__description {
+    line-height: 1.3;
+    text-align: right;
+  }
+
+  .c-form__description > br {
+    display: block;
+  }
 }
 
 .c-form__invalid {
@@ -1367,7 +1469,7 @@ pre {
 
 @media screen and (max-width: 768px) {
   .c-h2__workCardBody {
-    padding-left: calc(50% - 224px);
+    padding-left: calc(50% - 215px);
   }
 }
 
@@ -1476,18 +1578,33 @@ pre {
 .p-applicant__head {
   line-height: 1.3;
   letter-spacing: 0.5px;
+  display: block;
   padding: 10px;
   margin-bottom: 30px;
   font-size: 18px;
   text-align: left;
+  word-break: break-all;
   background-color: #bedcfd;
   border-left: 7px solid #0081ff;
+}
+
+@media screen and (max-width: 768px) {
+  .p-applicant__head {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .p-applicant__head {
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 320px) {
   .p-applicant__head {
     margin-bottom: 20px;
-    font-size: 15px;
+    font-size: 13px;
   }
 }
 
@@ -1504,7 +1621,7 @@ pre {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 85%;
   padding: 5px 20px;
 }
 
@@ -1514,6 +1631,7 @@ pre {
 
 @media screen and (max-width: 414px) {
   .p-applicant__userWrap {
+    width: 75%;
     padding: 5px 15px;
   }
 }
@@ -1526,14 +1644,8 @@ pre {
 
 .p-applicant__user {
   display: flex;
-  flex-basis: 80%;
   align-items: center;
-}
-
-@media screen and (max-width: 414px) {
-  .p-applicant__user {
-    flex-basis: 70%;
-  }
+  width: 85%;
 }
 
 .p-applicant__userImg {
@@ -1550,20 +1662,21 @@ pre {
 }
 
 .p-applicant__userName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 14px;
+  word-break: break-all;
 }
 
 @media screen and (max-width: 414px) {
   .p-applicant__userName {
-    font-size: 13px;
+    font-size: 12px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .p-applicant__userName {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     width: 120px;
   }
 }
@@ -1575,12 +1688,6 @@ pre {
 }
 
 @media screen and (max-width: 414px) {
-  .p-applicant__msgBtn {
-    margin-right: 5px;
-  }
-}
-
-@media screen and (max-width: 320px) {
   .p-applicant__msgBtn {
     margin-right: 0;
   }
@@ -1602,6 +1709,12 @@ pre {
   }
 }
 
+@media screen and (max-width: 320px) {
+  .p-applicant__msgBtn > i {
+    font-size: 19px;
+  }
+}
+
 .p-applicant__dmBoardCreateForm {
   margin: 0;
   margin-right: 4px;
@@ -1609,12 +1722,12 @@ pre {
 
 .p-applicant__decideForm {
   border-radius: 0 5px 5px 0;
-  flex-basis: 20%;
+  width: 15%;
 }
 
 @media screen and (max-width: 414px) {
   .p-applicant__decideForm {
-    flex-basis: 30%;
+    width: 25%;
     font-size: 13px;
   }
 }
@@ -1642,6 +1755,12 @@ pre {
   height: 100%;
   font-size: 14px;
   color: #fff;
+}
+
+@media screen and (max-width: 414px) {
+  .p-applicant__decideBtn {
+    font-size: 12px;
+  }
 }
 
 .p-changePass__body {
@@ -1789,6 +1908,12 @@ pre {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .p-dm__h2AllInfoWrap {
+    width: 90%;
+  }
 }
 
 @media screen and (max-width: 414px) {
@@ -2228,6 +2353,7 @@ pre {
 @media screen and (max-width: 414px) {
   .p-header__userImg {
     margin-right: 17px;
+    margin-left: 6px;
   }
 }
 
@@ -2266,6 +2392,18 @@ pre {
     font-size: 17px;
     color: #fff;
   }
+}
+
+.p-header__navIcon.-workList {
+  margin-left: 4px;
+}
+
+.p-header__navIcon.-mypage {
+  margin-left: 4px;
+}
+
+.p-header__navIcon.-notification {
+  margin-left: 4px;
 }
 
 .p-header__navIcon.-bell {
@@ -3127,7 +3265,8 @@ pre {
 @media screen and (max-width: 768px) {
   .p-profileEdit__label {
     width: 100%;
-    margin-bottom: 3px;
+    margin-top: 10px;
+    margin-bottom: -12px;
     font-size: 13px;
   }
 }
@@ -3159,6 +3298,7 @@ pre {
 
 .p-profileEdit__textarea {
   width: 100%;
+  height: 30vh;
 }
 
 .p-profileEdit__editBtn {
@@ -3235,6 +3375,12 @@ pre {
 @media screen and (max-width: 768px) {
   .p-profile__proSecond {
     padding: 30px 20px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .p-profile__proSecond {
+    width: 100%;
   }
 }
 
@@ -3315,7 +3461,7 @@ pre {
 .p-profile__proIntroductionBody {
   border-radius: 2px;
   min-height: 275px;
-  padding: 15px;
+  padding: 15px 15px 15px 20px;
   font-size: 14px;
   line-height: 1.3;
   letter-spacing: 0.5px;
@@ -3409,24 +3555,24 @@ pre {
 .p-pubmsg__parentMsgWrap {
   border-radius: 2px;
   display: flex;
-  padding: 20px 20px 50px;
+  padding: 20px 20px 30px;
 }
 
 @media screen and (max-width: 768px) {
   .p-pubmsg__parentMsgWrap {
-    padding: 20px 20px 50px;
+    padding: 20px 20px 30px;
   }
 }
 
 @media screen and (max-width: 414px) {
   .p-pubmsg__parentMsgWrap {
-    padding: 15px 15px 50px;
+    padding: 15px 15px 30px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .p-pubmsg__parentMsgWrap {
-    padding: 15px 12px 50px;
+    padding: 15px 12px 30px;
   }
 }
 
@@ -3446,12 +3592,22 @@ pre {
   width: 90%;
 }
 
+@media screen and (max-width: 768px) {
+  .p-pubmsg__parentRight {
+    width: 100%;
+  }
+}
+
 .p-pubmsg__parentName {
+  border-radius: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   display: inline-block;
+  max-width: 60%;
   padding: 5px 10px;
   margin-bottom: 5px;
   font-size: 12px;
-  border-radius: 10px;
 }
 
 @media screen and (max-width: 414px) {
@@ -3529,7 +3685,7 @@ pre {
   position: absolute;
   top: 13px;
   right: 18px;
-  padding: 5px 10px;
+  padding: 5px 0;
   font-size: 12px;
   color: #6c757d;
 }
@@ -3555,6 +3711,12 @@ pre {
 
 .p-pubmsg__childRight {
   width: 88%;
+}
+
+@media screen and (max-width: 768px) {
+  .p-pubmsg__childRight {
+    width: 100%;
+  }
 }
 
 .p-pubmsg__childName {
@@ -3704,7 +3866,7 @@ pre {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .p-workDetail__tweetBtn {
@@ -3734,10 +3896,22 @@ pre {
   border-left: 7px solid #0081ff;
 }
 
+@media screen and (max-width: 768px) {
+  .p-workDetail__head {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .p-workDetail__head {
+    font-size: 14px;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .p-workDetail__head {
     margin-bottom: 40px;
-    font-size: 15px;
+    font-size: 13px;
   }
 }
 
@@ -3850,13 +4024,21 @@ pre {
 }
 
 .p-workDetail__infoName {
-  width: 160px;
+  width: 70%;
   word-break: break-all;
 }
 
 @media screen and (max-width: 414px) {
   .p-workDetail__infoName {
-    font-size: 13px;
+    width: 80%;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .p-workDetail__infoName {
+    width: 70%;
+    font-size: 11;
   }
 }
 
@@ -3914,13 +4096,13 @@ pre {
 
 @media screen and (max-width: 414px) {
   .p-workDetail__infoDateHead {
-    margin-right: 10px;
+    margin-right: 15px;
+    font-size: 11px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .p-workDetail__infoDateHead {
-    margin-right: 15px;
     font-size: 10px;
   }
 }
@@ -4122,11 +4304,23 @@ pre {
   transition: 0.2s;
 }
 
+@media screen and (max-width: 414px) {
+  .p-workForm__wrap.-price {
+    margin-top: -100px;
+  }
+}
+
 .p-workForm__wrap.-price.is-active {
   margin-top: 10px;
   visibility: visible;
   opacity: 1;
   transition: 0.2s;
+}
+
+@media screen and (max-width: 414px) {
+  .p-workForm__wrap.-price.is-active {
+    margin-top: 0;
+  }
 }
 
 .p-workForm__label {
@@ -4138,7 +4332,31 @@ pre {
 }
 
 .p-workForm__label.-work {
-  margin-top: 24px;
+  margin-top: 37px;
+}
+
+@media screen and (max-width: 768px) {
+  .p-workForm__label.-work {
+    margin-top: 0;
+    margin-bottom: -11px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .p-workForm__label.-price {
+    margin-bottom: 23px;
+  }
+}
+
+.p-workForm__label.-orderContent {
+  margin-top: 27px;
+}
+
+@media screen and (max-width: 768px) {
+  .p-workForm__label.-orderContent {
+    margin-top: 10px;
+    margin-bottom: -10px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -4176,6 +4394,18 @@ pre {
   font-size: 12px;
   color: #6c757d;
   content: "\203B   \6700\5927\8A2D\5B9A\91D1\984D\306F  1000\5343\5186\307E\3067\FF08\5358\4F4D\306F\300C\5343\5186\300D\FF09";
+}
+
+@media screen and (max-width: 768px) {
+  .p-workForm__inputWrap.-price::before {
+    left: 80px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .p-workForm__inputWrap.-price::before {
+    left: 3px;
+  }
 }
 
 .p-workForm__priceWrap > span {
@@ -4259,9 +4489,10 @@ pre {
   background-color: #ced4da;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 414px) {
   .p-workList__orderForm {
-    padding: 10px 15px;
+    justify-content: center;
+    padding: 10px 0;
   }
 }
 
@@ -4275,7 +4506,7 @@ pre {
   white-space: nowrap;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 414px) {
   .p-workList__checkbox > label {
     font-size: 13px;
   }

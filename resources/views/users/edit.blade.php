@@ -83,7 +83,7 @@
                               class="c-form__textarea p-profileEdit__textarea @error('introduction') is-invalid @enderror"
                               name="introduction"
                               cols="30"
-                              rows="10"
+                              rows="20"
                               placeholder="自己紹介文を記入">{{old('introduction',$user->introduction ?? '')}}</textarea>
                            @error('introduction')
                            <span class="c-form__invalid" role="alert">

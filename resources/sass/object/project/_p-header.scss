@@ -160,6 +160,7 @@
       height: 15px;
       @include mq('xs') {
          margin-right: 17px;
+         margin-left: 6px;
       }
    }
    &__navName {
@@ -183,6 +184,15 @@
          margin-bottom: 0;
          font-size: 17px;
          color: $white;
+      }
+      &.-workList {
+         margin-left: 4px;
+      }
+      &.-mypage {
+         margin-left: 4px;
+      }
+      &.-notification {
+         margin-left: 4px;
       }
       &.-bell {
          margin-right: 5px;

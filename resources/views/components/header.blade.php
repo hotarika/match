@@ -66,7 +66,7 @@
 
                   <!-- 全ての端末で表示 -->
                   <li class="p-header__item -user">
-                     <a class="c-link p-header__navLink" href="{{ route('users.show',Auth::id()) }}">
+                     <a class="c-link p-header__navLink -user" href="{{ route('users.show',Auth::id()) }}">
                         <img class="c-img p-header__userImg"
                            @if(Auth::user()->image === null)
                         src="{{asset('images/no-image.png')}}"
@@ -81,7 +81,7 @@
                   <!-- 全ての端末で表示 -->
                   <li class="p-header__item">
                      <a class="c-link p-header__navLink" href="{{ route('works.index') }}">
-                        <i class="fas fa-list p-header__navIcon"></i>
+                        <i class="fas fa-list p-header__navIcon -workList"></i>
                         <div class="p-header__navName u-ml4">仕事一覧</div>
                      </a>
                   </li>
@@ -89,8 +89,8 @@
                   <!-- 全ての端末で表示 -->
                   <li class="p-header__item">
                      <a class="c-link p-header__navLink" href="{{ route('mypage') }}">
-                        <i class="fas fa-user p-header__navIcon"></i>
-                        <div class="p-header__navName u-ml5">マイページ</div>
+                        <i class="fas fa-user p-header__navIcon -mypage"></i>
+                        <div class="p-header__navName u-ml4">マイページ</div>
                      </a>
                   </li>
 
@@ -105,6 +105,9 @@
                      <a class="c-link p-header__navLink" href="{{ route('pubmsgs.index') }}">
                         <i class="fas fa-users p-header__navIcon"></i>
                         <div class="p-header__navName">パブリックメッセージ</div>
+                        <public-messages-badge-in-sidebar-component
+                           :public-path="{{json_encode(asset(''))}}">
+                        </public-messages-badge-in-sidebar-component>
                      </a>
                   </li>
 
@@ -113,6 +116,9 @@
                      <a class="c-link p-header__navLink" href="{{ route('dm-boards.index') }}">
                         <i class="fas fa-comments p-header__navIcon"></i>
                         <div class="p-header__navName u-ml2">ダイレクトメッセージ</div>
+                        <direct-messages-badge-in-sidebar-component
+                           :public-path="{{json_encode(asset(''))}}">
+                        </direct-messages-badge-in-sidebar-component>
                      </a>
                   </li>
 

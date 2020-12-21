@@ -2,8 +2,8 @@
    <li class="p-header__item">
       <a class="c-link p-header__navLink" :href="mypageUrl">
          <span class="c-badge__mark -notification" v-if="count > 0"></span>
-         <i class="fas fa-bell p-header__navIcon"></i>
-         <div class="p-header__navName u-ml6">新着通知</div>
+         <i class="fas fa-bell p-header__navIcon -notification"></i>
+         <div class="p-header__navName u-ml4">新着通知</div>
       </a>
    </li>
 </template>

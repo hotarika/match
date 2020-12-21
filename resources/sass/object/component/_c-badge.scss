@@ -1,6 +1,7 @@
 .c-badge {
    @include border-radius('all', 50%);
    position: absolute;
+   right: 21px;
    min-width: 20px;
    min-height: 20px;
    padding: 4px 3px 3px;
@@ -11,16 +12,27 @@
    text-align: center;
    background-color: $red;
    opacity: 0.95;
+   @include mq('xs') {
+      right: 18px;
+   }
    &.-over {
       @include border-radius('all', 20%);
    }
    &.-public {
       top: 36px;
-      right: 21px;
+      @include mq('xs') {
+         top: 34px;
+         @include mq('3xs') {
+            right: 12px;
+         }
+      }
    }
    &.-direct {
       top: 34px;
-      right: 21px;
+      @include mq('3xs') {
+         top: 31px;
+         right: 12px;
+      }
    }
 
    &__mark {
@@ -30,17 +42,25 @@
       height: 10px;
       background-color: $red;
       opacity: 0.95;
-      &.-public {
-         top: 9px;
-         left: 30px;
-      }
+      &.-public,
       &.-direct {
-         top: 9px;
+         top: 8px;
          left: 30px;
+         @include mq('md') {
+            left: 20px;
+         }
+         @include mq('xs') {
+            top: -4px;
+            left: 14px;
+         }
       }
       &.-notification {
          top: -4px;
-         left: 7px;
+         left: 11px;
+         @include mq('xs') {
+            top: -4px;
+            left: 14px;
+         }
       }
    }
 }

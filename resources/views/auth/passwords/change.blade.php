@@ -34,7 +34,7 @@
 
                      <!-- 現在のパスワード -->
                      <div class="p-changePass__inputWrap -newPass">
-                        <span class="c-form__description">※ 8文字~20文字以内・半角英数字のみ（記号は使用できません）</span>
+                        <span class="c-form__description">※ 8文字~20文字以内・半角英数字のみ<br>（記号は使用できません）</span>
                         <input
                            id="password"
                            class="c-form__input p-changePass__input -newPass @error('password') is-invalid @enderror"
