@@ -1,5 +1,17 @@
 <template>
    <a class="c-workCard" :href="publicPath + 'works/' + work.id">
+      <div
+         class="c-workCard__decisionBadge -decision"
+         v-if="work.applicant_state === 2"
+      >
+         決定
+      </div>
+      <div
+         class="c-workCard__decisionBadge -end"
+         v-if="work.applicant_state === 1 && work.w_state === 2"
+      >
+         終了
+      </div>
       <div class="c-workCard__nameWrap">
          <img
             class="c-img c-workCard__img"
@@ -67,7 +79,7 @@ export default {
          const endDate = new Date(this.work.end_date);
          const formatDate = getDateNewFormat(today);
          const formatEndDate = getDateNewFormat(endDate);
-         if (this.work.state === 2 || formatEndDate < formatDate) {
+         if (this.work.w_state === 2 || formatEndDate < formatDate) {
             return '応募終了';
          } else if (formatEndDate > formatDate) {
             return this.work.end_date;
