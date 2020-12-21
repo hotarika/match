@@ -73,6 +73,7 @@ class ApplicantsController extends Controller
                         'a.work_id as w_id',
                         'w.state as w_state',
                         'w.name as w_name',
+                        'w.state as w_state',
                         'a.applicant_id',
                         'u.name as u_name',
                         'u.image as u_image',

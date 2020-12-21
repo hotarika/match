@@ -112,6 +112,9 @@
    &__textarea {
       width: 100%;
       height: 30vh;
+      @include mq('xs') {
+         height: 50vh;
+      }
    }
    &__editBtn {
       display: block;

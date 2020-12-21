@@ -297,7 +297,7 @@ export default {
       },
       parentTitlePlaceholder() {
          return (
-            '必須：新規質問内容のタイトルを記述（' +
+            '必須：質問の題名を記述（' +
             this.parentTitleLimitNumber +
             '文字以内）'
          );

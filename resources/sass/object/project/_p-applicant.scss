@@ -54,7 +54,12 @@
       justify-content: space-between;
       width: 85%;
       padding: 5px 20px;
+      &.-end {
+         width: 100%;
+      }
       &.-decision {
+         @include border-radius('all', 5px);
+         width: 100%;
          background-color: lightpink;
       }
       @include mq('xs') {
@@ -85,9 +90,6 @@
       word-break: break-all;
       @include mq('xs') {
          font-size: 12px;
-      }
-      @include mq('3xs') {
-         width: 120px;
       }
    }
    &__msgBtn {

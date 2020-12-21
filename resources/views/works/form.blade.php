@@ -30,7 +30,7 @@
                            <textarea name="work"
                               class="c-form__textarea p-workForm__textarea @error('work') is-invalid @enderror"
                               id="work" cols="30"
-                              rows="2" placeholder="仕事名を記入" autofocus>{{ old('work',$work->name ?? '') }}</textarea>
+                              rows="3" placeholder="仕事名を記入" autofocus>{{ old('work',$work->name ?? '') }}</textarea>
                            @error('work')
                            <span class="c-form__invalid" role="alert">
                               <strong>{{ $message }}</strong>

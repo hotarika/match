@@ -1002,12 +1002,6 @@ pre {
   }
 }
 
-@media screen and (max-width: 320px) {
-  .c-workCard__infoItem {
-    padding: 9px 9px;
-  }
-}
-
 .c-workCard__infoItemHead {
   position: absolute;
   top: 7px;
@@ -1022,7 +1016,7 @@ pre {
 
 @media screen and (max-width: 320px) {
   .c-workCard__endDate {
-    font-size: 13px;
+    font-size: 12px;
   }
 }
 
@@ -1644,7 +1638,13 @@ pre {
   padding: 5px 20px;
 }
 
+.p-applicant__userWrap.-end {
+  width: 100%;
+}
+
 .p-applicant__userWrap.-decision {
+  border-radius: 5px;
+  width: 100%;
   background-color: lightpink;
 }
 
@@ -1691,12 +1691,6 @@ pre {
 @media screen and (max-width: 414px) {
   .p-applicant__userName {
     font-size: 12px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .p-applicant__userName {
-    width: 120px;
   }
 }
 
@@ -1964,7 +1958,9 @@ pre {
   flex-direction: column;
   align-items: flex-start;
   margin-left: 10px;
-  font-size: 14px;
+  font-size: 13px;
+  text-align: left;
+  word-break: break-all;
 }
 
 .p-dm__h2InfoName {
@@ -1973,15 +1969,12 @@ pre {
 }
 
 .p-dm__h2InfoOrderName {
-  font-size: 13px;
   line-height: 1.1;
-  text-align: left;
-  word-break: break-all;
 }
 
 @media screen and (max-width: 320px) {
   .p-dm__h2InfoOrderName {
-    font-size: 13px;
+    font-size: 11px;
   }
 }
 
@@ -3336,6 +3329,12 @@ pre {
   height: 30vh;
 }
 
+@media screen and (max-width: 414px) {
+  .p-profileEdit__textarea {
+    height: 50vh;
+  }
+}
+
 .p-profileEdit__editBtn {
   display: block;
   padding: 10px 40px;
@@ -3636,13 +3635,12 @@ pre {
   max-width: 60%;
   padding: 5px 10px;
   margin-bottom: 5px;
-  font-size: 12px;
+  font-size: 11px;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 320px) {
   .p-pubmsg__parentName {
-    padding: 4px 8px;
-    font-size: 11px;
+    max-width: 50%;
   }
 }
 
@@ -3749,11 +3747,21 @@ pre {
 }
 
 .p-pubmsg__childName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   border-radius: 10px;
   display: inline-block;
+  max-width: 60%;
   padding: 5px 10px;
   margin-bottom: 5px;
   font-size: 11px;
+}
+
+@media screen and (max-width: 320px) {
+  .p-pubmsg__childName {
+    max-width: 50%;
+  }
 }
 
 .p-pubmsg__childName.-workOrderer {
@@ -4073,7 +4081,7 @@ pre {
 @media screen and (max-width: 320px) {
   .p-workDetail__infoName {
     width: 70%;
-    font-size: 11;
+    font-size: 11px;
   }
 }
 
@@ -4547,12 +4555,24 @@ pre {
   }
 }
 
+@media screen and (max-width: 320px) {
+  .p-workList__checkbox > label {
+    font-size: 12px;
+  }
+}
+
 .p-workList__formBtn {
   padding: 5px 10px 4px;
   font-size: 13px;
   color: #fff;
   letter-spacing: 1.5px;
   background-color: #0081ff;
+}
+
+@media screen and (max-width: 320px) {
+  .p-workList__formBtn {
+    font-size: 12px;
+  }
 }
 
 .p-workList__workCardWrap {

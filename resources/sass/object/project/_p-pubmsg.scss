@@ -87,10 +87,9 @@
       max-width: 60%;
       padding: 5px 10px;
       margin-bottom: 5px;
-      font-size: 12px;
-      @include mq('xs') {
-         padding: 4px 8px;
-         font-size: 11px;
+      font-size: 11px;
+      @include mq('3xs') {
+         max-width: 50%;
       }
       &.-workOrderer {
          color: $white;
@@ -169,11 +168,16 @@
       }
    }
    &__childName {
+      @include ellipsis;
       @include border-radius('all', 10px);
       display: inline-block;
+      max-width: 60%;
       padding: 5px 10px;
       margin-bottom: 5px;
       font-size: 11px;
+      @include mq('3xs') {
+         max-width: 50%;
+      }
       &.-workOrderer {
          color: $white;
          background-color: $primary;

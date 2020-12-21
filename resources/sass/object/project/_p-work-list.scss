@@ -26,6 +26,9 @@
          @include mq('xs') {
             font-size: 13px;
          }
+         @include mq('3xs') {
+            font-size: 12px;
+         }
       }
    }
    &__formBtn {
@@ -34,6 +37,9 @@
       color: $white;
       letter-spacing: 1.5px;
       background-color: $primary;
+      @include mq('3xs') {
+         font-size: 12px;
+      }
    }
    // 仕事カード
    &__workCardWrap {

@@ -21,8 +21,10 @@
                      @forelse ($applicants as $applicant)
                      <div class="p-applicant__list">
                         <div
-                           class="p-applicant__userWrap
-                        @if($applicant->applicant_state === 2) -decision @endif">
+                           class=" p-applicant__userWrap
+                           @if($applicant->w_state === 2 && $applicant->applicant_state === 1) -end @endif
+                           @if($applicant->w_state === 2 && $applicant->applicant_state === 2) -decision @endif
+                           ">
                            <div class="p-applicant__user">
                               <img class="c-img p-applicant__userImg"
                                  @if($applicant->u_image === null)

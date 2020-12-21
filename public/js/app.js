@@ -3146,7 +3146,7 @@ __webpack_require__.r(__webpack_exports__);
       };
     },
     parentTitlePlaceholder: function parentTitlePlaceholder() {
-      return '必須：新規質問内容のタイトルを記述（' + this.parentTitleLimitNumber + '文字以内）';
+      return '必須：質問の題名を記述（' + this.parentTitleLimitNumber + '文字以内）';
     },
     parentTextareaPlaceholder: function parentTextareaPlaceholder() {
       return '必須：新規質問の内容を記述（' + this.parentTextareaLimitNumber + '文字以内）';
