@@ -246,6 +246,7 @@ export default {
          if (confirm('送信してもよろしいですか？')) {
             // メッセージ挿入（表示用のため、このデータはDBには保存されません）
             this.childMessages.push({
+               u_id: this.authUser.id,
                cm_id: this.childMessages.length + 1,
                parent_id: refs[1],
                cm_content: text,
