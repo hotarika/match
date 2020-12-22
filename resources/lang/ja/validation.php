@@ -143,6 +143,7 @@ return [
         'email' => [
             'unique' => 'このメールアドレスは利用することができません。'
         ],
+        'image.max' => ':attributeには、1 MB以下のファイルを指定してください。'
     ],
 
 
@@ -171,7 +172,7 @@ return [
         'current_password' => '現在のパスワード',
         'image' => '画像',
         'introduction' => '自己紹介文',
-        'work' => '仕事名'
+        'work' => '仕事名',
     ],
 
 ];

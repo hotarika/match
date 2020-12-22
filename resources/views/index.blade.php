@@ -39,7 +39,7 @@
                   </div>
                   <div class="p-home__skillCardContent -left_bottom">
                      <i class="fas fa-paint-brush p-home__skillCardIcon"></i>
-                     <span>ロゴ・バナー・イラスト製作</span>
+                     <span>ロゴ・イラスト製作など</span>
                   </div>
                </div>
             </div>

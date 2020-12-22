@@ -104,7 +104,7 @@ class ProfileFormTest extends TestCase
         $response = $this->put(route('users.update', $user->id), $data);
 
         $error = session('errors')->first('image');
-        $this->assertEquals('画像には、1024 kB以下のファイルを指定してください。', $error);
+        $this->assertEquals('画像には、1 MB以下のファイルを指定してください。', $error);
     }
     /**
      * @test
