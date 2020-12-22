@@ -55,14 +55,6 @@
       &.-mimes {
          margin-top: 4px;
          @include letter-settings;
-         & > br {
-            display: none;
-         }
-         @include mq('xs') {
-            & > br {
-               display: block;
-            }
-         }
       }
       @include mq('3xs') {
          margin-top: 5px;
