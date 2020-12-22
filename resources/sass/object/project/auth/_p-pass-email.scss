@@ -11,6 +11,10 @@
       font-size: 13px;
       text-align: center;
       background-color: $primary-light;
+      @include mq('xs') {
+         padding: 10px 5px;
+         font-size: 12px;
+      }
    }
    &__body {
       padding: 50px;
