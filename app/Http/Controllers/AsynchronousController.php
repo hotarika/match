@@ -64,7 +64,7 @@ class AsynchronousController extends Controller
                 'w.end_date',
                 'w.price_lower',
                 'w.price_upper',
-                'w.state',
+                'w.state as w_state',
             )
             ->leftJoin('users as u', 'w.user_id', '=', 'u.id')
             ->where('w.user_id', '=', Auth::id())
