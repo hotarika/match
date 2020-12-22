@@ -98,6 +98,9 @@
       font-size: 13px;
       text-align: left;
       word-break: break-all;
+      @include mq('xs') {
+         font-size: 12px;
+      }
    }
    &__h2InfoName {
       margin-bottom: 2px;
