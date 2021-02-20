@@ -5,6 +5,12 @@
 <main class="l-main p-register">
    <div class="container">
       <div class="l-main__mainArea -oneColumn_auth">
+         <form action="{{route('login')}}" method="post">
+            @csrf
+            <input type="hidden" name="email" value="guest@example.com">
+            <input type="hidden" name="password" value="password">
+            <button type="submit" class="c-guestLogin -register">会員登録せずにログイン</button>
+         </form>
          <section class="c-h2__sec">
             <h2 class="c-h2__head">ユーザー登録</h2>
             <div class="c-h2__oneRowBody p-register__body">

@@ -5,9 +5,15 @@
 <main class="p-home">
    <!-- トップ画像 -->
    <section class="p-home__topImgSec">
+      <form action="{{route('login')}}" method="post">
+         @csrf
+         <input type="hidden" name="email" value="guest@example.com">
+         <input type="hidden" name="password" value="password">
+         <button type="submit" class="c-guestLogin -welcome">会員登録せずにログイン</button>
+      </form>
       <img class="p-home__topImg" src="{{ asset('images/home_img.jpg') }}" alt="" />
       <div class="p-home__topMsg">
-         <small class="p-home__smallMsg">サイト・Webアプリ・<br />Webデザイン・ロゴ製作な</small><br />
+         <small class="p-home__smallMsg">サイト・Webアプリ・<br />Webデザイン・ロゴ製作など</small><br />
          <p class="p-home__mainMsg">ITをもっと気軽に・簡単に</p>
          <p class="p-home__subMsg">あなたのスキルを求めている人を、<br />簡単に探すことができます</p>
          <p class="p-home__subMsg">あなたが困ったときに、<br />気軽にお仕事をお願いすることができます</p>

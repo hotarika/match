@@ -5,6 +5,7 @@
 
 .l-main {
    @include main-height; // footerの固定
+   position: relative;
    z-index: $z-main;
    padding: 60px 0;
    @include mq('xs') {
@@ -14,6 +15,7 @@
       display: flex;
    }
    &__mainArea {
+      position: relative;
       // サイドバーなしのレイアウト
       &.-oneColumn {
          width: 75%;
